@@ -151,7 +151,7 @@
                     "targetPort": "21_in"
                 }
             ],
-            "hash": "b7c07350294d82731fd8bd3338086e839081d227",
+            "hash": "e04b087b3d5a1690ca74a5dd5b06e8689f17e3b4",
             "nodes": {
                 "0": {
                     "data": {
@@ -751,7 +751,11 @@
                     "errors": {},
                     "id": "19",
                     "type": "decision",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 920,
                     "y": 2120
                 },
@@ -937,10 +941,12 @@
                         "values": {
                             "debug": {
                                 "input_1": [
-                                    "filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.data"
+                                    "filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.data.0.0"
                                 ],
                                 "input_10": null,
-                                "input_2": null,
+                                "input_2": [
+                                    "filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.data.0.1"
+                                ],
                                 "input_3": null,
                                 "input_4": null,
                                 "input_5": null,
@@ -955,8 +961,8 @@
                     "id": "21",
                     "type": "utility",
                     "warnings": {},
-                    "x": 980,
-                    "y": 2104.5
+                    "x": 1000,
+                    "y": 2100
                 },
                 "4": {
                     "data": {
@@ -1204,7 +1210,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T13:55:46.685056+00:00",
+    "create_time": "2023-07-10T13:56:57.223829+00:00",
     "draft_mode": false,
     "labels": [
         "*"

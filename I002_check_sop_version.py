@@ -472,15 +472,16 @@ def filter_found_sop(action=None, success=None, container=None, results=None, ha
 def debug_9(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_9() called")
 
-    filtered_result_0_data_filter_found_sop = phantom.collect2(container=container, datapath=["filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.data"])
+    filtered_result_0_data_filter_found_sop = phantom.collect2(container=container, datapath=["filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.data.0.0","filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.data.0.1"])
 
-    filtered_result_0_data = [item[0] for item in filtered_result_0_data_filter_found_sop]
+    filtered_result_0_data_0_0 = [item[0] for item in filtered_result_0_data_filter_found_sop]
+    filtered_result_0_data_0_1 = [item[1] for item in filtered_result_0_data_filter_found_sop]
 
     parameters = []
 
     parameters.append({
-        "input_1": filtered_result_0_data,
-        "input_2": None,
+        "input_1": filtered_result_0_data_0_0,
+        "input_2": filtered_result_0_data_0_1,
         "input_3": None,
         "input_4": None,
         "input_5": None,
