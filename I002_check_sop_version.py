@@ -358,6 +358,8 @@ def add_comment_8(action=None, success=None, container=None, results=None, handl
 
     phantom.comment(container=container, comment="SOP not found in list")
 
+    format_list_json_append_sop(container=container)
+
     return
 
 

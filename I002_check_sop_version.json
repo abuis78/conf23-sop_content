@@ -123,8 +123,16 @@
                     "sourcePort": "18_out",
                     "targetNode": "17",
                     "targetPort": "17_in"
+                },
+                {
+                    "id": "port_16_to_port_18",
+                    "sourceNode": "16",
+                    "sourcePort": "16_out",
+                    "targetNode": "18",
+                    "targetPort": "18_in"
                 }
             ],
+            "hash": "cb9b5c369918f9dba9127f763aed82b23aafc5b9",
             "nodes": {
                 "0": {
                     "data": {
@@ -687,11 +695,7 @@
                     "errors": {},
                     "id": "18",
                     "type": "format",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 1320,
                     "y": 1920
                 },
@@ -941,7 +945,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T13:40:00.664145+00:00",
+    "create_time": "2023-07-10T13:42:17.370667+00:00",
     "draft_mode": false,
     "labels": [
         "*"
