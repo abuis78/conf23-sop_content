@@ -47,7 +47,6 @@
                     "targetPort": "7_in"
                 }
             ],
-            "hash": "cfb11e3ae2da4b64723448b40fd260094b4d8a68",
             "nodes": {
                 "0": {
                     "data": {
@@ -213,9 +212,6 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 800,
