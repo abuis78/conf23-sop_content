@@ -7,14 +7,35 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_0_to_port_2",
+                    "id": "port_3_to_port_5",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "5",
+                    "targetPort": "5_in"
+                },
+                {
+                    "id": "port_6_to_port_3",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
+                },
+                {
+                    "id": "port_0_to_port_7",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
-                    "targetNode": "2",
-                    "targetPort": "2_in"
+                    "targetNode": "7",
+                    "targetPort": "7_in"
+                },
+                {
+                    "id": "port_7_to_port_6",
+                    "sourceNode": "7",
+                    "sourcePort": "7_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
                 }
             ],
-            "hash": "a39de4043e815b2d03a146719bb6404d2e06a112",
+            "hash": "a36ad5a53e3c1ff62b8ebb7f35d3c07526a4627b",
             "nodes": {
                 "0": {
                     "data": {
@@ -74,9 +95,231 @@
                     "errors": {},
                     "id": "2",
                     "type": "playbook",
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
+                    "x": 740,
+                    "y": 600
+                },
+                "3": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format SOP JSON",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "format_sop_json",
+                        "id": "3",
+                        "parameters": [
+                            "format_3:formatted_data"
+                        ],
+                        "template": "{\"cef\":{\n\"sop_json\": {0},\n\"version\": 2\n}}",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "3",
+                    "type": "format",
                     "warnings": {},
                     "x": 980,
-                    "y": 560
+                    "y": 780
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "customName": "create new SOP Artifact",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "artifact_create",
+                            "repoName": "community"
+                        },
+                        "functionId": 1,
+                        "functionName": "create_new_sop_artifact",
+                        "id": "5",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "artifact_create": {
+                                "description": "Create a new artifact with the specified attributes. Supports all fields available in /rest/artifact. Add any unlisted inputs as dictionary keys in input_json. Unsupported keys will automatically be dropped.",
+                                "fields": [
+                                    {
+                                        "dataTypes": [
+                                            "phantom container id"
+                                        ],
+                                        "description": "Container which the artifact will be added to.",
+                                        "inputType": "item",
+                                        "label": "container",
+                                        "name": "container",
+                                        "placeholder": "container:id",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "The name of the new artifact, which is optional and defaults to \"artifact\".",
+                                        "inputType": "item",
+                                        "label": "name",
+                                        "name": "name",
+                                        "placeholder": "artifact",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "The label of the new artifact, which is optional and defaults to \"events\"",
+                                        "inputType": "item",
+                                        "label": "label",
+                                        "name": "label",
+                                        "placeholder": "events",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            ""
+                                        ],
+                                        "description": "The severity of the new artifact, which is optional and defaults to \"Medium\". Typically this is either \"High\", \"Medium\", or \"Low\".",
+                                        "inputType": "item",
+                                        "label": "severity",
+                                        "name": "severity",
+                                        "placeholder": "Medium",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "The name of the CEF field to populate in the artifact, such as \"destinationAddress\" or \"sourceDnsDomain\". Required only if cef_value is provided.",
+                                        "inputType": "item",
+                                        "label": "cef_field",
+                                        "name": "cef_field",
+                                        "placeholder": "destinationAddress",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            "*"
+                                        ],
+                                        "description": "The value of the CEF field to populate in the artifact, such as the IP address, domain name, or file hash. Required only if cef_field is provided.",
+                                        "inputType": "item",
+                                        "label": "cef_value",
+                                        "name": "cef_value",
+                                        "placeholder": "192.0.2.192",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "The CEF data type of the data in cef_value. For example, this could be \"ip\", \"hash\", or \"domain\". Optional.",
+                                        "inputType": "item",
+                                        "label": "cef_data_type",
+                                        "name": "cef_data_type",
+                                        "placeholder": "ip",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "A comma-separated list of tags to apply to the created artifact, which is optional.",
+                                        "inputType": "item",
+                                        "label": "tags",
+                                        "name": "tags",
+                                        "placeholder": "tag1, tag2, tag3",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Either \"true\" or \"false\", depending on whether or not the new artifact should trigger the execution of any playbooks that are set to active on the label of the container the artifact will be added to. Optional and defaults to \"false\".",
+                                        "inputType": "item",
+                                        "label": "run_automation",
+                                        "name": "run_automation",
+                                        "placeholder": "false",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Optional parameter to modify any extra attributes of the artifact. Input_json will be merged with other inputs. In the event of a conflict, input_json will take precedence.",
+                                        "inputType": "item",
+                                        "label": "input_json",
+                                        "name": "input_json",
+                                        "placeholder": "{\"source_data_identifier\": \"1234\", \"data\": \"5678\"}",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "artifact_create",
+                                "name": "artifact_create"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "artifact_create": {
+                                "cef_data_type": null,
+                                "cef_field": null,
+                                "cef_value": null,
+                                "container": "container:id",
+                                "input_json": "format_sop_json:formatted_data",
+                                "label": null,
+                                "name": "format_sop_name:formatted_data",
+                                "run_automation": null,
+                                "severity": null,
+                                "tags": null
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 880
+                },
+                "6": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format SOP Name",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "format_sop_name",
+                        "id": "6",
+                        "parameters": [],
+                        "template": "NEW SOP",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 684.5
+                },
+                "7": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 3,
+                        "functionName": "format_3",
+                        "id": "7",
+                        "parameters": [],
+                        "template": "{\n  \"name\": \"1234_test_search\",\n  \"description\": \"This is an example SOP for a test correlation search\",\n  \"phases\": [\n    {\n      \"id\": \"Generated SOP Tasks\",\n      \"name\": \"Generated SOP Tasks\",\n      \"tasks\": [\n{\n\t\t\t\"name\": \"F01-Check file hash\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"F02-Check file name/path\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"P01-Check InitiatingProcessParentFileName of the InitiatingProcessFileName\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"N16-Check for internal traffic\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"U01-Get username\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"U02-Check if the user is local admin\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"U04-Check for login activities on other hosts\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"U05-Check login types\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"H01-How many users are logging in on the host\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"H02-Host IP\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"H04-Check for added autorun entries\"\n\t\t}\n      ]\n    },\n    {\n      \"id\": \"Additional_Info\",\n      \"name\": \"Additional Info\",\n      \"tasks\": [\n        {\n\t\t\t\"name\": \"Notes / Remarks\",\n            \"description\": \"\"\n\t\t}\n      ]\n    },\n    {\n      \"id\": \"Recommendations\",\n      \"name\": \"Recommendations\",\n      \"tasks\": [\n        {\n\t\t\t\"name\": \"Notes / Remarks\",\n            \"description\": \"\"\n\t\t}\n      ]\n    }\n  ],\n  \"is_default\": false,\n  \"is_note_required\": true\n}",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "7",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 544.5
                 }
             },
             "notes": ""
@@ -88,7 +331,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T08:03:25.907445+00:00",
+    "create_time": "2023-07-10T10:26:48.274381+00:00",
     "draft_mode": false,
     "labels": [
         "*"
