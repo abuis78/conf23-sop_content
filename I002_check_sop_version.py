@@ -764,11 +764,11 @@ def set_type_of_update_in_the_list(action=None, success=None, container=None, re
     phantom.debug("Current {}".format(format_sop_version_check_current))
     phantom.debug("New {}".format(format_sop_version_check_new_1))
     
-    if format_sop_version_check_updated is not None or format_sop_version_check_updated != "":
+    if format_sop_version_check_updated is not "":
         set_type_of_update_in_the_list__status_type = format_sop_version_check_updated
-    elif format_sop_version_check_current is not None or format_sop_version_check_current != "":
+    elif format_sop_version_check_current is not "":
         set_type_of_update_in_the_list__status_type = format_sop_version_check_current
-    elif format_sop_version_check_new_1 is not None or format_sop_version_check_new_1 != "":
+    elif format_sop_version_check_new_1 is not "":
         set_type_of_update_in_the_list__status_type = format_sop_version_check_new_1
         
     phantom.debug("Ausgabe {}".format(set_type_of_update_in_the_list__status_type))
