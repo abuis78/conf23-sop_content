@@ -59,6 +59,7 @@
                     "targetPort": "10_in"
                 }
             ],
+            "hash": "5fcb0ea1ac384f36e22e09c8b23231773751183d",
             "nodes": {
                 "0": {
                     "data": {
@@ -337,7 +338,7 @@
                         "functionName": "format_payload",
                         "id": "9",
                         "parameters": [],
-                        "template": "{\"content\":[[\"name\"][\"version\"]],\"name\":\"SOP\"}",
+                        "template": "{\"content\":[[\"name\",\"version\"]],\"name\":\"SOP\"}",
                         "type": "format"
                     },
                     "errors": {},
@@ -373,7 +374,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T13:01:00.194393+00:00",
+    "create_time": "2023-07-10T13:03:40.102020+00:00",
     "draft_mode": false,
     "labels": [
         "*"

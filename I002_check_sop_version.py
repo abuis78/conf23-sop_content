@@ -120,7 +120,7 @@ def add_comment_4(action=None, success=None, container=None, results=None, handl
 def format_payload(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_payload() called")
 
-    template = """{\"content\":[[\"name\"][\"version\"]],\"name\":\"SOP\"}"""
+    template = """{\"content\":[[\"name\",\"version\"]],\"name\":\"SOP\"}"""
 
     # parameter list for template variable replacement
     parameters = []
