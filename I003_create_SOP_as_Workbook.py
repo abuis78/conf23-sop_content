@@ -92,6 +92,9 @@ def decision_task_type(action=None, success=None, container=None, results=None, 
         format_endpoint_find_sop(action=action, success=success, container=container, results=results, handle=handle)
         return
 
+    # check for 'else' condition 2
+    join_noop_2(action=action, success=success, container=container, results=results, handle=handle)
+
     return
 
 
@@ -148,7 +151,7 @@ def delete_sop(action=None, success=None, container=None, results=None, handle=N
     ## Custom Code End
     ################################################################################
 
-    phantom.act("delete data", parameters=parameters, name="delete_sop", assets=["soar_http"])
+    phantom.act("delete data", parameters=parameters, name="delete_sop", assets=["soar_http"], callback=join_noop_2)
 
     return
 
@@ -189,6 +192,70 @@ def debug_delete(action=None, success=None, container=None, results=None, handle
     ################################################################################
 
     phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_delete")
+
+    return
+
+
+@phantom.playbook_block()
+def join_noop_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("join_noop_2() called")
+
+    # if the joined function has already been called, do nothing
+    if phantom.get_run_data(key="join_noop_2_called"):
+        return
+
+    # save the state that the joined function has now been called
+    phantom.save_run_data(key="join_noop_2_called", value="noop_2")
+
+    # call connected block "noop_2"
+    noop_2(container=container, handle=handle)
+
+    return
+
+
+@phantom.playbook_block()
+def noop_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("noop_2() called")
+
+    parameters = [{}]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="community/noop", parameters=parameters, name="noop_2", callback=format_json_for_create)
+
+    return
+
+
+@phantom.playbook_block()
+def format_json_for_create(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("format_json_for_create() called")
+
+    template = """{0}\n"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "playbook_input:sop_json"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_json_for_create")
 
     return
 
