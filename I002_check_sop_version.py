@@ -266,15 +266,16 @@ def finde_sop_in_list_callback(action=None, success=None, container=None, result
 def mutch_debug(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("mutch_debug() called")
 
-    finde_sop_in_list_result_data = phantom.collect2(container=container, datapath=["finde_sop_in_list:action_result.summary.found_matches","finde_sop_in_list:action_result.parameter.context.artifact_id"], action_results=results)
+    finde_sop_in_list_result_data = phantom.collect2(container=container, datapath=["finde_sop_in_list:action_result.summary.found_matches","finde_sop_in_list:action_result.data.*.1","finde_sop_in_list:action_result.parameter.context.artifact_id"], action_results=results)
 
     finde_sop_in_list_summary_found_matches = [item[0] for item in finde_sop_in_list_result_data]
+    finde_sop_in_list_result_item_1 = [item[1] for item in finde_sop_in_list_result_data]
 
     parameters = []
 
     parameters.append({
         "input_1": finde_sop_in_list_summary_found_matches,
-        "input_2": None,
+        "input_2": finde_sop_in_list_result_item_1,
         "input_3": None,
         "input_4": None,
         "input_5": None,
@@ -319,8 +320,17 @@ def decision_if_match_found(action=None, success=None, container=None, results=N
         add_comment_7(action=action, success=success, container=container, results=results, handle=handle)
         return
 
-    # check for 'else' condition 2
-    add_comment_8(action=action, success=success, container=container, results=results, handle=handle)
+    # check for 'elif' condition 2
+    found_match_2 = phantom.decision(
+        container=container,
+        conditions=[
+            ["finde_sop_in_list:action_result.summary.found_matches", "==", 1]
+        ],
+        delimiter=None)
+
+    # call connected blocks if condition 2 matched
+    if found_match_2:
+        return
 
     return
 
