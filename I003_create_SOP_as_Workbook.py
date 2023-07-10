@@ -160,18 +160,14 @@ def delete_sop(action=None, success=None, container=None, results=None, handle=N
 def debug_delete(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_delete() called")
 
-    get_sop_id_for_update_result_data = phantom.collect2(container=container, datapath=["get_sop_id_for_update:action_result.data.*.parsed_response_body","get_sop_id_for_update:action_result.data.*.parsed_response_body.data.0.id","get_sop_id_for_update:action_result.data","get_sop_id_for_update:action_result.parameter.context.artifact_id"], action_results=results)
-
-    get_sop_id_for_update_result_item_0 = [item[0] for item in get_sop_id_for_update_result_data]
-    get_sop_id_for_update_result_item_1 = [item[1] for item in get_sop_id_for_update_result_data]
-    get_sop_id_for_update_result_item_2 = [item[2] for item in get_sop_id_for_update_result_data]
+    format_json_for_create = phantom.get_format_data(name="format_json_for_create")
 
     parameters = []
 
     parameters.append({
-        "input_1": get_sop_id_for_update_result_item_0,
-        "input_2": get_sop_id_for_update_result_item_1,
-        "input_3": get_sop_id_for_update_result_item_2,
+        "input_1": format_json_for_create,
+        "input_2": None,
+        "input_3": None,
         "input_4": None,
         "input_5": None,
         "input_6": None,
@@ -257,7 +253,7 @@ def format_json_for_create(action=None, success=None, container=None, results=No
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_json_for_create")
 
-    post_data_1(container=container)
+    debug_delete(container=container)
 
     return
 

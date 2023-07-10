@@ -61,13 +61,6 @@
                     "targetPort": "9_in"
                 },
                 {
-                    "id": "port_9_to_port_10",
-                    "sourceNode": "9",
-                    "sourcePort": "9_out",
-                    "targetNode": "10",
-                    "targetPort": "10_in"
-                },
-                {
                     "conditions": [
                         {
                             "index": 1
@@ -85,8 +78,16 @@
                     "sourcePort": "11_out",
                     "targetNode": "8",
                     "targetPort": "8_in"
+                },
+                {
+                    "id": "port_9_to_port_7",
+                    "sourceNode": "9",
+                    "sourcePort": "9_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
                 }
             ],
+            "hash": "bbe64093f587af96ccf927b9a12591a44fd5377f",
             "nodes": {
                 "0": {
                     "data": {
@@ -151,9 +152,13 @@
                     "errors": {},
                     "id": "10",
                     "type": "action",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 980,
-                    "y": 1364.5
+                    "y": 1360
                 },
                 "11": {
                     "data": {
@@ -536,15 +541,11 @@
                         "values": {
                             "debug": {
                                 "input_1": [
-                                    "get_sop_id_for_update:action_result.data.*.parsed_response_body"
+                                    "format_json_for_create:formatted_data"
                                 ],
                                 "input_10": null,
-                                "input_2": [
-                                    "get_sop_id_for_update:action_result.data.*.parsed_response_body.data.0.id"
-                                ],
-                                "input_3": [
-                                    "get_sop_id_for_update:action_result.data"
-                                ],
+                                "input_2": "",
+                                "input_3": "",
                                 "input_4": null,
                                 "input_5": null,
                                 "input_6": null,
@@ -557,13 +558,9 @@
                     "errors": {},
                     "id": "7",
                     "type": "utility",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
-                    "x": 1520,
-                    "y": 860
+                    "warnings": {},
+                    "x": 1340,
+                    "y": 1300
                 },
                 "8": {
                     "data": {
@@ -661,7 +658,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T19:45:42.805694+00:00",
+    "create_time": "2023-07-10T19:50:00.625155+00:00",
     "draft_mode": false,
     "labels": [
         "*"
