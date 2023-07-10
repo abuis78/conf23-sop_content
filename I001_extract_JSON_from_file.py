@@ -32,7 +32,7 @@ def get_file_information_extract_content(action=None, success=None, container=No
     ################################################################################
 
     # Write your custom code here...
-    vault_id = playbook_input_vault_id
+    vault_id = playbook_input_vault_id[0]
     phantom.debug("vault_id: {}".format(vault_id))
     success, message, vault_info = phantom.vault_info(vault_id=vault_id)
     # vault_info = list(vault_info)[0]
