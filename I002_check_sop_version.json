@@ -116,9 +116,23 @@
                     "sourcePort": "14_out",
                     "targetNode": "16",
                     "targetPort": "16_in"
+                },
+                {
+                    "id": "port_16_to_port_18",
+                    "sourceNode": "16",
+                    "sourcePort": "16_out",
+                    "targetNode": "18",
+                    "targetPort": "18_in"
+                },
+                {
+                    "id": "port_18_to_port_17",
+                    "sourceNode": "18",
+                    "sourcePort": "18_out",
+                    "targetNode": "17",
+                    "targetPort": "17_in"
                 }
             ],
-            "hash": "b69589e1f1cd5bd1c406fd29ad76f9e813a32e57",
+            "hash": "8f51cf8e1223843f43649dabf89da69d4774e055",
             "nodes": {
                 "0": {
                     "data": {
@@ -149,8 +163,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 1240,
-                    "y": 2020
+                    "x": 1160,
+                    "y": 2360
                 },
                 "10": {
                     "data": {
@@ -615,6 +629,70 @@
                     "x": 1320,
                     "y": 1800
                 },
+                "17": {
+                    "data": {
+                        "action": "add listitem",
+                        "actionType": "generic",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "Phantom",
+                        "connectorConfigs": [
+                            "phantom"
+                        ],
+                        "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "add_listitem_1",
+                        "id": "17",
+                        "parameters": {
+                            "list": "playbook_input:liste_name",
+                            "new_row": "format_list_json_append_sop:formatted_data"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "list"
+                            },
+                            {
+                                "data_type": "string",
+                                "field": "new_row"
+                            }
+                        ],
+                        "tab": "byAction",
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "17",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 1320,
+                    "y": 2080
+                },
+                "18": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format list json append SOP",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "format_list_json_append_sop",
+                        "id": "18",
+                        "parameters": [
+                            "playbook_input:sop_name",
+                            "playbook_input:sop_version"
+                        ],
+                        "template": "{{\"append_rows\": [\n        [\n            \"{0}\", \"{1}\"\n        ]\n    ]\n}}",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "18",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 1320,
+                    "y": 1924.5
+                },
                 "4": {
                     "data": {
                         "advanced": {
@@ -861,7 +939,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T13:23:52.636635+00:00",
+    "create_time": "2023-07-10T13:28:45.277369+00:00",
     "draft_mode": false,
     "labels": [
         "*"

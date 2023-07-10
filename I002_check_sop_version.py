@@ -356,6 +356,71 @@ def add_comment_8(action=None, success=None, container=None, results=None, handl
 
     phantom.comment(container=container, comment="SOP not found in list")
 
+    format_list_json_append_sop(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def add_listitem_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_listitem_1() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    playbook_input_liste_name = phantom.collect2(container=container, datapath=["playbook_input:liste_name"])
+    format_list_json_append_sop = phantom.get_format_data(name="format_list_json_append_sop")
+
+    parameters = []
+
+    # build parameters list for 'add_listitem_1' call
+    for playbook_input_liste_name_item in playbook_input_liste_name:
+        if playbook_input_liste_name_item[0] is not None and format_list_json_append_sop is not None:
+            parameters.append({
+                "list": playbook_input_liste_name_item[0],
+                "new_row": format_list_json_append_sop,
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("add listitem", parameters=parameters, name="add_listitem_1", assets=["phantom"])
+
+    return
+
+
+@phantom.playbook_block()
+def format_list_json_append_sop(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("format_list_json_append_sop() called")
+
+    template = """{{\"append_rows\": [\n        [\n            \"{0}\", \"{1}\"\n        ]\n    ]\n}}"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "playbook_input:sop_name",
+        "playbook_input:sop_version"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_list_json_append_sop")
+
+    add_listitem_1(container=container)
+
     return
 
 
