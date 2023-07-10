@@ -19,9 +19,16 @@
                     "sourcePort": "2_out",
                     "targetNode": "3",
                     "targetPort": "3_in"
+                },
+                {
+                    "id": "port_3_to_port_1",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
                 }
             ],
-            "hash": "118a858a4140abb18ad427e09dbeb22e299271ca",
+            "hash": "326399459ff2f012877cf49566eb20a50a0bb29c",
             "nodes": {
                 "0": {
                     "data": {
@@ -69,14 +76,16 @@
                             "playbook_input:vault_id"
                         ],
                         "outputVariables": [
-                            "json_content"
+                            "json_content",
+                            "version",
+                            "creator"
                         ],
                         "type": "code"
                     },
                     "errors": {},
                     "id": "2",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    for item in playbook_input_vault_id:\n        vault_id = playbook_input_vault_id[0]\n        success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])\n        path = vault_info[0][\"path\"]\n        \n        with open(path) as file:\n            data = json.load(file)\n            get_file_information_extract_content__json_content = str(data)\n        \n\n",
+                    "userCode": "\n    # Write your custom code here...\n    for item in playbook_input_vault_id:\n        vault_id = playbook_input_vault_id[0]\n        success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])\n        path = vault_info[0][\"path\"]\n        \n        with open(path) as file:\n            data = json.load(file)\n            phantom.debug(data)\n            get_file_information_extract_content__json_content = str(data)\n        \n\n",
                     "warnings": {},
                     "x": 980,
                     "y": 600
@@ -248,7 +257,7 @@
                     "type": "utility",
                     "warnings": {},
                     "x": 980,
-                    "y": 864.5
+                    "y": 800
                 }
             },
             "notes": ""
@@ -270,6 +279,22 @@
                 "description": "",
                 "metadata": {},
                 "name": "json_content"
+            },
+            {
+                "contains": [],
+                "datapaths": [],
+                "deduplicate": false,
+                "description": "",
+                "metadata": {},
+                "name": "version"
+            },
+            {
+                "contains": [],
+                "datapaths": [],
+                "deduplicate": false,
+                "description": "",
+                "metadata": {},
+                "name": "creator"
             }
         ],
         "playbook_type": "data",
@@ -277,7 +302,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T10:53:44.239482+00:00",
+    "create_time": "2023-07-10T12:00:59.453156+00:00",
     "draft_mode": false,
     "labels": [
         "*"

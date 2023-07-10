@@ -26,6 +26,8 @@ def get_file_information_extract_content(action=None, success=None, container=No
     playbook_input_vault_id_values = [item[0] for item in playbook_input_vault_id]
 
     get_file_information_extract_content__json_content = None
+    get_file_information_extract_content__version = None
+    get_file_information_extract_content__creator = None
 
     ################################################################################
     ## Custom Code Start
@@ -39,6 +41,7 @@ def get_file_information_extract_content(action=None, success=None, container=No
         
         with open(path) as file:
             data = json.load(file)
+            phantom.debug(data)
             get_file_information_extract_content__json_content = str(data)
         
 
@@ -47,6 +50,8 @@ def get_file_information_extract_content(action=None, success=None, container=No
     ################################################################################
 
     phantom.save_run_data(key="get_file_information_extract_content:json_content", value=json.dumps(get_file_information_extract_content__json_content))
+    phantom.save_run_data(key="get_file_information_extract_content:version", value=json.dumps(get_file_information_extract_content__version))
+    phantom.save_run_data(key="get_file_information_extract_content:creator", value=json.dumps(get_file_information_extract_content__creator))
 
     debug_1(container=container)
 
@@ -97,6 +102,8 @@ def on_finish(container, summary):
 
     output = {
         "json_content": get_file_information_extract_content__json_content,
+        "version": [],
+        "creator": [],
     }
 
     ################################################################################
