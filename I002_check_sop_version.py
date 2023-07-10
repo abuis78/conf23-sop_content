@@ -443,7 +443,31 @@ def format_list_json_append_sop(action=None, success=None, container=None, resul
 def decision_version_check(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("decision_version_check() called")
 
+    # check for 'if' condition 1
+    found_match_1 = phantom.decision(
+        container=container,
+        conditions=[
+            ["playbook_input:sop_version", ">", "filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.data.0.1"]
+        ],
+        delimiter=None)
 
+    # call connected blocks if condition 1 matched
+    if found_match_1:
+        add_comment_10(action=action, success=success, container=container, results=results, handle=handle)
+        return
+
+    # check for 'elif' condition 2
+    found_match_2 = phantom.decision(
+        container=container,
+        conditions=[
+            ["playbook_input:sop_version", "<=", "filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.data.0.1"]
+        ],
+        delimiter=None)
+
+    # call connected blocks if condition 2 matched
+    if found_match_2:
+        add_comment_11(action=action, success=success, container=container, results=results, handle=handle)
+        return
 
     return
 
@@ -464,6 +488,7 @@ def filter_found_sop(action=None, success=None, container=None, results=None, ha
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
         debug_9(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        decision_version_check(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 
@@ -503,6 +528,44 @@ def debug_9(action=None, success=None, container=None, results=None, handle=None
     ################################################################################
 
     phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_9")
+
+    return
+
+
+@phantom.playbook_block()
+def add_comment_10(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_comment_10() called")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.comment(container=container, comment="There is a new version")
+
+    return
+
+
+@phantom.playbook_block()
+def add_comment_11(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_comment_11() called")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.comment(container=container, comment="The version is the same or older than the existing one")
 
     return
 

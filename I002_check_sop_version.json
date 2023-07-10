@@ -149,9 +149,45 @@
                     "sourcePort": "20_out",
                     "targetNode": "21",
                     "targetPort": "21_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_20_to_port_19",
+                    "sourceNode": "20",
+                    "sourcePort": "20_out",
+                    "targetNode": "19",
+                    "targetPort": "19_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_19_to_port_22",
+                    "sourceNode": "19",
+                    "sourcePort": "19_out",
+                    "targetNode": "22",
+                    "targetPort": "22_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_19_to_port_23",
+                    "sourceNode": "19",
+                    "sourcePort": "19_out",
+                    "targetNode": "23",
+                    "targetPort": "23_in"
                 }
             ],
-            "hash": "e04b087b3d5a1690ca74a5dd5b06e8689f17e3b4",
+            "hash": "ccbb45073a44d64d41c053c7342ff6a3644f21d3",
             "nodes": {
                 "0": {
                     "data": {
@@ -182,8 +218,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 1160,
-                    "y": 2360
+                    "x": 1140,
+                    "y": 2540
                 },
                 "10": {
                     "data": {
@@ -732,15 +768,30 @@
                                 "comparisons": [
                                     {
                                         "conditionIndex": 0,
-                                        "op": "==",
-                                        "param": "",
-                                        "value": ""
+                                        "op": ">",
+                                        "param": "playbook_input:sop_version",
+                                        "value": "filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.data.0.1"
                                     }
                                 ],
                                 "conditionIndex": 0,
+                                "customName": "version higher then existing",
                                 "display": "If",
                                 "logic": "and",
                                 "type": "if"
+                            },
+                            {
+                                "comparisons": [
+                                    {
+                                        "op": "<=",
+                                        "param": "playbook_input:sop_version",
+                                        "value": "filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.data.0.1"
+                                    }
+                                ],
+                                "conditionIndex": 1,
+                                "customName": "equal or smaler",
+                                "display": "Else If",
+                                "logic": "and",
+                                "type": "elif"
                             }
                         ],
                         "functionId": 3,
@@ -751,13 +802,9 @@
                     "errors": {},
                     "id": "19",
                     "type": "decision",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
-                    "x": 920,
-                    "y": 2120
+                    "warnings": {},
+                    "x": 1080,
+                    "y": 2200
                 },
                 "20": {
                     "data": {
@@ -961,8 +1008,132 @@
                     "id": "21",
                     "type": "utility",
                     "warnings": {},
-                    "x": 1000,
-                    "y": 2100
+                    "x": 780,
+                    "y": 2080
+                },
+                "22": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 10,
+                        "functionName": "add_comment_10",
+                        "id": "22",
+                        "selectMore": false,
+                        "tab": "apis",
+                        "type": "utility",
+                        "utilities": {
+                            "comment": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "description": "",
+                                        "label": "comment",
+                                        "name": "comment",
+                                        "placeholder": "Enter a comment",
+                                        "renderType": "datapath",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "author",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "add comment",
+                                "name": "comment"
+                            }
+                        },
+                        "utilityType": "api",
+                        "values": {
+                            "comment": {
+                                "_internal": [
+                                    "container",
+                                    "author",
+                                    "trace"
+                                ],
+                                "comment": "There is a new version"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "22",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 820,
+                    "y": 2364.5
+                },
+                "23": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 11,
+                        "functionName": "add_comment_11",
+                        "id": "23",
+                        "selectMore": false,
+                        "tab": "apis",
+                        "type": "utility",
+                        "utilities": {
+                            "comment": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "description": "",
+                                        "label": "comment",
+                                        "name": "comment",
+                                        "placeholder": "Enter a comment",
+                                        "renderType": "datapath",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "author",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "add comment",
+                                "name": "comment"
+                            }
+                        },
+                        "utilityType": "api",
+                        "values": {
+                            "comment": {
+                                "_internal": [
+                                    "container",
+                                    "author",
+                                    "trace"
+                                ],
+                                "comment": "The version is the same or older than the existing one"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "23",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 1140,
+                    "y": 2364.5
                 },
                 "4": {
                     "data": {
@@ -1210,7 +1381,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T13:56:57.223829+00:00",
+    "create_time": "2023-07-10T14:00:56.743242+00:00",
     "draft_mode": false,
     "labels": [
         "*"
