@@ -208,14 +208,14 @@ def noop_5(action=None, success=None, container=None, results=None, handle=None,
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="community/noop", parameters=parameters, name="noop_5", callback=fine_sop_in_list)
+    phantom.custom_function(custom_function="community/noop", parameters=parameters, name="noop_5", callback=finde_sop_in_list)
 
     return
 
 
 @phantom.playbook_block()
-def fine_sop_in_list(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("fine_sop_in_list() called")
+def finde_sop_in_list(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("finde_sop_in_list() called")
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
@@ -223,7 +223,7 @@ def fine_sop_in_list(action=None, success=None, container=None, results=None, ha
 
     parameters = []
 
-    # build parameters list for 'fine_sop_in_list' call
+    # build parameters list for 'finde_sop_in_list' call
     for playbook_input_liste_name_item in playbook_input_liste_name:
         if playbook_input_liste_name_item[0] is not None:
             parameters.append({
@@ -243,18 +243,18 @@ def fine_sop_in_list(action=None, success=None, container=None, results=None, ha
     ## Custom Code End
     ################################################################################
 
-    phantom.act("find listitem", parameters=parameters, name="fine_sop_in_list", assets=["phantom"], callback=fine_sop_in_list_callback)
+    phantom.act("find listitem", parameters=parameters, name="finde_sop_in_list", assets=["phantom"], callback=finde_sop_in_list_callback)
 
     return
 
 
 @phantom.playbook_block()
-def fine_sop_in_list_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("fine_sop_in_list_callback() called")
+def finde_sop_in_list_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("finde_sop_in_list_callback() called")
 
     
     mutch_debug(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
-    decision_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+    decision_if_match_found(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
 
 
     return
@@ -264,14 +264,14 @@ def fine_sop_in_list_callback(action=None, success=None, container=None, results
 def mutch_debug(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("mutch_debug() called")
 
-    find_listitem_1_result_data = phantom.collect2(container=container, datapath=["find_listitem_1:action_result.message","find_listitem_1:action_result.parameter.context.artifact_id"], action_results=results)
+    finde_sop_in_list_result_data = phantom.collect2(container=container, datapath=["finde_sop_in_list:action_result.summary.found_matches","finde_sop_in_list:action_result.parameter.context.artifact_id"], action_results=results)
 
-    find_listitem_1_result_message = [item[0] for item in find_listitem_1_result_data]
+    finde_sop_in_list_summary_found_matches = [item[0] for item in finde_sop_in_list_result_data]
 
     parameters = []
 
     parameters.append({
-        "input_1": find_listitem_1_result_message,
+        "input_1": finde_sop_in_list_summary_found_matches,
         "input_2": None,
         "input_3": None,
         "input_4": None,
@@ -299,14 +299,14 @@ def mutch_debug(action=None, success=None, container=None, results=None, handle=
 
 
 @phantom.playbook_block()
-def decision_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("decision_2() called")
+def decision_if_match_found(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("decision_if_match_found() called")
 
     # check for 'if' condition 1
     found_match_1 = phantom.decision(
         container=container,
         conditions=[
-            ["fine_sop_in_list:action_result.summary.found_matches", "==", 1]
+            ["finde_sop_in_list:action_result.summary.found_matches", "==", 1]
         ],
         delimiter=None)
 

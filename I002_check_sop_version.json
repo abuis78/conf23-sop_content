@@ -125,7 +125,7 @@
                     "targetPort": "17_in"
                 }
             ],
-            "hash": "0db43bab608c7a51b82611326d62486e29383294",
+            "hash": "036c272fe2121bd6f2c0e1219fe9c40adfbe422f",
             "nodes": {
                 "0": {
                     "data": {
@@ -237,7 +237,7 @@
                         "action": "find listitem",
                         "actionType": "investigate",
                         "advanced": {
-                            "customName": "fine SOP in list",
+                            "customName": "finde SOP in list",
                             "customNameId": 0,
                             "join": []
                         },
@@ -248,7 +248,7 @@
                         "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
                         "connectorVersion": "v1",
                         "functionId": 1,
-                        "functionName": "fine_sop_in_list",
+                        "functionName": "finde_sop_in_list",
                         "id": "12",
                         "parameters": {
                             "column_index": "0",
@@ -431,7 +431,7 @@
                         "values": {
                             "debug": {
                                 "input_1": [
-                                    "find_listitem_1:action_result.message"
+                                    "finde_sop_in_list:action_result.summary.found_matches"
                                 ],
                                 "input_10": null,
                                 "input_2": null,
@@ -455,6 +455,8 @@
                 "14": {
                     "data": {
                         "advanced": {
+                            "customName": "decision if match found",
+                            "customNameId": 0,
                             "join": []
                         },
                         "conditions": [
@@ -463,7 +465,7 @@
                                     {
                                         "conditionIndex": 0,
                                         "op": "==",
-                                        "param": "fine_sop_in_list:action_result.summary.found_matches",
+                                        "param": "finde_sop_in_list:action_result.summary.found_matches",
                                         "value": "1"
                                     }
                                 ],
@@ -490,7 +492,7 @@
                             }
                         ],
                         "functionId": 2,
-                        "functionName": "decision_2",
+                        "functionName": "decision_if_match_found",
                         "id": "14",
                         "type": "decision"
                     },
@@ -685,11 +687,7 @@
                     "errors": {},
                     "id": "18",
                     "type": "format",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 1320,
                     "y": 1920
                 },
@@ -939,7 +937,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T13:36:40.889031+00:00",
+    "create_time": "2023-07-10T13:38:49.531609+00:00",
     "draft_mode": false,
     "labels": [
         "*"
