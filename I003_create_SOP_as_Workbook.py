@@ -257,6 +257,38 @@ def format_json_for_create(action=None, success=None, container=None, results=No
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_json_for_create")
 
+    post_data_1(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def post_data_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("post_data_1() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    format_json_for_create = phantom.get_format_data(name="format_json_for_create")
+
+    parameters = []
+
+    parameters.append({
+        "location": "/rest/workbook_template",
+        "body": format_json_for_create,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("post data", parameters=parameters, name="post_data_1", assets=["soar_http"])
+
     return
 
 

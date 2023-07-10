@@ -71,9 +71,16 @@
                     "sourcePort": "8_out",
                     "targetNode": "9",
                     "targetPort": "9_in"
+                },
+                {
+                    "id": "port_9_to_port_10",
+                    "sourceNode": "9",
+                    "sourcePort": "9_out",
+                    "targetNode": "10",
+                    "targetPort": "10_in"
                 }
             ],
-            "hash": "ca43a9bf5e940a750e4478ed9211f04108c12d2f",
+            "hash": "90cb8e6d4bf349903a80586610a02412f0cb38a0",
             "nodes": {
                 "0": {
                     "data": {
@@ -106,6 +113,41 @@
                     "warnings": {},
                     "x": 1400,
                     "y": 1020
+                },
+                "10": {
+                    "data": {
+                        "action": "post data",
+                        "actionType": "generic",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "HTTP",
+                        "connectorConfigs": [
+                            "soar_http"
+                        ],
+                        "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "post_data_1",
+                        "id": "10",
+                        "parameters": {
+                            "body": "format_json_for_create:formatted_data",
+                            "location": "/rest/workbook_template"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "location"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "10",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 1364.5
                 },
                 "2": {
                     "data": {
@@ -447,7 +489,11 @@
                     "errors": {},
                     "id": "7",
                     "type": "utility",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 1520,
                     "y": 860
                 },
@@ -547,7 +593,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T19:42:58.338154+00:00",
+    "create_time": "2023-07-10T19:44:24.620905+00:00",
     "draft_mode": false,
     "labels": [
         "*"
