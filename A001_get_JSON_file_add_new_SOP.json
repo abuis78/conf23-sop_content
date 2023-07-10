@@ -47,9 +47,16 @@
                     "sourcePort": "12_out",
                     "targetNode": "15",
                     "targetPort": "15_in"
+                },
+                {
+                    "id": "port_15_to_port_16",
+                    "sourceNode": "15",
+                    "sourcePort": "15_out",
+                    "targetNode": "16",
+                    "targetPort": "16_in"
                 }
             ],
-            "hash": "093d951f1f287a8a7596d104b0fb5e2228a28041",
+            "hash": "e6d4f842f3ebf63b318f6679f8e23e1a498a0b18",
             "nodes": {
                 "0": {
                     "data": {
@@ -360,6 +367,68 @@
                     "x": 0,
                     "y": 404.5
                 },
+                "16": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 4,
+                        "functionName": "add_comment_4",
+                        "id": "16",
+                        "selectMore": false,
+                        "tab": "apis",
+                        "type": "utility",
+                        "utilities": {
+                            "comment": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "description": "",
+                                        "label": "comment",
+                                        "name": "comment",
+                                        "placeholder": "Enter a comment",
+                                        "renderType": "datapath",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "author",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "add comment",
+                                "name": "comment"
+                            }
+                        },
+                        "utilityType": "api",
+                        "values": {
+                            "comment": {
+                                "_internal": [
+                                    "container",
+                                    "author",
+                                    "trace"
+                                ],
+                                "comment": "playbook_i002_check_sop_version_2:playbook_output:sop_in_list_status"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "16",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 0,
+                    "y": 524.5
+                },
                 "3": {
                     "data": {
                         "advanced": {
@@ -559,7 +628,11 @@
                     "errors": {},
                     "id": "6",
                     "type": "format",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 0,
                     "y": 608
                 },
@@ -585,9 +658,6 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 320,
@@ -603,7 +673,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T18:48:31.751857+00:00",
+    "create_time": "2023-07-10T18:48:49.360973+00:00",
     "draft_mode": false,
     "labels": [
         "*"

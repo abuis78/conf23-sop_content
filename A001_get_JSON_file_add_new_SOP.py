@@ -259,7 +259,30 @@ def playbook_i002_check_sop_version_2(action=None, success=None, container=None,
     ################################################################################
 
     # call playbook "conf23-sop_content/I002_check_sop_version", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I002_check_sop_version", container=container, name="playbook_i002_check_sop_version_2", inputs=inputs)
+    playbook_run_id = phantom.playbook("conf23-sop_content/I002_check_sop_version", container=container, name="playbook_i002_check_sop_version_2", callback=add_comment_4, inputs=inputs)
+
+    return
+
+
+@phantom.playbook_block()
+def add_comment_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_comment_4() called")
+
+    playbook_i002_check_sop_version_2_output_sop_in_list_status = phantom.collect2(container=container, datapath=["playbook_i002_check_sop_version_2:playbook_output:sop_in_list_status"])
+
+    playbook_i002_check_sop_version_2_output_sop_in_list_status_values = [item[0] for item in playbook_i002_check_sop_version_2_output_sop_in_list_status]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.comment(container=container, comment=playbook_i002_check_sop_version_2_output_sop_in_list_status_values)
 
     return
 
