@@ -399,7 +399,7 @@ def add_listitem_1(action=None, success=None, container=None, results=None, hand
 def format_list_json_append_sop(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_list_json_append_sop() called")
 
-    template = """{{\"append_rows\": [\n        [\n            \"{0}\", \"{1}\"\n        ]\n    ]\n}}"""
+    template = """{{ \"{0}\", \"{1}\"}}"""
 
     # parameter list for template variable replacement
     parameters = [
