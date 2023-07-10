@@ -87,7 +87,7 @@
                     "targetPort": "7_in"
                 }
             ],
-            "hash": "fe333b8642d509f754b9c7e340dc1df103a26564",
+            "hash": "f2d43d33a3a967333e9dcc00cc635b9cae1fdf24",
             "nodes": {
                 "0": {
                     "data": {
@@ -155,9 +155,6 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 980,
@@ -246,7 +243,7 @@
                     "errors": {},
                     "id": "12",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(playbook_input_sop_json_values[0])\n    try:\n        json_data = json.loads(playbook_input_sop_json_values[0])\n        phantom.debug(\"The string is a valid JSON.\")\n        \n        formatted_json = json.dumps(json_data, indent=2)\n        phantom.debug(formatted_json)\n        \n    except ValueError as e:\n        phantom.debug(\"The string is not a valid JSON.\")\n",
+                    "userCode": "\n    # Write your custom code here...\n    import ast\n    \n    phantom.debug(playbook_input_sop_json_values[0])\n    try:\n        json_data = json.loads(playbook_input_sop_json_values[0])\n        phantom.debug(\"The string is a valid JSON.\")\n        \n        formatted_json = json.dumps(json_data, indent=2)\n        phantom.debug(formatted_json)\n        \n    except ValueError as e:\n        phantom.debug(\"The string is not a valid JSON.\")\n        string = playbook_input_sop_json_values[0].replace(\"'\", '\"')\n        data = ast.literal_eval(string)\n        formatted_json = json.dumps(data, indent=2)\n        phantom.debug(formatted_json)\n",
                     "warnings": {},
                     "x": 980,
                     "y": 1204.5
@@ -664,7 +661,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T20:02:01.772560+00:00",
+    "create_time": "2023-07-10T20:04:16.536459+00:00",
     "draft_mode": false,
     "labels": [
         "*"

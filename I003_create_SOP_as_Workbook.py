@@ -296,6 +296,8 @@ def check_for_valid_json(action=None, success=None, container=None, results=None
     ################################################################################
 
     # Write your custom code here...
+    import ast
+    
     phantom.debug(playbook_input_sop_json_values[0])
     try:
         json_data = json.loads(playbook_input_sop_json_values[0])
@@ -306,6 +308,10 @@ def check_for_valid_json(action=None, success=None, container=None, results=None
         
     except ValueError as e:
         phantom.debug("The string is not a valid JSON.")
+        string = playbook_input_sop_json_values[0].replace("'", '"')
+        data = ast.literal_eval(string)
+        formatted_json = json.dumps(data, indent=2)
+        phantom.debug(formatted_json)
     ################################################################################
     ## Custom Code End
     ################################################################################
