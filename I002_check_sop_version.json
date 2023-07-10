@@ -201,7 +201,7 @@
                     "targetPort": "26_in"
                 }
             ],
-            "hash": "d640749ace0e543cc7137a10b6b2a265516081bb",
+            "hash": "a36e820c2acc9eebd50489a5b3ba92b0b1c372e3",
             "nodes": {
                 "0": {
                     "data": {
@@ -1171,10 +1171,10 @@
                     "errors": {},
                     "id": "25",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    sop_version = playbook_input_sop_version[0][0]\n    sop_name = playbook_input_sop_name[0][0]\n    liste_name = playbook_input_liste_name[0][0]\n    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list',liste_name)\n    data = { \"update_rows\": { finde_sop_in_list_summary_locations0_0: [sop_name, sop_version]}}\n    response = phantom.requests.post(decided_list_tag_url,json=data,verify=False)\n",
+                    "userCode": "\n    # Write your custom code here...\n    sop_version = playbook_input_sop_version[0][0]\n    sop_name = playbook_input_sop_name[0][0]\n    liste_name = playbook_input_liste_name[0][0]\n    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list',liste_name)\n    data = { \"update_rows\": { finde_sop_in_list_summary_locations0_0: [sop_name, sop_version]}}\n    response = phantom.requests.post(decided_list_tag_url,json=data,verify=False)\n    phantom.debug(\"phantom returned status code {} with message {}\".format(response.status_code, response.text))\n",
                     "warnings": {},
                     "x": 820,
-                    "y": 2504.5
+                    "y": 2620
                 },
                 "26": {
                     "data": {
@@ -1593,7 +1593,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T14:31:12.666334+00:00",
+    "create_time": "2023-07-10T14:32:27.361815+00:00",
     "draft_mode": false,
     "labels": [
         "*"

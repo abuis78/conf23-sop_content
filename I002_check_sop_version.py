@@ -598,6 +598,7 @@ def update_version_no_in_list(action=None, success=None, container=None, results
     decided_list_tag_url = phantom.build_phantom_rest_url('decided_list',liste_name)
     data = { "update_rows": { finde_sop_in_list_summary_locations0_0: [sop_name, sop_version]}}
     response = phantom.requests.post(decided_list_tag_url,json=data,verify=False)
+    phantom.debug("phantom returned status code {} with message {}".format(response.status_code, response.text))
     ################################################################################
     ## Custom Code End
     ################################################################################
