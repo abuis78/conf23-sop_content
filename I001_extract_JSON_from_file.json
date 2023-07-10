@@ -28,7 +28,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "55454e019e02cd4369d983129a18fb7d27b766da",
+            "hash": "cb482f87b5a44cbec54f824aea3949773b83f94d",
             "nodes": {
                 "0": {
                     "data": {
@@ -242,10 +242,18 @@
                                     "get_file_information_extract_content:custom_function:json_content"
                                 ],
                                 "input_10": null,
-                                "input_2": null,
-                                "input_3": null,
-                                "input_4": null,
-                                "input_5": null,
+                                "input_2": [
+                                    "get_file_information_extract_content:custom_function:json_content"
+                                ],
+                                "input_3": [
+                                    "get_file_information_extract_content:custom_function:version"
+                                ],
+                                "input_4": [
+                                    "get_file_information_extract_content:custom_function:creator"
+                                ],
+                                "input_5": [
+                                    "get_file_information_extract_content:custom_function:name"
+                                ],
                                 "input_6": null,
                                 "input_7": null,
                                 "input_8": null,
@@ -303,7 +311,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T12:05:29.940021+00:00",
+    "create_time": "2023-07-10T12:05:57.032273+00:00",
     "draft_mode": false,
     "labels": [
         "*"

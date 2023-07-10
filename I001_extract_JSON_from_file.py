@@ -69,15 +69,18 @@ def debug_1(action=None, success=None, container=None, results=None, handle=None
     phantom.debug("debug_1() called")
 
     get_file_information_extract_content__json_content = json.loads(_ if (_ := phantom.get_run_data(key="get_file_information_extract_content:json_content")) != "" else "null")  # pylint: disable=used-before-assignment
+    get_file_information_extract_content__version = json.loads(_ if (_ := phantom.get_run_data(key="get_file_information_extract_content:version")) != "" else "null")  # pylint: disable=used-before-assignment
+    get_file_information_extract_content__creator = json.loads(_ if (_ := phantom.get_run_data(key="get_file_information_extract_content:creator")) != "" else "null")  # pylint: disable=used-before-assignment
+    get_file_information_extract_content__name = json.loads(_ if (_ := phantom.get_run_data(key="get_file_information_extract_content:name")) != "" else "null")  # pylint: disable=used-before-assignment
 
     parameters = []
 
     parameters.append({
         "input_1": get_file_information_extract_content__json_content,
-        "input_2": None,
-        "input_3": None,
-        "input_4": None,
-        "input_5": None,
+        "input_2": get_file_information_extract_content__json_content,
+        "input_3": get_file_information_extract_content__version,
+        "input_4": get_file_information_extract_content__creator,
+        "input_5": get_file_information_extract_content__name,
         "input_6": None,
         "input_7": None,
         "input_8": None,
