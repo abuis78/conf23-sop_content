@@ -40,9 +40,16 @@
                     "sourcePort": "13_out",
                     "targetNode": "12",
                     "targetPort": "12_in"
+                },
+                {
+                    "id": "port_12_to_port_15",
+                    "sourceNode": "12",
+                    "sourcePort": "12_out",
+                    "targetNode": "15",
+                    "targetPort": "15_in"
                 }
             ],
-            "hash": "5271f486bd9595fdb68bbfd89f2cc398419e8702",
+            "hash": "093d951f1f287a8a7596d104b0fb5e2228a28041",
             "nodes": {
                 "0": {
                     "data": {
@@ -311,6 +318,48 @@
                     "x": -1.4210854715202004e-14,
                     "y": 144.49999999999991
                 },
+                "15": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "playbook_I002_check_sop_version_2",
+                        "id": "15",
+                        "inputs": {
+                            "liste_name": {
+                                "datapaths": [
+                                    "SOP"
+                                ],
+                                "deduplicate": false
+                            },
+                            "sop_name": {
+                                "datapaths": [
+                                    "playbook_i001_extract_json_from_file_3:playbook_output:name"
+                                ],
+                                "deduplicate": false
+                            },
+                            "sop_version": {
+                                "datapaths": [
+                                    "playbook_i001_extract_json_from_file_3:playbook_output:version"
+                                ],
+                                "deduplicate": false
+                            }
+                        },
+                        "playbookName": "I002_check_sop_version",
+                        "playbookRepo": 10,
+                        "playbookRepoName": "conf23-sop_content",
+                        "playbookType": "data",
+                        "synchronous": true,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "15",
+                    "type": "playbook",
+                    "warnings": {},
+                    "x": 0,
+                    "y": 404.5
+                },
                 "3": {
                     "data": {
                         "advanced": {
@@ -489,12 +538,8 @@
                     "errors": {},
                     "id": "5",
                     "type": "utility",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
-                    "x": -1.4210854715202004e-14,
+                    "warnings": {},
+                    "x": 0,
                     "y": 904
                 },
                 "6": {
@@ -514,11 +559,7 @@
                     "errors": {},
                     "id": "6",
                     "type": "format",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 0,
                     "y": 608
                 },
@@ -544,6 +585,9 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 320,
@@ -559,7 +603,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T18:47:54.306573+00:00",
+    "create_time": "2023-07-10T18:48:31.751857+00:00",
     "draft_mode": false,
     "labels": [
         "*"
