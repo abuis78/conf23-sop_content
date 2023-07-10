@@ -308,10 +308,8 @@ def decision_if_match_found(action=None, success=None, container=None, results=N
     # check for 'if' condition 1
     found_match_1 = phantom.decision(
         container=container,
-        logical_operator="and",
         conditions=[
-            ["finde_sop_in_list:action_result.summary.found_matches", "==", 1],
-            ["finde_sop_in_list:action_result.data.*.1", "!=", "playbook_input:sop_version"]
+            ["finde_sop_in_list:action_result.summary.found_matches", "==", 1]
         ],
         delimiter=None)
 

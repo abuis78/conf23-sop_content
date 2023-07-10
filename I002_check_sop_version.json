@@ -151,6 +151,7 @@
                     "targetPort": "21_in"
                 }
             ],
+            "hash": "b7c07350294d82731fd8bd3338086e839081d227",
             "nodes": {
                 "0": {
                     "data": {
@@ -495,12 +496,6 @@
                                         "op": "==",
                                         "param": "finde_sop_in_list:action_result.summary.found_matches",
                                         "value": "1"
-                                    },
-                                    {
-                                        "conditionIndex": 0,
-                                        "op": "!=",
-                                        "param": "finde_sop_in_list:action_result.data.*.1",
-                                        "value": "playbook_input:sop_version"
                                     }
                                 ],
                                 "conditionIndex": 0,
@@ -756,11 +751,7 @@
                     "errors": {},
                     "id": "19",
                     "type": "decision",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 920,
                     "y": 2120
                 },
@@ -1213,7 +1204,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T13:54:22.255545+00:00",
+    "create_time": "2023-07-10T13:55:46.685056+00:00",
     "draft_mode": false,
     "labels": [
         "*"
