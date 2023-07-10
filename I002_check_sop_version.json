@@ -243,9 +243,16 @@
                     "sourcePort": "33_out",
                     "targetNode": "35",
                     "targetPort": "35_in"
+                },
+                {
+                    "id": "port_35_to_port_1",
+                    "sourceNode": "35",
+                    "sourcePort": "35_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
                 }
             ],
-            "hash": "5b50934fafc30a633755a42720f709199fe839a9",
+            "hash": "66a5d3c59e64ac195fe1569efe483e0d45d96b88",
             "nodes": {
                 "0": {
                     "data": {
@@ -276,8 +283,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 1600,
-                    "y": 3200
+                    "x": 1200,
+                    "y": 3520
                 },
                 "10": {
                     "data": {
@@ -1240,23 +1247,27 @@
                 "35": {
                     "data": {
                         "advanced": {
+                            "customName": "Set type of update in the list",
+                            "customNameId": 0,
                             "join": []
                         },
                         "functionId": 4,
-                        "functionName": "code_4",
+                        "functionName": "set_type_of_update_in_the_list",
                         "id": "35",
                         "inputParameters": [
                             "format_sop_version_check_updated:formatted_data",
                             "format_sop_version_check_current:formatted_data",
                             "format_sop_version_check_new_1:formatted_data"
                         ],
-                        "outputVariables": [],
+                        "outputVariables": [
+                            "status_type"
+                        ],
                         "type": "code"
                     },
                     "errors": {},
                     "id": "35",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(format_sop_version_check_updated)\n    phantom.debug(format_sop_version_check_current)\n    phantom.debug(format_sop_version_check_new_1)\n\n",
+                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(format_sop_version_check_updated)\n    phantom.debug(format_sop_version_check_current)\n    phantom.debug(format_sop_version_check_new_1)\n    \n    if format_sop_version_check_updated is not None:\n        set_type_of_update_in_the_list__status_type = format_sop_version_check_updated\n    elif format_sop_version_check_current is not None:\n        set_type_of_update_in_the_list__status_type = format_sop_version_check_current\n    elif format_sop_version_check_new_1 is not None:\n        set_type_of_update_in_the_list__status_type = format_sop_version_check_new_1\n\n",
                     "warnings": {},
                     "x": 1180,
                     "y": 3344.5
@@ -1501,13 +1512,24 @@
                 "name": "liste_name"
             }
         ],
-        "output_spec": null,
+        "output_spec": [
+            {
+                "contains": [],
+                "datapaths": [
+                    "set_type_of_update_in_the_list:custom_function:status_type"
+                ],
+                "deduplicate": false,
+                "description": "",
+                "metadata": {},
+                "name": "sop_in_list_status"
+            }
+        ],
         "playbook_type": "data",
         "python_version": "3",
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T18:37:27.439169+00:00",
+    "create_time": "2023-07-10T18:45:02.196334+00:00",
     "draft_mode": false,
     "labels": [
         "*"

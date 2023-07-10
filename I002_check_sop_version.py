@@ -740,18 +740,20 @@ def noop_15(action=None, success=None, container=None, results=None, handle=None
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="community/noop", parameters=parameters, name="noop_15", callback=code_4)
+    phantom.custom_function(custom_function="community/noop", parameters=parameters, name="noop_15", callback=set_type_of_update_in_the_list)
 
     return
 
 
 @phantom.playbook_block()
-def code_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("code_4() called")
+def set_type_of_update_in_the_list(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("set_type_of_update_in_the_list() called")
 
     format_sop_version_check_updated = phantom.get_format_data(name="format_sop_version_check_updated")
     format_sop_version_check_current = phantom.get_format_data(name="format_sop_version_check_current")
     format_sop_version_check_new_1 = phantom.get_format_data(name="format_sop_version_check_new_1")
+
+    set_type_of_update_in_the_list__status_type = None
 
     ################################################################################
     ## Custom Code Start
@@ -761,10 +763,19 @@ def code_4(action=None, success=None, container=None, results=None, handle=None,
     phantom.debug(format_sop_version_check_updated)
     phantom.debug(format_sop_version_check_current)
     phantom.debug(format_sop_version_check_new_1)
+    
+    if format_sop_version_check_updated is not None:
+        set_type_of_update_in_the_list__status_type = format_sop_version_check_updated
+    elif format_sop_version_check_current is not None:
+        set_type_of_update_in_the_list__status_type = format_sop_version_check_current
+    elif format_sop_version_check_new_1 is not None:
+        set_type_of_update_in_the_list__status_type = format_sop_version_check_new_1
 
     ################################################################################
     ## Custom Code End
     ################################################################################
+
+    phantom.save_run_data(key="set_type_of_update_in_the_list:status_type", value=json.dumps(set_type_of_update_in_the_list__status_type))
 
     return
 
@@ -772,6 +783,12 @@ def code_4(action=None, success=None, container=None, results=None, handle=None,
 @phantom.playbook_block()
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
+
+    set_type_of_update_in_the_list__status_type = json.loads(_ if (_ := phantom.get_run_data(key="set_type_of_update_in_the_list:status_type")) != "" else "null")  # pylint: disable=used-before-assignment
+
+    output = {
+        "sop_in_list_status": set_type_of_update_in_the_list__status_type,
+    }
 
     ################################################################################
     ## Custom Code Start
@@ -782,5 +799,7 @@ def on_finish(container, summary):
     ################################################################################
     ## Custom Code End
     ################################################################################
+
+    phantom.save_playbook_output_data(output=output)
 
     return
