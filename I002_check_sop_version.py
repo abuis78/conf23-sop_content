@@ -549,6 +549,7 @@ def add_comment_10(action=None, success=None, container=None, results=None, hand
     phantom.comment(container=container, comment="There is a new version")
 
     update_version_no_in_list(container=container)
+    debug_12(container=container)
 
     return
 
@@ -600,6 +601,45 @@ def update_version_no_in_list(action=None, success=None, container=None, results
     ################################################################################
     ## Custom Code End
     ################################################################################
+
+    return
+
+
+@phantom.playbook_block()
+def debug_12(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("debug_12() called")
+
+    finde_sop_in_list_result_data = phantom.collect2(container=container, datapath=["finde_sop_in_list:action_result.summary.locations","finde_sop_in_list:action_result.summary.locations.0.0","finde_sop_in_list:action_result.parameter.context.artifact_id"], action_results=results)
+
+    finde_sop_in_list_summary_locations = [item[0] for item in finde_sop_in_list_result_data]
+    finde_sop_in_list_summary_locations_0_0 = [item[1] for item in finde_sop_in_list_result_data]
+
+    parameters = []
+
+    parameters.append({
+        "input_1": finde_sop_in_list_summary_locations,
+        "input_2": finde_sop_in_list_summary_locations_0_0,
+        "input_3": None,
+        "input_4": None,
+        "input_5": None,
+        "input_6": None,
+        "input_7": None,
+        "input_8": None,
+        "input_9": None,
+        "input_10": None,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_12")
 
     return
 
