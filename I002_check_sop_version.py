@@ -548,8 +548,6 @@ def add_comment_10(action=None, success=None, container=None, results=None, hand
 
     phantom.comment(container=container, comment="There is a new version")
 
-    update_version_no_in_list(container=container)
-
     return
 
 
