@@ -21,7 +21,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "9677d5f9a51913b1e49ed152a539caf4da0890f6",
+            "hash": "bb70e0ded44da396a6ae4085d42ed58b05ac24ac",
             "nodes": {
                 "0": {
                     "data": {
@@ -76,7 +76,7 @@
                     "errors": {},
                     "id": "2",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    for item in playbook_input_vault_id:\n        vault_id = playbook_input_vault_id[0]\n        success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])\n        phantom.debug(\"vault_info: {}\".format(vault_info))\n        path = vault_info[0][\"path\"]\n        name = vault_info[0][\"name\"]\n        phantom.debug(\"path: {}\".format(path))\n        phantom.debug(\"name: {}\".format(name))\n        file_path_name = '/'.join([path, name])\n        phantom.debug(file_path_name)\n        \n        with open(path) as file:\n            data = json.load(file)\n        \n        phantom.debug(\"data: {}\".format(data))\n\n",
+                    "userCode": "\n    # Write your custom code here...\n    for item in playbook_input_vault_id:\n        vault_id = playbook_input_vault_id[0]\n        success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])\n        phantom.debug(\"vault_info: {}\".format(vault_info))\n        path = vault_info[0][\"path\"]\n        \n        with open(path) as file:\n            get_file_information_extract_content__json_content = json.load(file)\n        \n\n",
                     "warnings": {},
                     "x": 980,
                     "y": 560
@@ -108,7 +108,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T10:39:51.099587+00:00",
+    "create_time": "2023-07-10T10:40:51.061719+00:00",
     "draft_mode": false,
     "labels": [
         "*"
