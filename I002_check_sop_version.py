@@ -579,12 +579,12 @@ def update_version_no_in_list(action=None, success=None, container=None, results
     playbook_input_sop_version = phantom.collect2(container=container, datapath=["playbook_input:sop_version"])
     playbook_input_liste_name = phantom.collect2(container=container, datapath=["playbook_input:liste_name"])
     playbook_input_sop_name = phantom.collect2(container=container, datapath=["playbook_input:sop_name"])
-    finde_sop_in_list_result_data = phantom.collect2(container=container, datapath=["finde_sop_in_list:action_result.summary.locations.0.0"], action_results=results)
 
     playbook_input_sop_version_values = [item[0] for item in playbook_input_sop_version]
     playbook_input_liste_name_values = [item[0] for item in playbook_input_liste_name]
     playbook_input_sop_name_values = [item[0] for item in playbook_input_sop_name]
-    finde_sop_in_list_summary_locations_0_0 = [item[0] for item in finde_sop_in_list_result_data]
+
+    input_parameter_0 = 1
 
     ################################################################################
     ## Custom Code Start
