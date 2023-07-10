@@ -236,14 +236,12 @@ def playbook_i001_extract_json_from_file_3(action=None, success=None, container=
 def playbook_i002_check_sop_version_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("playbook_i002_check_sop_version_2() called")
 
-    playbook_i002_check_sop_version_1_input_sop_name = phantom.collect2(container=container, datapath=["playbook_i002_check_sop_version_1:playbook_input:sop_name"])
     playbook_i002_check_sop_version_1_input_sop_version = phantom.collect2(container=container, datapath=["playbook_i002_check_sop_version_1:playbook_input:sop_version"])
 
-    playbook_i002_check_sop_version_1_input_sop_name_values = [item[0] for item in playbook_i002_check_sop_version_1_input_sop_name]
     playbook_i002_check_sop_version_1_input_sop_version_values = [item[0] for item in playbook_i002_check_sop_version_1_input_sop_version]
 
     inputs = {
-        "sop_name": playbook_i002_check_sop_version_1_input_sop_name_values,
+        "sop_name": ["Hallo"],
         "sop_version": playbook_i002_check_sop_version_1_input_sop_version_values,
         "liste_name": ["SOP"],
     }
