@@ -47,18 +47,6 @@
                     "targetPort": "5_in"
                 },
                 {
-                    "conditions": [
-                        {
-                            "index": 1
-                        }
-                    ],
-                    "id": "port_4_to_port_8",
-                    "sourceNode": "4",
-                    "sourcePort": "4_out",
-                    "targetNode": "8",
-                    "targetPort": "8_in"
-                },
-                {
                     "id": "port_6_to_port_8",
                     "sourceNode": "6",
                     "sourcePort": "6_out",
@@ -78,9 +66,28 @@
                     "sourcePort": "9_out",
                     "targetNode": "10",
                     "targetPort": "10_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_4_to_port_11",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "11",
+                    "targetPort": "11_in"
+                },
+                {
+                    "id": "port_11_to_port_8",
+                    "sourceNode": "11",
+                    "sourcePort": "11_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
                 }
             ],
-            "hash": "90cb8e6d4bf349903a80586610a02412f0cb38a0",
+            "hash": "485cf325c0db7494aa237fda90e0717821d8be32",
             "nodes": {
                 "0": {
                     "data": {
@@ -148,6 +155,68 @@
                     "warnings": {},
                     "x": 980,
                     "y": 1364.5
+                },
+                "11": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 3,
+                        "functionName": "add_comment_3",
+                        "id": "11",
+                        "selectMore": false,
+                        "tab": "apis",
+                        "type": "utility",
+                        "utilities": {
+                            "comment": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "description": "",
+                                        "label": "comment",
+                                        "name": "comment",
+                                        "placeholder": "Enter a comment",
+                                        "renderType": "datapath",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "author",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "add comment",
+                                "name": "comment"
+                            }
+                        },
+                        "utilityType": "api",
+                        "values": {
+                            "comment": {
+                                "_internal": [
+                                    "container",
+                                    "author",
+                                    "trace"
+                                ],
+                                "comment": "The SOP will be created"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "11",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 1120,
+                    "y": 660
                 },
                 "2": {
                     "data": {
@@ -489,11 +558,7 @@
                     "errors": {},
                     "id": "7",
                     "type": "utility",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 1520,
                     "y": 860
                 },
@@ -533,7 +598,7 @@
                     "type": "utility",
                     "warnings": {},
                     "x": 980,
-                    "y": 1064.5
+                    "y": 1060
                 },
                 "9": {
                     "data": {
@@ -593,7 +658,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T19:44:24.620905+00:00",
+    "create_time": "2023-07-10T19:45:42.805694+00:00",
     "draft_mode": false,
     "labels": [
         "*"

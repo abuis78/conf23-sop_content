@@ -93,7 +93,7 @@ def decision_task_type(action=None, success=None, container=None, results=None, 
         return
 
     # check for 'else' condition 2
-    join_noop_2(action=action, success=success, container=container, results=results, handle=handle)
+    add_comment_3(action=action, success=success, container=container, results=results, handle=handle)
 
     return
 
@@ -288,6 +288,27 @@ def post_data_1(action=None, success=None, container=None, results=None, handle=
     ################################################################################
 
     phantom.act("post data", parameters=parameters, name="post_data_1", assets=["soar_http"])
+
+    return
+
+
+@phantom.playbook_block()
+def add_comment_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_comment_3() called")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.comment(container=container, comment="The SOP will be created")
+
+    join_noop_2(container=container)
 
     return
 
