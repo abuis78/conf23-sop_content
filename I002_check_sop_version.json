@@ -125,7 +125,7 @@
                     "targetPort": "17_in"
                 }
             ],
-            "hash": "036c272fe2121bd6f2c0e1219fe9c40adfbe422f",
+            "hash": "ea37cdc9a020ccdb0f46e88ee4d0cc7bf6e2ae23",
             "nodes": {
                 "0": {
                     "data": {
@@ -251,7 +251,7 @@
                         "functionName": "finde_sop_in_list",
                         "id": "12",
                         "parameters": {
-                            "column_index": "0",
+                            "column_index": "",
                             "exact_match": true,
                             "list": "playbook_input:liste_name",
                             "values": "playbook_input:liste_name"
@@ -687,7 +687,11 @@
                     "errors": {},
                     "id": "18",
                     "type": "format",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 1320,
                     "y": 1920
                 },
@@ -937,7 +941,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T13:38:49.531609+00:00",
+    "create_time": "2023-07-10T13:39:42.642622+00:00",
     "draft_mode": false,
     "labels": [
         "*"

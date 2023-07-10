@@ -229,7 +229,7 @@ def finde_sop_in_list(action=None, success=None, container=None, results=None, h
             parameters.append({
                 "exact_match": True,
                 "list": playbook_input_liste_name_item[0],
-                "column_index": 0,
+                "column_index": "",
                 "values": playbook_input_liste_name_item[0],
             })
 
