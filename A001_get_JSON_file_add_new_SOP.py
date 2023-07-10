@@ -141,14 +141,14 @@ def format_sop_name(action=None, success=None, container=None, results=None, han
 def debug_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_2() called")
 
-    playbook_i001_extract_json_from_file_1_output_json_content = phantom.collect2(container=container, datapath=["playbook_i001_extract_json_from_file_1:playbook_output:json_content"])
+    playbook_i001_extract_json_from_file_1_output_json_content = phantom.collect2(container=container, datapath=["playbook_i001_extract_json_from_file_1:playbook_output:json_content.0"])
 
-    playbook_i001_extract_json_from_file_1_output_json_content_values = [item[0] for item in playbook_i001_extract_json_from_file_1_output_json_content]
+    playbook_i001_extract_json_from_file_1_output_json_content_0 = [item[0] for item in playbook_i001_extract_json_from_file_1_output_json_content]
 
     parameters = []
 
     parameters.append({
-        "input_1": playbook_i001_extract_json_from_file_1_output_json_content_values,
+        "input_1": playbook_i001_extract_json_from_file_1_output_json_content_0,
         "input_2": None,
         "input_3": None,
         "input_4": None,
