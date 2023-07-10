@@ -49,7 +49,7 @@ def playbook_i001_extract_json_from_file_1(action=None, success=None, container=
 def format_sop_json(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_sop_json() called")
 
-    template = """{{\"cef\":{{\n\"sop_json\": \"{0}\",\n\"version\": 2\n}}\n}}"""
+    template = """{{\"cef\":{{\n\"sop_json\": {0},\n\"version\": 2\n}}\n}}"""
 
     # parameter list for template variable replacement
     parameters = [
