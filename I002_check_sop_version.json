@@ -252,7 +252,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "e2657fe0147801081a6e8c841b3a87d034eeac65",
+            "hash": "e143add35605de1c25aa6b95f5348e493c014381",
             "nodes": {
                 "0": {
                     "data": {
@@ -1267,7 +1267,7 @@
                     "errors": {},
                     "id": "35",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(format_sop_version_check_updated)\n    phantom.debug(format_sop_version_check_current)\n    phantom.debug(format_sop_version_check_new_1)\n    \n    if format_sop_version_check_updated is not None:\n        set_type_of_update_in_the_list__status_type = format_sop_version_check_updated\n    elif format_sop_version_check_current is not None:\n        set_type_of_update_in_the_list__status_type = format_sop_version_check_current\n    elif format_sop_version_check_new_1 is not None:\n        set_type_of_update_in_the_list__status_type = format_sop_version_check_new_1\n        \n    phantom.debug(set_type_of_update_in_the_list__status_type)\n\n",
+                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(format_sop_version_check_updated)\n    phantom.debug(format_sop_version_check_current)\n    phantom.debug(format_sop_version_check_new_1)\n    \n    if format_sop_version_check_updated is not None:\n        set_type_of_update_in_the_list__status_type = format_sop_version_check_updated\n    elif format_sop_version_check_current is not None:\n        set_type_of_update_in_the_list__status_type = format_sop_version_check_current\n    elif format_sop_version_check_new_1 is not None:\n        set_type_of_update_in_the_list__status_type = format_sop_version_check_new_1\n        \n    phantom.debug(\"Ausgabe {}\".format(set_type_of_update_in_the_list__status_type))\n\n",
                     "warnings": {},
                     "x": 1180,
                     "y": 3344.5
@@ -1529,7 +1529,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T18:49:43.267987+00:00",
+    "create_time": "2023-07-10T18:51:57.204903+00:00",
     "draft_mode": false,
     "labels": [
         "*"
