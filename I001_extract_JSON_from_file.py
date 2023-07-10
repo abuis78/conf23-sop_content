@@ -43,10 +43,10 @@ def get_file_information_extract_content(action=None, success=None, container=No
         file_path_name = '/'.join([path, name])
         phantom.debug(file_path_name)
         
-        # with open(file_path_name) as file:
-            # data = json.load(file)
+        with open(file_path_name) as file:
+            data = json.load(file)
         
-        # phantom.debug("data: {}".format(data))
+        phantom.debug("data: {}".format(data))
 
     ################################################################################
     ## Custom Code End
