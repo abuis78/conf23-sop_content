@@ -70,7 +70,7 @@ def get_sop_id_for_update(action=None, success=None, container=None, results=Non
     ## Custom Code End
     ################################################################################
 
-    phantom.act("get data", parameters=parameters, name="get_sop_id_for_update", assets=["soar_http"], callback=format_endpoint_delete_sop)
+    phantom.act("get data", parameters=parameters, name="get_sop_id_for_update", assets=["soar_http"], callback=debug_1)
 
     return
 
@@ -149,6 +149,45 @@ def delete_sop(action=None, success=None, container=None, results=None, handle=N
     ################################################################################
 
     phantom.act("delete data", parameters=parameters, name="delete_sop", assets=["soar_http"])
+
+    return
+
+
+@phantom.playbook_block()
+def debug_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("debug_1() called")
+
+    get_sop_id_for_update_result_data = phantom.collect2(container=container, datapath=["get_sop_id_for_update:action_result.data.*.parsed_response_body","get_sop_id_for_update:action_result.data.*.parsed_response_body.data.0","get_sop_id_for_update:action_result.parameter.context.artifact_id"], action_results=results)
+
+    get_sop_id_for_update_result_item_0 = [item[0] for item in get_sop_id_for_update_result_data]
+    get_sop_id_for_update_result_item_1 = [item[1] for item in get_sop_id_for_update_result_data]
+
+    parameters = []
+
+    parameters.append({
+        "input_1": get_sop_id_for_update_result_item_0,
+        "input_2": get_sop_id_for_update_result_item_1,
+        "input_3": None,
+        "input_4": None,
+        "input_5": None,
+        "input_6": None,
+        "input_7": None,
+        "input_8": None,
+        "input_9": None,
+        "input_10": None,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_1")
 
     return
 
