@@ -42,7 +42,7 @@ def get_file_information_extract_content(action=None, success=None, container=No
         
         with open(path) as file:
             data = json.load(file)
-            phantom.debug(data['sop_json'])
+            phantom.debug(data)
             sop_json = data['sop_json']
             get_file_information_extract_content__name = str(sop_json['name'])
             get_file_information_extract_content__json_content = str(data['sop_json'])

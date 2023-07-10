@@ -28,7 +28,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "ffc53c0d7c6dc6acf84d20068041df2a8fc1a9a2",
+            "hash": "29d74f296c1ed3035613db601d95998c0370538a",
             "nodes": {
                 "0": {
                     "data": {
@@ -86,7 +86,7 @@
                     "errors": {},
                     "id": "2",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    for item in playbook_input_vault_id:\n        vault_id = playbook_input_vault_id[0]\n        success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])\n        path = vault_info[0][\"path\"]\n        \n        with open(path) as file:\n            data = json.load(file)\n            phantom.debug(data['sop_json'])\n            sop_json = data['sop_json']\n            get_file_information_extract_content__name = str(sop_json['name'])\n            get_file_information_extract_content__json_content = str(data['sop_json'])\n            get_file_information_extract_content__version = str(data['version'])\n            get_file_information_extract_content__version = str(data['creator'])\n        \n\n",
+                    "userCode": "\n    # Write your custom code here...\n    for item in playbook_input_vault_id:\n        vault_id = playbook_input_vault_id[0]\n        success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])\n        path = vault_info[0][\"path\"]\n        \n        with open(path) as file:\n            data = json.load(file)\n            phantom.debug(data)\n            sop_json = data['sop_json']\n            get_file_information_extract_content__name = str(sop_json['name'])\n            get_file_information_extract_content__json_content = str(data['sop_json'])\n            get_file_information_extract_content__version = str(data['version'])\n            get_file_information_extract_content__version = str(data['creator'])\n        \n\n",
                     "warnings": {},
                     "x": 980,
                     "y": 600
@@ -311,7 +311,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T12:05:57.032273+00:00",
+    "create_time": "2023-07-10T12:08:24.040655+00:00",
     "draft_mode": false,
     "labels": [
         "*"
