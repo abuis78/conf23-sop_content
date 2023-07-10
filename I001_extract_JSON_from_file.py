@@ -37,10 +37,8 @@ def get_file_information_extract_content(action=None, success=None, container=No
         success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])
         json_data = vault_info[0]
         phantom.debug("vault_info: {}".format(json_data))
-        data = json.loads(str(json_data)) 
-        phantom.debug("PATH: {}".format(data["path"]))
-        phantom.debug("NAME: {}".format(data["name"]))
-    
+        data = json.loads(json_data) 
+        phantom.debug(data)
 
     ################################################################################
     ## Custom Code End
