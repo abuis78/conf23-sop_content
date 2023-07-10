@@ -132,7 +132,7 @@
                     "targetPort": "17_in"
                 }
             ],
-            "hash": "6f0c3ca05f0529d4a56146d95b82eadd18a775bb",
+            "hash": "19aa221b7e99d5a49d48b11556844b64e8fb605c",
             "nodes": {
                 "0": {
                     "data": {
@@ -683,7 +683,7 @@
                             "playbook_input:sop_name",
                             "playbook_input:sop_version"
                         ],
-                        "template": "[\"{0}\", \"{1}\"]]",
+                        "template": "[\"{0}\", \"{1}\"]",
                         "type": "format"
                     },
                     "errors": {},
@@ -939,7 +939,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T13:34:10.878677+00:00",
+    "create_time": "2023-07-10T13:34:37.483138+00:00",
     "draft_mode": false,
     "labels": [
         "*"
