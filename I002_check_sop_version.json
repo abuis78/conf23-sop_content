@@ -21,7 +21,7 @@
                     "targetPort": "5_in"
                 }
             ],
-            "hash": "d1fd36d53cb4b91ee54b7eb4271357f20eca4e0f",
+            "hash": "a360bc9b0955b487fd7e2056d664a70324f8e04e",
             "nodes": {
                 "0": {
                     "data": {
@@ -76,7 +76,7 @@
                     "errors": {},
                     "id": "4",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here.../rest/decided_list?_filter_name=\"SOP\"\n    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list')\n    filter_parameter = \"?_filter_name=\" + playbook_input_liste_name\n    url = decided_list_tag_url + filter_parameter\n    response = phantom.requests.get(url,verify=False)\n    \n    check_if_reference_list_exists__list_status = response.json()['count']\n\n",
+                    "userCode": "\n    # Write your custom code here.../rest/decided_list?_filter_name=\"SOP\"\n    phantom.debug(playbook_input_liste_name)\n    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list')\n    filter_parameter = \"?_filter_name=\" + playbook_input_liste_name\n    url = decided_list_tag_url + filter_parameter\n    response = phantom.requests.get(url,verify=False)\n    \n    check_if_reference_list_exists__list_status = response.json()['count']\n\n",
                     "warnings": {},
                     "x": 980,
                     "y": 584.5
@@ -276,7 +276,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T12:36:57.930119+00:00",
+    "create_time": "2023-07-10T12:39:38.251839+00:00",
     "draft_mode": false,
     "labels": [
         "*"
