@@ -31,9 +31,23 @@
                     "sourcePort": "4_out",
                     "targetNode": "2",
                     "targetPort": "2_in"
+                },
+                {
+                    "id": "port_3_to_port_5",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "5",
+                    "targetPort": "5_in"
+                },
+                {
+                    "id": "port_5_to_port_6",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
                 }
             ],
-            "hash": "9cffac798eb9759b32e48dfe33c2e8a1a7559a7a",
+            "hash": "922fb902d29fa3e3debf2f9e8cb35324b7c9845d",
             "nodes": {
                 "0": {
                     "data": {
@@ -70,12 +84,12 @@
                 "2": {
                     "data": {
                         "advanced": {
-                            "customName": "format endpoint",
+                            "customName": "format endpoint find SOP",
                             "customNameId": 0,
                             "join": []
                         },
                         "functionId": 1,
-                        "functionName": "format_endpoint",
+                        "functionName": "format_endpoint_find_sop",
                         "id": "2",
                         "parameters": [
                             "playbook_input:sop_name"
@@ -109,7 +123,7 @@
                         "functionName": "get_sop_id_for_update",
                         "id": "3",
                         "parameters": {
-                            "location": "format_endpoint:formatted_data"
+                            "location": "format_endpoint_find_sop:formatted_data"
                         },
                         "requiredParameters": [
                             {
@@ -124,7 +138,7 @@
                     "type": "action",
                     "warnings": {},
                     "x": 800,
-                    "y": 700
+                    "y": 660
                 },
                 "4": {
                     "data": {
@@ -176,6 +190,65 @@
                     "warnings": {},
                     "x": 1060,
                     "y": 364.5
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format endpoint delete SOP",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "format_endpoint_delete_sop",
+                        "id": "5",
+                        "parameters": [
+                            "get_sop_id_for_update:action_result.data.*.id"
+                        ],
+                        "template": "/rest/workbook_template/{0}",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 800,
+                    "y": 784.5
+                },
+                "6": {
+                    "data": {
+                        "action": "delete data",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "delete_sop",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "connector": "HTTP",
+                        "connectorConfigs": [
+                            "soar_http"
+                        ],
+                        "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "delete_sop",
+                        "id": "6",
+                        "parameters": {
+                            "location": "format_endpoint_delete_sop:formatted_data"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "location"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 800,
+                    "y": 924.5
                 }
             },
             "notes": ""
@@ -212,7 +285,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T19:25:43.167731+00:00",
+    "create_time": "2023-07-10T19:30:59.143959+00:00",
     "draft_mode": false,
     "labels": [
         "*"

@@ -18,8 +18,8 @@ def on_start(container):
     return
 
 @phantom.playbook_block()
-def format_endpoint(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("format_endpoint() called")
+def format_endpoint_find_sop(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("format_endpoint_find_sop() called")
 
     template = """/rest/workbook_template?_filter_name=\"{0}\""""
 
@@ -38,7 +38,7 @@ def format_endpoint(action=None, success=None, container=None, results=None, han
     ## Custom Code End
     ################################################################################
 
-    phantom.format(container=container, template=template, parameters=parameters, name="format_endpoint")
+    phantom.format(container=container, template=template, parameters=parameters, name="format_endpoint_find_sop")
 
     get_sop_id_for_update(container=container)
 
@@ -51,13 +51,13 @@ def get_sop_id_for_update(action=None, success=None, container=None, results=Non
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
-    format_endpoint = phantom.get_format_data(name="format_endpoint")
+    format_endpoint_find_sop = phantom.get_format_data(name="format_endpoint_find_sop")
 
     parameters = []
 
-    if format_endpoint is not None:
+    if format_endpoint_find_sop is not None:
         parameters.append({
-            "location": format_endpoint,
+            "location": format_endpoint_find_sop,
         })
 
     ################################################################################
@@ -70,7 +70,7 @@ def get_sop_id_for_update(action=None, success=None, container=None, results=Non
     ## Custom Code End
     ################################################################################
 
-    phantom.act("get data", parameters=parameters, name="get_sop_id_for_update", assets=["soar_http"])
+    phantom.act("get data", parameters=parameters, name="get_sop_id_for_update", assets=["soar_http"], callback=format_endpoint_delete_sop)
 
     return
 
@@ -89,8 +89,66 @@ def decision_task_type(action=None, success=None, container=None, results=None, 
 
     # call connected blocks if condition 1 matched
     if found_match_1:
-        format_endpoint(action=action, success=success, container=container, results=results, handle=handle)
+        format_endpoint_find_sop(action=action, success=success, container=container, results=results, handle=handle)
         return
+
+    return
+
+
+@phantom.playbook_block()
+def format_endpoint_delete_sop(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("format_endpoint_delete_sop() called")
+
+    template = """/rest/workbook_template/{0}"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "get_sop_id_for_update:action_result.data.*.id"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_endpoint_delete_sop")
+
+    delete_sop(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def delete_sop(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("delete_sop() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    format_endpoint_delete_sop = phantom.get_format_data(name="format_endpoint_delete_sop")
+
+    parameters = []
+
+    if format_endpoint_delete_sop is not None:
+        parameters.append({
+            "location": format_endpoint_delete_sop,
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("delete data", parameters=parameters, name="delete_sop", assets=["soar_http"])
 
     return
 
