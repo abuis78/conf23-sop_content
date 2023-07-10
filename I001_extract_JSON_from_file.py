@@ -40,13 +40,13 @@ def get_file_information_extract_content(action=None, success=None, container=No
         name = json.dumps(vault_info[0]["name"]) 
         #phantom.debug("path: {}".format(path))
         #phantom.debug("name: {}".format(name))
-        file_path_name = path[0] + name
+        file_path_name = path + name
         phantom.debug(file_path_name)
         
-        with open(file_path_name) as file:
-            data = json.load(file)
+        # with open(file_path_name) as file:
+            # data = json.load(file)
         
-        phantom.debug("data: {}".format(data))
+        # phantom.debug("data: {}".format(data))
 
     ################################################################################
     ## Custom Code End
