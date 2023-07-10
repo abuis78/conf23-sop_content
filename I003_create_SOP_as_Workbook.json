@@ -33,7 +33,6 @@
                     "targetPort": "2_in"
                 }
             ],
-            "hash": "b0bd5335e3d839fdc246bb6c8aa5a947dcd7e7e7",
             "nodes": {
                 "0": {
                     "data": {
@@ -189,6 +188,11 @@
                 "contains": [],
                 "description": "update or create new SOP",
                 "name": "task"
+            },
+            {
+                "contains": [],
+                "description": "",
+                "name": "sop_name"
             }
         ],
         "output_spec": [
