@@ -157,42 +157,6 @@ def delete_sop(action=None, success=None, container=None, results=None, handle=N
 
 
 @phantom.playbook_block()
-def debug_delete(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("debug_delete() called")
-
-    format_json_for_create = phantom.get_format_data(name="format_json_for_create")
-
-    parameters = []
-
-    parameters.append({
-        "input_1": format_json_for_create,
-        "input_2": None,
-        "input_3": None,
-        "input_4": None,
-        "input_5": None,
-        "input_6": None,
-        "input_7": None,
-        "input_8": None,
-        "input_9": None,
-        "input_10": None,
-    })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_delete")
-
-    return
-
-
-@phantom.playbook_block()
 def join_noop_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("join_noop_2() called")
 
@@ -313,16 +277,17 @@ def check_for_valid_json(action=None, success=None, container=None, results=None
         formatted_json = json.dumps(data, indent=2)
         phantom.debug(formatted_json)
         
-    check_for_valid_json__sop_json
+    check_for_valid_json__sop_json = formatted_json
     ################################################################################
     ## Custom Code End
     ################################################################################
 
     phantom.save_run_data(key="check_for_valid_json:sop_json", value=json.dumps(check_for_valid_json__sop_json))
 
-    debug_delete(container=container)
+    post_data_1(container=container)
 
     return
+
 
 @phantom.playbook_block()
 def on_finish(container, summary):
