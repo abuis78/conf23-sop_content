@@ -111,6 +111,64 @@ def add_comment_4(action=None, success=None, container=None, results=None, handl
 
     phantom.comment(container=container, comment="add missing reference list")
 
+    format_payload(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def format_payload(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("format_payload() called")
+
+    template = """{\"content\":[[\"name\"][\"version\"]],\"name\":\"SOP\"}"""
+
+    # parameter list for template variable replacement
+    parameters = []
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_payload")
+
+    post_data_1(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def post_data_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("post_data_1() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    format_payload = phantom.get_format_data(name="format_payload")
+
+    parameters = []
+
+    parameters.append({
+        "location": "/rest/decided_list",
+        "body": format_payload,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("post data", parameters=parameters, name="post_data_1", assets=["soar_http"])
+
     return
 
 

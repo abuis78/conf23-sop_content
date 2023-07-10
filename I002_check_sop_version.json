@@ -43,9 +43,23 @@
                     "sourcePort": "6_out",
                     "targetNode": "8",
                     "targetPort": "8_in"
+                },
+                {
+                    "id": "port_8_to_port_9",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
+                    "targetNode": "9",
+                    "targetPort": "9_in"
+                },
+                {
+                    "id": "port_9_to_port_10",
+                    "sourceNode": "9",
+                    "sourcePort": "9_out",
+                    "targetNode": "10",
+                    "targetPort": "10_in"
                 }
             ],
-            "hash": "6c9d1f3d0dbfeb205301c57892d2be2cf17f1f17",
+            "hash": "73dabeff0df3a0a8313605e548e23e168aecb084",
             "nodes": {
                 "0": {
                     "data": {
@@ -77,7 +91,42 @@
                     "type": "end",
                     "warnings": {},
                     "x": 1000,
-                    "y": 1000
+                    "y": 1360
+                },
+                "10": {
+                    "data": {
+                        "action": "post data",
+                        "actionType": "generic",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "HTTP",
+                        "connectorConfigs": [
+                            "soar_http"
+                        ],
+                        "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "post_data_1",
+                        "id": "10",
+                        "parameters": {
+                            "body": "format_payload:formatted_data",
+                            "location": "/rest/decided_list"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "location"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "10",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 1140,
+                    "y": 1144.5
                 },
                 "4": {
                     "data": {
@@ -277,6 +326,27 @@
                     "warnings": {},
                     "x": 1140,
                     "y": 864.5
+                },
+                "9": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format_payload",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "format_payload",
+                        "id": "9",
+                        "parameters": [],
+                        "template": "{\"content\":[[\"name\"][\"version\"]],\"name\":\"SOP\"}",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "9",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 1140,
+                    "y": 1000
                 }
             },
             "notes": ""
@@ -304,7 +374,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T12:54:11.921888+00:00",
+    "create_time": "2023-07-10T13:01:00.194393+00:00",
     "draft_mode": false,
     "labels": [
         "*"
