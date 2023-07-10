@@ -5,8 +5,16 @@
     "coa": {
         "data": {
             "description": "",
-            "edges": [],
-            "hash": "34f214649e27c33ea22c0dd6363172679b9d6dd0",
+            "edges": [
+                {
+                    "id": "port_0_to_port_2",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
+                }
+            ],
+            "hash": "a1e06ad5a4e78094e62076a0915ad69c6402e737",
             "nodes": {
                 "0": {
                     "data": {
@@ -39,6 +47,36 @@
                     "warnings": {},
                     "x": 1000,
                     "y": 1000
+                },
+                "2": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "playbook_I001_extract_JSON_from_file_1",
+                        "id": "2",
+                        "inputs": {
+                            "vault_id": {
+                                "datapaths": [
+                                    "\n11606de950a4c482cfcba4038852270427cf1abd"
+                                ],
+                                "deduplicate": false
+                            }
+                        },
+                        "playbookName": "I001_extract_JSON_from_file",
+                        "playbookRepo": 10,
+                        "playbookRepoName": "conf23-sop_content",
+                        "playbookType": "data",
+                        "synchronous": true,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "2",
+                    "type": "playbook",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 564.5
                 }
             },
             "notes": ""
@@ -50,7 +88,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T08:00:49.746964+00:00",
+    "create_time": "2023-07-10T08:01:35.088037+00:00",
     "draft_mode": false,
     "labels": [
         "*"
