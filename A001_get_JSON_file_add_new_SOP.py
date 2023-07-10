@@ -139,6 +139,8 @@ def comment_existing_sop_is_being_updated(action=None, success=None, container=N
 
     phantom.comment(container=container, comment="Existing SOP is being updated")
 
+    playbook_i003_create_sop_as_workbook_1(container=container)
+
     return
 
 
@@ -158,6 +160,8 @@ def comment_the_new_sop_is_being_created(action=None, success=None, container=No
 
     phantom.comment(container=container, comment="The new SOP is being created")
 
+    playbook_i003_create_sop_as_workbook_2(container=container)
+
     return
 
 
@@ -176,6 +180,64 @@ def comment_there_is_no_need_for_action(action=None, success=None, container=Non
     ################################################################################
 
     phantom.comment(container=container, comment="There is no need for action")
+
+    return
+
+
+@phantom.playbook_block()
+def playbook_i003_create_sop_as_workbook_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("playbook_i003_create_sop_as_workbook_1() called")
+
+    playbook_i001_extract_json_from_file_3_output_json_content = phantom.collect2(container=container, datapath=["playbook_i001_extract_json_from_file_3:playbook_output:json_content"])
+
+    playbook_i001_extract_json_from_file_3_output_json_content_values = [item[0] for item in playbook_i001_extract_json_from_file_3_output_json_content]
+
+    inputs = {
+        "sop_json": playbook_i001_extract_json_from_file_3_output_json_content_values,
+        "task": ["update"],
+    }
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    # call playbook "conf23-sop_content/I003_create_SOP_as_Workbook", returns the playbook_run_id
+    playbook_run_id = phantom.playbook("conf23-sop_content/I003_create_SOP_as_Workbook", container=container, name="playbook_i003_create_sop_as_workbook_1", inputs=inputs)
+
+    return
+
+
+@phantom.playbook_block()
+def playbook_i003_create_sop_as_workbook_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("playbook_i003_create_sop_as_workbook_2() called")
+
+    playbook_i001_extract_json_from_file_3_output_json_content = phantom.collect2(container=container, datapath=["playbook_i001_extract_json_from_file_3:playbook_output:json_content"])
+
+    playbook_i001_extract_json_from_file_3_output_json_content_values = [item[0] for item in playbook_i001_extract_json_from_file_3_output_json_content]
+
+    inputs = {
+        "sop_json": playbook_i001_extract_json_from_file_3_output_json_content_values,
+        "task": ["create"],
+    }
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    # call playbook "conf23-sop_content/I003_create_SOP_as_Workbook", returns the playbook_run_id
+    playbook_run_id = phantom.playbook("conf23-sop_content/I003_create_SOP_as_Workbook", container=container, name="playbook_i003_create_sop_as_workbook_2", inputs=inputs)
 
     return
 

@@ -62,9 +62,30 @@
                     "sourcePort": "17_out",
                     "targetNode": "20",
                     "targetPort": "20_in"
+                },
+                {
+                    "id": "port_18_to_port_21",
+                    "sourceNode": "18",
+                    "sourcePort": "18_out",
+                    "targetNode": "21",
+                    "targetPort": "21_in"
+                },
+                {
+                    "id": "port_19_to_port_22",
+                    "sourceNode": "19",
+                    "sourcePort": "19_out",
+                    "targetNode": "22",
+                    "targetPort": "22_in"
+                },
+                {
+                    "id": "port_20_to_port_1",
+                    "sourceNode": "20",
+                    "sourcePort": "20_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
                 }
             ],
-            "hash": "bccbcfbc591acf16025dfe437382852a17b012d2",
+            "hash": "01b94446a56d66fe6a4b05c6328283e83c3c82a7",
             "nodes": {
                 "0": {
                     "data": {
@@ -95,8 +116,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 420,
-                    "y": 860
+                    "x": -40,
+                    "y": 1240
                 },
                 "13": {
                     "data": {
@@ -423,6 +444,78 @@
                     "warnings": {},
                     "x": 360,
                     "y": 620
+                },
+                "21": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "playbook_I003_create_SOP_as_Workbook_1",
+                        "id": "21",
+                        "inputs": {
+                            "sop_json": {
+                                "datapaths": [
+                                    "playbook_i001_extract_json_from_file_3:playbook_output:json_content"
+                                ],
+                                "deduplicate": false
+                            },
+                            "task": {
+                                "datapaths": [
+                                    "update"
+                                ],
+                                "deduplicate": false
+                            }
+                        },
+                        "playbookName": "I003_create_SOP_as_Workbook",
+                        "playbookRepo": 10,
+                        "playbookRepoName": "conf23-sop_content",
+                        "playbookType": "data",
+                        "synchronous": true,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "21",
+                    "type": "playbook",
+                    "warnings": {},
+                    "x": -340,
+                    "y": 824.5
+                },
+                "22": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "playbook_I003_create_SOP_as_Workbook_2",
+                        "id": "22",
+                        "inputs": {
+                            "sop_json": {
+                                "datapaths": [
+                                    "playbook_i001_extract_json_from_file_3:playbook_output:json_content"
+                                ],
+                                "deduplicate": false
+                            },
+                            "task": {
+                                "datapaths": [
+                                    "create"
+                                ],
+                                "deduplicate": false
+                            }
+                        },
+                        "playbookName": "I003_create_SOP_as_Workbook",
+                        "playbookRepo": 10,
+                        "playbookRepoName": "conf23-sop_content",
+                        "playbookType": "data",
+                        "synchronous": true,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "22",
+                    "type": "playbook",
+                    "warnings": {},
+                    "x": -1.4210854715202004e-14,
+                    "y": 824.5
                 }
             },
             "notes": ""
@@ -434,7 +527,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T19:11:02.600104+00:00",
+    "create_time": "2023-07-10T19:13:22.684401+00:00",
     "draft_mode": false,
     "labels": [
         "*"
