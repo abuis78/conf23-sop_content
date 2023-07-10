@@ -5,8 +5,16 @@
     "coa": {
         "data": {
             "description": "",
-            "edges": [],
-            "hash": "34f214649e27c33ea22c0dd6363172679b9d6dd0",
+            "edges": [
+                {
+                    "id": "port_0_to_port_3",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
+                }
+            ],
+            "hash": "0486471d11e8a6be10535820852cd291461e7fda",
             "nodes": {
                 "0": {
                     "data": {
@@ -39,6 +47,24 @@
                     "warnings": {},
                     "x": 1000,
                     "y": 1000
+                },
+                "3": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "call_api_1",
+                        "id": "3",
+                        "tab": "apis",
+                        "type": "utility"
+                    },
+                    "errors": {},
+                    "id": "3",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 564.5
                 }
             },
             "notes": ""
@@ -61,7 +87,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T12:12:01.531386+00:00",
+    "create_time": "2023-07-10T12:17:01.381676+00:00",
     "draft_mode": false,
     "labels": [
         "*"
