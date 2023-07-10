@@ -368,15 +368,16 @@ def add_listitem_1(action=None, success=None, container=None, results=None, hand
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
     playbook_input_liste_name = phantom.collect2(container=container, datapath=["playbook_input:liste_name"])
+    format_list_json_append_sop = phantom.get_format_data(name="format_list_json_append_sop")
 
     parameters = []
 
     # build parameters list for 'add_listitem_1' call
     for playbook_input_liste_name_item in playbook_input_liste_name:
-        if playbook_input_liste_name_item[0] is not None:
+        if playbook_input_liste_name_item[0] is not None and format_list_json_append_sop is not None:
             parameters.append({
                 "list": playbook_input_liste_name_item[0],
-                "new_row": "hallo,nein",
+                "new_row": format_list_json_append_sop,
             })
 
     ################################################################################
@@ -398,7 +399,7 @@ def add_listitem_1(action=None, success=None, container=None, results=None, hand
 def format_list_json_append_sop(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_list_json_append_sop() called")
 
-    template = """{{  \"content\": [\n        [\"{0}\", \"{1}\"]]\n}}"""
+    template = """[\"{0}\", \"{1}\"]]"""
 
     # parameter list for template variable replacement
     parameters = [

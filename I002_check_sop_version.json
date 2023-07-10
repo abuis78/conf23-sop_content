@@ -132,7 +132,7 @@
                     "targetPort": "17_in"
                 }
             ],
-            "hash": "a972ee85c473257e0e7520fba21ecb95643f27d9",
+            "hash": "6f0c3ca05f0529d4a56146d95b82eadd18a775bb",
             "nodes": {
                 "0": {
                     "data": {
@@ -647,7 +647,7 @@
                         "id": "17",
                         "parameters": {
                             "list": "playbook_input:liste_name",
-                            "new_row": "hallo,nein"
+                            "new_row": "format_list_json_append_sop:formatted_data"
                         },
                         "requiredParameters": [
                             {
@@ -683,7 +683,7 @@
                             "playbook_input:sop_name",
                             "playbook_input:sop_version"
                         ],
-                        "template": "{{  \"content\": [\n        [\"{0}\", \"{1}\"]]\n}}",
+                        "template": "[\"{0}\", \"{1}\"]]",
                         "type": "format"
                     },
                     "errors": {},
@@ -691,7 +691,7 @@
                     "type": "format",
                     "warnings": {},
                     "x": 1320,
-                    "y": 1924.5
+                    "y": 1920
                 },
                 "4": {
                     "data": {
@@ -939,7 +939,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T13:32:31.824917+00:00",
+    "create_time": "2023-07-10T13:34:10.878677+00:00",
     "draft_mode": false,
     "labels": [
         "*"
