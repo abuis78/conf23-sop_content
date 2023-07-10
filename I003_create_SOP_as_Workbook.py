@@ -21,7 +21,7 @@ def on_start(container):
 def format_endpoint(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_endpoint() called")
 
-    template = """{0}"""
+    template = """/rest/workbook_template?_filter_name=\"{0}\""""
 
     # parameter list for template variable replacement
     parameters = [

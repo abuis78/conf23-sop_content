@@ -33,6 +33,7 @@
                     "targetPort": "2_in"
                 }
             ],
+            "hash": "9fcc7ca4d6aecabdff73185c2fca2f1ae549452c",
             "nodes": {
                 "0": {
                     "data": {
@@ -79,7 +80,7 @@
                         "parameters": [
                             "playbook_input:sop_json"
                         ],
-                        "template": "{0}",
+                        "template": "/rest/workbook_template?_filter_name=\"{0}\"",
                         "type": "format"
                     },
                     "errors": {},
@@ -210,7 +211,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T19:19:47.686761+00:00",
+    "create_time": "2023-07-10T19:21:56.777581+00:00",
     "draft_mode": false,
     "labels": [
         "*"
