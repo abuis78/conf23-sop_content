@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'format_3' block
-    format_3(container=container)
+    # call 'playbook_i001_extract_json_from_file_1' block
+    playbook_i001_extract_json_from_file_1(container=container)
 
     return
 
