@@ -125,7 +125,6 @@
                     "targetPort": "17_in"
                 }
             ],
-            "hash": "f718b66f18e235a0896291bb545326d757176e20",
             "nodes": {
                 "0": {
                     "data": {
@@ -200,7 +199,8 @@
                             "join": [],
                             "notRequiredJoins": [
                                 "post_data_1"
-                            ]
+                            ],
+                            "refreshNotableData": true
                         },
                         "customFunction": {
                             "draftMode": false,
@@ -687,7 +687,11 @@
                     "errors": {},
                     "id": "18",
                     "type": "format",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 1320,
                     "y": 1920
                 },
