@@ -21,8 +21,12 @@ def on_start(container):
 def playbook_i001_extract_json_from_file_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("playbook_i001_extract_json_from_file_1() called")
 
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.vaultId"])
+
+    container_artifact_cef_item_0 = [item[0] for item in container_artifact_data]
+
     inputs = {
-        "vault_id": ["\n11606de950a4c482cfcba4038852270427cf1abd"],
+        "vault_id": container_artifact_cef_item_0,
     }
 
     ################################################################################

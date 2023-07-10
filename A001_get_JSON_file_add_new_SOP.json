@@ -14,7 +14,7 @@
                     "targetPort": "2_in"
                 }
             ],
-            "hash": "a1e06ad5a4e78094e62076a0915ad69c6402e737",
+            "hash": "a39de4043e815b2d03a146719bb6404d2e06a112",
             "nodes": {
                 "0": {
                     "data": {
@@ -59,7 +59,7 @@
                         "inputs": {
                             "vault_id": {
                                 "datapaths": [
-                                    "\n11606de950a4c482cfcba4038852270427cf1abd"
+                                    "artifact:*.cef.vaultId"
                                 ],
                                 "deduplicate": false
                             }
@@ -76,7 +76,7 @@
                     "type": "playbook",
                     "warnings": {},
                     "x": 980,
-                    "y": 564.5
+                    "y": 560
                 }
             },
             "notes": ""
@@ -88,7 +88,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T08:01:35.088037+00:00",
+    "create_time": "2023-07-10T08:03:25.907445+00:00",
     "draft_mode": false,
     "labels": [
         "*"
