@@ -40,7 +40,7 @@ def playbook_i001_extract_json_from_file_1(action=None, success=None, container=
     ################################################################################
 
     # call playbook "conf23-sop_content/I001_extract_JSON_from_file", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_1", callback=format_4, inputs=inputs)
+    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_1", callback=format_playbook_output, inputs=inputs)
 
     return
 
@@ -53,7 +53,7 @@ def format_sop_json(action=None, success=None, container=None, results=None, han
 
     # parameter list for template variable replacement
     parameters = [
-        "playbook_i001_extract_json_from_file_1:playbook_output:json_content"
+        "format_playbook_output:formatted_data"
     ]
 
     ################################################################################
@@ -138,8 +138,8 @@ def format_sop_name(action=None, success=None, container=None, results=None, han
 
 
 @phantom.playbook_block()
-def format_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("format_4() called")
+def format_playbook_output(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("format_playbook_output() called")
 
     template = """{0}"""
 
@@ -158,7 +158,7 @@ def format_4(action=None, success=None, container=None, results=None, handle=Non
     ## Custom Code End
     ################################################################################
 
-    phantom.format(container=container, template=template, parameters=parameters, name="format_4")
+    phantom.format(container=container, template=template, parameters=parameters, name="format_playbook_output")
 
     debug_3(container=container)
 
@@ -196,7 +196,7 @@ def debug_3(action=None, success=None, container=None, results=None, handle=None
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_3")
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_3", callback=format_sop_name)
 
     return
 

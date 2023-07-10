@@ -40,9 +40,16 @@
                     "sourcePort": "9_out",
                     "targetNode": "10",
                     "targetPort": "10_in"
+                },
+                {
+                    "id": "port_10_to_port_6",
+                    "sourceNode": "10",
+                    "sourcePort": "10_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
                 }
             ],
-            "hash": "c686720339159a69fd6524bc5f3e3f660730904d",
+            "hash": "4f3bb3786a3fed901a7ad10cde8b220ee70c7c98",
             "nodes": {
                 "0": {
                     "data": {
@@ -286,7 +293,7 @@
                         "functionName": "format_sop_json",
                         "id": "3",
                         "parameters": [
-                            "playbook_i001_extract_json_from_file_1:playbook_output:json_content"
+                            "format_playbook_output:formatted_data"
                         ],
                         "template": "{{\"cef\":{{\n\"sop_json\": {0},\n\"version\": 2\n}}\n}}",
                         "type": "format"
@@ -294,11 +301,7 @@
                     "errors": {},
                     "id": "3",
                     "type": "format",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 980,
                     "y": 780
                 },
@@ -474,21 +477,19 @@
                     "errors": {},
                     "id": "6",
                     "type": "format",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 980,
                     "y": 684.5
                 },
                 "9": {
                     "data": {
                         "advanced": {
+                            "customName": "format playbook output",
+                            "customNameId": 0,
                             "join": []
                         },
                         "functionId": 4,
-                        "functionName": "format_4",
+                        "functionName": "format_playbook_output",
                         "id": "9",
                         "parameters": [
                             "playbook_i001_extract_json_from_file_1:playbook_output:json_content"
@@ -513,7 +514,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T10:43:19.202897+00:00",
+    "create_time": "2023-07-10T10:44:04.690439+00:00",
     "draft_mode": false,
     "labels": [
         "*"
