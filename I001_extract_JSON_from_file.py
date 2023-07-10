@@ -39,7 +39,8 @@ def get_file_information_extract_content(action=None, success=None, container=No
         path = vault_info[0]["path"]
         
         with open(path) as file:
-            get_file_information_extract_content__json_content = json.load(file)
+            data = json.load(file)
+            get_file_information_extract_content__json_content = str(data)
         
 
     ################################################################################
