@@ -59,8 +59,6 @@ def get_file_information_extract_content(action=None, success=None, container=No
     phantom.save_run_data(key="get_file_information_extract_content:creator", value=json.dumps(get_file_information_extract_content__creator))
     phantom.save_run_data(key="get_file_information_extract_content:name", value=json.dumps(get_file_information_extract_content__name))
 
-    debug_1(container=container)
-
     return
 
 
