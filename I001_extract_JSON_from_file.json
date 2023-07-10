@@ -28,7 +28,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "54ee19d8aedba96ba5860a78d38fb6c605066f70",
+            "hash": "f2da308cd6b301681ee1b6afbb1a6e3af1a985db",
             "nodes": {
                 "0": {
                     "data": {
@@ -291,7 +291,9 @@
             },
             {
                 "contains": [],
-                "datapaths": [],
+                "datapaths": [
+                    "get_file_information_extract_content:custom_function:version"
+                ],
                 "deduplicate": false,
                 "description": "",
                 "metadata": {},
@@ -299,11 +301,23 @@
             },
             {
                 "contains": [],
-                "datapaths": [],
+                "datapaths": [
+                    "get_file_information_extract_content:custom_function:creator"
+                ],
                 "deduplicate": false,
                 "description": "",
                 "metadata": {},
                 "name": "creator"
+            },
+            {
+                "contains": [],
+                "datapaths": [
+                    "get_file_information_extract_content:custom_function:name"
+                ],
+                "deduplicate": false,
+                "description": "",
+                "metadata": {},
+                "name": "name"
             }
         ],
         "playbook_type": "data",
@@ -311,7 +325,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T12:09:31.933925+00:00",
+    "create_time": "2023-07-10T12:14:19.972357+00:00",
     "draft_mode": false,
     "labels": [
         "*"

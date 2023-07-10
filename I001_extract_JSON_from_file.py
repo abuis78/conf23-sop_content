@@ -108,11 +108,15 @@ def on_finish(container, summary):
     phantom.debug("on_finish() called")
 
     get_file_information_extract_content__json_content = json.loads(_ if (_ := phantom.get_run_data(key="get_file_information_extract_content:json_content")) != "" else "null")  # pylint: disable=used-before-assignment
+    get_file_information_extract_content__version = json.loads(_ if (_ := phantom.get_run_data(key="get_file_information_extract_content:version")) != "" else "null")  # pylint: disable=used-before-assignment
+    get_file_information_extract_content__creator = json.loads(_ if (_ := phantom.get_run_data(key="get_file_information_extract_content:creator")) != "" else "null")  # pylint: disable=used-before-assignment
+    get_file_information_extract_content__name = json.loads(_ if (_ := phantom.get_run_data(key="get_file_information_extract_content:name")) != "" else "null")  # pylint: disable=used-before-assignment
 
     output = {
         "json_content": get_file_information_extract_content__json_content,
-        "version": [],
-        "creator": [],
+        "version": get_file_information_extract_content__version,
+        "creator": get_file_information_extract_content__creator,
+        "name": get_file_information_extract_content__name,
     }
 
     ################################################################################
