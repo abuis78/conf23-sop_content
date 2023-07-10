@@ -579,12 +579,12 @@ def update_version_no_in_list(action=None, success=None, container=None, results
     playbook_input_sop_version = phantom.collect2(container=container, datapath=["playbook_input:sop_version"])
     playbook_input_liste_name = phantom.collect2(container=container, datapath=["playbook_input:liste_name"])
     playbook_input_sop_name = phantom.collect2(container=container, datapath=["playbook_input:sop_name"])
-    filtered_result_0_data_filter_found_sop = phantom.collect2(container=container, datapath=["filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.summary.locations.0.1"])
+    finde_sop_in_list_result_data = phantom.collect2(container=container, datapath=["finde_sop_in_list:action_result.summary.locations.0.0"], action_results=results)
 
     playbook_input_sop_version_values = [item[0] for item in playbook_input_sop_version]
     playbook_input_liste_name_values = [item[0] for item in playbook_input_liste_name]
     playbook_input_sop_name_values = [item[0] for item in playbook_input_sop_name]
-    filtered_result_0_summary_locations_0_1 = [item[0] for item in filtered_result_0_data_filter_found_sop]
+    finde_sop_in_list_summary_locations_0_0 = [item[0] for item in finde_sop_in_list_result_data]
 
     ################################################################################
     ## Custom Code Start
@@ -592,7 +592,7 @@ def update_version_no_in_list(action=None, success=None, container=None, results
 
     # Write your custom code here...
     sop_version = playbook_input_sop_version[0][0]
-    sop_name = playbook_input_liste_name[0][0]
+    sop_name = playbook_input_sop_name[0][0]
     liste_name = playbook_input_liste_name[0][0]
     decided_list_tag_url = phantom.build_phantom_rest_url('decided_list',liste_name)
     data = { "update_rows": { "0": [sop_name, sop_version]}}
