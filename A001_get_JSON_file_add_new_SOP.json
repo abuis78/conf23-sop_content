@@ -49,7 +49,7 @@
                     "targetPort": "14_in"
                 }
             ],
-            "hash": "b0799cdeecdaf6c5d4759a8ad51b40415d2076c2",
+            "hash": "bccbcfbc591acf16025dfe437382852a17b012d2",
             "nodes": {
                 "0": {
                     "data": {
@@ -335,7 +335,7 @@
                             },
                             "sop_name": {
                                 "datapaths": [
-                                    "Hallo"
+                                    "playbook_i001_extract_json_from_file_3:playbook_output:name"
                                 ],
                                 "deduplicate": false
                             },
@@ -559,11 +559,7 @@
                     "errors": {},
                     "id": "6",
                     "type": "format",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 0,
                     "y": 608
                 },
@@ -589,6 +585,9 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 320,
@@ -604,7 +603,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T14:09:53.922573+00:00",
+    "create_time": "2023-07-10T14:24:05.867341+00:00",
     "draft_mode": false,
     "labels": [
         "*"
