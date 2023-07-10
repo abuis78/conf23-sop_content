@@ -21,7 +21,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "d8d9b5ebce2ce3c0c12ae30bfa3fdc58e11eea0f",
+            "hash": "02bde54b71e33e840a3ba45e7d2b7ab914453dcc",
             "nodes": {
                 "0": {
                     "data": {
@@ -76,7 +76,7 @@
                     "errors": {},
                     "id": "2",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    for item in playbook_input_vault_id:\n        vault_id = playbook_input_vault_id[0]\n        success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])\n        json_data = vault_info[0]\n        path = json.dumps(json_data[\"path\"]) \n        name = json.dumps(json_data[\"name\"]) \n        # phantom.debug(\"path: {}\".format(path))\n        # phantom.debug(\"name: {}\".format(name))\n        file_path_name = path + '/' + name\n        \n        with open(file_path_name) as file:\n            data = json.load(file)\n        \n        phantom.debug(\"data: {}\".format(data))\n\n",
+                    "userCode": "\n    # Write your custom code here...\n    for item in playbook_input_vault_id:\n        vault_id = playbook_input_vault_id[0]\n        success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])\n        json_data = vault_info[0]\n        path = json.dumps(json_data[\"path\"]) \n        name = json.dumps(json_data[\"name\"]) \n        # phantom.debug(\"path: {}\".format(path))\n        # phantom.debug(\"name: {}\".format(name))\n        file_path_name = path + '\"/\"' + name\n        \n        with open(file_path_name) as file:\n            data = json.load(file)\n        \n        phantom.debug(\"data: {}\".format(data))\n\n",
                     "warnings": {},
                     "x": 980,
                     "y": 560
@@ -108,7 +108,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T08:31:43.235633+00:00",
+    "create_time": "2023-07-10T08:32:27.724855+00:00",
     "draft_mode": false,
     "labels": [
         "*"
