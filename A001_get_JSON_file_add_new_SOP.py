@@ -169,12 +169,12 @@ def format_playbook_output(action=None, success=None, container=None, results=No
 def debug_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_3() called")
 
-    format_4 = phantom.get_format_data(name="format_4")
+    format_playbook_output = phantom.get_format_data(name="format_playbook_output")
 
     parameters = []
 
     parameters.append({
-        "input_1": format_4,
+        "input_1": format_playbook_output,
         "input_2": None,
         "input_3": None,
         "input_4": None,
