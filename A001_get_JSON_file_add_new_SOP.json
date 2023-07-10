@@ -21,21 +21,21 @@
                     "targetPort": "3_in"
                 },
                 {
-                    "id": "port_7_to_port_6",
-                    "sourceNode": "7",
-                    "sourcePort": "7_out",
-                    "targetNode": "6",
-                    "targetPort": "6_in"
-                },
-                {
                     "id": "port_0_to_port_2",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
                     "targetNode": "2",
                     "targetPort": "2_in"
+                },
+                {
+                    "id": "port_2_to_port_6",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
                 }
             ],
-            "hash": "e26dc53e9769d5d156603e2f5b5952e8cc22d5f1",
+            "hash": "fc9c260bcd1847ed7987acd16e38ffb073142f57",
             "nodes": {
                 "0": {
                     "data": {
@@ -110,7 +110,7 @@
                         "functionName": "format_sop_json",
                         "id": "3",
                         "parameters": [
-                            "format_3:formatted_data"
+                            "playbook_i001_extract_json_from_file_1:playbook_output:json_content"
                         ],
                         "template": "{{\"cef\":{{\n\"sop_json\": {0},\n\"version\": 2\n}}\n}}",
                         "type": "format"
@@ -297,25 +297,6 @@
                     "warnings": {},
                     "x": 980,
                     "y": 684.5
-                },
-                "7": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "functionId": 3,
-                        "functionName": "format_3",
-                        "id": "7",
-                        "parameters": [],
-                        "template": "{\n  \"name\": \"1234_test_search\",\n  \"description\": \"This is an example SOP for a test correlation search\",\n  \"phases\": [\n    {\n      \"id\": \"Generated SOP Tasks\",\n      \"name\": \"Generated SOP Tasks\",\n      \"tasks\": [\n{\n\t\t\t\"name\": \"F01-Check file hash\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"F02-Check file name/path\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"P01-Check InitiatingProcessParentFileName of the InitiatingProcessFileName\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"N16-Check for internal traffic\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"U01-Get username\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"U02-Check if the user is local admin\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"U04-Check for login activities on other hosts\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"U05-Check login types\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"H01-How many users are logging in on the host\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"H02-Host IP\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"H04-Check for added autorun entries\"\n\t\t}\n      ]\n    },\n    {\n      \"id\": \"Additional_Info\",\n      \"name\": \"Additional Info\",\n      \"tasks\": [\n        {\n\t\t\t\"name\": \"Notes / Remarks\",\n            \"description\": \"\"\n\t\t}\n      ]\n    },\n    {\n      \"id\": \"Recommendations\",\n      \"name\": \"Recommendations\",\n      \"tasks\": [\n        {\n\t\t\t\"name\": \"Notes / Remarks\",\n            \"description\": \"\"\n\t\t}\n      ]\n    }\n  ],\n  \"is_default\": false,\n  \"is_note_required\": true\n}",
-                        "type": "format"
-                    },
-                    "errors": {},
-                    "id": "7",
-                    "type": "format",
-                    "warnings": {},
-                    "x": 980,
-                    "y": 544.5
                 }
             },
             "notes": ""
@@ -327,7 +308,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T10:34:27.377313+00:00",
+    "create_time": "2023-07-10T10:41:16.132995+00:00",
     "draft_mode": false,
     "labels": [
         "*"

@@ -40,7 +40,7 @@ def playbook_i001_extract_json_from_file_1(action=None, success=None, container=
     ################################################################################
 
     # call playbook "conf23-sop_content/I001_extract_JSON_from_file", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_1", inputs=inputs)
+    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_1", callback=format_sop_name, inputs=inputs)
 
     return
 
@@ -53,7 +53,7 @@ def format_sop_json(action=None, success=None, container=None, results=None, han
 
     # parameter list for template variable replacement
     parameters = [
-        "format_3:formatted_data"
+        "playbook_i001_extract_json_from_file_1:playbook_output:json_content"
     ]
 
     ################################################################################
@@ -133,32 +133,6 @@ def format_sop_name(action=None, success=None, container=None, results=None, han
     phantom.format(container=container, template=template, parameters=parameters, name="format_sop_name")
 
     format_sop_json(container=container)
-
-    return
-
-
-@phantom.playbook_block()
-def format_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("format_3() called")
-
-    template = """{\n  \"name\": \"1234_test_search\",\n  \"description\": \"This is an example SOP for a test correlation search\",\n  \"phases\": [\n    {\n      \"id\": \"Generated SOP Tasks\",\n      \"name\": \"Generated SOP Tasks\",\n      \"tasks\": [\n{\n\t\t\t\"name\": \"F01-Check file hash\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"F02-Check file name/path\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"P01-Check InitiatingProcessParentFileName of the InitiatingProcessFileName\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"N16-Check for internal traffic\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"U01-Get username\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"U02-Check if the user is local admin\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"U04-Check for login activities on other hosts\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"U05-Check login types\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"H01-How many users are logging in on the host\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"H02-Host IP\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"H04-Check for added autorun entries\"\n\t\t}\n      ]\n    },\n    {\n      \"id\": \"Additional_Info\",\n      \"name\": \"Additional Info\",\n      \"tasks\": [\n        {\n\t\t\t\"name\": \"Notes / Remarks\",\n            \"description\": \"\"\n\t\t}\n      ]\n    },\n    {\n      \"id\": \"Recommendations\",\n      \"name\": \"Recommendations\",\n      \"tasks\": [\n        {\n\t\t\t\"name\": \"Notes / Remarks\",\n            \"description\": \"\"\n\t\t}\n      ]\n    }\n  ],\n  \"is_default\": false,\n  \"is_note_required\": true\n}"""
-
-    # parameter list for template variable replacement
-    parameters = []
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.format(container=container, template=template, parameters=parameters, name="format_3")
-
-    format_sop_name(container=container)
 
     return
 
