@@ -54,13 +54,6 @@
                     "targetPort": "8_in"
                 },
                 {
-                    "id": "port_8_to_port_9",
-                    "sourceNode": "8",
-                    "sourcePort": "8_out",
-                    "targetNode": "9",
-                    "targetPort": "9_in"
-                },
-                {
                     "conditions": [
                         {
                             "index": 1
@@ -80,14 +73,21 @@
                     "targetPort": "8_in"
                 },
                 {
-                    "id": "port_9_to_port_7",
-                    "sourceNode": "9",
-                    "sourcePort": "9_out",
+                    "id": "port_8_to_port_12",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
+                    "targetNode": "12",
+                    "targetPort": "12_in"
+                },
+                {
+                    "id": "port_12_to_port_7",
+                    "sourceNode": "12",
+                    "sourcePort": "12_out",
                     "targetNode": "7",
                     "targetPort": "7_in"
                 }
             ],
-            "hash": "bbe64093f587af96ccf927b9a12591a44fd5377f",
+            "hash": "9e8fa7405c017397f57a2e3d830e63e78147d2c9",
             "nodes": {
                 "0": {
                     "data": {
@@ -221,6 +221,32 @@
                     "warnings": {},
                     "x": 1120,
                     "y": 660
+                },
+                "12": {
+                    "data": {
+                        "advanced": {
+                            "customName": "check for valid JSON",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "check_for_valid_json",
+                        "id": "12",
+                        "inputParameters": [
+                            "playbook_input:sop_json"
+                        ],
+                        "outputVariables": [
+                            "sop_json"
+                        ],
+                        "type": "code"
+                    },
+                    "errors": {},
+                    "id": "12",
+                    "type": "code",
+                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(playbook_input_sop_json)\n    try:\n        json_data = json.loads(playbook_input_sop_json)\n        phantom.debug(\"The string is a valid JSON.\")\n        \n        formatted_json = json.dumps(json_data, indent=2)\n        phantom.debug(formatted_json)\n        \n    except ValueError as e:\n        phantom.debug(\"The string is not a valid JSON.\")\n",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 1204.5
                 },
                 "2": {
                     "data": {
@@ -599,29 +625,6 @@
                     "warnings": {},
                     "x": 980,
                     "y": 1060
-                },
-                "9": {
-                    "data": {
-                        "advanced": {
-                            "customName": "format json for create",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "functionId": 3,
-                        "functionName": "format_json_for_create",
-                        "id": "9",
-                        "parameters": [
-                            "playbook_input:sop_json"
-                        ],
-                        "template": "{0}\n",
-                        "type": "format"
-                    },
-                    "errors": {},
-                    "id": "9",
-                    "type": "format",
-                    "warnings": {},
-                    "x": 980,
-                    "y": 1204.5
                 }
             },
             "notes": ""
@@ -658,7 +661,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T19:50:00.625155+00:00",
+    "create_time": "2023-07-10T20:00:26.289062+00:00",
     "draft_mode": false,
     "labels": [
         "*"

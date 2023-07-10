@@ -225,35 +225,7 @@ def noop_2(action=None, success=None, container=None, results=None, handle=None,
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="community/noop", parameters=parameters, name="noop_2", callback=format_json_for_create)
-
-    return
-
-
-@phantom.playbook_block()
-def format_json_for_create(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("format_json_for_create() called")
-
-    template = """{0}\n"""
-
-    # parameter list for template variable replacement
-    parameters = [
-        "playbook_input:sop_json"
-    ]
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.format(container=container, template=template, parameters=parameters, name="format_json_for_create")
-
-    debug_delete(container=container)
+    phantom.custom_function(custom_function="community/noop", parameters=parameters, name="noop_2", callback=check_for_valid_json)
 
     return
 
@@ -305,6 +277,42 @@ def add_comment_3(action=None, success=None, container=None, results=None, handl
     phantom.comment(container=container, comment="The SOP will be created")
 
     join_noop_2(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def check_for_valid_json(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("check_for_valid_json() called")
+
+    playbook_input_sop_json = phantom.collect2(container=container, datapath=["playbook_input:sop_json"])
+
+    playbook_input_sop_json_values = [item[0] for item in playbook_input_sop_json]
+
+    check_for_valid_json__sop_json = None
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+    phantom.debug(playbook_input_sop_json)
+    try:
+        json_data = json.loads(playbook_input_sop_json)
+        phantom.debug("The string is a valid JSON.")
+        
+        formatted_json = json.dumps(json_data, indent=2)
+        phantom.debug(formatted_json)
+        
+    except ValueError as e:
+        phantom.debug("The string is not a valid JSON.")
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.save_run_data(key="check_for_valid_json:sop_json", value=json.dumps(check_for_valid_json__sop_json))
+
+    debug_delete(container=container)
 
     return
 
