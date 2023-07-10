@@ -352,6 +352,8 @@ def add_comment_7(action=None, success=None, container=None, results=None, handl
 
     phantom.comment(container=container, comment="SOP found in list")
 
+    filter_found_sop(container=container)
+
     return
 
 
@@ -435,6 +437,35 @@ def format_list_json_append_sop(action=None, success=None, container=None, resul
     phantom.format(container=container, template=template, parameters=parameters, name="format_list_json_append_sop")
 
     add_listitem_1(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def decision_version_check(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("decision_version_check() called")
+
+
+
+    return
+
+
+@phantom.playbook_block()
+def filter_found_sop(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("filter_found_sop() called")
+
+    # collect filtered artifact ids and results for 'if' condition 1
+    matched_artifacts_1, matched_results_1 = phantom.condition(
+        container=container,
+        conditions=[
+            ["finde_sop_in_list:action_result.data.0.0", "==", "playbook_input:sop_name"]
+        ],
+        name="filter_found_sop:condition_1",
+        delimiter=None)
+
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_1 or matched_results_1:
+        pass
 
     return
 

@@ -130,9 +130,16 @@
                     "sourcePort": "14_out",
                     "targetNode": "16",
                     "targetPort": "16_in"
+                },
+                {
+                    "id": "port_15_to_port_20",
+                    "sourceNode": "15",
+                    "sourcePort": "15_out",
+                    "targetNode": "20",
+                    "targetPort": "20_in"
                 }
             ],
-            "hash": "fed2dca3ebd0a184825a6e966ee3ab4c95d4ea34",
+            "hash": "78ce0a966e61dd07c831008904cd4d653ecca0ad",
             "nodes": {
                 "0": {
                     "data": {
@@ -707,6 +714,79 @@
                     "x": 1320,
                     "y": 1920
                 },
+                "19": {
+                    "data": {
+                        "advanced": {
+                            "customName": "decision version check",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "display": "If",
+                                "logic": "and",
+                                "type": "if"
+                            }
+                        ],
+                        "functionId": 3,
+                        "functionName": "decision_version_check",
+                        "id": "19",
+                        "type": "decision"
+                    },
+                    "errors": {},
+                    "id": "19",
+                    "type": "decision",
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
+                    "x": 1080,
+                    "y": 2100
+                },
+                "20": {
+                    "data": {
+                        "advanced": {
+                            "customName": "filter found SOP",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "finde_sop_in_list:action_result.data.0.0",
+                                        "value": "playbook_input:sop_name"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "customName": "filtered SOP",
+                                "logic": "and"
+                            }
+                        ],
+                        "functionId": 1,
+                        "functionName": "filter_found_sop",
+                        "id": "20",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "20",
+                    "type": "filter",
+                    "warnings": {},
+                    "x": 1050,
+                    "y": 1924.5
+                },
                 "4": {
                     "data": {
                         "advanced": {
@@ -953,7 +1033,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T13:50:59.842572+00:00",
+    "create_time": "2023-07-10T13:53:52.051175+00:00",
     "draft_mode": false,
     "labels": [
         "*"
