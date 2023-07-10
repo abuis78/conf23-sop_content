@@ -312,6 +312,8 @@ def check_for_valid_json(action=None, success=None, container=None, results=None
         data = ast.literal_eval(string)
         formatted_json = json.dumps(data, indent=2)
         phantom.debug(formatted_json)
+        
+    check_for_valid_json__sop_json
     ################################################################################
     ## Custom Code End
     ################################################################################
@@ -321,7 +323,6 @@ def check_for_valid_json(action=None, success=None, container=None, results=None
     debug_delete(container=container)
 
     return
-
 
 @phantom.playbook_block()
 def on_finish(container, summary):
