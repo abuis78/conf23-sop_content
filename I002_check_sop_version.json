@@ -45,7 +45,7 @@
                     "targetPort": "8_in"
                 }
             ],
-            "hash": "d024ded72f204575cc265e9eeef8810cc1998fc8",
+            "hash": "6c9d1f3d0dbfeb205301c57892d2be2cf17f1f17",
             "nodes": {
                 "0": {
                     "data": {
@@ -115,9 +115,9 @@
                                 "comparisons": [
                                     {
                                         "conditionIndex": 0,
-                                        "op": "==",
+                                        "op": ">",
                                         "param": "check_if_reference_list_exists:custom_function:list_status",
-                                        "value": ""
+                                        "value": "0"
                                     }
                                 ],
                                 "conditionIndex": 0,
@@ -129,6 +129,7 @@
                             {
                                 "comparisons": [
                                     {
+                                        "conditionIndex": 1,
                                         "op": "==",
                                         "param": "",
                                         "value": ""
@@ -303,7 +304,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T12:52:53.619631+00:00",
+    "create_time": "2023-07-10T12:54:11.921888+00:00",
     "draft_mode": false,
     "labels": [
         "*"
