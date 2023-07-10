@@ -612,6 +612,8 @@ def update_version_no_in_list(action=None, success=None, container=None, results
     ## Custom Code End
     ################################################################################
 
+    format_comment_update(container=container)
+
     return
 
 
@@ -650,6 +652,55 @@ def debug_12(action=None, success=None, container=None, results=None, handle=Non
     ################################################################################
 
     phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_12")
+
+    return
+
+
+@phantom.playbook_block()
+def add_comment_13(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_comment_13() called")
+
+    format_comment_update = phantom.get_format_data(name="format_comment_update")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.comment(container=container, comment=format_comment_update)
+
+    return
+
+
+@phantom.playbook_block()
+def format_comment_update(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("format_comment_update() called")
+
+    template = """SOP Version no. was set to: {0}\n"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "playbook_input:sop_version"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_comment_update")
+
+    add_comment_13(container=container)
 
     return
 

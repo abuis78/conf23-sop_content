@@ -199,9 +199,23 @@
                     "sourcePort": "22_out",
                     "targetNode": "26",
                     "targetPort": "26_in"
+                },
+                {
+                    "id": "port_25_to_port_28",
+                    "sourceNode": "25",
+                    "sourcePort": "25_out",
+                    "targetNode": "28",
+                    "targetPort": "28_in"
+                },
+                {
+                    "id": "port_28_to_port_27",
+                    "sourceNode": "28",
+                    "sourcePort": "28_out",
+                    "targetNode": "27",
+                    "targetPort": "27_in"
                 }
             ],
-            "hash": "4aa7c24afbfd849daac8f0f4b0493195ff349d52",
+            "hash": "ef24777d5a8fe19f849e3815724f57f0c5d99342",
             "nodes": {
                 "0": {
                     "data": {
@@ -1347,6 +1361,91 @@
                     "x": 600,
                     "y": 2504.5
                 },
+                "27": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 13,
+                        "functionName": "add_comment_13",
+                        "id": "27",
+                        "selectMore": false,
+                        "tab": "apis",
+                        "type": "utility",
+                        "utilities": {
+                            "comment": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "description": "",
+                                        "label": "comment",
+                                        "name": "comment",
+                                        "placeholder": "Enter a comment",
+                                        "renderType": "datapath",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "author",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "add comment",
+                                "name": "comment"
+                            }
+                        },
+                        "utilityType": "api",
+                        "values": {
+                            "comment": {
+                                "_internal": [
+                                    "container",
+                                    "author",
+                                    "trace"
+                                ],
+                                "comment": "format_comment_update:formatted_data"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "27",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 820,
+                    "y": 2940
+                },
+                "28": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format comment update",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 3,
+                        "functionName": "format_comment_update",
+                        "id": "28",
+                        "parameters": [
+                            "playbook_input:sop_version"
+                        ],
+                        "template": "SOP Version no. was set to: {0}\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "28",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 820,
+                    "y": 2804.5
+                },
                 "4": {
                     "data": {
                         "advanced": {
@@ -1593,7 +1692,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T14:40:22.933220+00:00",
+    "create_time": "2023-07-10T14:42:24.046765+00:00",
     "draft_mode": false,
     "labels": [
         "*"
