@@ -200,13 +200,13 @@ def post_data_1(action=None, success=None, container=None, results=None, handle=
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
-    format_json_for_create = phantom.get_format_data(name="format_json_for_create")
+    check_for_valid_json__sop_json = json.loads(_ if (_ := phantom.get_run_data(key="check_for_valid_json:sop_json")) != "" else "null")  # pylint: disable=used-before-assignment
 
     parameters = []
 
     parameters.append({
         "location": "/rest/workbook_template",
-        "body": format_json_for_create,
+        "body": check_for_valid_json__sop_json,
     })
 
     ################################################################################

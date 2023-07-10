@@ -87,7 +87,7 @@
                     "targetPort": "10_in"
                 }
             ],
-            "hash": "52218c516b7ddacc202d9abdf7ad150b19cfe960",
+            "hash": "2a7c001f87925af27db4a2bbe5250344f977c9c1",
             "nodes": {
                 "0": {
                     "data": {
@@ -138,7 +138,7 @@
                         "functionName": "post_data_1",
                         "id": "10",
                         "parameters": {
-                            "body": "format_json_for_create:formatted_data",
+                            "body": "check_for_valid_json:custom_function:sop_json",
                             "location": "/rest/workbook_template"
                         },
                         "requiredParameters": [
@@ -152,11 +152,7 @@
                     "errors": {},
                     "id": "10",
                     "type": "action",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 980,
                     "y": 1360
                 },
@@ -491,7 +487,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T20:06:03.238218+00:00",
+    "create_time": "2023-07-10T20:06:34.957122+00:00",
     "draft_mode": false,
     "labels": [
         "*"
