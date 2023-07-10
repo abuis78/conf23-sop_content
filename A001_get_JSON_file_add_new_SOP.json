@@ -21,21 +21,28 @@
                     "targetPort": "3_in"
                 },
                 {
-                    "id": "port_0_to_port_2",
-                    "sourceNode": "0",
-                    "sourcePort": "0_out",
-                    "targetNode": "2",
-                    "targetPort": "2_in"
-                },
-                {
                     "id": "port_9_to_port_10",
                     "sourceNode": "9",
                     "sourcePort": "9_out",
                     "targetNode": "10",
                     "targetPort": "10_in"
+                },
+                {
+                    "id": "port_0_to_port_13",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "13",
+                    "targetPort": "13_in"
+                },
+                {
+                    "id": "port_13_to_port_12",
+                    "sourceNode": "13",
+                    "sourcePort": "13_out",
+                    "targetNode": "12",
+                    "targetPort": "12_in"
                 }
             ],
-            "hash": "c8e81bed74cf5a062cc4834c3dd7d492f75dad1f",
+            "hash": "db0020ae90f41ee4dc05830d9aedde7b3d1d6757",
             "nodes": {
                 "0": {
                     "data": {
@@ -235,17 +242,53 @@
                     "id": "10",
                     "type": "utility",
                     "warnings": {},
-                    "x": 0,
-                    "y": 460
+                    "x": 300,
+                    "y": 480
                 },
-                "2": {
+                "12": {
                     "data": {
                         "advanced": {
                             "join": []
                         },
                         "functionId": 1,
-                        "functionName": "playbook_I001_extract_JSON_from_file_1",
-                        "id": "2",
+                        "functionName": "playbook_I002_check_sop_version_1",
+                        "id": "12",
+                        "inputs": {
+                            "sop_name": {
+                                "datapaths": [
+                                    "playbook_i001_extract_json_from_file_3:playbook_output:name"
+                                ],
+                                "deduplicate": false
+                            },
+                            "sop_version": {
+                                "datapaths": [
+                                    "playbook_i001_extract_json_from_file_3:playbook_output:version"
+                                ],
+                                "deduplicate": false
+                            }
+                        },
+                        "playbookName": "I002_check_sop_version",
+                        "playbookRepo": 10,
+                        "playbookRepoName": "conf23-sop_content",
+                        "playbookType": "data",
+                        "synchronous": true,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "12",
+                    "type": "playbook",
+                    "warnings": {},
+                    "x": 0,
+                    "y": 284.49999999999994
+                },
+                "13": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 3,
+                        "functionName": "playbook_I001_extract_JSON_from_file_3",
+                        "id": "13",
                         "inputs": {
                             "vault_id": {
                                 "datapaths": [
@@ -262,11 +305,11 @@
                         "type": "playbook"
                     },
                     "errors": {},
-                    "id": "2",
+                    "id": "13",
                     "type": "playbook",
                     "warnings": {},
-                    "x": 0,
-                    "y": 148
+                    "x": -1.4210854715202004e-14,
+                    "y": 144.49999999999997
                 },
                 "3": {
                     "data": {
@@ -467,11 +510,7 @@
                     "errors": {},
                     "id": "6",
                     "type": "format",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 0,
                     "y": 608
                 },
@@ -502,8 +541,8 @@
                             "Connect block to playbook flow."
                         ]
                     },
-                    "x": -1.4210854715202004e-14,
-                    "y": 311.9999999999999
+                    "x": 320,
+                    "y": 360
                 }
             },
             "notes": ""
@@ -515,7 +554,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T10:53:23.426854+00:00",
+    "create_time": "2023-07-10T12:15:15.438079+00:00",
     "draft_mode": false,
     "labels": [
         "*"

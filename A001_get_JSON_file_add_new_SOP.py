@@ -12,38 +12,10 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'playbook_i001_extract_json_from_file_1' block
-    playbook_i001_extract_json_from_file_1(container=container)
+    # call 'playbook_i001_extract_json_from_file_3' block
+    playbook_i001_extract_json_from_file_3(container=container)
 
     return
-
-@phantom.playbook_block()
-def playbook_i001_extract_json_from_file_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("playbook_i001_extract_json_from_file_1() called")
-
-    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.vaultId"])
-
-    container_artifact_cef_item_0 = [item[0] for item in container_artifact_data]
-
-    inputs = {
-        "vault_id": container_artifact_cef_item_0,
-    }
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    # call playbook "conf23-sop_content/I001_extract_JSON_from_file", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_1", inputs=inputs)
-
-    return
-
 
 @phantom.playbook_block()
 def format_sop_json(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
@@ -197,6 +169,65 @@ def debug_3(action=None, success=None, container=None, results=None, handle=None
     ################################################################################
 
     phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_3")
+
+    return
+
+
+@phantom.playbook_block()
+def playbook_i002_check_sop_version_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("playbook_i002_check_sop_version_1() called")
+
+    playbook_i001_extract_json_from_file_3_output_name = phantom.collect2(container=container, datapath=["playbook_i001_extract_json_from_file_3:playbook_output:name"])
+    playbook_i001_extract_json_from_file_3_output_version = phantom.collect2(container=container, datapath=["playbook_i001_extract_json_from_file_3:playbook_output:version"])
+
+    playbook_i001_extract_json_from_file_3_output_name_values = [item[0] for item in playbook_i001_extract_json_from_file_3_output_name]
+    playbook_i001_extract_json_from_file_3_output_version_values = [item[0] for item in playbook_i001_extract_json_from_file_3_output_version]
+
+    inputs = {
+        "sop_name": playbook_i001_extract_json_from_file_3_output_name_values,
+        "sop_version": playbook_i001_extract_json_from_file_3_output_version_values,
+    }
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    # call playbook "conf23-sop_content/I002_check_sop_version", returns the playbook_run_id
+    playbook_run_id = phantom.playbook("conf23-sop_content/I002_check_sop_version", container=container, name="playbook_i002_check_sop_version_1", inputs=inputs)
+
+    return
+
+
+@phantom.playbook_block()
+def playbook_i001_extract_json_from_file_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("playbook_i001_extract_json_from_file_3() called")
+
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.vaultId"])
+
+    container_artifact_cef_item_0 = [item[0] for item in container_artifact_data]
+
+    inputs = {
+        "vault_id": container_artifact_cef_item_0,
+    }
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    # call playbook "conf23-sop_content/I001_extract_JSON_from_file", returns the playbook_run_id
+    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_3", callback=playbook_i002_check_sop_version_1, inputs=inputs)
 
     return
 
