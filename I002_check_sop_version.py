@@ -243,7 +243,45 @@ def find_listitem_1(action=None, success=None, container=None, results=None, han
     ## Custom Code End
     ################################################################################
 
-    phantom.act("find listitem", parameters=parameters, name="find_listitem_1", assets=["phantom"])
+    phantom.act("find listitem", parameters=parameters, name="find_listitem_1", assets=["phantom"], callback=debug_6)
+
+    return
+
+
+@phantom.playbook_block()
+def debug_6(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("debug_6() called")
+
+    find_listitem_1_result_data = phantom.collect2(container=container, datapath=["find_listitem_1:action_result.message","find_listitem_1:action_result.parameter.context.artifact_id"], action_results=results)
+
+    find_listitem_1_result_message = [item[0] for item in find_listitem_1_result_data]
+
+    parameters = []
+
+    parameters.append({
+        "input_1": find_listitem_1_result_message,
+        "input_2": None,
+        "input_3": None,
+        "input_4": None,
+        "input_5": None,
+        "input_6": None,
+        "input_7": None,
+        "input_8": None,
+        "input_9": None,
+        "input_10": None,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_6")
 
     return
 
