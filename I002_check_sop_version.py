@@ -36,6 +36,7 @@ def check_if_reference_list_exists(action=None, success=None, container=None, re
     decided_list_tag_url = phantom.build_phantom_rest_url('decided_list')
     filter_parameter = "?_filter_name=" + playbook_input_liste_name[0][0]
     url = decided_list_tag_url + filter_parameter
+    phantom.debug(url)
     response = phantom.requests.get(url,verify=False)
     
     check_if_reference_list_exists__list_status = response.json()['count']
