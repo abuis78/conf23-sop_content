@@ -405,7 +405,7 @@ def add_listitem_1(action=None, success=None, container=None, results=None, hand
     ## Custom Code End
     ################################################################################
 
-    phantom.act("add listitem", parameters=parameters, name="add_listitem_1", assets=["phantom"])
+    phantom.act("add listitem", parameters=parameters, name="add_listitem_1", assets=["phantom"], callback=format_sop_version_check_new_1)
 
     return
 
@@ -529,6 +529,8 @@ def add_comment_11(action=None, success=None, container=None, results=None, hand
 
     phantom.comment(container=container, comment="The version is the same or older than the existing one")
 
+    format_sop_version_check_current(container=container)
+
     return
 
 
@@ -594,6 +596,8 @@ def add_comment_13(action=None, success=None, container=None, results=None, hand
 
     phantom.comment(container=container, comment=format_comment_update)
 
+    format_sop_version_check_updated(container=container)
+
     return
 
 
@@ -621,6 +625,142 @@ def format_comment_update(action=None, success=None, container=None, results=Non
     phantom.format(container=container, template=template, parameters=parameters, name="format_comment_update")
 
     add_comment_13(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def format_sop_version_check_updated(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("format_sop_version_check_updated() called")
+
+    template = """"""
+
+    # parameter list for template variable replacement
+    parameters = []
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_sop_version_check_updated")
+
+    join_noop_15(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def format_sop_version_check_current(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("format_sop_version_check_current() called")
+
+    template = """"""
+
+    # parameter list for template variable replacement
+    parameters = []
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_sop_version_check_current")
+
+    join_noop_15(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def format_sop_version_check_new_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("format_sop_version_check_new_1() called")
+
+    template = """"""
+
+    # parameter list for template variable replacement
+    parameters = []
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_sop_version_check_new_1")
+
+    join_noop_15(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def join_noop_15(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("join_noop_15() called")
+
+    # if the joined function has already been called, do nothing
+    if phantom.get_run_data(key="join_noop_15_called"):
+        return
+
+    # save the state that the joined function has now been called
+    phantom.save_run_data(key="join_noop_15_called", value="noop_15")
+
+    # call connected block "noop_15"
+    noop_15(container=container, handle=handle)
+
+    return
+
+
+@phantom.playbook_block()
+def noop_15(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("noop_15() called")
+
+    parameters = [{}]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="community/noop", parameters=parameters, name="noop_15", callback=code_4)
+
+    return
+
+
+@phantom.playbook_block()
+def code_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("code_4() called")
+
+    format_sop_version_check_updated = phantom.get_format_data(name="format_sop_version_check_updated")
+    format_sop_version_check_current = phantom.get_format_data(name="format_sop_version_check_current")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
 
     return
 

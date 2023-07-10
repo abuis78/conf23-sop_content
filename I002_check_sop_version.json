@@ -194,9 +194,58 @@
                     "sourcePort": "28_out",
                     "targetNode": "27",
                     "targetPort": "27_in"
+                },
+                {
+                    "id": "port_27_to_port_30",
+                    "sourceNode": "27",
+                    "sourcePort": "27_out",
+                    "targetNode": "30",
+                    "targetPort": "30_in"
+                },
+                {
+                    "id": "port_23_to_port_31",
+                    "sourceNode": "23",
+                    "sourcePort": "23_out",
+                    "targetNode": "31",
+                    "targetPort": "31_in"
+                },
+                {
+                    "id": "port_17_to_port_32",
+                    "sourceNode": "17",
+                    "sourcePort": "17_out",
+                    "targetNode": "32",
+                    "targetPort": "32_in"
+                },
+                {
+                    "id": "port_30_to_port_33",
+                    "sourceNode": "30",
+                    "sourcePort": "30_out",
+                    "targetNode": "33",
+                    "targetPort": "33_in"
+                },
+                {
+                    "id": "port_31_to_port_33",
+                    "sourceNode": "31",
+                    "sourcePort": "31_out",
+                    "targetNode": "33",
+                    "targetPort": "33_in"
+                },
+                {
+                    "id": "port_32_to_port_33",
+                    "sourceNode": "32",
+                    "sourcePort": "32_out",
+                    "targetNode": "33",
+                    "targetPort": "33_in"
+                },
+                {
+                    "id": "port_33_to_port_35",
+                    "sourceNode": "33",
+                    "sourcePort": "33_out",
+                    "targetNode": "35",
+                    "targetPort": "35_in"
                 }
             ],
-            "hash": "6d34dd07aa978ffeb18fb372c06377aac600abea",
+            "hash": "16e3ecfb7f839f21d206a032c8d3bfd6c7c9eb67",
             "nodes": {
                 "0": {
                     "data": {
@@ -227,8 +276,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 1200,
-                    "y": 3180
+                    "x": 1600,
+                    "y": 3200
                 },
                 "10": {
                     "data": {
@@ -791,6 +840,7 @@
                             {
                                 "comparisons": [
                                     {
+                                        "conditionIndex": 1,
                                         "op": "<=",
                                         "param": "playbook_input:sop_version",
                                         "value": "filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.data.0.1"
@@ -1085,6 +1135,130 @@
                     "x": 820,
                     "y": 2804.5
                 },
+                "30": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format_sop_version_check_updated",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 4,
+                        "functionName": "format_sop_version_check_updated",
+                        "id": "30",
+                        "parameters": [],
+                        "template": "",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "30",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 820,
+                    "y": 3064.5
+                },
+                "31": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format_sop_version_check_current",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 5,
+                        "functionName": "format_sop_version_check_current",
+                        "id": "31",
+                        "parameters": [],
+                        "template": "",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "31",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 1140,
+                    "y": 2524.5
+                },
+                "32": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format_sop_version_check_new",
+                            "customNameId": 1,
+                            "join": []
+                        },
+                        "functionId": 6,
+                        "functionName": "format_sop_version_check_new_1",
+                        "id": "32",
+                        "parameters": [],
+                        "template": "",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "32",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 1380,
+                    "y": 2660
+                },
+                "33": {
+                    "data": {
+                        "advanced": {
+                            "join": [],
+                            "notRequiredJoins": [
+                                "finde_sop_in_list",
+                                "add_listitem_1"
+                            ]
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "noop",
+                            "repoName": "community"
+                        },
+                        "functionId": 15,
+                        "functionName": "noop_15",
+                        "id": "33",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "noop": {
+                                "description": "Do nothing and return nothing. Use this if you want to do something in a custom function setup section or leave a placeholder block in a playbook. This does not sleep or wait and will return as soon as possible.",
+                                "fields": [],
+                                "label": "noop",
+                                "name": "noop"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "noop": {}
+                        }
+                    },
+                    "errors": {},
+                    "id": "33",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 1180,
+                    "y": 3200
+                },
+                "35": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 4,
+                        "functionName": "code_4",
+                        "id": "35",
+                        "inputParameters": [
+                            "format_sop_version_check_updated:formatted_data",
+                            "format_sop_version_check_current:formatted_data"
+                        ],
+                        "outputVariables": [],
+                        "type": "code"
+                    },
+                    "errors": {},
+                    "id": "35",
+                    "type": "code",
+                    "warnings": {},
+                    "x": 1180,
+                    "y": 3344.5
+                },
                 "4": {
                     "data": {
                         "advanced": {
@@ -1331,7 +1505,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T14:47:17.969256+00:00",
+    "create_time": "2023-07-10T14:55:57.160979+00:00",
     "draft_mode": false,
     "labels": [
         "*"
