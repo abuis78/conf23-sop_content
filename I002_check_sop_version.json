@@ -194,7 +194,7 @@
                     "targetPort": "25_in"
                 }
             ],
-            "hash": "14fb1386414310d858e04ce30c83606855d5e39b",
+            "hash": "5993d0a6218eb2ae0ca3ec7ebd6ff0c839bc3f6f",
             "nodes": {
                 "0": {
                     "data": {
@@ -1156,7 +1156,7 @@
                             "playbook_input:sop_version",
                             "playbook_input:liste_name",
                             "playbook_input:sop_name",
-                            "1"
+                            "finde_sop_in_list:action_result.summary.locations0.0"
                         ],
                         "outputVariables": [],
                         "type": "code"
@@ -1164,7 +1164,7 @@
                     "errors": {},
                     "id": "25",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    sop_version = playbook_input_sop_version[0][0]\n    sop_name = playbook_input_sop_name[0][0]\n    liste_name = playbook_input_liste_name[0][0]\n    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list',liste_name)\n    data = { \"update_rows\": { \"0\": [sop_name, sop_version]}}\n    response = phantom.requests.post(decided_list_tag_url,json=data,verify=False)\n",
+                    "userCode": "\n    # Write your custom code here...\n    sop_version = playbook_input_sop_version[0][0]\n    sop_name = playbook_input_sop_name[0][0]\n    liste_name = playbook_input_liste_name[0][0]\n    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list',liste_name)\n    data = { \"update_rows\": { finde_sop_in_list_summary_locations0_0: [sop_name, sop_version]}}\n    response = phantom.requests.post(decided_list_tag_url,json=data,verify=False)\n",
                     "warnings": {},
                     "x": 820,
                     "y": 2504.5
@@ -1415,7 +1415,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T14:28:21.696083+00:00",
+    "create_time": "2023-07-10T14:29:09.510803+00:00",
     "draft_mode": false,
     "labels": [
         "*"
