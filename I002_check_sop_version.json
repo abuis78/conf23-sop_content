@@ -245,7 +245,7 @@
                     "targetPort": "35_in"
                 }
             ],
-            "hash": "ea997af010e7de93f598a07e1c49792b2fd29d8e",
+            "hash": "5b50934fafc30a633755a42720f709199fe839a9",
             "nodes": {
                 "0": {
                     "data": {
@@ -261,7 +261,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 420
+                    "y": 419.9999999999999
                 },
                 "1": {
                     "data": {
@@ -1146,7 +1146,7 @@
                         "functionName": "format_sop_version_check_updated",
                         "id": "30",
                         "parameters": [],
-                        "template": "",
+                        "template": "update",
                         "type": "format"
                     },
                     "errors": {},
@@ -1154,7 +1154,7 @@
                     "type": "format",
                     "warnings": {},
                     "x": 820,
-                    "y": 3064.5
+                    "y": 3060
                 },
                 "31": {
                     "data": {
@@ -1167,7 +1167,7 @@
                         "functionName": "format_sop_version_check_current",
                         "id": "31",
                         "parameters": [],
-                        "template": "",
+                        "template": "nothing_to_do",
                         "type": "format"
                     },
                     "errors": {},
@@ -1188,7 +1188,7 @@
                         "functionName": "format_sop_version_check_new_1",
                         "id": "32",
                         "parameters": [],
-                        "template": "",
+                        "template": "newly_created",
                         "type": "format"
                     },
                     "errors": {},
@@ -1507,7 +1507,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T14:57:10.224070+00:00",
+    "create_time": "2023-07-10T18:37:27.439169+00:00",
     "draft_mode": false,
     "labels": [
         "*"

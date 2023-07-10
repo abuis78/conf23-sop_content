@@ -156,8 +156,8 @@ def post_data_1(action=None, success=None, container=None, results=None, handle=
     parameters = []
 
     parameters.append({
-        "location": "/rest/decided_list",
         "body": format_payload,
+        "location": "/rest/decided_list",
     })
 
     ################################################################################
@@ -229,10 +229,10 @@ def finde_sop_in_list(action=None, success=None, container=None, results=None, h
         for playbook_input_sop_name_item in playbook_input_sop_name:
             if playbook_input_liste_name_item[0] is not None and playbook_input_sop_name_item[0] is not None:
                 parameters.append({
-                    "exact_match": True,
                     "list": playbook_input_liste_name_item[0],
-                    "column_index": 0,
                     "values": playbook_input_sop_name_item[0],
+                    "exact_match": True,
+                    "column_index": 0,
                 })
 
     ################################################################################
@@ -633,7 +633,7 @@ def format_comment_update(action=None, success=None, container=None, results=Non
 def format_sop_version_check_updated(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_sop_version_check_updated() called")
 
-    template = """"""
+    template = """update"""
 
     # parameter list for template variable replacement
     parameters = []
@@ -659,7 +659,7 @@ def format_sop_version_check_updated(action=None, success=None, container=None, 
 def format_sop_version_check_current(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_sop_version_check_current() called")
 
-    template = """"""
+    template = """nothing_to_do"""
 
     # parameter list for template variable replacement
     parameters = []
@@ -685,7 +685,7 @@ def format_sop_version_check_current(action=None, success=None, container=None, 
 def format_sop_version_check_new_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_sop_version_check_new_1() called")
 
-    template = """"""
+    template = """newly_created"""
 
     # parameter list for template variable replacement
     parameters = []
