@@ -40,7 +40,7 @@ def get_file_information_extract_content(action=None, success=None, container=No
         name = json.dumps(json_data["name"]) 
         # phantom.debug("path: {}".format(path))
         # phantom.debug("name: {}".format(name))
-        file_path_name = path + "/" + name
+        file_path_name = str(path) + "/" + str(name)
         
         with open(file_path_name) as file:
             data = json.load(file)
