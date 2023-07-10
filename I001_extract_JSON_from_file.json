@@ -21,7 +21,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "ffc53c0d7c6dc6acf84d20068041df2a8fc1a9a2",
+            "hash": "bc51714e387f62911e71d3d68d8016a3b094b19b",
             "nodes": {
                 "0": {
                     "data": {
@@ -37,7 +37,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999999
+                    "y": 419.9999999999998
                 },
                 "1": {
                     "data": {
@@ -76,7 +76,7 @@
                     "errors": {},
                     "id": "2",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    for item in playbook_input_vault_id:\n        vault_id = playbook_input_vault_id[0]\n        success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])\n        phantom.debug(\"vault_info: {}\".format(vault_info))\n        path = json.dumps(vault_info[0][\"path\"]) \n        name = json.dumps(vault_info[0][\"name\"]) \n        #phantom.debug(\"path: {}\".format(path))\n        #phantom.debug(\"name: {}\".format(name))\n        file_path_name = path + name\n        phantom.debug(file_path_name)\n        \n        # with open(file_path_name) as file:\n            # data = json.load(file)\n        \n        # phantom.debug(\"data: {}\".format(data))\n\n",
+                    "userCode": "\n    # Write your custom code here...\n    for item in playbook_input_vault_id:\n        vault_id = playbook_input_vault_id[0]\n        success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])\n        phantom.debug(\"vault_info: {}\".format(vault_info))\n        path = json.dumps(vault_info[0][\"path\"]) \n        name = json.dumps(vault_info[0][\"name\"]) \n        phantom.debug(\"path: {}\".format(path))\n        phantom.debug(\"name: {}\".format(name))\n        file_path_name = path + name\n        phantom.debug(file_path_name)\n        \n        # with open(file_path_name) as file:\n            # data = json.load(file)\n        \n        # phantom.debug(\"data: {}\".format(data))\n\n",
                     "warnings": {},
                     "x": 980,
                     "y": 560
@@ -108,7 +108,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T08:59:52.549530+00:00",
+    "create_time": "2023-07-10T09:03:03.234699+00:00",
     "draft_mode": false,
     "labels": [
         "*"
