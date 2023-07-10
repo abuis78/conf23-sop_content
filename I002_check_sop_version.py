@@ -758,6 +758,9 @@ def code_4(action=None, success=None, container=None, results=None, handle=None,
     ################################################################################
 
     # Write your custom code here...
+    phantom.debug(format_sop_version_check_updated)
+    phantom.debug(format_sop_version_check_current)
+    phantom.debug(format_sop_version_check_new_1)
 
     ################################################################################
     ## Custom Code End

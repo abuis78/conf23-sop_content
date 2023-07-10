@@ -245,7 +245,7 @@
                     "targetPort": "35_in"
                 }
             ],
-            "hash": "82e93980038cf8651e0e618d24007ee0d9d94b40",
+            "hash": "ea997af010e7de93f598a07e1c49792b2fd29d8e",
             "nodes": {
                 "0": {
                     "data": {
@@ -1256,6 +1256,7 @@
                     "errors": {},
                     "id": "35",
                     "type": "code",
+                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(format_sop_version_check_updated)\n    phantom.debug(format_sop_version_check_current)\n    phantom.debug(format_sop_version_check_new_1)\n\n",
                     "warnings": {},
                     "x": 1180,
                     "y": 3344.5
@@ -1506,7 +1507,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T14:56:14.114578+00:00",
+    "create_time": "2023-07-10T14:57:10.224070+00:00",
     "draft_mode": false,
     "labels": [
         "*"
