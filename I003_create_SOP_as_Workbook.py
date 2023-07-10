@@ -157,7 +157,7 @@ def delete_sop(action=None, success=None, container=None, results=None, handle=N
 def debug_delete(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_delete() called")
 
-    get_sop_id_for_update_result_data = phantom.collect2(container=container, datapath=["get_sop_id_for_update:action_result.data.*.parsed_response_body","get_sop_id_for_update:action_result.data.*.parsed_response_body.data.0","get_sop_id_for_update:action_result.data","get_sop_id_for_update:action_result.parameter.context.artifact_id"], action_results=results)
+    get_sop_id_for_update_result_data = phantom.collect2(container=container, datapath=["get_sop_id_for_update:action_result.data.*.parsed_response_body","get_sop_id_for_update:action_result.data.*.parsed_response_body.data.0.id","get_sop_id_for_update:action_result.data","get_sop_id_for_update:action_result.parameter.context.artifact_id"], action_results=results)
 
     get_sop_id_for_update_result_item_0 = [item[0] for item in get_sop_id_for_update_result_data]
     get_sop_id_for_update_result_item_1 = [item[1] for item in get_sop_id_for_update_result_data]

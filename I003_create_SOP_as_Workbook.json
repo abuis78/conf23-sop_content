@@ -47,6 +47,7 @@
                     "targetPort": "7_in"
                 }
             ],
+            "hash": "37b8bd69320e7080b198e8872f8e54d832ee7e2b",
             "nodes": {
                 "0": {
                     "data": {
@@ -212,6 +213,9 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 800,
@@ -407,7 +411,7 @@
                                 ],
                                 "input_10": null,
                                 "input_2": [
-                                    "get_sop_id_for_update:action_result.data.*.parsed_response_body.data.0"
+                                    "get_sop_id_for_update:action_result.data.*.parsed_response_body.data.0.id"
                                 ],
                                 "input_3": [
                                     "get_sop_id_for_update:action_result.data"
@@ -463,7 +467,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T19:37:22.759924+00:00",
+    "create_time": "2023-07-10T19:40:21.175616+00:00",
     "draft_mode": false,
     "labels": [
         "*"
