@@ -40,7 +40,7 @@ def playbook_i001_extract_json_from_file_1(action=None, success=None, container=
     ################################################################################
 
     # call playbook "conf23-sop_content/I001_extract_JSON_from_file", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_1", inputs=inputs)
+    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_1", callback=format_playbook_output, inputs=inputs)
 
     return
 
@@ -196,7 +196,7 @@ def debug_3(action=None, success=None, container=None, results=None, handle=None
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_3", callback=format_sop_name)
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_3")
 
     return
 

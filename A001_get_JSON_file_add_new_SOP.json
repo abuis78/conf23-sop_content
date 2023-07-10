@@ -35,14 +35,14 @@
                     "targetPort": "10_in"
                 },
                 {
-                    "id": "port_10_to_port_6",
-                    "sourceNode": "10",
-                    "sourcePort": "10_out",
-                    "targetNode": "6",
-                    "targetPort": "6_in"
+                    "id": "port_2_to_port_9",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "9",
+                    "targetPort": "9_in"
                 }
             ],
-            "hash": "6e94a6e8b9b18512c1aee2aecb8cb6fb50051096",
+            "hash": "db614f6c36f59ce6bb3834714f7debc6edd73894",
             "nodes": {
                 "0": {
                     "data": {
@@ -294,7 +294,11 @@
                     "errors": {},
                     "id": "3",
                     "type": "format",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 0,
                     "y": 756
                 },
@@ -470,7 +474,11 @@
                     "errors": {},
                     "id": "6",
                     "type": "format",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 0,
                     "y": 608
                 },
@@ -493,15 +501,8 @@
                     "errors": {},
                     "id": "9",
                     "type": "format",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
-                    "x": -1.4210854715202004e-14,
+                    "warnings": {},
+                    "x": 0,
                     "y": 311.99999999999994
                 }
             },
@@ -514,7 +515,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T10:51:11.950603+00:00",
+    "create_time": "2023-07-10T10:53:12.331411+00:00",
     "draft_mode": false,
     "labels": [
         "*"
