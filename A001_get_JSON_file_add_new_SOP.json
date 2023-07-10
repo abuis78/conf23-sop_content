@@ -71,13 +71,6 @@
                     "targetPort": "21_in"
                 },
                 {
-                    "id": "port_19_to_port_22",
-                    "sourceNode": "19",
-                    "sourcePort": "19_out",
-                    "targetNode": "22",
-                    "targetPort": "22_in"
-                },
-                {
                     "id": "port_20_to_port_1",
                     "sourceNode": "20",
                     "sourcePort": "20_out",
@@ -85,7 +78,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "01b94446a56d66fe6a4b05c6328283e83c3c82a7",
+            "hash": "89ea265165eb056b44a7b5268b04116a3620fa2a",
             "nodes": {
                 "0": {
                     "data": {
@@ -101,7 +94,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 19.999999999999986,
-                    "y": -1.2789769243681803e-13
+                    "y": -1.9184653865522705e-13
                 },
                 "1": {
                     "data": {
@@ -116,7 +109,7 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": -40,
+                    "x": -40.000000000000014,
                     "y": 1240
                 },
                 "13": {
@@ -147,7 +140,7 @@
                     "type": "playbook",
                     "warnings": {},
                     "x": -1.4210854715202004e-14,
-                    "y": 144.49999999999991
+                    "y": 144.4999999999999
                 },
                 "15": {
                     "data": {
@@ -189,7 +182,7 @@
                     "type": "playbook",
                     "warnings": {},
                     "x": 0,
-                    "y": 260
+                    "y": 259.99999999999994
                 },
                 "17": {
                     "data": {
@@ -378,7 +371,7 @@
                     "id": "19",
                     "type": "utility",
                     "warnings": {},
-                    "x": 0,
+                    "x": -1.4210854715202004e-14,
                     "y": 620
                 },
                 "20": {
@@ -460,6 +453,12 @@
                                 ],
                                 "deduplicate": false
                             },
+                            "sop_name": {
+                                "datapaths": [
+                                    "playbook_i001_extract_json_from_file_3:playbook_output:name"
+                                ],
+                                "deduplicate": false
+                            },
                             "task": {
                                 "datapaths": [
                                     "update"
@@ -480,42 +479,6 @@
                     "warnings": {},
                     "x": -340,
                     "y": 824.5
-                },
-                "22": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "functionId": 2,
-                        "functionName": "playbook_I003_create_SOP_as_Workbook_2",
-                        "id": "22",
-                        "inputs": {
-                            "sop_json": {
-                                "datapaths": [
-                                    "playbook_i001_extract_json_from_file_3:playbook_output:json_content"
-                                ],
-                                "deduplicate": false
-                            },
-                            "task": {
-                                "datapaths": [
-                                    "create"
-                                ],
-                                "deduplicate": false
-                            }
-                        },
-                        "playbookName": "I003_create_SOP_as_Workbook",
-                        "playbookRepo": 10,
-                        "playbookRepoName": "conf23-sop_content",
-                        "playbookType": "data",
-                        "synchronous": true,
-                        "type": "playbook"
-                    },
-                    "errors": {},
-                    "id": "22",
-                    "type": "playbook",
-                    "warnings": {},
-                    "x": -1.4210854715202004e-14,
-                    "y": 824.5
                 }
             },
             "notes": ""
@@ -527,7 +490,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T19:13:22.684401+00:00",
+    "create_time": "2023-07-10T19:22:17.431929+00:00",
     "draft_mode": false,
     "labels": [
         "*"
