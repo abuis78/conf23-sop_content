@@ -40,8 +40,16 @@
                     "sourcePort": "13_out",
                     "targetNode": "12",
                     "targetPort": "12_in"
+                },
+                {
+                    "id": "port_12_to_port_14",
+                    "sourceNode": "12",
+                    "sourcePort": "12_out",
+                    "targetNode": "14",
+                    "targetPort": "14_in"
                 }
             ],
+            "hash": "96f6ec119658e1632fce0137515fdc5bb19996ce",
             "nodes": {
                 "0": {
                     "data": {
@@ -310,6 +318,48 @@
                     "x": -1.4210854715202004e-14,
                     "y": 144.49999999999997
                 },
+                "14": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "playbook_I002_check_sop_version_2",
+                        "id": "14",
+                        "inputs": {
+                            "liste_name": {
+                                "datapaths": [
+                                    "SOP"
+                                ],
+                                "deduplicate": false
+                            },
+                            "sop_name": {
+                                "datapaths": [
+                                    "playbook_i002_check_sop_version_1:playbook_input:sop_name"
+                                ],
+                                "deduplicate": false
+                            },
+                            "sop_version": {
+                                "datapaths": [
+                                    "playbook_i002_check_sop_version_1:playbook_input:sop_version"
+                                ],
+                                "deduplicate": false
+                            }
+                        },
+                        "playbookName": "I002_check_sop_version",
+                        "playbookRepo": 10,
+                        "playbookRepoName": "conf23-sop_content",
+                        "playbookType": "data",
+                        "synchronous": true,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "14",
+                    "type": "playbook",
+                    "warnings": {},
+                    "x": 0,
+                    "y": 404.5
+                },
                 "3": {
                     "data": {
                         "advanced": {
@@ -509,11 +559,7 @@
                     "errors": {},
                     "id": "6",
                     "type": "format",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 0,
                     "y": 608
                 },
@@ -539,6 +585,9 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 320,
@@ -554,7 +603,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T12:15:15.438079+00:00",
+    "create_time": "2023-07-10T12:37:56.462240+00:00",
     "draft_mode": false,
     "labels": [
         "*"
