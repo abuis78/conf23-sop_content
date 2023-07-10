@@ -48,31 +48,37 @@ def check_if_reference_list_exists(action=None, success=None, container=None, re
 
     phantom.save_run_data(key="check_if_reference_list_exists:list_status", value=json.dumps(check_if_reference_list_exists__list_status))
 
-    debug_2(container=container)
+    decision_1(container=container)
 
     return
 
 
 @phantom.playbook_block()
-def debug_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("debug_2() called")
+def decision_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("decision_1() called")
 
-    check_if_reference_list_exists__list_status = json.loads(_ if (_ := phantom.get_run_data(key="check_if_reference_list_exists:list_status")) != "" else "null")  # pylint: disable=used-before-assignment
+    # check for 'if' condition 1
+    found_match_1 = phantom.decision(
+        container=container,
+        conditions=[
+            ["check_if_reference_list_exists:custom_function:list_status", "==", ""]
+        ],
+        delimiter=None)
 
-    parameters = []
+    # call connected blocks if condition 1 matched
+    if found_match_1:
+        add_comment_3(action=action, success=success, container=container, results=results, handle=handle)
+        return
 
-    parameters.append({
-        "input_1": check_if_reference_list_exists__list_status,
-        "input_2": None,
-        "input_3": None,
-        "input_4": None,
-        "input_5": None,
-        "input_6": None,
-        "input_7": None,
-        "input_8": None,
-        "input_9": None,
-        "input_10": None,
-    })
+    # check for 'else' condition 2
+    add_comment_4(action=action, success=success, container=container, results=results, handle=handle)
+
+    return
+
+
+@phantom.playbook_block()
+def add_comment_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_comment_3() called")
 
     ################################################################################
     ## Custom Code Start
@@ -84,7 +90,26 @@ def debug_2(action=None, success=None, container=None, results=None, handle=None
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_2")
+    phantom.comment(container=container, comment="reference list exists")
+
+    return
+
+
+@phantom.playbook_block()
+def add_comment_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_comment_4() called")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.comment(container=container, comment="add missing reference list")
 
     return
 
