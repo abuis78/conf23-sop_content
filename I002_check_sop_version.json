@@ -132,7 +132,7 @@
                     "targetPort": "17_in"
                 }
             ],
-            "hash": "fd582aac49757fcb88b6d4ade02c0b5029437553",
+            "hash": "a972ee85c473257e0e7520fba21ecb95643f27d9",
             "nodes": {
                 "0": {
                     "data": {
@@ -647,7 +647,7 @@
                         "id": "17",
                         "parameters": {
                             "list": "playbook_input:liste_name",
-                            "new_row": "format_list_json_append_sop:formatted_data"
+                            "new_row": "hallo,nein"
                         },
                         "requiredParameters": [
                             {
@@ -939,7 +939,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T13:31:46.979713+00:00",
+    "create_time": "2023-07-10T13:32:31.824917+00:00",
     "draft_mode": false,
     "labels": [
         "*"
