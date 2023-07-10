@@ -33,16 +33,9 @@
                     "sourcePort": "9_out",
                     "targetNode": "10",
                     "targetPort": "10_in"
-                },
-                {
-                    "id": "port_2_to_port_9",
-                    "sourceNode": "2",
-                    "sourcePort": "2_out",
-                    "targetNode": "9",
-                    "targetPort": "9_in"
                 }
             ],
-            "hash": "db614f6c36f59ce6bb3834714f7debc6edd73894",
+            "hash": "c8e81bed74cf5a062cc4834c3dd7d492f75dad1f",
             "nodes": {
                 "0": {
                     "data": {
@@ -501,9 +494,16 @@
                     "errors": {},
                     "id": "9",
                     "type": "format",
-                    "warnings": {},
-                    "x": 0,
-                    "y": 311.99999999999994
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
+                    "x": -1.4210854715202004e-14,
+                    "y": 311.9999999999999
                 }
             },
             "notes": ""
@@ -515,7 +515,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T10:53:12.331411+00:00",
+    "create_time": "2023-07-10T10:53:23.426854+00:00",
     "draft_mode": false,
     "labels": [
         "*"
