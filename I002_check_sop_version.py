@@ -770,6 +770,8 @@ def set_type_of_update_in_the_list(action=None, success=None, container=None, re
         set_type_of_update_in_the_list__status_type = format_sop_version_check_current
     elif format_sop_version_check_new_1 is not None:
         set_type_of_update_in_the_list__status_type = format_sop_version_check_new_1
+        
+    phantom.debug(set_type_of_update_in_the_list__status_type)
 
     ################################################################################
     ## Custom Code End
