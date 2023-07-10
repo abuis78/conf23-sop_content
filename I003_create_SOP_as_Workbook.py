@@ -70,7 +70,7 @@ def get_sop_id_for_update(action=None, success=None, container=None, results=Non
     ## Custom Code End
     ################################################################################
 
-    phantom.act("get data", parameters=parameters, name="get_sop_id_for_update", assets=["soar_http"], callback=debug_delete)
+    phantom.act("get data", parameters=parameters, name="get_sop_id_for_update", assets=["soar_http"], callback=format_endpoint_delete_sop)
 
     return
 
@@ -103,7 +103,7 @@ def format_endpoint_delete_sop(action=None, success=None, container=None, result
 
     # parameter list for template variable replacement
     parameters = [
-        "get_sop_id_for_update:action_result.data.*.response_body.*.id"
+        "get_sop_id_for_update:action_result.data.*.parsed_response_body.data.0.id"
     ]
 
     ################################################################################
