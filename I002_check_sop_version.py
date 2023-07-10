@@ -33,13 +33,14 @@ def check_if_reference_list_exists(action=None, success=None, container=None, re
 
     # Write your custom code here.../rest/decided_list?_filter_name="SOP"
     phantom.debug(playbook_input_liste_name[0][0])
+    liste_name = playbook_input_liste_name[0][0]
     decided_list_tag_url = phantom.build_phantom_rest_url('decided_list')
-    filter_parameter = '?_filter_name="' + playbook_input_liste_name[0][0] + '"'
+    filter_parameter = '?_filter_name="' + liste_name + '"'
     url = decided_list_tag_url + filter_parameter
     phantom.debug(url)
     response = phantom.requests.get(url,verify=False)
     
-    check_if_reference_list_exists__list_status = response.json()['count']
+    phantom.debug(response.json()['count'])
 
     ################################################################################
     ## Custom Code End
