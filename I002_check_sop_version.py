@@ -41,6 +41,7 @@ def check_if_reference_list_exists(action=None, success=None, container=None, re
     response = phantom.requests.get(url,verify=False)
     
     phantom.debug(response.json()['count'])
+    check_if_reference_list_exists__list_status = response.json()['count']
 
     ################################################################################
     ## Custom Code End

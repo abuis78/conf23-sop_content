@@ -59,7 +59,7 @@
                     "targetPort": "10_in"
                 }
             ],
-            "hash": "89c4121eeae29b4a0d4f5183a62c2e22a34e0325",
+            "hash": "c1b8b1fcf0411727cd9a2b4af84a5658b1082b76",
             "nodes": {
                 "0": {
                     "data": {
@@ -149,7 +149,7 @@
                     "errors": {},
                     "id": "4",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here.../rest/decided_list?_filter_name=\"SOP\"\n    phantom.debug(playbook_input_liste_name[0][0])\n    liste_name = playbook_input_liste_name[0][0]\n    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list')\n    filter_parameter = '?_filter_name=\"' + liste_name + '\"'\n    url = decided_list_tag_url + filter_parameter\n    phantom.debug(url)\n    response = phantom.requests.get(url,verify=False)\n    \n    phantom.debug(response.json()['count'])\n\n",
+                    "userCode": "\n    # Write your custom code here.../rest/decided_list?_filter_name=\"SOP\"\n    phantom.debug(playbook_input_liste_name[0][0])\n    liste_name = playbook_input_liste_name[0][0]\n    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list')\n    filter_parameter = '?_filter_name=\"' + liste_name + '\"'\n    url = decided_list_tag_url + filter_parameter\n    phantom.debug(url)\n    response = phantom.requests.get(url,verify=False)\n    \n    phantom.debug(response.json()['count'])\n    check_if_reference_list_exists__list_status = response.json()['count']\n\n",
                     "warnings": {},
                     "x": 980,
                     "y": 584.5
@@ -374,7 +374,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T13:05:26.828132+00:00",
+    "create_time": "2023-07-10T13:06:16.909693+00:00",
     "draft_mode": false,
     "labels": [
         "*"
