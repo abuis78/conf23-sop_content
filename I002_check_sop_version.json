@@ -194,7 +194,7 @@
                     "targetPort": "25_in"
                 }
             ],
-            "hash": "d605a2bc9777229b3c1f8883884b8501ebe7a0d6",
+            "hash": "c00a2084a08363ce6aa6781fe5a58f0e7d86e2f8",
             "nodes": {
                 "0": {
                     "data": {
@@ -1155,7 +1155,8 @@
                         "inputParameters": [
                             "playbook_input:sop_version",
                             "playbook_input:liste_name",
-                            "playbook_input:sop_name"
+                            "playbook_input:sop_name",
+                            "filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.summary.locations.0.1"
                         ],
                         "outputVariables": [],
                         "type": "code"
@@ -1163,7 +1164,7 @@
                     "errors": {},
                     "id": "25",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(playbook_input_liste_name[0][0])\n    liste_name = playbook_input_liste_name[0][0]\n    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list',liste_name)\n    data = { \"update_rows\": { \"0\": [playbook_input_sop_name, playbook_input_sop_version]}}\n    response = phantom.requests.post(decided_list_tag_url,json=data,verify=False)\n",
+                    "userCode": "\n    # Write your custom code here...\n    sop_version = playbook_input_sop_version[0][0]\n    sop_name = playbook_input_liste_name[0][0]\n    liste_name = playbook_input_liste_name[0][0]\n    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list',liste_name)\n    data = { \"update_rows\": { \"0\": [sop_name, sop_version]}}\n    response = phantom.requests.post(decided_list_tag_url,json=data,verify=False)\n",
                     "warnings": {},
                     "x": 820,
                     "y": 2504.5
@@ -1414,7 +1415,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T14:17:38.821158+00:00",
+    "create_time": "2023-07-10T14:20:39.062512+00:00",
     "draft_mode": false,
     "labels": [
         "*"
