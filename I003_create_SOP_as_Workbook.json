@@ -33,7 +33,7 @@
                     "targetPort": "2_in"
                 }
             ],
-            "hash": "9fcc7ca4d6aecabdff73185c2fca2f1ae549452c",
+            "hash": "9cffac798eb9759b32e48dfe33c2e8a1a7559a7a",
             "nodes": {
                 "0": {
                     "data": {
@@ -78,7 +78,7 @@
                         "functionName": "format_endpoint",
                         "id": "2",
                         "parameters": [
-                            "playbook_input:sop_json"
+                            "playbook_input:sop_name"
                         ],
                         "template": "/rest/workbook_template?_filter_name=\"{0}\"",
                         "type": "format"
@@ -152,6 +152,7 @@
                             {
                                 "comparisons": [
                                     {
+                                        "conditionIndex": 1,
                                         "op": "==",
                                         "param": "",
                                         "value": ""
@@ -211,7 +212,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T19:21:56.777581+00:00",
+    "create_time": "2023-07-10T19:25:43.167731+00:00",
     "draft_mode": false,
     "labels": [
         "*"

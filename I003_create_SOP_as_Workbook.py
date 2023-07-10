@@ -25,7 +25,7 @@ def format_endpoint(action=None, success=None, container=None, results=None, han
 
     # parameter list for template variable replacement
     parameters = [
-        "playbook_input:sop_json"
+        "playbook_input:sop_name"
     ]
 
     ################################################################################
