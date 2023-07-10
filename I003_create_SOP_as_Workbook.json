@@ -5,7 +5,35 @@
     "coa": {
         "data": {
             "description": "",
-            "edges": [],
+            "edges": [
+                {
+                    "id": "port_2_to_port_3",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
+                },
+                {
+                    "id": "port_0_to_port_4",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_4_to_port_2",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
+                }
+            ],
+            "hash": "b0bd5335e3d839fdc246bb6c8aa5a947dcd7e7e7",
             "nodes": {
                 "0": {
                     "data": {
@@ -21,7 +49,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 420
+                    "y": 220
                 },
                 "1": {
                     "data": {
@@ -38,6 +66,115 @@
                     "warnings": {},
                     "x": 1000,
                     "y": 1000
+                },
+                "2": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format endpoint",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "format_endpoint",
+                        "id": "2",
+                        "parameters": [
+                            "playbook_input:sop_json"
+                        ],
+                        "template": "{0}",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "2",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 800,
+                    "y": 560
+                },
+                "3": {
+                    "data": {
+                        "action": "get data",
+                        "actionType": "investigate",
+                        "advanced": {
+                            "customName": "get_SOP_ID_for_update",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "connector": "HTTP",
+                        "connectorConfigs": [
+                            "soar_http"
+                        ],
+                        "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "get_sop_id_for_update",
+                        "id": "3",
+                        "parameters": {
+                            "location": "format_endpoint:formatted_data"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "location"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "3",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 800,
+                    "y": 700
+                },
+                "4": {
+                    "data": {
+                        "advanced": {
+                            "customName": "decision_task_type",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "playbook_input:task",
+                                        "value": "update"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "customName": "update",
+                                "display": "If",
+                                "logic": "and",
+                                "type": "if"
+                            },
+                            {
+                                "comparisons": [
+                                    {
+                                        "op": "==",
+                                        "param": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "conditionIndex": 1,
+                                "customName": "create",
+                                "display": "Else",
+                                "logic": "and",
+                                "type": "else"
+                            }
+                        ],
+                        "functionId": 1,
+                        "functionName": "decision_task_type",
+                        "id": "4",
+                        "type": "decision"
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "decision",
+                    "warnings": {},
+                    "x": 1060,
+                    "y": 364.5
                 }
             },
             "notes": ""
@@ -69,7 +206,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T19:05:58.718922+00:00",
+    "create_time": "2023-07-10T19:19:47.686761+00:00",
     "draft_mode": false,
     "labels": [
         "*"
