@@ -61,7 +61,7 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
     found_match_1 = phantom.decision(
         container=container,
         conditions=[
-            ["check_if_reference_list_exists:custom_function:list_status", ">", 0]
+            ["check_if_reference_list_exists:custom_function:list_status", "==", 1]
         ],
         delimiter=None)
 
