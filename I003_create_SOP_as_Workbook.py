@@ -70,7 +70,7 @@ def get_sop_id_for_update(action=None, success=None, container=None, results=Non
     ## Custom Code End
     ################################################################################
 
-    phantom.act("get data", parameters=parameters, name="get_sop_id_for_update", assets=["soar_http"], callback=debug_1)
+    phantom.act("get data", parameters=parameters, name="get_sop_id_for_update", assets=["soar_http"], callback=debug_delete)
 
     return
 
@@ -154,8 +154,8 @@ def delete_sop(action=None, success=None, container=None, results=None, handle=N
 
 
 @phantom.playbook_block()
-def debug_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("debug_1() called")
+def debug_delete(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("debug_delete() called")
 
     get_sop_id_for_update_result_data = phantom.collect2(container=container, datapath=["get_sop_id_for_update:action_result.data.*.parsed_response_body","get_sop_id_for_update:action_result.data.*.parsed_response_body.data.0","get_sop_id_for_update:action_result.parameter.context.artifact_id"], action_results=results)
 
@@ -187,7 +187,7 @@ def debug_1(action=None, success=None, container=None, results=None, handle=None
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_1")
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_delete")
 
     return
 
