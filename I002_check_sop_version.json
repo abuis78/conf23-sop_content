@@ -185,9 +185,16 @@
                     "sourcePort": "19_out",
                     "targetNode": "23",
                     "targetPort": "23_in"
+                },
+                {
+                    "id": "port_22_to_port_25",
+                    "sourceNode": "22",
+                    "sourcePort": "22_out",
+                    "targetNode": "25",
+                    "targetPort": "25_in"
                 }
             ],
-            "hash": "ccbb45073a44d64d41c053c7342ff6a3644f21d3",
+            "hash": "d605a2bc9777229b3c1f8883884b8501ebe7a0d6",
             "nodes": {
                 "0": {
                     "data": {
@@ -218,8 +225,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 1140,
-                    "y": 2540
+                    "x": 1520,
+                    "y": 2720
                 },
                 "10": {
                     "data": {
@@ -1135,6 +1142,32 @@
                     "x": 1140,
                     "y": 2364.5
                 },
+                "25": {
+                    "data": {
+                        "advanced": {
+                            "customName": "update version no in list ",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "update_version_no_in_list",
+                        "id": "25",
+                        "inputParameters": [
+                            "playbook_input:sop_version",
+                            "playbook_input:liste_name",
+                            "playbook_input:sop_name"
+                        ],
+                        "outputVariables": [],
+                        "type": "code"
+                    },
+                    "errors": {},
+                    "id": "25",
+                    "type": "code",
+                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(playbook_input_liste_name[0][0])\n    liste_name = playbook_input_liste_name[0][0]\n    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list',liste_name)\n    data = { \"update_rows\": { \"0\": [playbook_input_sop_name, playbook_input_sop_version]}}\n    response = phantom.requests.post(decided_list_tag_url,json=data,verify=False)\n",
+                    "warnings": {},
+                    "x": 820,
+                    "y": 2504.5
+                },
                 "4": {
                     "data": {
                         "advanced": {
@@ -1381,7 +1414,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T14:00:56.743242+00:00",
+    "create_time": "2023-07-10T14:17:38.821158+00:00",
     "draft_mode": false,
     "labels": [
         "*"

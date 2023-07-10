@@ -548,6 +548,8 @@ def add_comment_10(action=None, success=None, container=None, results=None, hand
 
     phantom.comment(container=container, comment="There is a new version")
 
+    update_version_no_in_list(container=container)
+
     return
 
 
@@ -566,6 +568,35 @@ def add_comment_11(action=None, success=None, container=None, results=None, hand
     ################################################################################
 
     phantom.comment(container=container, comment="The version is the same or older than the existing one")
+
+    return
+
+
+@phantom.playbook_block()
+def update_version_no_in_list(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("update_version_no_in_list() called")
+
+    playbook_input_sop_version = phantom.collect2(container=container, datapath=["playbook_input:sop_version"])
+    playbook_input_liste_name = phantom.collect2(container=container, datapath=["playbook_input:liste_name"])
+    playbook_input_sop_name = phantom.collect2(container=container, datapath=["playbook_input:sop_name"])
+
+    playbook_input_sop_version_values = [item[0] for item in playbook_input_sop_version]
+    playbook_input_liste_name_values = [item[0] for item in playbook_input_liste_name]
+    playbook_input_sop_name_values = [item[0] for item in playbook_input_sop_name]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+    phantom.debug(playbook_input_liste_name[0][0])
+    liste_name = playbook_input_liste_name[0][0]
+    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list',liste_name)
+    data = { "update_rows": { "0": [playbook_input_sop_name, playbook_input_sop_version]}}
+    response = phantom.requests.post(decided_list_tag_url,json=data,verify=False)
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
 
     return
 
