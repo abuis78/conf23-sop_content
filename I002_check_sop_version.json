@@ -57,9 +57,30 @@
                     "sourcePort": "9_out",
                     "targetNode": "10",
                     "targetPort": "10_in"
+                },
+                {
+                    "id": "port_7_to_port_11",
+                    "sourceNode": "7",
+                    "sourcePort": "7_out",
+                    "targetNode": "11",
+                    "targetPort": "11_in"
+                },
+                {
+                    "id": "port_10_to_port_11",
+                    "sourceNode": "10",
+                    "sourcePort": "10_out",
+                    "targetNode": "11",
+                    "targetPort": "11_in"
+                },
+                {
+                    "id": "port_11_to_port_12",
+                    "sourceNode": "11",
+                    "sourcePort": "11_out",
+                    "targetNode": "12",
+                    "targetPort": "12_in"
                 }
             ],
-            "hash": "c1b8b1fcf0411727cd9a2b4af84a5658b1082b76",
+            "hash": "8719e46e35d6eb832a0d14296c7a280e7a4a9a79",
             "nodes": {
                 "0": {
                     "data": {
@@ -90,8 +111,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 1000,
-                    "y": 1360
+                    "x": 1620,
+                    "y": 1680
                 },
                 "10": {
                     "data": {
@@ -126,7 +147,92 @@
                     "type": "action",
                     "warnings": {},
                     "x": 1140,
-                    "y": 1144.5
+                    "y": 1140
+                },
+                "11": {
+                    "data": {
+                        "advanced": {
+                            "join": [],
+                            "notRequiredJoins": [
+                                "post_data_1"
+                            ]
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "noop",
+                            "repoName": "community"
+                        },
+                        "functionId": 5,
+                        "functionName": "noop_5",
+                        "id": "11",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "noop": {
+                                "description": "Do nothing and return nothing. Use this if you want to do something in a custom function setup section or leave a placeholder block in a playbook. This does not sleep or wait and will return as soon as possible.",
+                                "fields": [],
+                                "label": "noop",
+                                "name": "noop"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "noop": {}
+                        }
+                    },
+                    "errors": {},
+                    "id": "11",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 1140,
+                    "y": 1280
+                },
+                "12": {
+                    "data": {
+                        "action": "find listitem",
+                        "actionType": "investigate",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "Phantom",
+                        "connectorConfigs": [
+                            "phantom"
+                        ],
+                        "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "find_listitem_1",
+                        "id": "12",
+                        "parameters": {
+                            "column_index": "0",
+                            "exact_match": true,
+                            "list": "playbook_input:liste_name",
+                            "values": "playbook_input:liste_name"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "list"
+                            },
+                            {
+                                "data_type": "string",
+                                "field": "values"
+                            },
+                            {
+                                "data_type": "boolean",
+                                "default": true,
+                                "field": "exact_match"
+                            }
+                        ],
+                        "tab": "byAction",
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "12",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 1140,
+                    "y": 1424.5
                 },
                 "4": {
                     "data": {
@@ -374,7 +480,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T13:06:16.909693+00:00",
+    "create_time": "2023-07-10T13:17:42.877791+00:00",
     "draft_mode": false,
     "labels": [
         "*"

@@ -93,6 +93,8 @@ def add_comment_3(action=None, success=None, container=None, results=None, handl
 
     phantom.comment(container=container, comment="reference list exists")
 
+    join_noop_5(container=container)
+
     return
 
 
@@ -168,7 +170,80 @@ def post_data_1(action=None, success=None, container=None, results=None, handle=
     ## Custom Code End
     ################################################################################
 
-    phantom.act("post data", parameters=parameters, name="post_data_1", assets=["soar_http"])
+    phantom.act("post data", parameters=parameters, name="post_data_1", assets=["soar_http"], callback=join_noop_5)
+
+    return
+
+
+@phantom.playbook_block()
+def join_noop_5(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("join_noop_5() called")
+
+    # if the joined function has already been called, do nothing
+    if phantom.get_run_data(key="join_noop_5_called"):
+        return
+
+    # save the state that the joined function has now been called
+    phantom.save_run_data(key="join_noop_5_called", value="noop_5")
+
+    # call connected block "noop_5"
+    noop_5(container=container, handle=handle)
+
+    return
+
+
+@phantom.playbook_block()
+def noop_5(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("noop_5() called")
+
+    parameters = [{}]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="community/noop", parameters=parameters, name="noop_5", callback=find_listitem_1)
+
+    return
+
+
+@phantom.playbook_block()
+def find_listitem_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("find_listitem_1() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    playbook_input_liste_name = phantom.collect2(container=container, datapath=["playbook_input:liste_name"])
+
+    parameters = []
+
+    # build parameters list for 'find_listitem_1' call
+    for playbook_input_liste_name_item in playbook_input_liste_name:
+        if playbook_input_liste_name_item[0] is not None:
+            parameters.append({
+                "exact_match": True,
+                "list": playbook_input_liste_name_item[0],
+                "column_index": 0,
+                "values": playbook_input_liste_name_item[0],
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("find listitem", parameters=parameters, name="find_listitem_1", assets=["phantom"])
 
     return
 
