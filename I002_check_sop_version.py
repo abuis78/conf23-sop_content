@@ -245,7 +245,19 @@ def finde_sop_in_list(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.act("find listitem", parameters=parameters, name="finde_sop_in_list", assets=["phantom"], callback=mutch_debug)
+    phantom.act("find listitem", parameters=parameters, name="finde_sop_in_list", assets=["phantom"], callback=finde_sop_in_list_callback)
+
+    return
+
+
+@phantom.playbook_block()
+def finde_sop_in_list_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("finde_sop_in_list_callback() called")
+
+    
+    mutch_debug(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+    decision_if_match_found(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+
 
     return
 
@@ -312,12 +324,13 @@ def decision_if_match_found(action=None, success=None, container=None, results=N
     found_match_2 = phantom.decision(
         container=container,
         conditions=[
-            ["finde_sop_in_list:action_result.summary.found_matches", "==", 1]
+            ["finde_sop_in_list:action_result.summary.found_matches", "==", 0]
         ],
         delimiter=None)
 
     # call connected blocks if condition 2 matched
     if found_match_2:
+        add_comment_8(action=action, success=success, container=container, results=results, handle=handle)
         return
 
     return
