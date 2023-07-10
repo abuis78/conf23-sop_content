@@ -185,9 +185,16 @@
                     "sourcePort": "19_out",
                     "targetNode": "23",
                     "targetPort": "23_in"
+                },
+                {
+                    "id": "port_22_to_port_25",
+                    "sourceNode": "22",
+                    "sourcePort": "22_out",
+                    "targetNode": "25",
+                    "targetPort": "25_in"
                 }
             ],
-            "hash": "b4b1e966f0ae116f1ef317273208e430b85a2f22",
+            "hash": "b1bb7c0cad6f18fa83a32cb1353936b0a58dfb02",
             "nodes": {
                 "0": {
                     "data": {
@@ -1158,14 +1165,7 @@
                     "id": "25",
                     "type": "code",
                     "userCode": "\n    # Write your custom code here...\n    sop_version = playbook_input_sop_version[0][0]\n    sop_name = playbook_input_sop_name[0][0]\n    liste_name = playbook_input_liste_name[0][0]\n    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list',liste_name)\n    data = { \"update_rows\": { \"0\": [sop_name, sop_version]}}\n    response = phantom.requests.post(decided_list_tag_url,json=data,verify=False)\n",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 820,
                     "y": 2504.5
                 },
@@ -1415,7 +1415,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T14:24:38.924125+00:00",
+    "create_time": "2023-07-10T14:26:21.544727+00:00",
     "draft_mode": false,
     "labels": [
         "*"
