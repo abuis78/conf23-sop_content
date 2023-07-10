@@ -118,13 +118,6 @@
                     "targetPort": "16_in"
                 },
                 {
-                    "id": "port_16_to_port_18",
-                    "sourceNode": "16",
-                    "sourcePort": "16_out",
-                    "targetNode": "18",
-                    "targetPort": "18_in"
-                },
-                {
                     "id": "port_18_to_port_17",
                     "sourceNode": "18",
                     "sourcePort": "18_out",
@@ -132,7 +125,7 @@
                     "targetPort": "17_in"
                 }
             ],
-            "hash": "19aa221b7e99d5a49d48b11556844b64e8fb605c",
+            "hash": "0db43bab608c7a51b82611326d62486e29383294",
             "nodes": {
                 "0": {
                     "data": {
@@ -291,6 +284,8 @@
                 "13": {
                     "data": {
                         "advanced": {
+                            "customName": "mutch debug",
+                            "customNameId": 0,
                             "join": []
                         },
                         "customFunction": {
@@ -299,7 +294,7 @@
                             "repoName": "community"
                         },
                         "functionId": 6,
-                        "functionName": "debug_6",
+                        "functionName": "mutch_debug",
                         "id": "13",
                         "selectMore": false,
                         "type": "utility",
@@ -481,6 +476,7 @@
                             {
                                 "comparisons": [
                                     {
+                                        "conditionIndex": 1,
                                         "op": "==",
                                         "param": "",
                                         "value": ""
@@ -689,7 +685,11 @@
                     "errors": {},
                     "id": "18",
                     "type": "format",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 1320,
                     "y": 1920
                 },
@@ -939,7 +939,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T13:34:37.483138+00:00",
+    "create_time": "2023-07-10T13:36:40.889031+00:00",
     "draft_mode": false,
     "labels": [
         "*"

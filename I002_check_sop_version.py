@@ -253,7 +253,7 @@ def fine_sop_in_list_callback(action=None, success=None, container=None, results
     phantom.debug("fine_sop_in_list_callback() called")
 
     
-    debug_6(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+    mutch_debug(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
     decision_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
 
 
@@ -261,8 +261,8 @@ def fine_sop_in_list_callback(action=None, success=None, container=None, results
 
 
 @phantom.playbook_block()
-def debug_6(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("debug_6() called")
+def mutch_debug(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("mutch_debug() called")
 
     find_listitem_1_result_data = phantom.collect2(container=container, datapath=["find_listitem_1:action_result.message","find_listitem_1:action_result.parameter.context.artifact_id"], action_results=results)
 
@@ -293,7 +293,7 @@ def debug_6(action=None, success=None, container=None, results=None, handle=None
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_6")
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="mutch_debug")
 
     return
 
@@ -355,8 +355,6 @@ def add_comment_8(action=None, success=None, container=None, results=None, handl
     ################################################################################
 
     phantom.comment(container=container, comment="SOP not found in list")
-
-    format_list_json_append_sop(container=container)
 
     return
 
