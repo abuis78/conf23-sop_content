@@ -56,16 +56,16 @@ def create_new_sop_artifact(action=None, success=None, container=None, results=N
     parameters = []
 
     parameters.append({
-        "container": id_value,
         "name": format_sop_name,
+        "tags": None,
         "label": None,
         "severity": None,
         "cef_field": None,
         "cef_value": None,
-        "cef_data_type": None,
-        "tags": None,
-        "run_automation": None,
+        "container": id_value,
         "input_json": format_sop_json,
+        "cef_data_type": None,
+        "run_automation": None,
     })
 
     ################################################################################
@@ -244,8 +244,8 @@ def playbook_i002_check_sop_version_2(action=None, success=None, container=None,
 
     inputs = {
         "sop_name": playbook_i001_extract_json_from_file_3_output_name_values,
-        "sop_version": playbook_i002_check_sop_version_1_input_sop_version_values,
         "liste_name": ["SOP"],
+        "sop_version": playbook_i002_check_sop_version_1_input_sop_version_values,
     }
 
     ################################################################################
