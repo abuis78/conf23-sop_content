@@ -40,7 +40,7 @@ def playbook_i001_extract_json_from_file_1(action=None, success=None, container=
     ################################################################################
 
     # call playbook "conf23-sop_content/I001_extract_JSON_from_file", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_1", callback=format_sop_name, inputs=inputs)
+    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_1", callback=debug_2, inputs=inputs)
 
     return
 
@@ -133,6 +133,44 @@ def format_sop_name(action=None, success=None, container=None, results=None, han
     phantom.format(container=container, template=template, parameters=parameters, name="format_sop_name")
 
     format_sop_json(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def debug_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("debug_2() called")
+
+    playbook_i001_extract_json_from_file_1_output_json_content = phantom.collect2(container=container, datapath=["playbook_i001_extract_json_from_file_1:playbook_output:json_content"])
+
+    playbook_i001_extract_json_from_file_1_output_json_content_values = [item[0] for item in playbook_i001_extract_json_from_file_1_output_json_content]
+
+    parameters = []
+
+    parameters.append({
+        "input_1": playbook_i001_extract_json_from_file_1_output_json_content_values,
+        "input_2": None,
+        "input_3": None,
+        "input_4": None,
+        "input_5": None,
+        "input_6": None,
+        "input_7": None,
+        "input_8": None,
+        "input_9": None,
+        "input_10": None,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_2")
 
     return
 
