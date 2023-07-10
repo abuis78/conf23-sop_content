@@ -201,7 +201,7 @@
                     "targetPort": "26_in"
                 }
             ],
-            "hash": "ea5924534c24180e3b4410d031dfd39b58c20aee",
+            "hash": "74ea66535e0489a8fef2f6298c692e0425c81c5b",
             "nodes": {
                 "0": {
                     "data": {
@@ -1163,7 +1163,7 @@
                             "playbook_input:sop_version",
                             "playbook_input:liste_name",
                             "playbook_input:sop_name",
-                            "finde_sop_in_list:action_result.summary.locations0.0"
+                            "finde_sop_in_list:action_result.summary.locations.0.0"
                         ],
                         "outputVariables": [],
                         "type": "code"
@@ -1171,7 +1171,7 @@
                     "errors": {},
                     "id": "25",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    sop_version = playbook_input_sop_version[0][0]\n    sop_name = playbook_input_sop_name[0][0]\n    liste_name = playbook_input_liste_name[0][0]\n    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list',liste_name)\n    data = { \"update_rows\": { finde_sop_in_list_summary_locations0_0: [sop_name, sop_version]}}\n    phantom.debug(data)\n    #response = phantom.requests.post(decided_list_tag_url,json=data,verify=False)\n    #phantom.debug(\"phantom returned status code {} with message {}\".format(response.status_code, response.text))\n",
+                    "userCode": "\n    # Write your custom code here...\n    sop_version = playbook_input_sop_version[0][0]\n    sop_name = playbook_input_sop_name[0][0]\n    liste_name = playbook_input_liste_name[0][0]\n    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list',liste_name)\n    data = { \"update_rows\": { finde_sop_in_list_summary_locations_0_0: [sop_name, sop_version]}}\n    phantom.debug(data)\n    #response = phantom.requests.post(decided_list_tag_url,json=data,verify=False)\n    #phantom.debug(\"phantom returned status code {} with message {}\".format(response.status_code, response.text))\n",
                     "warnings": {},
                     "x": 820,
                     "y": 2620
@@ -1593,7 +1593,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T14:33:35.446443+00:00",
+    "create_time": "2023-07-10T14:35:19.789510+00:00",
     "draft_mode": false,
     "labels": [
         "*"
