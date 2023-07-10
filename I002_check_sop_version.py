@@ -220,18 +220,20 @@ def finde_sop_in_list(action=None, success=None, container=None, results=None, h
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
     playbook_input_liste_name = phantom.collect2(container=container, datapath=["playbook_input:liste_name"])
+    playbook_input_sop_name = phantom.collect2(container=container, datapath=["playbook_input:sop_name"])
 
     parameters = []
 
     # build parameters list for 'finde_sop_in_list' call
     for playbook_input_liste_name_item in playbook_input_liste_name:
-        if playbook_input_liste_name_item[0] is not None:
-            parameters.append({
-                "exact_match": True,
-                "list": playbook_input_liste_name_item[0],
-                "column_index": "",
-                "values": playbook_input_liste_name_item[0],
-            })
+        for playbook_input_sop_name_item in playbook_input_sop_name:
+            if playbook_input_liste_name_item[0] is not None and playbook_input_sop_name_item[0] is not None:
+                parameters.append({
+                    "exact_match": True,
+                    "list": playbook_input_liste_name_item[0],
+                    "column_index": 0,
+                    "values": playbook_input_sop_name_item[0],
+                })
 
     ################################################################################
     ## Custom Code Start
