@@ -201,7 +201,7 @@
                     "targetPort": "26_in"
                 }
             ],
-            "hash": "16a4e6f12b66f834f5178a1fdb2075e56ba1035a",
+            "hash": "4aa7c24afbfd849daac8f0f4b0493195ff349d52",
             "nodes": {
                 "0": {
                     "data": {
@@ -1171,7 +1171,7 @@
                     "errors": {},
                     "id": "25",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    sop_version = playbook_input_sop_version[0][0]\n    sop_name = playbook_input_sop_name[0][0]\n    liste_name = playbook_input_liste_name[0][0]\n    \n    phantom.debug(sop_version)\n    phantom.debug(sop_name)\n    phantom.debug(liste_name)\n    phantom.debug(finde_sop_in_list_summary_locations_0_0[0])\n    \n    \n    #decided_list_tag_url = phantom.build_phantom_rest_url('decided_list',liste_name)\n    #data = { \"update_rows\": { finde_sop_in_list_summary_locations_0_0: [sop_name, sop_version]}}\n    #phantom.debug(data)\n    #response = phantom.requests.post(decided_list_tag_url,json=data,verify=False)\n    #phantom.debug(\"phantom returned status code {} with message {}\".format(response.status_code, response.text))\n",
+                    "userCode": "\n    # Write your custom code here...\n    sop_version = playbook_input_sop_version[0][0]\n    sop_name = playbook_input_sop_name[0][0]\n    liste_name = playbook_input_liste_name[0][0]\n    list_position = finde_sop_in_list_summary_locations_0_0[0]\n    \n    phantom.debug(sop_version)\n    phantom.debug(sop_name)\n    phantom.debug(liste_name)\n    phantom.debug(list_position)\n    \n    \n    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list',liste_name)\n    data = { \"update_rows\": { list_position: [sop_name, sop_version]}}\n    phantom.debug(data)\n    response = phantom.requests.post(decided_list_tag_url,json=data,verify=False)\n    phantom.debug(\"phantom returned status code {} with message {}\".format(response.status_code, response.text))\n",
                     "warnings": {},
                     "x": 820,
                     "y": 2620
@@ -1593,7 +1593,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T14:39:16.911635+00:00",
+    "create_time": "2023-07-10T14:40:22.933220+00:00",
     "draft_mode": false,
     "labels": [
         "*"
