@@ -132,7 +132,7 @@
                     "targetPort": "18_in"
                 }
             ],
-            "hash": "cb9b5c369918f9dba9127f763aed82b23aafc5b9",
+            "hash": "128ee1026afca1fc3f55aa0d5bf00ce417b45028",
             "nodes": {
                 "0": {
                     "data": {
@@ -475,6 +475,12 @@
                                         "op": "==",
                                         "param": "finde_sop_in_list:action_result.summary.found_matches",
                                         "value": "1"
+                                    },
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "!=",
+                                        "param": "finde_sop_in_list:action_result.data.*.1",
+                                        "value": "playbook_input:sop_version"
                                     }
                                 ],
                                 "conditionIndex": 0,
@@ -945,7 +951,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T13:42:17.370667+00:00",
+    "create_time": "2023-07-10T13:44:34.406975+00:00",
     "draft_mode": false,
     "labels": [
         "*"
