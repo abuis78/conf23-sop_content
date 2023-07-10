@@ -592,12 +592,18 @@ def update_version_no_in_list(action=None, success=None, container=None, results
     ################################################################################
 
     # Write your custom code here...
-    sop_version = playbook_input_sop_version[0][0]
-    sop_name = playbook_input_sop_name[0][0]
-    liste_name = playbook_input_liste_name[0][0]
-    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list',liste_name)
-    data = { "update_rows": { finde_sop_in_list_summary_locations_0_0: [sop_name, sop_version]}}
-    phantom.debug(data)
+    sop_version = playbook_input_sop_version
+    sop_name = playbook_input_sop_name
+    liste_name = playbook_input_liste_name
+    
+    phantom.debug(sop_version)
+    phantom.debug(sop_name)
+    phantom.debug(liste_name)
+    
+    
+    #decided_list_tag_url = phantom.build_phantom_rest_url('decided_list',liste_name)
+    #data = { "update_rows": { finde_sop_in_list_summary_locations_0_0: [sop_name, sop_version]}}
+    #phantom.debug(data)
     #response = phantom.requests.post(decided_list_tag_url,json=data,verify=False)
     #phantom.debug("phantom returned status code {} with message {}".format(response.status_code, response.text))
     ################################################################################
