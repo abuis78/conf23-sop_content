@@ -7,27 +7,6 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_3_to_port_5",
-                    "sourceNode": "3",
-                    "sourcePort": "3_out",
-                    "targetNode": "5",
-                    "targetPort": "5_in"
-                },
-                {
-                    "id": "port_6_to_port_3",
-                    "sourceNode": "6",
-                    "sourcePort": "6_out",
-                    "targetNode": "3",
-                    "targetPort": "3_in"
-                },
-                {
-                    "id": "port_9_to_port_10",
-                    "sourceNode": "9",
-                    "sourcePort": "9_out",
-                    "targetNode": "10",
-                    "targetPort": "10_in"
-                },
-                {
                     "id": "port_0_to_port_13",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
@@ -35,21 +14,57 @@
                     "targetPort": "13_in"
                 },
                 {
-                    "id": "port_15_to_port_16",
-                    "sourceNode": "15",
-                    "sourcePort": "15_out",
-                    "targetNode": "16",
-                    "targetPort": "16_in"
-                },
-                {
                     "id": "port_13_to_port_15",
                     "sourceNode": "13",
                     "sourcePort": "13_out",
                     "targetNode": "15",
                     "targetPort": "15_in"
+                },
+                {
+                    "id": "port_15_to_port_17",
+                    "sourceNode": "15",
+                    "sourcePort": "15_out",
+                    "targetNode": "17",
+                    "targetPort": "17_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_17_to_port_18",
+                    "sourceNode": "17",
+                    "sourcePort": "17_out",
+                    "targetNode": "18",
+                    "targetPort": "18_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_17_to_port_19",
+                    "sourceNode": "17",
+                    "sourcePort": "17_out",
+                    "targetNode": "19",
+                    "targetPort": "19_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 2
+                        }
+                    ],
+                    "id": "port_17_to_port_20",
+                    "sourceNode": "17",
+                    "sourcePort": "17_out",
+                    "targetNode": "20",
+                    "targetPort": "20_in"
                 }
             ],
-            "hash": "c0554d75b310149cd089172aab2c50a8803debc5",
+            "hash": "acdeeb278f8f57f7857faecf0a1109aa8c6b03fb",
             "nodes": {
                 "0": {
                     "data": {
@@ -80,177 +95,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 320,
-                    "y": -1.2789769243681803e-13
-                },
-                "10": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "customFunction": {
-                            "draftMode": false,
-                            "name": "debug",
-                            "repoName": "community"
-                        },
-                        "functionId": 3,
-                        "functionName": "debug_3",
-                        "id": "10",
-                        "selectMore": false,
-                        "type": "utility",
-                        "utilities": {
-                            "debug": {
-                                "description": "Print debug messages with the type and value of 0-10 different inputs. This is useful for checking the values of input data or the outputs of other playbook blocks.",
-                                "fields": [
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_1",
-                                        "name": "input_1",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_2",
-                                        "name": "input_2",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_3",
-                                        "name": "input_3",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_4",
-                                        "name": "input_4",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_5",
-                                        "name": "input_5",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_6",
-                                        "name": "input_6",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_7",
-                                        "name": "input_7",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_8",
-                                        "name": "input_8",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_9",
-                                        "name": "input_9",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_10",
-                                        "name": "input_10",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "debug",
-                                "name": "debug"
-                            }
-                        },
-                        "utilityType": "custom_function",
-                        "values": {
-                            "debug": {
-                                "input_1": [
-                                    "format_playbook_output:formatted_data"
-                                ],
-                                "input_10": null,
-                                "input_2": null,
-                                "input_3": null,
-                                "input_4": null,
-                                "input_5": null,
-                                "input_6": null,
-                                "input_7": null,
-                                "input_8": null,
-                                "input_9": null
-                            }
-                        }
-                    },
-                    "errors": {},
-                    "id": "10",
-                    "type": "utility",
-                    "warnings": {},
-                    "x": 300,
-                    "y": 480
+                    "x": 40,
+                    "y": 740
                 },
                 "13": {
                     "data": {
@@ -322,16 +168,80 @@
                     "type": "playbook",
                     "warnings": {},
                     "x": 0,
-                    "y": 280
+                    "y": 260
                 },
-                "16": {
+                "17": {
                     "data": {
                         "advanced": {
                             "join": []
                         },
-                        "functionId": 4,
-                        "functionName": "add_comment_4",
-                        "id": "16",
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "playbook_i002_check_sop_version_2:playbook_output:sop_in_list_status",
+                                        "value": "update"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "customName": "update",
+                                "display": "If",
+                                "logic": "and",
+                                "type": "if"
+                            },
+                            {
+                                "comparisons": [
+                                    {
+                                        "op": "==",
+                                        "param": "playbook_i002_check_sop_version_2:playbook_output:sop_in_list_status",
+                                        "value": "newly_created"
+                                    }
+                                ],
+                                "conditionIndex": 1,
+                                "customName": "newly_created",
+                                "display": "Else If",
+                                "logic": "and",
+                                "type": "elif"
+                            },
+                            {
+                                "comparisons": [
+                                    {
+                                        "op": "==",
+                                        "param": "playbook_i002_check_sop_version_2:playbook_output:sop_in_list_status",
+                                        "value": "nothing_to_do"
+                                    }
+                                ],
+                                "conditionIndex": 2,
+                                "customName": "nothing_to_do",
+                                "display": "Else If",
+                                "logic": "and",
+                                "type": "elif"
+                            }
+                        ],
+                        "functionId": 1,
+                        "functionName": "decision_1",
+                        "id": "17",
+                        "type": "decision"
+                    },
+                    "errors": {},
+                    "id": "17",
+                    "type": "decision",
+                    "warnings": {},
+                    "x": 80,
+                    "y": 420
+                },
+                "18": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Comment Existing SOP is being updated",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 5,
+                        "functionName": "comment_existing_sop_is_being_updated",
+                        "id": "18",
                         "selectMore": false,
                         "tab": "apis",
                         "type": "utility",
@@ -375,249 +285,144 @@
                                     "author",
                                     "trace"
                                 ],
-                                "comment": "playbook_i002_check_sop_version_2:playbook_output:sop_in_list_status"
+                                "comment": "Existing SOP is being updated"
                             }
                         }
                     },
                     "errors": {},
-                    "id": "16",
+                    "id": "18",
                     "type": "utility",
                     "warnings": {},
-                    "x": 0,
-                    "y": 524.5
+                    "x": -260,
+                    "y": 564.5
                 },
-                "3": {
+                "19": {
                     "data": {
                         "advanced": {
-                            "customName": "format SOP JSON",
+                            "customName": "Comment The new SOP is being created",
                             "customNameId": 0,
                             "join": []
                         },
-                        "functionId": 1,
-                        "functionName": "format_sop_json",
-                        "id": "3",
-                        "parameters": [
-                            "format_playbook_output:formatted_data"
-                        ],
-                        "template": "{{\"cef\":{{\n\"sop_json\": \"{0}\",\n\"version\": 2\n}}\n}}",
-                        "type": "format"
-                    },
-                    "errors": {},
-                    "id": "3",
-                    "type": "format",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
-                    "x": 0,
-                    "y": 756
-                },
-                "5": {
-                    "data": {
-                        "advanced": {
-                            "customName": "create new SOP Artifact",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "customFunction": {
-                            "draftMode": false,
-                            "name": "artifact_create",
-                            "repoName": "community"
-                        },
-                        "functionId": 1,
-                        "functionName": "create_new_sop_artifact",
-                        "id": "5",
+                        "functionId": 6,
+                        "functionName": "comment_the_new_sop_is_being_created",
+                        "id": "19",
                         "selectMore": false,
+                        "tab": "apis",
                         "type": "utility",
                         "utilities": {
-                            "artifact_create": {
-                                "description": "Create a new artifact with the specified attributes. Supports all fields available in /rest/artifact. Add any unlisted inputs as dictionary keys in input_json. Unsupported keys will automatically be dropped.",
+                            "comment": {
+                                "description": "",
                                 "fields": [
                                     {
-                                        "dataTypes": [
-                                            "phantom container id"
-                                        ],
-                                        "description": "Container which the artifact will be added to.",
-                                        "inputType": "item",
-                                        "label": "container",
+                                        "description": "",
+                                        "label": "comment",
+                                        "name": "comment",
+                                        "placeholder": "Enter a comment",
+                                        "renderType": "datapath",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
                                         "name": "container",
-                                        "placeholder": "container:id",
-                                        "renderType": "datapath",
                                         "required": false
                                     },
                                     {
-                                        "dataTypes": [],
-                                        "description": "The name of the new artifact, which is optional and defaults to \"artifact\".",
-                                        "inputType": "item",
-                                        "label": "name",
-                                        "name": "name",
-                                        "placeholder": "artifact",
-                                        "renderType": "datapath",
+                                        "hidden": true,
+                                        "name": "author",
                                         "required": false
                                     },
                                     {
-                                        "dataTypes": [],
-                                        "description": "The label of the new artifact, which is optional and defaults to \"events\"",
-                                        "inputType": "item",
-                                        "label": "label",
-                                        "name": "label",
-                                        "placeholder": "events",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            ""
-                                        ],
-                                        "description": "The severity of the new artifact, which is optional and defaults to \"Medium\". Typically this is either \"High\", \"Medium\", or \"Low\".",
-                                        "inputType": "item",
-                                        "label": "severity",
-                                        "name": "severity",
-                                        "placeholder": "Medium",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [],
-                                        "description": "The name of the CEF field to populate in the artifact, such as \"destinationAddress\" or \"sourceDnsDomain\". Required only if cef_value is provided.",
-                                        "inputType": "item",
-                                        "label": "cef_field",
-                                        "name": "cef_field",
-                                        "placeholder": "destinationAddress",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "The value of the CEF field to populate in the artifact, such as the IP address, domain name, or file hash. Required only if cef_field is provided.",
-                                        "inputType": "item",
-                                        "label": "cef_value",
-                                        "name": "cef_value",
-                                        "placeholder": "192.0.2.192",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [],
-                                        "description": "The CEF data type of the data in cef_value. For example, this could be \"ip\", \"hash\", or \"domain\". Optional.",
-                                        "inputType": "item",
-                                        "label": "cef_data_type",
-                                        "name": "cef_data_type",
-                                        "placeholder": "ip",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [],
-                                        "description": "A comma-separated list of tags to apply to the created artifact, which is optional.",
-                                        "inputType": "item",
-                                        "label": "tags",
-                                        "name": "tags",
-                                        "placeholder": "tag1, tag2, tag3",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [],
-                                        "description": "Either \"true\" or \"false\", depending on whether or not the new artifact should trigger the execution of any playbooks that are set to active on the label of the container the artifact will be added to. Optional and defaults to \"false\".",
-                                        "inputType": "item",
-                                        "label": "run_automation",
-                                        "name": "run_automation",
-                                        "placeholder": "false",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [],
-                                        "description": "Optional parameter to modify any extra attributes of the artifact. Input_json will be merged with other inputs. In the event of a conflict, input_json will take precedence.",
-                                        "inputType": "item",
-                                        "label": "input_json",
-                                        "name": "input_json",
-                                        "placeholder": "{\"source_data_identifier\": \"1234\", \"data\": \"5678\"}",
-                                        "renderType": "datapath",
+                                        "hidden": true,
+                                        "name": "trace",
                                         "required": false
                                     }
                                 ],
-                                "label": "artifact_create",
-                                "name": "artifact_create"
+                                "label": "add comment",
+                                "name": "comment"
                             }
                         },
-                        "utilityType": "custom_function",
+                        "utilityType": "api",
                         "values": {
-                            "artifact_create": {
-                                "cef_data_type": null,
-                                "cef_field": null,
-                                "cef_value": null,
-                                "container": "container:id",
-                                "input_json": "format_sop_json:formatted_data",
-                                "label": null,
-                                "name": "format_sop_name:formatted_data",
-                                "run_automation": null,
-                                "severity": null,
-                                "tags": null
+                            "comment": {
+                                "_internal": [
+                                    "container",
+                                    "author",
+                                    "trace"
+                                ],
+                                "comment": "The new SOP is being created"
                             }
                         }
                     },
                     "errors": {},
-                    "id": "5",
+                    "id": "19",
                     "type": "utility",
                     "warnings": {},
-                    "x": 0,
-                    "y": 904
+                    "x": 100,
+                    "y": 564.5
                 },
-                "6": {
+                "20": {
                     "data": {
                         "advanced": {
-                            "customName": "format SOP Name",
+                            "customName": "Comment There is no need for action",
                             "customNameId": 0,
                             "join": []
                         },
-                        "functionId": 2,
-                        "functionName": "format_sop_name",
-                        "id": "6",
-                        "parameters": [],
-                        "template": "NEW SOP",
-                        "type": "format"
+                        "functionId": 7,
+                        "functionName": "comment_there_is_no_need_for_action",
+                        "id": "20",
+                        "selectMore": false,
+                        "tab": "apis",
+                        "type": "utility",
+                        "utilities": {
+                            "comment": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "description": "",
+                                        "label": "comment",
+                                        "name": "comment",
+                                        "placeholder": "Enter a comment",
+                                        "renderType": "datapath",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "author",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "add comment",
+                                "name": "comment"
+                            }
+                        },
+                        "utilityType": "api",
+                        "values": {
+                            "comment": {
+                                "_internal": [
+                                    "container",
+                                    "author",
+                                    "trace"
+                                ],
+                                "comment": "There is no need for action"
+                            }
+                        }
                     },
                     "errors": {},
-                    "id": "6",
-                    "type": "format",
+                    "id": "20",
+                    "type": "utility",
                     "warnings": {},
-                    "x": 0,
-                    "y": 608
-                },
-                "9": {
-                    "data": {
-                        "advanced": {
-                            "customName": "format playbook output",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "functionId": 4,
-                        "functionName": "format_playbook_output",
-                        "id": "9",
-                        "parameters": [
-                            "playbook_i001_extract_json_from_file_1:playbook_output:json_content"
-                        ],
-                        "template": "{0}",
-                        "type": "format"
-                    },
-                    "errors": {},
-                    "id": "9",
-                    "type": "format",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
-                    "x": 320,
-                    "y": 359.9999999999999
+                    "x": 400,
+                    "y": 584.5
                 }
             },
             "notes": ""
@@ -629,7 +434,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T18:50:44.503313+00:00",
+    "create_time": "2023-07-10T19:11:02.600104+00:00",
     "draft_mode": false,
     "labels": [
         "*"
