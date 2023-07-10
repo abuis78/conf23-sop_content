@@ -764,11 +764,11 @@ def set_type_of_update_in_the_list(action=None, success=None, container=None, re
     phantom.debug("Current {}".format(format_sop_version_check_current))
     phantom.debug("New {}".format(format_sop_version_check_new_1))
     
-    if format_sop_version_check_updated is not None:
+    if format_sop_version_check_updated is not None or format_sop_version_check_updated == "":
         set_type_of_update_in_the_list__status_type = format_sop_version_check_updated
-    elif format_sop_version_check_current is not None:
+    elif format_sop_version_check_current is not None or format_sop_version_check_current == "":
         set_type_of_update_in_the_list__status_type = format_sop_version_check_current
-    elif format_sop_version_check_new_1 is not None:
+    elif format_sop_version_check_new_1 is not None or format_sop_version_check_new_1 == "":
         set_type_of_update_in_the_list__status_type = format_sop_version_check_new_1
         
     phantom.debug("Ausgabe {}".format(set_type_of_update_in_the_list__status_type))
@@ -780,7 +780,6 @@ def set_type_of_update_in_the_list(action=None, success=None, container=None, re
     phantom.save_run_data(key="set_type_of_update_in_the_list:status_type", value=json.dumps(set_type_of_update_in_the_list__status_type))
 
     return
-
 
 @phantom.playbook_block()
 def on_finish(container, summary):
