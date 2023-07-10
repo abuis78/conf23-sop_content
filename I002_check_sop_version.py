@@ -245,19 +245,7 @@ def finde_sop_in_list(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.act("find listitem", parameters=parameters, name="finde_sop_in_list", assets=["phantom"], callback=finde_sop_in_list_callback)
-
-    return
-
-
-@phantom.playbook_block()
-def finde_sop_in_list_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("finde_sop_in_list_callback() called")
-
-    
-    mutch_debug(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
-    decision_if_match_found(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
-
+    phantom.act("find listitem", parameters=parameters, name="finde_sop_in_list", assets=["phantom"], callback=mutch_debug)
 
     return
 
@@ -266,7 +254,7 @@ def finde_sop_in_list_callback(action=None, success=None, container=None, result
 def mutch_debug(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("mutch_debug() called")
 
-    finde_sop_in_list_result_data = phantom.collect2(container=container, datapath=["finde_sop_in_list:action_result.summary.found_matches","finde_sop_in_list:action_result.data.*.1","finde_sop_in_list:action_result.parameter.context.artifact_id"], action_results=results)
+    finde_sop_in_list_result_data = phantom.collect2(container=container, datapath=["finde_sop_in_list:action_result.summary.found_matches","finde_sop_in_list:action_result.data.0.1","finde_sop_in_list:action_result.parameter.context.artifact_id"], action_results=results)
 
     finde_sop_in_list_summary_found_matches = [item[0] for item in finde_sop_in_list_result_data]
     finde_sop_in_list_result_item_1 = [item[1] for item in finde_sop_in_list_result_data]
