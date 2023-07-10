@@ -36,8 +36,8 @@ def get_file_information_extract_content(action=None, success=None, container=No
         vault_id = playbook_input_vault_id[0]
         success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])
         phantom.debug("vault_info: {}".format(vault_info))
-        path = json.loads(vault_info[0]["path"]) 
-        name = json.loads(vault_info[0]["name"]) 
+        path = json.dumps(vault_info[0]["path"]) 
+        name = json.dumps(vault_info[0]["name"]) 
         #phantom.debug("path: {}".format(path))
         #phantom.debug("name: {}".format(name))
         file_path_name = path + name
