@@ -296,9 +296,9 @@ def check_for_valid_json(action=None, success=None, container=None, results=None
     ################################################################################
 
     # Write your custom code here...
-    phantom.debug(playbook_input_sop_json)
+    phantom.debug(playbook_input_sop_json_values)
     try:
-        json_data = json.loads(playbook_input_sop_json)
+        json_data = json.loads(playbook_input_sop_json_values)
         phantom.debug("The string is a valid JSON.")
         
         formatted_json = json.dumps(json_data, indent=2)

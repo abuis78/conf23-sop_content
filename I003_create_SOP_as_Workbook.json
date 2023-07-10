@@ -87,7 +87,7 @@
                     "targetPort": "7_in"
                 }
             ],
-            "hash": "9e8fa7405c017397f57a2e3d830e63e78147d2c9",
+            "hash": "b3485812989584bea13851a5db81cc12f36097e2",
             "nodes": {
                 "0": {
                     "data": {
@@ -155,6 +155,9 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 980,
@@ -243,7 +246,7 @@
                     "errors": {},
                     "id": "12",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(playbook_input_sop_json)\n    try:\n        json_data = json.loads(playbook_input_sop_json)\n        phantom.debug(\"The string is a valid JSON.\")\n        \n        formatted_json = json.dumps(json_data, indent=2)\n        phantom.debug(formatted_json)\n        \n    except ValueError as e:\n        phantom.debug(\"The string is not a valid JSON.\")\n",
+                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(playbook_input_sop_json_values)\n    try:\n        json_data = json.loads(playbook_input_sop_json_values)\n        phantom.debug(\"The string is a valid JSON.\")\n        \n        formatted_json = json.dumps(json_data, indent=2)\n        phantom.debug(formatted_json)\n        \n    except ValueError as e:\n        phantom.debug(\"The string is not a valid JSON.\")\n",
                     "warnings": {},
                     "x": 980,
                     "y": 1204.5
@@ -661,7 +664,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T20:00:26.289062+00:00",
+    "create_time": "2023-07-10T20:01:24.585643+00:00",
     "draft_mode": false,
     "labels": [
         "*"
