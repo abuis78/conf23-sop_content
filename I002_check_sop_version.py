@@ -208,14 +208,14 @@ def noop_5(action=None, success=None, container=None, results=None, handle=None,
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="community/noop", parameters=parameters, name="noop_5", callback=find_listitem_1)
+    phantom.custom_function(custom_function="community/noop", parameters=parameters, name="noop_5", callback=fine_sop_in_list)
 
     return
 
 
 @phantom.playbook_block()
-def find_listitem_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("find_listitem_1() called")
+def fine_sop_in_list(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("fine_sop_in_list() called")
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
@@ -223,7 +223,7 @@ def find_listitem_1(action=None, success=None, container=None, results=None, han
 
     parameters = []
 
-    # build parameters list for 'find_listitem_1' call
+    # build parameters list for 'fine_sop_in_list' call
     for playbook_input_liste_name_item in playbook_input_liste_name:
         if playbook_input_liste_name_item[0] is not None:
             parameters.append({
@@ -243,7 +243,19 @@ def find_listitem_1(action=None, success=None, container=None, results=None, han
     ## Custom Code End
     ################################################################################
 
-    phantom.act("find listitem", parameters=parameters, name="find_listitem_1", assets=["phantom"], callback=debug_6)
+    phantom.act("find listitem", parameters=parameters, name="fine_sop_in_list", assets=["phantom"], callback=fine_sop_in_list_callback)
+
+    return
+
+
+@phantom.playbook_block()
+def fine_sop_in_list_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("fine_sop_in_list_callback() called")
+
+    
+    debug_6(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+    decision_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+
 
     return
 
@@ -282,6 +294,67 @@ def debug_6(action=None, success=None, container=None, results=None, handle=None
     ################################################################################
 
     phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_6")
+
+    return
+
+
+@phantom.playbook_block()
+def decision_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("decision_2() called")
+
+    # check for 'if' condition 1
+    found_match_1 = phantom.decision(
+        container=container,
+        conditions=[
+            ["fine_sop_in_list:action_result.summary.found_matches", "==", 1]
+        ],
+        delimiter=None)
+
+    # call connected blocks if condition 1 matched
+    if found_match_1:
+        add_comment_7(action=action, success=success, container=container, results=results, handle=handle)
+        return
+
+    # check for 'else' condition 2
+    add_comment_8(action=action, success=success, container=container, results=results, handle=handle)
+
+    return
+
+
+@phantom.playbook_block()
+def add_comment_7(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_comment_7() called")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.comment(container=container, comment="SOP found in list")
+
+    return
+
+
+@phantom.playbook_block()
+def add_comment_8(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_comment_8() called")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.comment(container=container, comment="SOP not found in list")
 
     return
 
