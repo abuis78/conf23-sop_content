@@ -28,6 +28,7 @@ def get_file_information_extract_content(action=None, success=None, container=No
     get_file_information_extract_content__json_content = None
     get_file_information_extract_content__version = None
     get_file_information_extract_content__creator = None
+    get_file_information_extract_content__name = None
 
     ################################################################################
     ## Custom Code Start
@@ -42,7 +43,11 @@ def get_file_information_extract_content(action=None, success=None, container=No
         with open(path) as file:
             data = json.load(file)
             phantom.debug(data['sop_json'])
-            get_file_information_extract_content__json_content = str(data)
+            sop_json = data['sop_json']
+            get_file_information_extract_content__name = str(sop_json['name'])
+            get_file_information_extract_content__json_content = str(data['sop_json'])
+            get_file_information_extract_content__version = str(data['version'])
+            get_file_information_extract_content__version = str(data['creator'])
         
 
     ################################################################################
@@ -52,6 +57,7 @@ def get_file_information_extract_content(action=None, success=None, container=No
     phantom.save_run_data(key="get_file_information_extract_content:json_content", value=json.dumps(get_file_information_extract_content__json_content))
     phantom.save_run_data(key="get_file_information_extract_content:version", value=json.dumps(get_file_information_extract_content__version))
     phantom.save_run_data(key="get_file_information_extract_content:creator", value=json.dumps(get_file_information_extract_content__creator))
+    phantom.save_run_data(key="get_file_information_extract_content:name", value=json.dumps(get_file_information_extract_content__name))
 
     debug_1(container=container)
 
