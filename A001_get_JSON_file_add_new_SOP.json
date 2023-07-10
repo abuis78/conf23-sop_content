@@ -49,7 +49,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "34c19de276fcab573c766400b15fc74117e2436e",
+            "hash": "5b8f0dcf63996c08e3a7e52237cf34934a2128c6",
             "nodes": {
                 "0": {
                     "data": {
@@ -295,7 +295,7 @@
                         "parameters": [
                             "format_playbook_output:formatted_data"
                         ],
-                        "template": "{{\"cef\":{{\n\"sop_json\": {0},\n\"version\": 2\n}}\n}}",
+                        "template": "{{\"cef\":{{\n\"sop_json\": \"{0}\",\n\"version\": 2\n}}\n}}",
                         "type": "format"
                     },
                     "errors": {},
@@ -514,7 +514,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T10:45:58.156002+00:00",
+    "create_time": "2023-07-10T10:46:41.744073+00:00",
     "draft_mode": false,
     "labels": [
         "*"
