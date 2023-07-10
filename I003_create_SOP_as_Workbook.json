@@ -6,7 +6,6 @@
         "data": {
             "description": "",
             "edges": [],
-            "hash": "3cb0267c92ecea96a5d72a256db76ec1d50c724d",
             "nodes": {
                 "0": {
                     "data": {
@@ -22,7 +21,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999999
+                    "y": 420
                 },
                 "1": {
                     "data": {
@@ -48,6 +47,11 @@
                 "contains": [],
                 "description": "",
                 "name": "sop_json"
+            },
+            {
+                "contains": [],
+                "description": "update or create new SOP",
+                "name": "task"
             }
         ],
         "output_spec": [
