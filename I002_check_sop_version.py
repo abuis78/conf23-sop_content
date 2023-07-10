@@ -760,9 +760,9 @@ def set_type_of_update_in_the_list(action=None, success=None, container=None, re
     ################################################################################
 
     # Write your custom code here...
-    phantom.debug(format_sop_version_check_updated)
-    phantom.debug(format_sop_version_check_current)
-    phantom.debug(format_sop_version_check_new_1)
+    phantom.debug("Update {}".format(format_sop_version_check_updated))
+    phantom.debug("Current {}".format(format_sop_version_check_current))
+    phantom.debug("New {}".format(format_sop_version_check_new_1))
     
     if format_sop_version_check_updated is not None:
         set_type_of_update_in_the_list__status_type = format_sop_version_check_updated
