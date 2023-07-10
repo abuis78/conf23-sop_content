@@ -103,7 +103,7 @@ def format_endpoint_delete_sop(action=None, success=None, container=None, result
 
     # parameter list for template variable replacement
     parameters = [
-        "get_sop_id_for_update:action_result.data.*.id"
+        "get_sop_id_for_update:action_result.data.*.response_body.*.id"
     ]
 
     ################################################################################

@@ -47,7 +47,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "922fb902d29fa3e3debf2f9e8cb35324b7c9845d",
+            "hash": "22a9762188fde95bf1abc08a4c53a0845a3f9ee1",
             "nodes": {
                 "0": {
                     "data": {
@@ -202,7 +202,7 @@
                         "functionName": "format_endpoint_delete_sop",
                         "id": "5",
                         "parameters": [
-                            "get_sop_id_for_update:action_result.data.*.id"
+                            "get_sop_id_for_update:action_result.data.*.response_body.*.id"
                         ],
                         "template": "/rest/workbook_template/{0}",
                         "type": "format"
@@ -285,7 +285,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T19:30:59.143959+00:00",
+    "create_time": "2023-07-10T19:32:37.554678+00:00",
     "draft_mode": false,
     "labels": [
         "*"
