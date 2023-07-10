@@ -751,6 +751,7 @@ def code_4(action=None, success=None, container=None, results=None, handle=None,
 
     format_sop_version_check_updated = phantom.get_format_data(name="format_sop_version_check_updated")
     format_sop_version_check_current = phantom.get_format_data(name="format_sop_version_check_current")
+    format_sop_version_check_new_1 = phantom.get_format_data(name="format_sop_version_check_new_1")
 
     ################################################################################
     ## Custom Code Start

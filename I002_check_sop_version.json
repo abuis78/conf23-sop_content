@@ -245,7 +245,7 @@
                     "targetPort": "35_in"
                 }
             ],
-            "hash": "16e3ecfb7f839f21d206a032c8d3bfd6c7c9eb67",
+            "hash": "82e93980038cf8651e0e618d24007ee0d9d94b40",
             "nodes": {
                 "0": {
                     "data": {
@@ -1247,7 +1247,8 @@
                         "id": "35",
                         "inputParameters": [
                             "format_sop_version_check_updated:formatted_data",
-                            "format_sop_version_check_current:formatted_data"
+                            "format_sop_version_check_current:formatted_data",
+                            "format_sop_version_check_new_1:formatted_data"
                         ],
                         "outputVariables": [],
                         "type": "code"
@@ -1505,7 +1506,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T14:55:57.160979+00:00",
+    "create_time": "2023-07-10T14:56:14.114578+00:00",
     "draft_mode": false,
     "labels": [
         "*"
