@@ -47,7 +47,7 @@ def get_file_information_extract_content(action=None, success=None, container=No
             get_file_information_extract_content__name = str(sop_json['name'])
             get_file_information_extract_content__json_content = str(data['sop_json'])
             get_file_information_extract_content__version = str(data['version'])
-            get_file_information_extract_content__version = str(data['creator'])
+            get_file_information_extract_content__creator = str(data['creator'])
         
 
     ################################################################################
