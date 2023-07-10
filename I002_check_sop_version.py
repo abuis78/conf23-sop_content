@@ -599,6 +599,7 @@ def update_version_no_in_list(action=None, success=None, container=None, results
     phantom.debug(sop_version)
     phantom.debug(sop_name)
     phantom.debug(liste_name)
+    phantom.debug(finde_sop_in_list_summary_locations_0_0)
     
     
     #decided_list_tag_url = phantom.build_phantom_rest_url('decided_list',liste_name)
