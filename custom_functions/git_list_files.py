@@ -83,7 +83,7 @@ def git_list_files(local_repo_path=None, online_repo_path=None, filter_file_ends
     # Vergleiche die Dateilisten und lade neue Dateien herunter
     for remote_file in remote_json_files:
         if remote_file not in local_json_files:
-            replace_with_remote_file(remote_file, local_repo_path)
+            replace_with_remote_file(remote_file, online_repo_path)
             phantom.debug(f"Die neue Datei '{remote_file}' wurde aus dem Online-Repository heruntergeladen.")
         
         
