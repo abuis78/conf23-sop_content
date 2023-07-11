@@ -39,11 +39,10 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
             continue
 
         file_path = os.path.join(local_repo_dir, item.path)
-        if not os.path.exists(file_path) or os.path.getmtime(file_path) < item.commit.committed_date:
+        if not os.path.exists(file_path):
             phantom.debug(f"Datei {item.path} wird aktualisiert ...")
             with open(file_path, 'wb') as file:
                 file.write(item.data_stream.read())
-            os.utime(file_path, times=(item.commit.committed_date, item.commit.committed_date))
 
         
     # Return a JSON-serializable object
