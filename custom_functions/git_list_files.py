@@ -58,7 +58,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
 
     def is_remote_file_newer(file_path, repo_path):
         # Git-Befehl ausführen, um den letzten Commit-Zeitstempel für die Datei zu erhalten
-        cmd = ["git", "ls-remote", "--exit-code", "--quiet", "--refs", repo_path, "HEAD"]
+        cmd = ["git", "diff", "--cached", "--name-only", "--diff-filter=A", "-- '*.json'"]
         try:
             subprocess.check_output(cmd)
             return True  # Remote-Repository und Branch existieren
