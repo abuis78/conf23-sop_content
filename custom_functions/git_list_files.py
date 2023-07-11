@@ -17,10 +17,10 @@ def git_list_files(local_repo_path=None, online_repo_path=None, filter_file_ends
     
     # Write your custom code here...
 
-    def get_local_git_json_files(local_repo_path):
+    def get_local_git_json_files(repo_path):
         # Git-Befehl ausführen, um alle Dateien im Repository zu erhalten
         cmd = ["git", "ls-tree", "--name-only", "-r", "HEAD"]
-        output = subprocess.check_output(cmd, cwd=local_repo_path).decode().strip()
+        output = subprocess.check_output(cmd, cwd=repo_path).decode().strip()
 
         # Die Ausgabe in eine Liste von Dateinamen aufteilen
         file_list = output.split("\n")
@@ -30,10 +30,10 @@ def git_list_files(local_repo_path=None, online_repo_path=None, filter_file_ends
 
         return json_files
 
-    def is_local_file_older(file_path, local_repo_path):
+    def is_local_file_older(file_path, repo_path):
         # Git-Befehl ausführen, um den letzten Commit-Zeitstempel für die Datei zu erhalten
         cmd = ["git", "log", "-1", "--format=%ct", "--", file_path]
-        output = subprocess.check_output(cmd, cwd=local_repo_path).decode().strip()
+        output = subprocess.check_output(cmd, cwd=repo_path).decode().strip()
 
         if output:
             local_timestamp = int(output)
@@ -41,9 +41,9 @@ def git_list_files(local_repo_path=None, online_repo_path=None, filter_file_ends
         else:
             return None
 
-    def is_remote_file_newer(file_path, online_repo_path):
+    def is_remote_file_newer(file_path, repo_path):
         # Git-Befehl ausführen, um den letzten Commit-Zeitstempel für die Datei zu erhalten
-        cmd = ["git", "ls-remote", "--exit-code", "--quiet", "--refs", online_repo_path, "HEAD"]
+        cmd = ["git", "ls-remote", "--exit-code", "--quiet", "--refs", repo_path, "HEAD"]
         try:
             subprocess.check_output(cmd)
             return True  # Remote-Repository und Branch existieren
