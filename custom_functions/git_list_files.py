@@ -20,7 +20,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
     def get_local_git_json_files(repo_path):
         # Git-Befehl ausführen, um alle Dateien im Repository zu erhalten
         cmd = ["git", "ls-tree", "--name-only", "-r", "HEAD"]
-        output = subprocess.check_output(cmd, cwd="/tmp").decode().strip()
+        output = subprocess.check_output(cmd, cwd=repo_path).decode().strip()
 
         # Die Ausgabe in eine Liste von Dateinamen aufteilen
         file_list = output.split("\n")
@@ -80,7 +80,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
             phantom.debug(f"Die lokale Datei '{file}' hat keine Versionsinformationen.")
 
     # Überprüfe neue Dateien im Online-Repository
-    remote_json_files = get_local_git_json_files(repo_path_remote)
+    remote_json_files = get_local_git_json_files(repo_path_local)
 
     # Vergleiche die Dateilisten und lade neue Dateien herunter
     for remote_file in remote_json_files:
