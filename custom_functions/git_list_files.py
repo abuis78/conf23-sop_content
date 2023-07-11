@@ -52,8 +52,10 @@ def git_list_files(local_repo_path=None, online_repo_path=None, filter_file_ends
 
     def replace_with_remote_file(file_path, online_repo_path):
         # Git-Befehl ausführen, um die Datei mit der Version aus dem Remote-Repository zu ersetzen
-        cmd = ["git", "checkout", "origin/HEAD", "--", file_path]
-        subprocess.run(cmd, cwd=online_repo_path)
+        cmd_fetch = ["git", "fetch", "--quiet", "--", "origin"]
+        cmd_checkout = ["git", "checkout", "--", file_path]
+        subprocess.run(cmd_fetch, cwd=online_repo_path)
+        subprocess.run(cmd_checkout, cwd=local_repo_path)
 
 
     # Lokale JSON-Dateien erhalten
