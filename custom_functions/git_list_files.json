@@ -1,10 +1,38 @@
 {
-    "create_time": "2023-07-11T08:15:17.448364+00:00",
+    "create_time": "2023-07-11T08:23:20.968376+00:00",
     "custom_function_id": "da74ad04c12cc6e7702ad869752bdd3b4b1d43e9",
     "description": "",
     "draft_mode": false,
-    "inputs": [],
-    "outputs": [],
+    "inputs": [
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "local_repo_path",
+            "placeholder": ""
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "online_repo_path",
+            "placeholder": ""
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "list",
+            "name": "filter_file_endswith",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [],
+            "data_path": "file_list",
+            "description": ""
+        }
+    ],
     "outputs_type": "item",
     "platform_version": "6.0.2.127725",
     "python_version": "3"
