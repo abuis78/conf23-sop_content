@@ -70,9 +70,9 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
 
         # Überprüfe, ob die lokale Datei älter ist als die Online-Version
         if is_local_file_older(local_file_path, repo_path):
-            if is_remote_file_newer(file, repo_path):
+            if is_remote_file_newer(file, repo_path_remote):
                 # Die Online-Version ist neuer, ersetze die lokale Datei
-                replace_with_remote_file(file, repo_path)
+                replace_with_remote_file(file, repo_path_remote)
                 phantom.debug(f"Die lokale Datei '{file}' wurde mit der neueren Online-Version aktualisiert.")
             else:
                 phantom.debug(f"Die lokale Datei '{file}' ist bereits auf dem neuesten Stand.")
