@@ -39,10 +39,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         # Die Ausgabe in eine Liste von Dateinamen aufteilen
         file_list = output.split("\n")
 
-        # Filtere Dateinamen aus der Ausgabe
-        json_files = [file.split("\t")[1] for file in file_list]
-
-        return json_files
+        return file_list
 
     
     def is_local_file_older(file_path, repo_path):
