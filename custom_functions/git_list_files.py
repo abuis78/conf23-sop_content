@@ -29,17 +29,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         json_files = [file for file in file_list if file.endswith(".json")]
         
         return json_files
-    
-    def get_remote_git_json_files(repo_path):
-        phantom.debug(repo_path)
-        # Git-Befehl ausführen, um alle Dateien im Remote-Repository zu erhalten
-        cmd = ["git", "diff", "--cached", "--name-only", "--diff-filter=A", "-- '*.json'"]
-        output = subprocess.check_output(cmd).decode().strip()
-        phantom.debug(output)
-        # Die Ausgabe in eine Liste von Dateinamen aufteilen
-        file_list = output.split("\n")
-
-        return file_list
+   
 
     
     def is_local_file_older(file_path, repo_path):
@@ -91,15 +81,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         else:
             phantom.debug(f"Die lokale Datei '{file}' hat keine Versionsinformationen.")
 
-    # Überprüfe neue Dateien im Online-Repository
-    remote_json_files = get_remote_git_json_files(repo_path_remote)
-    phantom.debug("remote_json_files: {}".format(remote_json_files))
 
-    # Vergleiche die Dateilisten und lade neue Dateien herunter
-    for remote_file in remote_json_files:
-        if remote_file not in local_json_files:
-            replace_with_remote_file(remote_file, repo_path_local)
-            phantom.debug(f"Die neue Datei '{remote_file}' wurde aus dem Online-Repository heruntergeladen.")
         
         
     # Return a JSON-serializable object
