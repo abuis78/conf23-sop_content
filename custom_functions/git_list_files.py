@@ -27,7 +27,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
 
         # Filtere Dateien mit der Erweiterung ".json"
         json_files = [file for file in file_list if file.endswith(".json")]
-        phantom.debug(f"Die lokale Datei '{json_files}' Liste.")
+        
         return json_files
 
     def is_local_file_older(file_path, repo_path):
@@ -81,6 +81,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
 
     # Überprüfe neue Dateien im Online-Repository
     remote_json_files = get_local_git_json_files(repo_path_remote)
+    phantom.debug("remote_json_files: {}".format(remote_json_files))
 
     # Vergleiche die Dateilisten und lade neue Dateien herunter
     for remote_file in remote_json_files:
