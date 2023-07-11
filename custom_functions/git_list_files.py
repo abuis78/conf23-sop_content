@@ -35,12 +35,12 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
 
     # Überprüfen Sie alle Dateien in den Repositorys und aktualisieren Sie sie lokal, falls nötig
     for item in repo.tree():
-        if item.path.endswith('.git'):  # ignorieren Sie .git Dateien
+        if not item.path.endswith('.json'):  # Nur .json-Dateien berücksichtigen
             continue
 
         file_path = os.path.join(local_repo_dir, item.path)
         if not os.path.exists(file_path) or os.path.getmtime(file_path) < item.commit.committed_date:
-            print(f"Datei {item.path} wird aktualisiert ...")
+            phantom.debug(f"Datei {item.path} wird aktualisiert ...")
             with open(file_path, 'wb') as file:
                 file.write(item.data_stream.read())
             os.utime(file_path, times=(item.commit.committed_date, item.commit.committed_date))
