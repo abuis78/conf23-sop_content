@@ -1,8 +1,8 @@
-def git_list_files(local_repo_path=None, online_repo_path=None, filter_file_endswith=None, **kwargs):
+def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_endswith=None, **kwargs):
     """
     Args:
-        local_repo_path
-        online_repo_path
+        repo_path_local
+        repo_path_remote
         filter_file_endswith
     
     Returns a JSON-serializable object that implements the configured data paths:
@@ -59,17 +59,19 @@ def git_list_files(local_repo_path=None, online_repo_path=None, filter_file_ends
 
 
     # Lokale JSON-Dateien erhalten
-    local_json_files = get_local_git_json_files(local_repo_path)
+    local_json_files = get_local_git_json_files(repo_path_local)
+    
+
 
     # Überprüfe jede lokale Datei
     for file in local_json_files:
-        local_file_path = os.path.join(local_repo_path, file)
+        local_file_path = os.path.join(repo_path_local, file)
 
         # Überprüfe, ob die lokale Datei älter ist als die Online-Version
-        if is_local_file_older(local_file_path, local_repo_path):
-            if is_remote_file_newer(file, online_repo_path):
+        if is_local_file_older(local_file_path, repo_path_local):
+            if is_remote_file_newer(file, repo_path_remote):
                 # Die Online-Version ist neuer, ersetze die lokale Datei
-                replace_with_remote_file(file, online_repo_path)
+                replace_with_remote_file(file, repo_path_local)
                 phantom.debug(f"Die lokale Datei '{file}' wurde mit der neueren Online-Version aktualisiert.")
             else:
                 phantom.debug(f"Die lokale Datei '{file}' ist bereits auf dem neuesten Stand.")
@@ -78,12 +80,12 @@ def git_list_files(local_repo_path=None, online_repo_path=None, filter_file_ends
             phantom.debug(f"Die lokale Datei '{file}' hat keine Versionsinformationen.")
 
     # Überprüfe neue Dateien im Online-Repository
-    remote_json_files = get_local_git_json_files(online_repo_path)
+    remote_json_files = get_local_git_json_files(repo_path_remote)
 
     # Vergleiche die Dateilisten und lade neue Dateien herunter
     for remote_file in remote_json_files:
         if remote_file not in local_json_files:
-            replace_with_remote_file(remote_file, local_repo_path)
+            replace_with_remote_file(remote_file, repo_path_local)
             phantom.debug(f"Die neue Datei '{remote_file}' wurde aus dem Online-Repository heruntergeladen.")
         
         
