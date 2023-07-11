@@ -80,7 +80,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
             phantom.debug(f"Die lokale Datei '{file}' hat keine Versionsinformationen.")
 
     # Überprüfe neue Dateien im Online-Repository
-    remote_json_files = get_local_git_json_files(repo_path_local)
+    remote_json_files = get_local_git_json_files(repo_path_remote)
 
     # Vergleiche die Dateilisten und lade neue Dateien herunter
     for remote_file in remote_json_files:
