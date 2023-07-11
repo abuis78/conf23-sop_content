@@ -29,7 +29,21 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         json_files = [file for file in file_list if file.endswith(".json")]
         
         return json_files
+    
+    def get_remote_git_json_files(repo_path):
+        # Git-Befehl ausführen, um alle Dateien im Remote-Repository zu erhalten
+        cmd = ["git", "ls-remote", "--quiet", "--refs", "--exit-code", repo_path, "*.json"]
+        output = subprocess.check_output(cmd).decode().strip()
 
+        # Die Ausgabe in eine Liste von Dateinamen aufteilen
+        file_list = output.split("\n")
+
+        # Filtere Dateinamen aus der Ausgabe
+        json_files = [file.split("\t")[1] for file in file_list]
+
+        return json_files
+
+    
     def is_local_file_older(file_path, repo_path):
         # Git-Befehl ausführen, um den letzten Commit-Zeitstempel für die Datei zu erhalten
         cmd = ["git", "log", "-1", "--format=%ct", "--", file_path]
@@ -80,7 +94,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
             phantom.debug(f"Die lokale Datei '{file}' hat keine Versionsinformationen.")
 
     # Überprüfe neue Dateien im Online-Repository
-    remote_json_files = get_local_git_json_files(repo_path_remote)
+    remote_json_files = get_remote_git_json_files(repo_path_remote)
     phantom.debug("remote_json_files: {}".format(remote_json_files))
 
     # Vergleiche die Dateilisten und lade neue Dateien herunter
