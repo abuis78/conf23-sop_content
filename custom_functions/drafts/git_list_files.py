@@ -34,7 +34,7 @@ def git_list_files(**kwargs):
             local_timestamp = int(output)
             return local_timestamp
         else:
-        r    eturn None
+            return None
 
     def is_remote_file_newer(file_path, repo_path):
         # Git-Befehl ausführen, um den letzten Commit-Zeitstempel für die Datei zu erhalten
