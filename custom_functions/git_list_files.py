@@ -33,13 +33,18 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         # Holt die neuesten Informationen vom remote repository
         subprocess.run(["git", "remote", "set-url", "origin", repo_path_remote])
         subprocess.run(["git", "fetch"])
-
+        
+        # Holt die neuesten Informationen vom remote repository
+        subprocess.run(["git", "fetch"])
+        
         # Überprüft den Unterschied zwischen dem lokalen und dem remote repository
         result = subprocess.check_output(["git", "diff", "--name-only", "origin/main"]).decode("utf8")
 
         if result:
             phantom.debug("\nEs gibt Unterschiede zwischen dem lokalen und dem remote Repository:")
             phantom.debug(result)
+            phantom.debug("\nAktualisiere das lokale Repository...")
+            subprocess.run(["git", "pull"])
         else:
             phantom.debug("\nKeine Unterschiede gefunden. Das lokale Repository ist aktuell.")
 
