@@ -33,6 +33,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
     origin = repo.remote()
     origin.pull()
 
+    phantom.debug(repo.tree())
     # Überprüfen Sie alle Dateien in den Repositorys und aktualisieren Sie sie lokal, falls nötig
     for item in repo.tree():
         if not item.path.endswith('.json'):  # Nur .json-Dateien berücksichtigen
