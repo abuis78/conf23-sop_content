@@ -11,39 +11,75 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
     ############################ Custom Code Goes Below This Line #################################
     import json
     import phantom.rules as phantom
-    from git import Repo
-    import os
 
     outputs = {}
     
     # Write your custom code here...
 
     # Konfigurieren Sie diese Parameter entsprechend
-    github_repo_url = repo_path_remote  # Ihr Repository-URL
-    local_repo_dir = repo_path_local # Lokales Repo-Verzeichnis
+    import subprocess
+    import os
 
-    # Erstellen Sie ein Repo-Objekt, das auf das lokale Repo verweist
-    if not os.path.exists(local_repo_dir):
-        os.makedirs(local_repo_dir)
-        repo = Repo.clone_from(github_repo_url, local_repo_dir)
-    else:
-        repo = Repo(local_repo_dir)
+    def get_local_git_json_files(repo_path):
+        # Git-Befehl ausführen, um alle Dateien im Repository zu erhalten
+        cmd = ["git", "ls-tree", "--name-only", "-r", "HEAD"]
+        output = subprocess.check_output(cmd, cwd=repo_path).decode().strip()
 
-    # Ziehen Sie die neuesten Änderungen vom Remote-Repo
-    origin = repo.remote()
-    origin.pull()
+        # Die Ausgabe in eine Liste von Dateinamen aufteilen
+        file_list = output.split("\n")
 
-    phantom.debug(repo.tree())
-    # Überprüfen Sie alle Dateien in den Repositorys und aktualisieren Sie sie lokal, falls nötig
-    for item in repo.tree():
-        if not item.path.endswith('.json'):  # Nur .json-Dateien berücksichtigen
-            continue
+        # Filtere Dateien mit der Erweiterung ".json"
+        json_files = [file for file in file_list if file.endswith(".json")]
 
-        file_path = os.path.join(local_repo_dir, item.path)
-        if not os.path.exists(file_path):
-            phantom.debug(f"Datei {item.path} wird aktualisiert ...")
-            with open(file_path, 'wb') as file:
-                file.write(item.data_stream.read())
+        return json_files
+
+    def is_local_file_older(file_path, repo_path):
+        # Git-Befehl ausführen, um den letzten Commit-Zeitstempel für die Datei zu erhalten
+        cmd = ["git", "log", "-1", "--format=%ct", "--", file_path]
+        output = subprocess.check_output(cmd, cwd=repo_path).decode().strip()
+
+        if output:
+            local_timestamp = int(output)
+            return local_timestamp
+        else:
+            return None
+
+    def is_remote_file_newer(file_path, repo_path):
+        # Git-Befehl ausführen, um den letzten Commit-Zeitstempel für die Datei zu erhalten
+        cmd = ["git", "ls-remote", "--exit-code", "--quiet", "--refs", repo_path, "HEAD"]
+        try:
+            subprocess.check_output(cmd)
+            return True  # Remote-Repository und Branch existieren
+        except subprocess.CalledProcessError:
+            return False  # Remote-Repository oder Branch existieren nicht
+
+    def replace_with_remote_file(file_path, repo_path):
+        # Git-Befehl ausführen, um die Datei mit der Version aus dem Remote-Repository zu ersetzen
+        cmd = ["git", "checkout", "origin/HEAD", "--", file_path]
+        subprocess.run(cmd, cwd=repo_path)
+
+    # Repository-Pfad angeben
+    repo_path = repo_path_local
+
+    # Lokale JSON-Dateien erhalten
+    local_json_files = get_local_git_json_files(repo_path)
+
+    # Überprüfe jede lokale Datei
+    for file in local_json_files:
+        local_file_path = os.path.join(repo_path, file)
+
+        # Überprüfe, ob die lokale Datei älter ist als die Online-Version
+        if is_local_file_older(local_file_path, repo_path):
+            if is_remote_file_newer(file, repo_path):
+                # Die Online-Version ist neuer, ersetze die lokale Datei
+                replace_with_remote_file(file, repo_path)
+                phantom.debug(f"Die lokale Datei '{file}' wurde mit der neueren Online-Version aktualisiert.")
+            else:
+                phantom.debug(f"Die lokale Datei '{file}' ist bereits auf dem neuesten Stand.")
+
+        else:
+            phantom.debug(f"Die lokale Datei '{file}' hat keine Versionsinformationen.")
+
 
         
     # Return a JSON-serializable object
