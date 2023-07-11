@@ -34,7 +34,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         # Git-Befehl ausführen, um alle Dateien im Remote-Repository zu erhalten
         cmd = ["git", "ls-remote", "--quiet", "--refs", "--exit-code", repo_path, "*.json"]
         output = subprocess.check_output(cmd).decode().strip()
-
+        phantom.debug(output)
         # Die Ausgabe in eine Liste von Dateinamen aufteilen
         file_list = output.split("\n")
 
