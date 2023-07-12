@@ -260,11 +260,11 @@ def decision_3(action=None, success=None, container=None, results=None, handle=N
 
     # call connected blocks if condition 1 matched
     if found_match_1:
+        add_tag_to_container_a_done(action=action, success=success, container=container, results=results, handle=handle)
         return
 
     # check for 'else' condition 2
     add_tag_to_container_a_progress(action=action, success=success, container=container, results=results, handle=handle)
-    add_tag_to_container_a_done(action=action, success=success, container=container, results=results, handle=handle)
 
     return
 

@@ -125,7 +125,7 @@
                 {
                     "conditions": [
                         {
-                            "index": 1
+                            "index": 0
                         }
                     ],
                     "id": "port_14_to_port_15",
@@ -142,7 +142,7 @@
                     "targetPort": "16_in"
                 }
             ],
-            "hash": "84ab14ac185da404506c0ad51253615d2a2905e1",
+            "hash": "68370fe4763cf35ecda83ee1d7a069b96122b4d0",
             "nodes": {
                 "0": {
                     "data": {
@@ -338,6 +338,7 @@
                             {
                                 "comparisons": [
                                     {
+                                        "conditionIndex": 1,
                                         "op": "==",
                                         "param": "",
                                         "value": ""
@@ -830,7 +831,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-12T13:46:02.909347+00:00",
+    "create_time": "2023-07-12T13:47:08.535488+00:00",
     "draft_mode": false,
     "labels": [
         "*"
