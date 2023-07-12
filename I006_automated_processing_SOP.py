@@ -12,14 +12,14 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'add_comment_1' block
-    add_comment_1(container=container)
+    # call 'assigne_sop' block
+    assigne_sop(container=container)
 
     return
 
 @phantom.playbook_block()
-def add_comment_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("add_comment_1() called")
+def assigne_sop(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("assigne_sop() called")
 
     playbook_input_sop = phantom.collect2(container=container, datapath=["playbook_input:sop"])
 
@@ -30,12 +30,12 @@ def add_comment_1(action=None, success=None, container=None, results=None, handl
     ################################################################################
 
     # Write your custom code here...
+    phantom.debug(playbook_input_sop_values)
+    success, message = phantom.promote(template=playbook_input_sop_values)
 
     ################################################################################
     ## Custom Code End
     ################################################################################
-
-    phantom.comment(container=container, comment=playbook_input_sop_values)
 
     return
 

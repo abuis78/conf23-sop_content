@@ -7,14 +7,14 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_0_to_port_2",
+                    "id": "port_0_to_port_4",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
-                    "targetNode": "2",
-                    "targetPort": "2_in"
+                    "targetNode": "4",
+                    "targetPort": "4_in"
                 }
             ],
-            "hash": "d805f57ec0b06ce9bf1b384138b80cd74efd228b",
+            "hash": "b5b15bbda86cb44a41e7196f5feec8b38f23771c",
             "nodes": {
                 "0": {
                     "data": {
@@ -48,67 +48,29 @@
                     "x": 1000,
                     "y": 1000
                 },
-                "2": {
+                "4": {
                     "data": {
                         "advanced": {
+                            "customName": "assigne SOP",
+                            "customNameId": 0,
                             "join": []
                         },
                         "functionId": 1,
-                        "functionName": "add_comment_1",
-                        "id": "2",
-                        "selectMore": false,
-                        "tab": "apis",
-                        "type": "utility",
-                        "utilities": {
-                            "comment": {
-                                "description": "",
-                                "fields": [
-                                    {
-                                        "description": "",
-                                        "label": "comment",
-                                        "name": "comment",
-                                        "placeholder": "Enter a comment",
-                                        "renderType": "datapath",
-                                        "required": true
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "container",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "author",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "trace",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "add comment",
-                                "name": "comment"
-                            }
-                        },
-                        "utilityType": "api",
-                        "values": {
-                            "comment": {
-                                "_internal": [
-                                    "container",
-                                    "author",
-                                    "trace"
-                                ],
-                                "comment": "playbook_input:sop"
-                            }
-                        }
+                        "functionName": "assigne_sop",
+                        "id": "4",
+                        "inputParameters": [
+                            "playbook_input:sop"
+                        ],
+                        "outputVariables": [],
+                        "type": "code"
                     },
                     "errors": {},
-                    "id": "2",
-                    "type": "utility",
+                    "id": "4",
+                    "type": "code",
+                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(playbook_input_sop_values)\n    success, message = phantom.promote(template=playbook_input_sop_values)\n\n",
                     "warnings": {},
-                    "x": 1000,
-                    "y": 544.5
+                    "x": 980,
+                    "y": 564.5
                 }
             },
             "notes": ""
@@ -126,7 +88,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-12T07:52:49.551805+00:00",
+    "create_time": "2023-07-12T07:56:20.217255+00:00",
     "draft_mode": false,
     "labels": [
         "*"
