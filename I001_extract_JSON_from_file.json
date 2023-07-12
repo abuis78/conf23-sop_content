@@ -21,7 +21,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "497eb2b212407aed58a5f6ee41c897d51a49dbbf",
+            "hash": "7450294ad1d7794359506bd95bc26ce9225123df",
             "nodes": {
                 "0": {
                     "data": {
@@ -76,7 +76,7 @@
                     "errors": {},
                     "id": "2",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    my_list = []\n    \n    for item in playbook_input_vault_id:\n        vault_id = playbook_input_vault_id[0]\n        success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])\n        path = vault_info[0][\"path\"]\n        \n        with open(path) as file:\n            data = json.load(file)\n            entry = {\n                \"name\": data.get('name'),\n                \"sop_json\": data.get('sop_json'),\n                \"version\": data.get('version'),\n                \"creator\": data.get('creator')\n            }\n            \n            my_list.append(entry)\n        \n    get_file_information_extract_content__data_list = my_list\n",
+                    "userCode": "\n    # Write your custom code here...\n    my_list = []\n    \n    for item in playbook_input_vault_id:\n        vault_id = playbook_input_vault_id[0]\n        success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])\n        path = vault_info[0][\"path\"]\n        \n        with open(path) as file:\n            data = json.load(file)\n            entry = {\n                \"name\": data.get('sop_json')('name'),\n                \"sop_json\": data.get('sop_json'),\n                \"version\": data.get('version'),\n                \"creator\": data.get('creator')\n            }\n            \n            my_list.append(entry)\n        \n    get_file_information_extract_content__data_list = my_list\n",
                     "warnings": {},
                     "x": 980,
                     "y": 600
@@ -254,11 +254,7 @@
                     "errors": {},
                     "id": "3",
                     "type": "utility",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 980,
                     "y": 800
                 }
@@ -289,7 +285,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-12T07:08:17.885244+00:00",
+    "create_time": "2023-07-12T07:14:39.333035+00:00",
     "draft_mode": false,
     "labels": [
         "*"
