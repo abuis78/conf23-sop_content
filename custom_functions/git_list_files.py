@@ -18,7 +18,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
     
     # Write your custom code here...
 
-
+    filter_file_endswith = str(filter_file_endswith)
 
     def auflisten_git_verzeichnis(repo_path_local):
         os.chdir(repo_path_local)
