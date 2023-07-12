@@ -71,6 +71,8 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     response = phantom.requests.get(url,verify=False,)
     
     data = response.json()
+    data = data["data"][0]
+    
     phantom.debug(data)
     item_chunks = [data[i:i+5] for i in range(0, len(data), 5)]
     phantom.debug(item_chunks)
