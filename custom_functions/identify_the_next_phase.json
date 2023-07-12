@@ -1,0 +1,32 @@
+{
+    "create_time": "2023-07-12T13:30:50.070876+00:00",
+    "custom_function_id": "ee2d8af58e1e21bdaca0d8a9b603b23be48337e2",
+    "description": "identify the next phase and set it as current",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "current_phase_name",
+            "placeholder": ""
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "container_id",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [],
+            "data_path": "next_phase_name",
+            "description": ""
+        }
+    ],
+    "outputs_type": "item",
+    "platform_version": "6.0.2.127725",
+    "python_version": "3"
+}
