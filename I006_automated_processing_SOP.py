@@ -31,7 +31,7 @@ def assigne_sop(action=None, success=None, container=None, results=None, handle=
 
     # Write your custom code here...
     phantom.debug(playbook_input_sop_values[0])
-    success, message = phantom.promote(container=None,template=playbook_input_sop_values[0])
+    success, message = phantom.promote(template=playbook_input_sop_values[0])
 
     ################################################################################
     ## Custom Code End
