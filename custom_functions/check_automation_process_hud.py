@@ -6,7 +6,7 @@ def check_automation_process_hud(status=None, container_id=None, phase_id=None, 
         phase_id
     
     Returns a JSON-serializable object that implements the configured data paths:
-        
+        success_quote
     """
     ############################ Custom Code Goes Below This Line #################################
     import json
@@ -36,10 +36,14 @@ def check_automation_process_hud(status=None, container_id=None, phase_id=None, 
     data = str(done_tasks) + "/" + str(all_tasks)
     if done_tasks == all_tasks:
         pin_style = "blue"
+        outputs["success_quote"] = 1
     else:
         pin_style = "red"
+        outputs["success_quote"] = 0
         
     phantom.pin(container=None, message=message,data=data, pin_type="card",pin_style=pin_style, truncate=True,name=None, trace=False)
+    
+    
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
     return outputs
