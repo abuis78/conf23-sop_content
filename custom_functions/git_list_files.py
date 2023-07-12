@@ -1,9 +1,11 @@
-def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_endswith=None, **kwargs):
+def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_endswith=None, artifact_name_prefix=None, artifact_severity=None, **kwargs):
     """
     Args:
         repo_path_local
         repo_path_remote
         filter_file_endswith
+        artifact_name_prefix
+        artifact_severity
     
     Returns a JSON-serializable object that implements the configured data paths:
         file_list
@@ -52,10 +54,15 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
             
         phantom.debug(changed_files)
         for item in changed_files:
-            phantom.debug(item)
             path_file = repo_path_local + item
             success, message, vault_id = phantom.vault_add(file_location=path_file,file_name=item)
             phantom.debug(vault_id)
+            raw = {}
+            cef = {}
+            cef['vaultId'] = vault_id
+            name = artifact_name_prefix + item
+            success, message, artifact_id = phantom.add_artifact(container=None, raw_data=raw, cef_data=cef, label='sop',name=name, severity=artifact_severity,identifier=None,artifact_type='sop')
+            phantom.debug('artifact added as id:'+str(artifact_id))
         outputs["file_list"]=changed_files
         return changed_files
 
