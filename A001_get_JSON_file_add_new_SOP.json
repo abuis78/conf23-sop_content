@@ -7,13 +7,6 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_0_to_port_13",
-                    "sourceNode": "0",
-                    "sourcePort": "0_out",
-                    "targetNode": "13",
-                    "targetPort": "13_in"
-                },
-                {
                     "id": "port_13_to_port_15",
                     "sourceNode": "13",
                     "sourcePort": "13_out",
@@ -83,9 +76,16 @@
                     "sourcePort": "19_out",
                     "targetNode": "23",
                     "targetPort": "23_in"
+                },
+                {
+                    "id": "port_0_to_port_24",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "24",
+                    "targetPort": "24_in"
                 }
             ],
-            "hash": "1034b690f184c37654c4eef20237fcf1edc2c842",
+            "hash": "1b249f80f1658148826d20220f620a7432aa850d",
             "nodes": {
                 "0": {
                     "data": {
@@ -100,8 +100,8 @@
                     "id": "0",
                     "type": "start",
                     "warnings": {},
-                    "x": 19.999999999999986,
-                    "y": -1.9184653865522705e-13
+                    "x": 20,
+                    "y": -220
                 },
                 "1": {
                     "data": {
@@ -145,9 +145,13 @@
                     "errors": {},
                     "id": "13",
                     "type": "playbook",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": -1.4210854715202004e-14,
-                    "y": 144.4999999999999
+                    "y": 144.49999999999986
                 },
                 "15": {
                     "data": {
@@ -189,7 +193,7 @@
                     "type": "playbook",
                     "warnings": {},
                     "x": 0,
-                    "y": 259.99999999999994
+                    "y": 259.9999999999999
                 },
                 "17": {
                     "data": {
@@ -532,6 +536,48 @@
                     "warnings": {},
                     "x": 0,
                     "y": 864.5
+                },
+                "24": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "playbook_I004_syc_local_remote_git_add_new_files_1",
+                        "id": "24",
+                        "inputs": {
+                            "filter_file_endswith": {
+                                "datapaths": [
+                                    "json"
+                                ],
+                                "deduplicate": false
+                            },
+                            "repo_path_local": {
+                                "datapaths": [
+                                    "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/"
+                                ],
+                                "deduplicate": false
+                            },
+                            "repo_path_remote": {
+                                "datapaths": [
+                                    "https://github.com/abuis78/conf23.git"
+                                ],
+                                "deduplicate": false
+                            }
+                        },
+                        "playbookName": "I004_syc_local_remote_git_add_new_files",
+                        "playbookRepo": 2,
+                        "playbookRepoName": "local",
+                        "playbookType": "data",
+                        "synchronous": true,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "24",
+                    "type": "playbook",
+                    "warnings": {},
+                    "x": -1.4210854715202004e-14,
+                    "y": -75.50000000000003
                 }
             },
             "notes": ""
@@ -543,7 +589,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T19:48:25.204127+00:00",
+    "create_time": "2023-07-12T06:20:06.277511+00:00",
     "draft_mode": false,
     "labels": [
         "*"
