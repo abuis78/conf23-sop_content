@@ -68,7 +68,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     data = response.json()
     phantom.debug(data["data"])
     
-    for task in data["data"]:
+    for task in data["data"][0]:
         # get the ID of the Playbook
         url_filter = '?_filter_name="'+ task['data']['name'] + '"'
         url_playbook = phantom.build_phantom_rest_url('playbook')
