@@ -74,36 +74,28 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     data = response.json()["data"]
     phantom.debug(data)
     
-    def chunks(lst, n):
-        """Yield successive n-sized chunks from lst."""
-        for i in range(0, len(lst), n):
-            yield lst[i:i + n]
 
-    for chunk in chunks(data, 3):
-        phantom.debug("Chunk {}".format(chunk))
-        for item in chunk:
-            phantom.debug(item["name"])
-            current_task = item["name"]
-            # get the ID of the Playbook
-            url_filter = '?_filter_name="'+ current_task + '"'
-            url_playbook = phantom.build_phantom_rest_url('playbook')
-            url = url_playbook + url_filter
-            response = phantom.requests.get(url,verify=False)
-            data = response.json()
-            if data["count"] == 0:
-                phantom.debug("no playbook found")
-            else:
-                #phantom.debug(data["data"][0]["id"])
-                playbook_id = data["data"][0]["id"]
-        
-        
-                # trigger the Playbook
-                url_run_playbook = phantom.build_phantom_rest_url('playbook_run')
-                inputs = { "current_task": current_task}
-                data = {'container_id': id_value, 'playbook_id': playbook_id, 'scope': 'new', 'run': 'true','inputs': inputs}
-                headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-                response3 = phantom.requests.post(url_run_playbook, data=json.dumps(data), headers=headers, verify=False)
-                time.sleep(1)
+    for item in data:
+        phantom.debug(item["name"])
+        current_task = item["name"]
+        # get the ID of the Playbook
+        url_filter = '?_filter_name="'+ current_task + '"'
+        url_playbook = phantom.build_phantom_rest_url('playbook')
+        url = url_playbook + url_filter
+        response = phantom.requests.get(url,verify=False)
+        data = response.json()
+        if data["count"] == 0:
+            phantom.debug("no playbook found")
+        else:
+            #phantom.debug(data["data"][0]["id"])
+            playbook_id = data["data"][0]["id"]
+            # trigger the Playbook
+            url_run_playbook = phantom.build_phantom_rest_url('playbook_run')
+            inputs = { "current_task": current_task}
+            data = {'container_id': id_value, 'playbook_id': playbook_id, 'scope': 'new', 'run': 'true','inputs': inputs}
+            headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+            response3 = phantom.requests.post(url_run_playbook, data=json.dumps(data), headers=headers, verify=False)
+            time.sleep(1)
                 #phantom.debug("phantom returned status code {} with message {}".format(response3.status_code, response3.text))
             
 
