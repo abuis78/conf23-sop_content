@@ -42,6 +42,8 @@ def identify_the_next_phase(current_phase_name=None, container_id=None, **kwargs
     
     phantom.debug(f"Die 'order' Nummer des 'Generatedd SOP Tasks' ist: {target_order}")
     phantom.debug(f"Die nächste 'order' Nummer ist: {next_order} und der zugehörige 'name' ist: {next_name}")
+    phantom.set_phase(container=None, phase=next_name, trace=False)
+    
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
     return outputs
