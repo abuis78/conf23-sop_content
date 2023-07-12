@@ -52,7 +52,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         else:
             phantom.debug("\nNo differences found. The local repository is up to date.")
             
-        phantom.debug(changed_files)
+        phantom.debug("Changed files {}:".format(changed_files))
         for item in changed_files:
             path_file = repo_path_local + item
             success, message, vault_id = phantom.vault_add(file_location=path_file,file_name=item)
