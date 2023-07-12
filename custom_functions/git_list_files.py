@@ -15,62 +15,42 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
     import phantom.rules as phantom
     import subprocess
     import os
+    from git import Repo
     
     outputs = {}
     
     # Write your custom code here...
 
-    # Name des Remote-Repositories
-    remote_repo = "origin"
 
-    # Name des lokalen Branchs
-    local_branch = "master"
 
-    # Git-Befehl, um den lokalen Branch auf den neuesten Stand zu bringen
-    pull_command = ["git", "pull"]
+    # Pfad zum lokalen Repository
+    local_repo_path = repo_path_local
 
-    # Ausführen des Befehls
-    subprocess.run(pull_command)
+    # Pfad zum entfernten Repository
+    remote_repo_path = repo_path_remote
 
-    # Git-Befehl, um die Liste der geänderten Dateien zwischen lokalem und Remote-Repository abzurufen
-    diff_command = ["git", "diff", "--name-only", f"{remote_repo}/{local_branch}"]
+    # Erstellen Sie ein Repo-Objekt für das lokale Repo
+    local_repo = Repo(local_repo_path)
 
-    # Ausführen des Befehls und Erfassen der Ausgabe
-    result = subprocess.run(diff_command, capture_output=True, text=True)
+    # Überprüfen Sie, ob das lokale Repo sauber ist (keine Änderungen)
+    if local_repo.is_dirty(untracked_files=True):
+        phantom.debug('Das lokale Repository hat nicht verfolgte Dateien oder Änderungen.')
 
-    # Aufteilen der Ausgabe in einzelne Dateinamen
-    changed_files = result.stdout.splitlines()
+    # Fetchen Sie alle Änderungen vom Remote-Repo
+    fetch_info = local_repo.remotes.origin.fetch()
 
-    # Git-Befehl, um die Dateien aus dem Remote-Repository herunterzuladen
-    download_command = ["git", "checkout", f"{remote_repo}/{local_branch}", "--"] + changed_files
+    # Erstellen Sie eine Liste für aktuellere Dateien
+    newer_files = []
 
-    # Ausführen des Befehls
-    subprocess.run(download_command)
+    # Gehen Sie durch alle Commits von HEAD bis zum neuesten Fetch
+    for commit in local_repo.iter_commits('HEAD..origin/master'):
+        # Gehen Sie durch jede geänderte Datei in jedem Commit
+        for file in commit.stats.files:
+            newer_files.append(file)
 
-    # Liste der Dateien, die aktueller im Remote-Repository sind
-    remote_updated_files = []
-
-    # Git-Befehl, um den Status der geänderten Dateien zu überprüfen
-    status_command = ["git", "status", "--porcelain"] + changed_files
-
-    # Ausführen des Befehls und Erfassen der Ausgabe
-    result = subprocess.run(status_command, capture_output=True, text=True)
-
-    # Aufteilen der Ausgabe in einzelne Zeilen
-    status_lines = result.stdout.splitlines()
-
-    # Extrahieren der Dateinamen aus den Statuszeilen
-    for line in status_lines:
-        file_status = line[:2].strip()
-        file_name = line[3:]
-        if file_status == "??":
-            # Die Datei ist neu hinzugefügt und noch nicht im lokalen Repository
-            remote_updated_files.append(file_name)
-
-    # Ausgabe der Liste der aktuelleren Dateien im Remote-Repository
-    phantom.debug("Aktuellere Dateien im Remote-Repository:")
-    for file_name in remote_updated_files:
-        phantom.debug(file_name)
+    # Drucken Sie die aktuelleren Dateien
+    for file in newer_files:
+        phantom.debug(file)
 
         
     # Return a JSON-serializable object
