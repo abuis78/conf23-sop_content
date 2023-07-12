@@ -14,7 +14,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "2b6ef412c72862e38434997daecbcfe391e73817",
+            "hash": "8787f5293df7a4ab8f6fa0f07785bb78c520e217",
             "nodes": {
                 "0": {
                     "data": {
@@ -67,7 +67,7 @@
                     "errors": {},
                     "id": "4",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(playbook_input_sop_values)\n    success, message = phantom.promote(template=playbook_input_sop_values[0])\n\n",
+                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(playbook_input_sop_values[0])\n    success, message = phantom.promote(template=playbook_input_sop_values[0])\n\n",
                     "warnings": {},
                     "x": 980,
                     "y": 564.5
@@ -88,7 +88,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-12T07:57:49.686842+00:00",
+    "create_time": "2023-07-12T07:58:26.528875+00:00",
     "draft_mode": false,
     "labels": [
         "*"
