@@ -40,7 +40,7 @@ def playbook_i001_extract_json_from_file_3(action=None, success=None, container=
     ################################################################################
 
     # call playbook "conf23-sop_content/I001_extract_JSON_from_file", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_3", callback=playbook_i002_check_sop_version_2, inputs=inputs)
+    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_3", callback=debug_2, inputs=inputs)
 
     return
 
@@ -257,9 +257,9 @@ def git_list_files_1(action=None, success=None, container=None, results=None, ha
     parameters.append({
         "repo_path_local": "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/",
         "repo_path_remote": "https://github.com/abuis78/conf23.git",
-        "filter_file_endswith": "json",
-        "artifact_name_prefix": "SOP ",
         "artifact_severity": "low",
+        "artifact_name_prefix": "SOP ",
+        "filter_file_endswith": "json",
     })
 
     ################################################################################
@@ -293,6 +293,44 @@ def filter_artifacts_for_sop_in_name(action=None, success=None, container=None, 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
         playbook_i001_extract_json_from_file_3(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+
+    return
+
+
+@phantom.playbook_block()
+def debug_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("debug_2() called")
+
+    playbook_i001_extract_json_from_file_3_output_data_list = phantom.collect2(container=container, datapath=["playbook_i001_extract_json_from_file_3:playbook_output:data_list"])
+
+    playbook_i001_extract_json_from_file_3_output_data_list_values = [item[0] for item in playbook_i001_extract_json_from_file_3_output_data_list]
+
+    parameters = []
+
+    parameters.append({
+        "input_1": playbook_i001_extract_json_from_file_3_output_data_list_values,
+        "input_2": None,
+        "input_3": None,
+        "input_4": None,
+        "input_5": None,
+        "input_6": None,
+        "input_7": None,
+        "input_8": None,
+        "input_9": None,
+        "input_10": None,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_2")
 
     return
 
