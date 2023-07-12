@@ -37,7 +37,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
     # Fügen Sie das Remote-Repo hinzu, wenn es noch nicht vorhanden ist
     if 'origin' not in [remote.name for remote in local_repo.remotes]:
         remote_repo = local_repo.create_remote('origin', url=remote_repo_path)
-
+    
     # Fetchen Sie alle Änderungen vom Remote-Repo
     fetch_info = local_repo.remotes.origin.fetch()
 
@@ -56,7 +56,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
 
     # Drucken Sie die aktuelleren Dateien
     for file in newer_files:
-        phantom.debug(file)
+        phantom.debug("Neue Dateien: {}".format(file))
 
 
         
