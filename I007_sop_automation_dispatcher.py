@@ -56,6 +56,8 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     ################################################################################
 
     # Write your custom code here...
+    import time
+    
     phase = playbook_input_automation_phase_values[0]
     success, message = phantom.set_phase(container=id_value,phase=phase)
     success, message, phase_id, phase_name = phantom.get_phase()
@@ -70,9 +72,11 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     
     data = response.json()
     
-    for task in data["data"]:
-        phantom.debug(task["name"])
-        current_task = task["name"]
+    item_chunks = [data[i:i+5] for i in range(0, len(data), 5)]
+    
+    for i, chunk in enumerate(item_chunks):
+        phantom.debug(chunk["name"])
+        current_task = chunk["name"]
         # get the ID of the Playbook
         url_filter = '?_filter_name="'+ current_task + '"'
         url_playbook = phantom.build_phantom_rest_url('playbook')
@@ -93,6 +97,9 @@ def set_automation_phase(action=None, success=None, container=None, results=None
             headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
             response3 = phantom.requests.post(url_run_playbook, data=json.dumps(data), headers=headers, verify=False)
             phantom.debug("phantom returned status code {} with message {}".format(response3.status_code, response3.text))
+            
+        if i != len(item_chunks) - 1:
+            time.sleep(1)
             
     ################################################################################
     ## Custom Code End
