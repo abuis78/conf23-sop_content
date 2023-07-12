@@ -85,7 +85,7 @@
                     "targetPort": "26_in"
                 }
             ],
-            "hash": "3486621a3f3a9cc8af6ca43dc25480a120c612d8",
+            "hash": "34ae31e6015ae8b3f29458664503d11880a56cda",
             "nodes": {
                 "0": {
                     "data": {
@@ -145,11 +145,7 @@
                     "errors": {},
                     "id": "13",
                     "type": "playbook",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": -1.4210854715202004e-14,
                     "y": 144.49999999999986
                 },
@@ -614,11 +610,11 @@
                         "utilityType": "custom_function",
                         "values": {
                             "git_list_files": {
-                                "artifact_name_prefix": null,
-                                "artifact_severity": null,
-                                "filter_file_endswith": null,
-                                "repo_path_local": null,
-                                "repo_path_remote": null
+                                "artifact_name_prefix": "SOP ",
+                                "artifact_severity": "low",
+                                "filter_file_endswith": "json",
+                                "repo_path_local": "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/",
+                                "repo_path_remote": "https://github.com/abuis78/conf23.git"
                             }
                         }
                     },
@@ -639,7 +635,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-12T06:40:34.318687+00:00",
+    "create_time": "2023-07-12T06:41:21.113490+00:00",
     "draft_mode": false,
     "labels": [
         "*"
