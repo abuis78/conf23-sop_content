@@ -21,13 +21,11 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
     
     # Write your custom code here...
 
-
-
     # Pfad zum lokalen Repository
-    local_repo_path = repo_path_local
+    local_repo_path = '/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/'
 
     # Pfad zum entfernten Repository
-    remote_repo_path = repo_path_remote
+    remote_repo_path = 'https://github.com/abuis78/conf23.git'
 
     # Erstellen Sie ein Repo-Objekt für das lokale Repo
     local_repo = Repo(local_repo_path)
@@ -36,21 +34,30 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
     if local_repo.is_dirty(untracked_files=True):
         phantom.debug('Das lokale Repository hat nicht verfolgte Dateien oder Änderungen.')
 
+    # Fügen Sie das Remote-Repo hinzu, wenn es noch nicht vorhanden ist
+    if 'origin' not in [remote.name for remote in local_repo.remotes]:
+        remote_repo = local_repo.create_remote('origin', url=remote_repo_path)
+
     # Fetchen Sie alle Änderungen vom Remote-Repo
     fetch_info = local_repo.remotes.origin.fetch()
 
     # Erstellen Sie eine Liste für aktuellere Dateien
     newer_files = []
 
-    # Gehen Sie durch alle Commits von HEAD bis zum neuesten Fetch
-    for commit in local_repo.iter_commits('HEAD..origin/conf23'):
-        # Gehen Sie durch jede geänderte Datei in jedem Commit
-        for file in commit.stats.files:
-            newer_files.append(file)
+    # Überprüfen Sie, ob der Remote-Branch "origin/main" existiert und definiert ist
+    if 'origin/main' in local_repo.git.branch('-r'):
+        # Gehen Sie durch alle Commits von HEAD bis zum neuesten Fetch
+        for commit in local_repo.iter_commits('HEAD..origin/main'):
+            # Gehen Sie durch jede geänderte Datei in jedem Commit
+            for file in commit.stats.files:
+                newer_files.append(file)
+    else:
+        phantom.debug('Der Remote-Branch "origin/main" existiert nicht oder ist nicht definiert.')
 
     # Drucken Sie die aktuelleren Dateien
     for file in newer_files:
         phantom.debug(file)
+
 
         
     # Return a JSON-serializable object
