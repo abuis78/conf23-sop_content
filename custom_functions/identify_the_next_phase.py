@@ -26,7 +26,7 @@ def identify_the_next_phase(current_phase_name=None, container_id=None, **kwargs
     target_order = None
     next_name = None
     for item in json_data:
-        item['name']
+        phantom.debug(item['name'])
         if item['name'] == current_phase_name:
             target_order = item['order']
             phantom.debug(target_order)
