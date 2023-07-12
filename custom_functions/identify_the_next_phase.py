@@ -22,7 +22,7 @@ def identify_the_next_phase(current_phase_name=None, container_id=None, **kwargs
     url = w_url + url_filter
     response = phantom.requests.get(url,verify=False)
     data = response.json()
-    phantom.debug(data)
+    phantom.debug(data["data"])
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
     return outputs
