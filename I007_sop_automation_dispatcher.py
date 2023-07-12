@@ -74,6 +74,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
         url_playbook = phantom.build_phantom_rest_url('playbook')
         url = url_playbook + url_filter
         response = phantom.requests.get(url,verify=False)
+        phantom.debug(response)
         playbook_id = response.json()['data'][0]['id']
         phantom.debug(playbook_id)
         
