@@ -79,7 +79,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
         for i in range(0, len(lst), n):
             yield lst[i:i + n]
 
-    for chunk in chunks(data, 5):
+    for chunk in chunks(data, 3):
         phantom.debug("Chunk {}".format(chunk))
         for item in chunk:
             phantom.debug(item["name"])
