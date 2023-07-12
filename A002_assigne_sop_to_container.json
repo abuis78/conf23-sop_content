@@ -111,7 +111,6 @@
                     "targetPort": "10_in"
                 }
             ],
-            "hash": "050ea166cb97926cbf0119f039e294a5bf57d3d1",
             "nodes": {
                 "0": {
                     "data": {
@@ -262,6 +261,13 @@
                         },
                         "utilityType": "custom_function",
                         "values": {
+                            "add_tags": {
+                                "_internal": [
+                                    "container",
+                                    "trace"
+                                ],
+                                "tags": "a_progress"
+                            },
                             "check_automation_process_hud": {
                                 "container_id": "container:id",
                                 "phase_id": "playbook_i007_sop_automation_dispatcher_1:playbook_output:phase_id",
@@ -274,7 +280,7 @@
                     "type": "utility",
                     "warnings": {},
                     "x": 340,
-                    "y": 1164.5
+                    "y": 1160
                 },
                 "2": {
                     "data": {
