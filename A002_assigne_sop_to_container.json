@@ -59,14 +59,21 @@
                     "targetPort": "7_in"
                 },
                 {
-                    "id": "port_7_to_port_1",
+                    "id": "port_7_to_port_8",
                     "sourceNode": "7",
                     "sourcePort": "7_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
+                },
+                {
+                    "id": "port_8_to_port_1",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
                     "targetNode": "1",
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "5b5beaea0deda20928ffb1d1d7be8b02a11d023b",
+            "hash": "fbc82cd37d87092f5096aed50aed5f3cf1d4f8fa",
             "nodes": {
                 "0": {
                     "data": {
@@ -97,8 +104,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 1040,
-                    "y": 1160
+                    "x": 1020,
+                    "y": 1260
                 },
                 "2": {
                     "data": {
@@ -354,6 +361,36 @@
                     "warnings": {},
                     "x": 1160,
                     "y": 1024.5
+                },
+                "8": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "playbook_I007_sop_automation_dispatcher_1",
+                        "id": "8",
+                        "inputs": {
+                            "automation_phase": {
+                                "datapaths": [
+                                    "search_for_sop_mapping:action_result.data.0.3"
+                                ],
+                                "deduplicate": false
+                            }
+                        },
+                        "playbookName": "I007_sop_automation_dispatcher",
+                        "playbookRepo": 10,
+                        "playbookRepoName": "conf23-sop_content",
+                        "playbookType": "data",
+                        "synchronous": true,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "8",
+                    "type": "playbook",
+                    "warnings": {},
+                    "x": 1160,
+                    "y": 1164.5
                 }
             },
             "notes": ""
@@ -365,7 +402,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-12T07:52:30.977697+00:00",
+    "create_time": "2023-07-12T08:05:53.908032+00:00",
     "draft_mode": false,
     "labels": [
         "*"
