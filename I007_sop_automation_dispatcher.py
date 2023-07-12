@@ -56,7 +56,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     # Write your custom code here...
     phase = playbook_input_automation_phase_values[0]
     success, message = phantom.set_phase(container=id_value,phase=phase)
-    phase_id, phase_name = phantom.get_phase()
+    success, message, phase_id, phase_name = phantom.get_phase()
     phantom.debug(phase_id)
     ################################################################################
     ## Custom Code End
