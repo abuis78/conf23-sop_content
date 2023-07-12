@@ -55,8 +55,11 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         phantom.debug("Changed files {}:".format(changed_files))
         for item in changed_files:
             path_file = repo_path_local + item
+            phantom.debug("path to file: {}".format(path_file))
             success, message, vault_id = phantom.vault_add(file_location=path_file,file_name=item)
-            phantom.debug(vault_id)
+            phantom.debug("Vault-ID: {}".format(vault_id))
+            
+            # create new Artifact
             raw = {}
             cef = {}
             cef['vaultId'] = vault_id
