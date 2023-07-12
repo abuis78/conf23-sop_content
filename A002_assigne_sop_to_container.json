@@ -97,20 +97,21 @@
                     "targetPort": "1_in"
                 },
                 {
-                    "id": "port_8_to_port_11",
+                    "id": "port_8_to_port_12",
                     "sourceNode": "8",
                     "sourcePort": "8_out",
-                    "targetNode": "11",
-                    "targetPort": "11_in"
+                    "targetNode": "12",
+                    "targetPort": "12_in"
                 },
                 {
-                    "id": "port_11_to_port_10",
-                    "sourceNode": "11",
-                    "sourcePort": "11_out",
+                    "id": "port_12_to_port_10",
+                    "sourceNode": "12",
+                    "sourcePort": "12_out",
                     "targetNode": "10",
                     "targetPort": "10_in"
                 }
             ],
+            "hash": "050ea166cb97926cbf0119f039e294a5bf57d3d1",
             "nodes": {
                 "0": {
                     "data": {
@@ -205,7 +206,7 @@
                     "x": 340,
                     "y": 1312
                 },
-                "11": {
+                "12": {
                     "data": {
                         "advanced": {
                             "join": []
@@ -215,9 +216,9 @@
                             "name": "check_automation_process_hud",
                             "repoName": "conf23-sop_content"
                         },
-                        "functionId": 5,
-                        "functionName": "check_automation_process_hud_5",
-                        "id": "11",
+                        "functionId": 6,
+                        "functionName": "check_automation_process_hud_6",
+                        "id": "12",
                         "selectMore": false,
                         "type": "utility",
                         "utilities": {
@@ -227,7 +228,7 @@
                                     {
                                         "dataTypes": [],
                                         "description": "",
-                                        "inputType": "list",
+                                        "inputType": "item",
                                         "label": "status",
                                         "name": "status",
                                         "placeholder": "",
@@ -264,18 +265,16 @@
                             "check_automation_process_hud": {
                                 "container_id": "container:id",
                                 "phase_id": "playbook_i007_sop_automation_dispatcher_1:playbook_output:phase_id",
-                                "status": [
-                                    "1"
-                                ]
+                                "status": "1"
                             }
                         }
                     },
                     "errors": {},
-                    "id": "11",
+                    "id": "12",
                     "type": "utility",
                     "warnings": {},
                     "x": 340,
-                    "y": 1148
+                    "y": 1164.5
                 },
                 "2": {
                     "data": {
@@ -623,7 +622,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-12T09:36:25.687263+00:00",
+    "create_time": "2023-07-12T09:44:54.890115+00:00",
     "draft_mode": false,
     "labels": [
         "*"
