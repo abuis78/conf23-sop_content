@@ -21,6 +21,7 @@ def check_automation_process_hud(status=None, container_id=None, phase_id=None, 
     response = phantom.requests.get(url,verify=False)
     data = response.json()
     phantom.debug(data.get('count'))  
+    done_tasks = data.get('count')
     
     
     url_filter = "?_filter_container_id=" + str(container_id) + "&_filter_phase=" + str(phase_id) + "&_filter_status="+ str(status)
@@ -29,6 +30,16 @@ def check_automation_process_hud(status=None, container_id=None, phase_id=None, 
     response = phantom.requests.get(url,verify=False)
     data = response.json()
     phantom.debug(data.get('count'))
+    all_tasks = data.get('count')
+    
+    message = "Current status of task automation"
+    data = done_tasks + "/" + all_tasks
+    if done_tasks == all_tasks:
+        pin_style = "blue"
+    else:
+        pin_style = "red"
+        
+    phantom.pin(container=None, message=message,data=data, pin_type="card",pin_style=pin_style, truncate=True,name=None, trace=False)
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
     return outputs
