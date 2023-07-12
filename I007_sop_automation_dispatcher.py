@@ -66,7 +66,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     response = phantom.requests.get(url,verify=False,)
     
     data = response.json()
-    phantom.debug(data[0])
+    phantom.debug(data["data"])
     
     for task in data[0]:
         # get the ID of the Playbook
