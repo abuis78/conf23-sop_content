@@ -19,7 +19,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
     outputs = {}
     
     # Write your custom code here...
-
+    phantom.debug(filter_file_endswith[0])
     filter_file_endswith = str(filter_file_endswith[0])
 
     def auflisten_git_verzeichnis(repo_path_local):
