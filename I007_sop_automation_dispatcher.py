@@ -71,7 +71,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     response = phantom.requests.get(url,verify=False,)
     
     #data = response.json()
-    data = response.json()
+    data = response.json()["data"]
     phantom.debug(data)
     
     def chunks(lst, n):
