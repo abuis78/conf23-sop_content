@@ -51,6 +51,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
             phantom.debug("\nNo differences found. The local repository is up to date.")
             
         phantom.debug(changed_files)
+        outputs["file_list"]=changed_files
         return changed_files
 
 
