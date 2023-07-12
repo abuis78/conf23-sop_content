@@ -22,10 +22,10 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
     # Write your custom code here...
 
     # Pfad zum lokalen Repository
-    local_repo_path = '/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/'
+    local_repo_path = repo_path_local
 
     # Pfad zum entfernten Repository
-    remote_repo_path = 'https://github.com/abuis78/conf23.git'
+    remote_repo_path = repo_path_remote
 
     # Erstellen Sie ein Repo-Objekt für das lokale Repo
     local_repo = Repo(local_repo_path)
