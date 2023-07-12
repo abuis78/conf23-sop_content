@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'playbook_i004_syc_local_remote_git_add_new_files_1' block
-    playbook_i004_syc_local_remote_git_add_new_files_1(container=container)
+    # call 'playbook_i004_syc_local_remote_git_add_new_files_2' block
+    playbook_i004_syc_local_remote_git_add_new_files_2(container=container)
 
     return
 
@@ -249,8 +249,8 @@ def create_new_sop(action=None, success=None, container=None, results=None, hand
 
 
 @phantom.playbook_block()
-def playbook_i004_syc_local_remote_git_add_new_files_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("playbook_i004_syc_local_remote_git_add_new_files_1() called")
+def playbook_i004_syc_local_remote_git_add_new_files_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("playbook_i004_syc_local_remote_git_add_new_files_2() called")
 
     inputs = {
         "repo_path_local": ["/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/"],
@@ -268,8 +268,8 @@ def playbook_i004_syc_local_remote_git_add_new_files_1(action=None, success=None
     ## Custom Code End
     ################################################################################
 
-    # call playbook "local/I004_syc_local_remote_git_add_new_files", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("local/I004_syc_local_remote_git_add_new_files", container=container, name="playbook_i004_syc_local_remote_git_add_new_files_1", inputs=inputs)
+    # call playbook "conf23-sop_content/I004_syc_local_remote_git_add_new_files", returns the playbook_run_id
+    playbook_run_id = phantom.playbook("conf23-sop_content/I004_syc_local_remote_git_add_new_files", container=container, name="playbook_i004_syc_local_remote_git_add_new_files_2", inputs=inputs)
 
     return
 

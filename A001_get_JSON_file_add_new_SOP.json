@@ -78,14 +78,14 @@
                     "targetPort": "23_in"
                 },
                 {
-                    "id": "port_0_to_port_24",
+                    "id": "port_0_to_port_25",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
-                    "targetNode": "24",
-                    "targetPort": "24_in"
+                    "targetNode": "25",
+                    "targetPort": "25_in"
                 }
             ],
-            "hash": "1b249f80f1658148826d20220f620a7432aa850d",
+            "hash": "fc1df05dd086331d6a6915e4a9df93e9c0d5a600",
             "nodes": {
                 "0": {
                     "data": {
@@ -145,11 +145,7 @@
                     "errors": {},
                     "id": "13",
                     "type": "playbook",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": -1.4210854715202004e-14,
                     "y": 144.49999999999986
                 },
@@ -537,14 +533,14 @@
                     "x": 0,
                     "y": 864.5
                 },
-                "24": {
+                "25": {
                     "data": {
                         "advanced": {
                             "join": []
                         },
-                        "functionId": 1,
-                        "functionName": "playbook_I004_syc_local_remote_git_add_new_files_1",
-                        "id": "24",
+                        "functionId": 2,
+                        "functionName": "playbook_I004_syc_local_remote_git_add_new_files_2",
+                        "id": "25",
                         "inputs": {
                             "filter_file_endswith": {
                                 "datapaths": [
@@ -566,14 +562,14 @@
                             }
                         },
                         "playbookName": "I004_syc_local_remote_git_add_new_files",
-                        "playbookRepo": 2,
-                        "playbookRepoName": "local",
+                        "playbookRepo": 10,
+                        "playbookRepoName": "conf23-sop_content",
                         "playbookType": "data",
                         "synchronous": true,
                         "type": "playbook"
                     },
                     "errors": {},
-                    "id": "24",
+                    "id": "25",
                     "type": "playbook",
                     "warnings": {},
                     "x": -1.4210854715202004e-14,
@@ -589,7 +585,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-12T06:20:06.277511+00:00",
+    "create_time": "2023-07-12T06:22:26.463834+00:00",
     "draft_mode": false,
     "labels": [
         "*"
