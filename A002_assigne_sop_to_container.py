@@ -68,7 +68,7 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
         return
 
     # check for 'else' condition 2
-    there_is_a_mapping_between_sop_and_allert(action=action, success=success, container=container, results=results, handle=handle)
+    check_current_stage_of_process(action=action, success=success, container=container, results=results, handle=handle)
 
     return
 
@@ -164,19 +164,52 @@ def playbook_i007_sop_automation_dispatcher_1(action=None, success=None, contain
     ################################################################################
 
     # call playbook "conf23-sop_content/I007_sop_automation_dispatcher", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I007_sop_automation_dispatcher", container=container, name="playbook_i007_sop_automation_dispatcher_1", callback=playbook_i007_sop_automation_dispatcher_1_callback, inputs=inputs)
+    playbook_run_id = phantom.playbook("conf23-sop_content/I007_sop_automation_dispatcher", container=container, name="playbook_i007_sop_automation_dispatcher_1", callback=add_tag_to_container_a_progress, inputs=inputs)
 
     return
 
 
 @phantom.playbook_block()
-def playbook_i007_sop_automation_dispatcher_1_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("playbook_i007_sop_automation_dispatcher_1_callback() called")
+def check_current_stage_of_process(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("check_current_stage_of_process() called")
 
-    
-    # Downstream End block cannot be called directly, since execution will call on_finish automatically.
-    # Using placeholder callback function so child playbook is run synchronously.
+    tags_value = container.get("tags", None)
 
+    # check for 'if' condition 1
+    found_match_1 = phantom.decision(
+        container=container,
+        conditions=[
+            ["a_progress", "in", tags_value]
+        ],
+        delimiter=None)
+
+    # call connected blocks if condition 1 matched
+    if found_match_1:
+        return
+
+    # check for 'else' condition 2
+    there_is_a_mapping_between_sop_and_allert(action=action, success=success, container=container, results=results, handle=handle)
+
+    return
+
+
+@phantom.playbook_block()
+def add_tag_to_container_a_progress(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_tag_to_container_a_progress() called")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.add_tags(container=container, tags="a_progress")
+
+    container = phantom.get_container(container.get('id', None))
 
     return
 
