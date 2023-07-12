@@ -29,10 +29,10 @@ def search_for_sop_mapping(action=None, success=None, container=None, results=No
 
     if name_value is not None:
         parameters.append({
-            "exact_match": True,
             "list": "SOP",
-            "column_index": 2,
             "values": name_value,
+            "exact_match": True,
+            "column_index": 2,
         })
 
     ################################################################################
@@ -227,8 +227,8 @@ def check_automation_process_hud_6(action=None, success=None, container=None, re
     for playbook_i007_sop_automation_dispatcher_1_output_phase_id_item in playbook_i007_sop_automation_dispatcher_1_output_phase_id:
         parameters.append({
             "status": 1,
-            "container_id": id_value,
             "phase_id": playbook_i007_sop_automation_dispatcher_1_output_phase_id_item[0],
+            "container_id": id_value,
         })
 
     ################################################################################
@@ -241,7 +241,84 @@ def check_automation_process_hud_6(action=None, success=None, container=None, re
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="conf23-sop_content/check_automation_process_hud", parameters=parameters, name="check_automation_process_hud_6", callback=add_tag_to_container_a_progress)
+    phantom.custom_function(custom_function="conf23-sop_content/check_automation_process_hud", parameters=parameters, name="check_automation_process_hud_6", callback=decision_3)
+
+    return
+
+
+@phantom.playbook_block()
+def decision_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("decision_3() called")
+
+    # check for 'if' condition 1
+    found_match_1 = phantom.decision(
+        container=container,
+        conditions=[
+            ["check_automation_process_hud_6:custom_function_result.data.success_quote", "==", 1]
+        ],
+        delimiter=None)
+
+    # call connected blocks if condition 1 matched
+    if found_match_1:
+        return
+
+    # check for 'else' condition 2
+    add_tag_to_container_a_progress(action=action, success=success, container=container, results=results, handle=handle)
+    add_tag_to_container_a_done(action=action, success=success, container=container, results=results, handle=handle)
+
+    return
+
+
+@phantom.playbook_block()
+def add_tag_to_container_a_done(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_tag_to_container_a_done() called")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.add_tags(container=container, tags="a_done")
+
+    container = phantom.get_container(container.get('id', None))
+
+    set_next_phase_as_current_phase(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def set_next_phase_as_current_phase(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("set_next_phase_as_current_phase() called")
+
+    id_value = container.get("id", None)
+    search_for_sop_mapping_result_data = phantom.collect2(container=container, datapath=["search_for_sop_mapping:action_result.data.0.3","search_for_sop_mapping:action_result.parameter.context.artifact_id"], action_results=results)
+
+    parameters = []
+
+    # build parameters list for 'set_next_phase_as_current_phase' call
+    for search_for_sop_mapping_result_item in search_for_sop_mapping_result_data:
+        parameters.append({
+            "current_phase_name": search_for_sop_mapping_result_item[0],
+            "container_id": id_value,
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="conf23-sop_content/identify_the_next_phase", parameters=parameters, name="set_next_phase_as_current_phase")
 
     return
 
