@@ -80,6 +80,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
             yield lst[i:i + n]
 
     for chunk in chunks(data, 5):
+        phantom.debug("Chunk {}".format(chunk))
         for item in chunk:
             phantom.debug(item["name"])
             current_task = item["name"]
@@ -92,7 +93,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
             if data["count"] == 0:
                 phantom.debug("no playbook found")
             else:
-                phantom.debug(data["data"][0]["id"])
+                #phantom.debug(data["data"][0]["id"])
                 playbook_id = data["data"][0]["id"]
         
         
@@ -102,7 +103,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
                 data = {'container_id': id_value, 'playbook_id': playbook_id, 'scope': 'new', 'run': 'true','inputs': inputs}
                 headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
                 response3 = phantom.requests.post(url_run_playbook, data=json.dumps(data), headers=headers, verify=False)
-                phantom.debug("phantom returned status code {} with message {}".format(response3.status_code, response3.text))
+                #phantom.debug("phantom returned status code {} with message {}".format(response3.status_code, response3.text))
             
 
             
