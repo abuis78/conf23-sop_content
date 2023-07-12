@@ -70,7 +70,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     
     response = phantom.requests.get(url,verify=False,)
     
-    data = response.json()
+    data = response.json.loads()
     data = data[0]
     
     phantom.debug(data)
