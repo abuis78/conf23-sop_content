@@ -21,7 +21,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "39d08e48dff98513119236cb6a0069f5dd31b701",
+            "hash": "497eb2b212407aed58a5f6ee41c897d51a49dbbf",
             "nodes": {
                 "0": {
                     "data": {
@@ -37,7 +37,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.99999999999966
+                    "y": 419.99999999999955
                 },
                 "1": {
                     "data": {
@@ -69,17 +69,14 @@
                             "playbook_input:vault_id"
                         ],
                         "outputVariables": [
-                            "json_content",
-                            "version",
-                            "creator",
-                            "name"
+                            "data_list"
                         ],
                         "type": "code"
                     },
                     "errors": {},
                     "id": "2",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    for item in playbook_input_vault_id:\n        vault_id = playbook_input_vault_id[0]\n        success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])\n        path = vault_info[0][\"path\"]\n        \n        with open(path) as file:\n            data = json.load(file)\n            phantom.debug(data)\n            sop_json = data['sop_json']\n            get_file_information_extract_content__name = str(sop_json['name'])\n            get_file_information_extract_content__json_content = str(data['sop_json'])\n            get_file_information_extract_content__version = str(data['version'])\n            get_file_information_extract_content__creator = str(data['creator'])\n        \n\n",
+                    "userCode": "\n    # Write your custom code here...\n    my_list = []\n    \n    for item in playbook_input_vault_id:\n        vault_id = playbook_input_vault_id[0]\n        success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])\n        path = vault_info[0][\"path\"]\n        \n        with open(path) as file:\n            data = json.load(file)\n            entry = {\n                \"name\": data.get('name'),\n                \"sop_json\": data.get('sop_json'),\n                \"version\": data.get('version'),\n                \"creator\": data.get('creator')\n            }\n            \n            my_list.append(entry)\n        \n    get_file_information_extract_content__data_list = my_list\n",
                     "warnings": {},
                     "x": 980,
                     "y": 600
@@ -279,42 +276,12 @@
             {
                 "contains": [],
                 "datapaths": [
-                    "get_file_information_extract_content:custom_function:json_content"
+                    "get_file_information_extract_content:custom_function:data_list"
                 ],
                 "deduplicate": false,
                 "description": "",
                 "metadata": {},
-                "name": "json_content"
-            },
-            {
-                "contains": [],
-                "datapaths": [
-                    "get_file_information_extract_content:custom_function:version"
-                ],
-                "deduplicate": false,
-                "description": "",
-                "metadata": {},
-                "name": "version"
-            },
-            {
-                "contains": [],
-                "datapaths": [
-                    "get_file_information_extract_content:custom_function:creator"
-                ],
-                "deduplicate": false,
-                "description": "",
-                "metadata": {},
-                "name": "creator"
-            },
-            {
-                "contains": [],
-                "datapaths": [
-                    "get_file_information_extract_content:custom_function:name"
-                ],
-                "deduplicate": false,
-                "description": "",
-                "metadata": {},
-                "name": "name"
+                "name": "data_list"
             }
         ],
         "playbook_type": "data",
@@ -322,7 +289,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T19:36:04.902002+00:00",
+    "create_time": "2023-07-12T07:08:17.885244+00:00",
     "draft_mode": false,
     "labels": [
         "*"

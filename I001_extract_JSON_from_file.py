@@ -25,16 +25,15 @@ def get_file_information_extract_content(action=None, success=None, container=No
 
     playbook_input_vault_id_values = [item[0] for item in playbook_input_vault_id]
 
-    get_file_information_extract_content__json_content = None
-    get_file_information_extract_content__version = None
-    get_file_information_extract_content__creator = None
-    get_file_information_extract_content__name = None
+    get_file_information_extract_content__data_list = None
 
     ################################################################################
     ## Custom Code Start
     ################################################################################
 
     # Write your custom code here...
+    my_list = []
+    
     for item in playbook_input_vault_id:
         vault_id = playbook_input_vault_id[0]
         success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])
@@ -42,22 +41,21 @@ def get_file_information_extract_content(action=None, success=None, container=No
         
         with open(path) as file:
             data = json.load(file)
-            phantom.debug(data)
-            sop_json = data['sop_json']
-            get_file_information_extract_content__name = str(sop_json['name'])
-            get_file_information_extract_content__json_content = str(data['sop_json'])
-            get_file_information_extract_content__version = str(data['version'])
-            get_file_information_extract_content__creator = str(data['creator'])
+            entry = {
+                "name": data.get('name'),
+                "sop_json": data.get('sop_json'),
+                "version": data.get('version'),
+                "creator": data.get('creator')
+            }
+            
+            my_list.append(entry)
         
-
+    get_file_information_extract_content__data_list = my_list
     ################################################################################
     ## Custom Code End
     ################################################################################
 
-    phantom.save_run_data(key="get_file_information_extract_content:json_content", value=json.dumps(get_file_information_extract_content__json_content))
-    phantom.save_run_data(key="get_file_information_extract_content:version", value=json.dumps(get_file_information_extract_content__version))
-    phantom.save_run_data(key="get_file_information_extract_content:creator", value=json.dumps(get_file_information_extract_content__creator))
-    phantom.save_run_data(key="get_file_information_extract_content:name", value=json.dumps(get_file_information_extract_content__name))
+    phantom.save_run_data(key="get_file_information_extract_content:data_list", value=json.dumps(get_file_information_extract_content__data_list))
 
     return
 
@@ -105,16 +103,10 @@ def debug_1(action=None, success=None, container=None, results=None, handle=None
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
 
-    get_file_information_extract_content__json_content = json.loads(_ if (_ := phantom.get_run_data(key="get_file_information_extract_content:json_content")) != "" else "null")  # pylint: disable=used-before-assignment
-    get_file_information_extract_content__version = json.loads(_ if (_ := phantom.get_run_data(key="get_file_information_extract_content:version")) != "" else "null")  # pylint: disable=used-before-assignment
-    get_file_information_extract_content__creator = json.loads(_ if (_ := phantom.get_run_data(key="get_file_information_extract_content:creator")) != "" else "null")  # pylint: disable=used-before-assignment
-    get_file_information_extract_content__name = json.loads(_ if (_ := phantom.get_run_data(key="get_file_information_extract_content:name")) != "" else "null")  # pylint: disable=used-before-assignment
+    get_file_information_extract_content__data_list = json.loads(_ if (_ := phantom.get_run_data(key="get_file_information_extract_content:data_list")) != "" else "null")  # pylint: disable=used-before-assignment
 
     output = {
-        "json_content": get_file_information_extract_content__json_content,
-        "version": get_file_information_extract_content__version,
-        "creator": get_file_information_extract_content__creator,
-        "name": get_file_information_extract_content__name,
+        "data_list": get_file_information_extract_content__data_list,
     }
 
     ################################################################################
