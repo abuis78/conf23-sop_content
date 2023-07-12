@@ -72,7 +72,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     
     data = response.json()
     data = json.loads(data)
-    data = data["data"]
+
     
     phantom.debug(data)
     item_chunks = [data[i:i+5] for i in range(0, len(data), 5)]

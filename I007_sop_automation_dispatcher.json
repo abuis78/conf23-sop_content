@@ -21,7 +21,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "d7078ba51ba62e1759e287edbf6ae83571dfbc07",
+            "hash": "a77bcf664d63e6e32e94da8a22d567cd93f37ad8",
             "nodes": {
                 "0": {
                     "data": {
@@ -113,11 +113,7 @@
                     "errors": {},
                     "id": "2",
                     "type": "utility",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 580,
                     "y": 580
                 },
@@ -143,7 +139,7 @@
                     "errors": {},
                     "id": "5",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    import time\n    \n    phase = playbook_input_automation_phase_values[0]\n    success, message = phantom.set_phase(container=id_value,phase=phase)\n    success, message, phase_id, phase_name = phantom.get_phase()\n    phantom.debug(phase_id)\n    set_automation_phase__phase_id = phase_id\n    \n    url_filter = \"?_filter_container_id=\" + str(id_value) + \"&_filter_phase=\" + str(phase_id)\n    rest_url = phantom.build_phantom_rest_url('workbook_task')\n    url = rest_url + url_filter\n    \n    response = phantom.requests.get(url,verify=False,)\n    \n    data = response.json()\n    data = json.loads(data)\n    data = data[\"data\"]\n    \n    phantom.debug(data)\n    item_chunks = [data[i:i+5] for i in range(0, len(data), 5)]\n    phantom.debug(item_chunks)\n    \n    for i, chunk in enumerate(item_chunks):\n        phantom.debug(chunk[\"name\"])\n        current_task = chunk[\"name\"]\n        # get the ID of the Playbook\n        url_filter = '?_filter_name=\"'+ current_task + '\"'\n        url_playbook = phantom.build_phantom_rest_url('playbook')\n        url = url_playbook + url_filter\n        response = phantom.requests.get(url,verify=False)\n        data = response.json()\n        if data[\"count\"] == 0:\n            phantom.debug(\"no playbook found\")\n        else:\n            phantom.debug(data[\"data\"][0][\"id\"])\n            playbook_id = data[\"data\"][0][\"id\"]\n        \n        \n            # trigger the Playbook\n            url_run_playbook = phantom.build_phantom_rest_url('playbook_run')\n            inputs = { \"current_task\": current_task}\n            data = {'container_id': id_value, 'playbook_id': playbook_id, 'scope': 'new', 'run': 'true','inputs': inputs}\n            headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}\n            response3 = phantom.requests.post(url_run_playbook, data=json.dumps(data), headers=headers, verify=False)\n            phantom.debug(\"phantom returned status code {} with message {}\".format(response3.status_code, response3.text))\n            \n        if i != len(item_chunks) - 1:\n            time.sleep(1)\n            \n",
+                    "userCode": "\n    # Write your custom code here...\n    import time\n    \n    phase = playbook_input_automation_phase_values[0]\n    success, message = phantom.set_phase(container=id_value,phase=phase)\n    success, message, phase_id, phase_name = phantom.get_phase()\n    phantom.debug(phase_id)\n    set_automation_phase__phase_id = phase_id\n    \n    url_filter = \"?_filter_container_id=\" + str(id_value) + \"&_filter_phase=\" + str(phase_id)\n    rest_url = phantom.build_phantom_rest_url('workbook_task')\n    url = rest_url + url_filter\n    \n    response = phantom.requests.get(url,verify=False,)\n    \n    data = response.json()\n    data = json.loads(data)\n\n    \n    phantom.debug(data)\n    item_chunks = [data[i:i+5] for i in range(0, len(data), 5)]\n    phantom.debug(item_chunks)\n    \n    for i, chunk in enumerate(item_chunks):\n        phantom.debug(chunk[\"name\"])\n        current_task = chunk[\"name\"]\n        # get the ID of the Playbook\n        url_filter = '?_filter_name=\"'+ current_task + '\"'\n        url_playbook = phantom.build_phantom_rest_url('playbook')\n        url = url_playbook + url_filter\n        response = phantom.requests.get(url,verify=False)\n        data = response.json()\n        if data[\"count\"] == 0:\n            phantom.debug(\"no playbook found\")\n        else:\n            phantom.debug(data[\"data\"][0][\"id\"])\n            playbook_id = data[\"data\"][0][\"id\"]\n        \n        \n            # trigger the Playbook\n            url_run_playbook = phantom.build_phantom_rest_url('playbook_run')\n            inputs = { \"current_task\": current_task}\n            data = {'container_id': id_value, 'playbook_id': playbook_id, 'scope': 'new', 'run': 'true','inputs': inputs}\n            headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}\n            response3 = phantom.requests.post(url_run_playbook, data=json.dumps(data), headers=headers, verify=False)\n            phantom.debug(\"phantom returned status code {} with message {}\".format(response3.status_code, response3.text))\n            \n        if i != len(item_chunks) - 1:\n            time.sleep(1)\n            \n",
                     "warnings": {},
                     "x": 980,
                     "y": 560
@@ -175,7 +171,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-12T12:00:15.173713+00:00",
+    "create_time": "2023-07-12T12:01:22.886830+00:00",
     "draft_mode": false,
     "labels": [
         "*"
