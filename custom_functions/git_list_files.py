@@ -39,14 +39,14 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         
         if result:
             phantom.debug("\nThere are differences between the local and remote repository:")
-            changed_files = [datei for datei in result.split('\n')[:-1] if datei.endswith('.json')]
+            changed_files = [datei for datei in result.split('\n')[:-1] if datei.endswith(filter_file_endswith)]
             if changed_files:
-                phantom.debug("Modified .json files:")
+                phantom.debug("Modified "+filter_file_endswith+" files:")
                 phantom.debug('\n'.join(changed_files))
                 phantom.debug("\nUpdate the local repository...")
                 subprocess.run(["git", "pull"])
             else:
-                phantom.debug("No .json files were changed.")
+                phantom.debug("No ."+filter_file_endswith+" files were changed.")
         else:
             phantom.debug("\nNo differences found. The local repository is up to date.")
             
