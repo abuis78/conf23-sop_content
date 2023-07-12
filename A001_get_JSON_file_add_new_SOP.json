@@ -78,14 +78,14 @@
                     "targetPort": "23_in"
                 },
                 {
-                    "id": "port_0_to_port_25",
+                    "id": "port_0_to_port_26",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
-                    "targetNode": "25",
-                    "targetPort": "25_in"
+                    "targetNode": "26",
+                    "targetPort": "26_in"
                 }
             ],
-            "hash": "fc1df05dd086331d6a6915e4a9df93e9c0d5a600",
+            "hash": "3486621a3f3a9cc8af6ca43dc25480a120c612d8",
             "nodes": {
                 "0": {
                     "data": {
@@ -145,7 +145,11 @@
                     "errors": {},
                     "id": "13",
                     "type": "playbook",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": -1.4210854715202004e-14,
                     "y": 144.49999999999986
                 },
@@ -533,47 +537,97 @@
                     "x": 0,
                     "y": 864.5
                 },
-                "25": {
+                "26": {
                     "data": {
                         "advanced": {
                             "join": []
                         },
-                        "functionId": 2,
-                        "functionName": "playbook_I004_syc_local_remote_git_add_new_files_2",
-                        "id": "25",
-                        "inputs": {
-                            "filter_file_endswith": {
-                                "datapaths": [
-                                    "json"
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "git_list_files",
+                            "repoName": "conf23-sop_content"
+                        },
+                        "functionId": 1,
+                        "functionName": "git_list_files_1",
+                        "id": "26",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "git_list_files": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "repo_path_local",
+                                        "name": "repo_path_local",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "repo_path_remote",
+                                        "name": "repo_path_remote",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "filter_file_endswith",
+                                        "name": "filter_file_endswith",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "artifact_name_prefix",
+                                        "name": "artifact_name_prefix",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "artifact_severity",
+                                        "name": "artifact_severity",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
                                 ],
-                                "deduplicate": false
-                            },
-                            "repo_path_local": {
-                                "datapaths": [
-                                    "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/"
-                                ],
-                                "deduplicate": false
-                            },
-                            "repo_path_remote": {
-                                "datapaths": [
-                                    "https://github.com/abuis78/conf23.git"
-                                ],
-                                "deduplicate": false
+                                "label": "git_list_files",
+                                "name": "git_list_files"
                             }
                         },
-                        "playbookName": "I004_syc_local_remote_git_add_new_files",
-                        "playbookRepo": 10,
-                        "playbookRepoName": "conf23-sop_content",
-                        "playbookType": "data",
-                        "synchronous": true,
-                        "type": "playbook"
+                        "utilityType": "custom_function",
+                        "values": {
+                            "git_list_files": {
+                                "artifact_name_prefix": null,
+                                "artifact_severity": null,
+                                "filter_file_endswith": null,
+                                "repo_path_local": null,
+                                "repo_path_remote": null
+                            }
+                        }
                     },
                     "errors": {},
-                    "id": "25",
-                    "type": "playbook",
+                    "id": "26",
+                    "type": "utility",
                     "warnings": {},
-                    "x": -1.4210854715202004e-14,
-                    "y": -75.50000000000003
+                    "x": 0,
+                    "y": -95.5
                 }
             },
             "notes": ""
@@ -585,7 +639,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-12T06:22:26.463834+00:00",
+    "create_time": "2023-07-12T06:40:34.318687+00:00",
     "draft_mode": false,
     "labels": [
         "*"
