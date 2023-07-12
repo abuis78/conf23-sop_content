@@ -7,14 +7,14 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_0_to_port_2",
+                    "id": "port_0_to_port_5",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
-                    "targetNode": "2",
-                    "targetPort": "2_in"
+                    "targetNode": "5",
+                    "targetPort": "5_in"
                 }
             ],
-            "hash": "81dffa652daab6d26bb2ca92cd9edd71016d4180",
+            "hash": "304e86ac728df4c73af552ec6c8fc8bc7f5255b4",
             "nodes": {
                 "0": {
                     "data": {
@@ -106,9 +106,37 @@
                     "errors": {},
                     "id": "2",
                     "type": "utility",
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
+                    "x": 580,
+                    "y": 580
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "customName": "set automation phase",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "set_automation_phase",
+                        "id": "5",
+                        "inputParameters": [
+                            "playbook_input:automation_phase"
+                        ],
+                        "outputVariables": [],
+                        "type": "code"
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "code",
+                    "userCode": "\n    # Write your custom code here...\n    phase = playbook_input_automation_phase_values[0]\n    success, message = phantom.set_phase(phase=phase)\n",
                     "warnings": {},
                     "x": 980,
-                    "y": 564.5
+                    "y": 560
                 }
             },
             "notes": ""
@@ -126,7 +154,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-12T08:05:19.513672+00:00",
+    "create_time": "2023-07-12T08:14:45.701435+00:00",
     "draft_mode": false,
     "labels": [
         "*"
