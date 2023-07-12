@@ -39,7 +39,7 @@ def get_file_information_extract_content(action=None, success=None, container=No
         success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])
         path = vault_info[0]["path"]
         
-        with open(path) as file:
+        with open(path, 'r') as file:
             data = json.load(file)
             entry = {
                 "name": data['sop_json']['name'],
@@ -49,7 +49,7 @@ def get_file_information_extract_content(action=None, success=None, container=No
             }
             
             my_list.append(entry)
-        
+    phantom.debug(my_list)
     get_file_information_extract_content__data_list = my_list
     ################################################################################
     ## Custom Code End
