@@ -15,48 +15,43 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
     import phantom.rules as phantom
     import subprocess
     import os
-    from git import Repo
     
     outputs = {}
     
     # Write your custom code here...
 
-    # Pfad zum lokalen Repository
-    local_repo_path = repo_path_local
 
-    # Pfad zum entfernten Repository
-    remote_repo_path = repo_path_remote
+    def auflisten_git_verzeichnis(repo_path_local):
+        # Wechseln Sie zum lokalen Repository-Verzeichnis
+        os.chdir(repo_path_local)
 
-    # Erstellen Sie ein Repo-Objekt für das lokale Repo
-    local_repo = Repo(local_repo_path)
+        # Liste alle Dateien, die vom lokalen Git-Repository verfolgt werden
+        dateien = subprocess.check_output(["git", "ls-files"]).decode("utf8")
+        phantom.debug("Dateien im lokalen Git-Repository:")
+        phantom.debug(dateien)
 
-    # Überprüfen Sie, ob das lokale Repo sauber ist (keine Änderungen)
-    if local_repo.is_dirty(untracked_files=True):
-        phantom.debug('Das lokale Repository hat nicht verfolgte Dateien oder Änderungen.')
+    def check_git_diff(repo_path_remote):
+        # Holt die neuesten Informationen vom remote repository
+        subprocess.run(["git", "remote", "set-url", "origin", repo_path_remote])
+        subprocess.run(["git", "fetch"])
+        
+        # Holt die neuesten Informationen vom remote repository
+        subprocess.run(["git", "fetch"])
+        
+        # Überprüft den Unterschied zwischen dem lokalen und dem remote repository
+        result = subprocess.check_output(["git", "diff", "--name-only", "origin/main"]).decode("utf8")
 
-    # Fügen Sie das Remote-Repo hinzu, wenn es noch nicht vorhanden ist
-    if 'origin' not in [remote.name for remote in local_repo.remotes]:
-        remote_repo = local_repo.create_remote('origin', url=remote_repo_path)
-    
-    # Fetchen Sie alle Änderungen vom Remote-Repo
-    fetch_info = local_repo.remotes.origin.fetch()
+        if result:
+            phantom.debug("\nEs gibt Unterschiede zwischen dem lokalen und dem remote Repository:")
+            phantom.debug(result)
+            phantom.debug("\nAktualisiere das lokale Repository...")
+            subprocess.run(["git", "pull"])
+        else:
+            phantom.debug("\nKeine Unterschiede gefunden. Das lokale Repository ist aktuell.")
 
-    # Erstellen Sie eine Liste für aktuellere Dateien
-    newer_files = []
 
-    # Überprüfen Sie, ob der Remote-Branch "origin/main" existiert und definiert ist
-    if 'origin/main' in local_repo.git.branch('-r'):
-        # Gehen Sie durch alle Commits von HEAD bis zum neuesten Fetch
-        for commit in local_repo.iter_commits('HEAD..origin/main'):
-            # Gehen Sie durch jede geänderte Datei in jedem Commit
-            for file in commit.stats.files:
-                newer_files.append(file)
-    else:
-        phantom.debug('Der Remote-Branch "origin/main" existiert nicht oder ist nicht definiert.')
-
-    # Drucken Sie die aktuelleren Dateien
-    for file in newer_files:
-        phantom.debug("Neue Dateien: {}".format(file))
+    auflisten_git_verzeichnis(repo_path_local)
+    check_git_diff(repo_path_remote)    
 
 
         
