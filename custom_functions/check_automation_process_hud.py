@@ -33,7 +33,7 @@ def check_automation_process_hud(status=None, container_id=None, phase_id=None, 
     all_tasks = data.get('count')
     
     message = "Current status of task automation"
-    data = done_tasks + "/" + all_tasks
+    data = str(done_tasks) + "/" + str(all_tasks)
     if done_tasks == all_tasks:
         pin_style = "blue"
     else:
