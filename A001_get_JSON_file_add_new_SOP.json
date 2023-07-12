@@ -104,7 +104,7 @@
                     "targetPort": "28_in"
                 }
             ],
-            "hash": "bf2ae0f803f0e6f3a499fd75ee9765b8c0925e19",
+            "hash": "762296911e5bc18c1af5cb85f67c5c684f2665c5",
             "nodes": {
                 "0": {
                     "data": {
@@ -210,9 +210,6 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
                         ]
                     },
                     "x": -1.4210854715202004e-14,
@@ -665,9 +662,11 @@
                 "27": {
                     "data": {
                         "advanced": {
+                            "case_sensitive": false,
                             "customName": "filter artifacts for SOP in name",
                             "customNameId": 0,
-                            "join": []
+                            "join": [],
+                            "scope": "all"
                         },
                         "conditions": [
                             {
@@ -875,7 +874,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-12T07:09:24.450699+00:00",
+    "create_time": "2023-07-12T07:11:49.791256+00:00",
     "draft_mode": false,
     "labels": [
         "*"

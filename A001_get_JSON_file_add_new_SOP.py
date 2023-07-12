@@ -288,6 +288,8 @@ def filter_artifacts_for_sop_in_name(action=None, success=None, container=None, 
             ["SOP", "in", "artifact:*.name"]
         ],
         name="filter_artifacts_for_sop_in_name:condition_1",
+        scope="all",
+        case_sensitive=False,
         delimiter=None)
 
     # call connected blocks if filtered artifacts or results
