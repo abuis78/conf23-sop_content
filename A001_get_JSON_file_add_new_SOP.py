@@ -21,12 +21,12 @@ def on_start(container):
 def playbook_i001_extract_json_from_file_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("playbook_i001_extract_json_from_file_3() called")
 
-    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.vaultId"])
+    filtered_artifact_0_data_filter_artifacts_for_sop_in_name = phantom.collect2(container=container, datapath=["filtered-data:filter_artifacts_for_sop_in_name:condition_1:artifact:*.cef.vaultId"], scope="all")
 
-    container_artifact_cef_item_0 = [item[0] for item in container_artifact_data]
+    filtered_artifact_0__cef_vaultid = [item[0] for item in filtered_artifact_0_data_filter_artifacts_for_sop_in_name]
 
     inputs = {
-        "vault_id": container_artifact_cef_item_0,
+        "vault_id": filtered_artifact_0__cef_vaultid,
     }
 
     ################################################################################
@@ -272,7 +272,27 @@ def git_list_files_1(action=None, success=None, container=None, results=None, ha
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="git_list_files_1")
+    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="git_list_files_1", callback=filter_artifacts_for_sop_in_name)
+
+    return
+
+
+@phantom.playbook_block()
+def filter_artifacts_for_sop_in_name(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("filter_artifacts_for_sop_in_name() called")
+
+    # collect filtered artifact ids and results for 'if' condition 1
+    matched_artifacts_1, matched_results_1 = phantom.condition(
+        container=container,
+        conditions=[
+            ["SOP", "in", "artifact:*.name"]
+        ],
+        name="filter_artifacts_for_sop_in_name:condition_1",
+        delimiter=None)
+
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_1 or matched_results_1:
+        playbook_i001_extract_json_from_file_3(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 

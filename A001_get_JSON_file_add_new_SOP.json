@@ -83,9 +83,28 @@
                     "sourcePort": "0_out",
                     "targetNode": "26",
                     "targetPort": "26_in"
+                },
+                {
+                    "id": "port_26_to_port_27",
+                    "sourceNode": "26",
+                    "sourcePort": "26_out",
+                    "targetNode": "27",
+                    "targetPort": "27_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_27_to_port_13",
+                    "sourceNode": "27",
+                    "sourcePort": "27_out",
+                    "targetNode": "13",
+                    "targetPort": "13_in"
                 }
             ],
-            "hash": "1034b690f184c37654c4eef20237fcf1edc2c842",
+            "hash": "7deb457053567ed0900913f9b87d52469433f5b5",
             "nodes": {
                 "0": {
                     "data": {
@@ -122,7 +141,8 @@
                 "13": {
                     "data": {
                         "advanced": {
-                            "join": []
+                            "join": [],
+                            "scope": "all"
                         },
                         "functionId": 3,
                         "functionName": "playbook_I001_extract_JSON_from_file_3",
@@ -130,7 +150,7 @@
                         "inputs": {
                             "vault_id": {
                                 "datapaths": [
-                                    "artifact:*.cef.vaultId"
+                                    "filtered-data:filter_artifacts_for_sop_in_name:condition_1:artifact:*.cef.vaultId"
                                 ],
                                 "deduplicate": false
                             }
@@ -145,11 +165,7 @@
                     "errors": {},
                     "id": "13",
                     "type": "playbook",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": -1.4210854715202004e-14,
                     "y": 144.49999999999986
                 },
@@ -193,7 +209,7 @@
                     "type": "playbook",
                     "warnings": {},
                     "x": 0,
-                    "y": 259.9999999999999
+                    "y": 280
                 },
                 "17": {
                     "data": {
@@ -219,6 +235,7 @@
                             {
                                 "comparisons": [
                                     {
+                                        "conditionIndex": 1,
                                         "op": "==",
                                         "param": "playbook_i002_check_sop_version_2:playbook_output:sop_in_list_status",
                                         "value": "newly_created"
@@ -233,6 +250,7 @@
                             {
                                 "comparisons": [
                                     {
+                                        "conditionIndex": 2,
                                         "op": "==",
                                         "param": "playbook_i002_check_sop_version_2:playbook_output:sop_in_list_status",
                                         "value": "nothing_to_do"
@@ -628,6 +646,40 @@
                     "warnings": {},
                     "x": 0,
                     "y": -95.5
+                },
+                "27": {
+                    "data": {
+                        "advanced": {
+                            "customName": "filter artifacts for SOP in name",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "in",
+                                        "param": "SOP",
+                                        "value": "artifact:*.name"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "customName": "SOP in name",
+                                "logic": "and"
+                            }
+                        ],
+                        "functionId": 1,
+                        "functionName": "filter_artifacts_for_sop_in_name",
+                        "id": "27",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "27",
+                    "type": "filter",
+                    "warnings": {},
+                    "x": 60,
+                    "y": 20
                 }
             },
             "notes": ""
@@ -639,7 +691,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-12T06:41:21.113490+00:00",
+    "create_time": "2023-07-12T06:48:04.971406+00:00",
     "draft_mode": false,
     "labels": [
         "*"
