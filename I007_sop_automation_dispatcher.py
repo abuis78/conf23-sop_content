@@ -44,6 +44,7 @@ def add_comment_1(action=None, success=None, container=None, results=None, handl
 def set_automation_phase(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("set_automation_phase() called")
 
+    id_value = container.get("id", None)
     playbook_input_automation_phase = phantom.collect2(container=container, datapath=["playbook_input:automation_phase"])
 
     playbook_input_automation_phase_values = [item[0] for item in playbook_input_automation_phase]
@@ -54,7 +55,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
 
     # Write your custom code here...
     phase = playbook_input_automation_phase_values[0]
-    success, message = phantom.set_phase(phase=phase)
+    success, message = phantom.set_phase(container=id_value,phase=phase)
     ################################################################################
     ## Custom Code End
     ################################################################################
