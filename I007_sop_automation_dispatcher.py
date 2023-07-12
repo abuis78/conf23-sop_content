@@ -74,36 +74,37 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     data = response.json()
 
     
-    phantom.debug(data["data"])
-    item_chunks = [data[i:i+5] for i in range(0, len(data), 5)]
-    phantom.debug(item_chunks)
-    
-    for i, chunk in enumerate(item_chunks):
-        phantom.debug(chunk["name"])
-        current_task = chunk["name"]
-        # get the ID of the Playbook
-        url_filter = '?_filter_name="'+ current_task + '"'
-        url_playbook = phantom.build_phantom_rest_url('playbook')
-        url = url_playbook + url_filter
-        response = phantom.requests.get(url,verify=False)
-        data = response.json()
-        if data["count"] == 0:
-            phantom.debug("no playbook found")
-        else:
-            phantom.debug(data["data"][0]["id"])
-            playbook_id = data["data"][0]["id"]
+    def chunks(lst, n):
+        """Yield successive n-sized chunks from lst."""
+        for i in range(0, len(lst), n):
+            yield lst[i:i + n]
+
+    for chunk in chunks(data, 5):
+        for item in chunk:
+            phantom.debug(item["name"])
+            current_task = item["name"]
+            # get the ID of the Playbook
+            url_filter = '?_filter_name="'+ current_task + '"'
+            url_playbook = phantom.build_phantom_rest_url('playbook')
+            url = url_playbook + url_filter
+            response = phantom.requests.get(url,verify=False)
+            data = response.json()
+            if data["count"] == 0:
+                phantom.debug("no playbook found")
+            else:
+                phantom.debug(data["data"][0]["id"])
+                playbook_id = data["data"][0]["id"]
         
         
-            # trigger the Playbook
-            url_run_playbook = phantom.build_phantom_rest_url('playbook_run')
-            inputs = { "current_task": current_task}
-            data = {'container_id': id_value, 'playbook_id': playbook_id, 'scope': 'new', 'run': 'true','inputs': inputs}
-            headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-            response3 = phantom.requests.post(url_run_playbook, data=json.dumps(data), headers=headers, verify=False)
-            phantom.debug("phantom returned status code {} with message {}".format(response3.status_code, response3.text))
+                # trigger the Playbook
+                url_run_playbook = phantom.build_phantom_rest_url('playbook_run')
+                inputs = { "current_task": current_task}
+                data = {'container_id': id_value, 'playbook_id': playbook_id, 'scope': 'new', 'run': 'true','inputs': inputs}
+                headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+                response3 = phantom.requests.post(url_run_playbook, data=json.dumps(data), headers=headers, verify=False)
+                phantom.debug("phantom returned status code {} with message {}".format(response3.status_code, response3.text))
             
-        if i != len(item_chunks) - 1:
-            time.sleep(1)
+
             
     ################################################################################
     ## Custom Code End
