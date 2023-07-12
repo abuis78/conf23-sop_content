@@ -1,0 +1,72 @@
+{
+    "create_time": "2023-07-12T09:04:20.257077+00:00",
+    "custom_function_id": "6100444835b042da4a7208db203fe180638eafe1",
+    "description": "Update a workbook task by task name",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [
+                "*"
+            ],
+            "description": "Name of a workbook task (Required)",
+            "input_type": "item",
+            "name": "task_name",
+            "placeholder": "my_task"
+        },
+        {
+            "contains_type": [
+                "*"
+            ],
+            "description": "Note title goes here (Optional)",
+            "input_type": "item",
+            "name": "note_title",
+            "placeholder": "My Title"
+        },
+        {
+            "contains_type": [
+                "*"
+            ],
+            "description": "Body of note goes here (Optional)",
+            "input_type": "item",
+            "name": "note_content",
+            "placeholder": "My notes"
+        },
+        {
+            "contains_type": [
+                "*"
+            ],
+            "description": "One of: incomplete, in_progress, complete (Optional)",
+            "input_type": "item",
+            "name": "status",
+            "placeholder": "in_progress"
+        },
+        {
+            "contains_type": [
+                "*"
+            ],
+            "description": "Assigns task to provided owner. Accepts keyword 'current\" to assign task to currently running playbook user. (Optional)",
+            "input_type": "item",
+            "name": "owner",
+            "placeholder": "username"
+        },
+        {
+            "contains_type": [
+                "phantom container id"
+            ],
+            "description": "ID of Phantom Container (Required)",
+            "input_type": "item",
+            "name": "container",
+            "placeholder": "container:id"
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [],
+            "data_path": "note_id",
+            "description": "Returns note_id if a note was added"
+        }
+    ],
+    "outputs_type": "item",
+    "platform_version": "6.0.2.127725",
+    "python_version": "3"
+}
