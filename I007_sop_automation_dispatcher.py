@@ -78,7 +78,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
         if data["count"] == 0:
             phantom.debug("no playbook found")
         else:
-            phantom.debug(data["id"])
+            phantom.debug(data["data"]["id"])
         #phantom.debug(playbook_id)
         
         # trigger the Playbook
