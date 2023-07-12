@@ -35,19 +35,23 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         
         result = subprocess.check_output(["git", "diff", "--name-only", "origin/main"]).decode("utf8")
         
-        geaenderte_dateien = []
+        changed_files = []
         
         if result:
             phantom.debug("\nThere are differences between the local and remote repository:")
-            geaenderte_dateien = result.split('\n')[:-1] 
-            phantom.debug(result)
-            phantom.debug("\nUpdate the local repository...")
-            subprocess.run(["git", "pull"])
+            changed_files = [datei for datei in result.split('\n')[:-1] if datei.endswith('.json')]
+            if changed_files:
+                phantom.debug("Modified .json files:")
+                phantom.debug('\n'.join(changed_files))
+                phantom.debug("\nUpdate the local repository...")
+                subprocess.run(["git", "pull"])
+            else:
+                phantom.debug("No .json files were changed.")
         else:
             phantom.debug("\nNo differences found. The local repository is up to date.")
             
-        phantom.debug(geaenderte_dateien)
-        return geaenderte_dateien
+        phantom.debug(changed_files)
+        return changed_files
 
 
     auflisten_git_verzeichnis(repo_path_local)
