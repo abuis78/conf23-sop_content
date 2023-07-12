@@ -19,62 +19,58 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
     outputs = {}
     
     # Write your custom code here...
-    phantom.debug(filter_file_endswith)
-    filter_file_endswith = str(filter_file_endswith)
 
-    def auflisten_git_verzeichnis(repo_path_local):
-        os.chdir(repo_path_local)
+    # Name des Remote-Repositories
+    remote_repo = "origin"
 
-        dateien = subprocess.check_output(["git", "ls-files"]).decode("utf8")
-        phantom.debug("Files in the local Git repository:")
-        phantom.debug(dateien)
+    # Name des lokalen Branchs
+    local_branch = "master"
 
-    def check_git_diff(repo_path_remote):
-        subprocess.run(["git", "remote", "set-url", "origin", repo_path_remote])
-        subprocess.run(["git", "fetch"])
-        
-        subprocess.run(["git", "fetch"])
-        
-        result = subprocess.check_output(["git", "diff", "--name-only", "origin/main"]).decode("utf8")
-        
-        changed_files = []
-        
-        if result:
-            phantom.debug("\nThere are differences between the local and remote repository:")
-            changed_files = [datei for datei in result.split('\n')[:-1] if datei.endswith(filter_file_endswith)]
-            if changed_files:
-                phantom.debug("Modified "+filter_file_endswith+" files:")
-                phantom.debug('\n'.join(changed_files))
-                phantom.debug("\nUpdate the local repository...")
-                subprocess.run(["git", "pull"])
-            else:
-                phantom.debug("No ."+filter_file_endswith+" files were changed.")
-        else:
-            phantom.debug("\nNo differences found. The local repository is up to date.")
-            
-        phantom.debug("Changed files {}:".format(changed_files))
-        for item in changed_files:
-            path_file = repo_path_local + item
-            phantom.debug("path to file: {}".format(path_file))
-            success, message, vault_id = phantom.vault_add(file_location=path_file,file_name=item)
-            phantom.debug("Add to vault: {} {}".format(success, message))
-            phantom.debug("Vault-ID: {}".format(vault_id))
-            
-            # create new Artifact
-            raw = {}
-            cef = {}
-            cef['vaultId'] = vault_id
-            name = artifact_name_prefix + item
-            success, message, artifact_id = phantom.add_artifact(container=None, raw_data=raw, cef_data=cef, label='sop',name=name, severity=artifact_severity,identifier=None,artifact_type='sop')
-            phantom.debug('artifact added as id:'+str(artifact_id))
-        outputs["file_list"]=changed_files
-        return changed_files
+    # Git-Befehl, um den lokalen Branch auf den neuesten Stand zu bringen
+    pull_command = ["git", "pull"]
 
+    # Ausführen des Befehls
+    subprocess.run(pull_command)
 
-    auflisten_git_verzeichnis(repo_path_local)
-    check_git_diff(repo_path_remote)
-    
+    # Git-Befehl, um die Liste der geänderten Dateien zwischen lokalem und Remote-Repository abzurufen
+    diff_command = ["git", "diff", "--name-only", f"{remote_repo}/{local_branch}"]
 
+    # Ausführen des Befehls und Erfassen der Ausgabe
+    result = subprocess.run(diff_command, capture_output=True, text=True)
+
+    # Aufteilen der Ausgabe in einzelne Dateinamen
+    changed_files = result.stdout.splitlines()
+
+    # Git-Befehl, um die Dateien aus dem Remote-Repository herunterzuladen
+    download_command = ["git", "checkout", f"{remote_repo}/{local_branch}", "--"] + changed_files
+
+    # Ausführen des Befehls
+    subprocess.run(download_command)
+
+    # Liste der Dateien, die aktueller im Remote-Repository sind
+    remote_updated_files = []
+
+    # Git-Befehl, um den Status der geänderten Dateien zu überprüfen
+    status_command = ["git", "status", "--porcelain"] + changed_files
+
+    # Ausführen des Befehls und Erfassen der Ausgabe
+    result = subprocess.run(status_command, capture_output=True, text=True)
+
+    # Aufteilen der Ausgabe in einzelne Zeilen
+    status_lines = result.stdout.splitlines()
+
+    # Extrahieren der Dateinamen aus den Statuszeilen
+    for line in status_lines:
+        file_status = line[:2].strip()
+        file_name = line[3:]
+        if file_status == "??":
+            # Die Datei ist neu hinzugefügt und noch nicht im lokalen Repository
+            remote_updated_files.append(file_name)
+
+    # Ausgabe der Liste der aktuelleren Dateien im Remote-Repository
+    phantom.debug("Aktuellere Dateien im Remote-Repository:")
+    for file_name in remote_updated_files:
+        phantom.debug(file_name)
 
         
     # Return a JSON-serializable object
