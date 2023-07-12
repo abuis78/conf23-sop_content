@@ -12,14 +12,14 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'find_listitem_1' block
-    find_listitem_1(container=container)
+    # call 'search_for_sop_mapping' block
+    search_for_sop_mapping(container=container)
 
     return
 
 @phantom.playbook_block()
-def find_listitem_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("find_listitem_1() called")
+def search_for_sop_mapping(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("search_for_sop_mapping() called")
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
@@ -45,18 +45,37 @@ def find_listitem_1(action=None, success=None, container=None, results=None, han
     ## Custom Code End
     ################################################################################
 
-    phantom.act("find listitem", parameters=parameters, name="find_listitem_1", assets=["phantom"], callback=add_comment_1)
+    phantom.act("find listitem", parameters=parameters, name="search_for_sop_mapping", assets=["phantom"], callback=decision_1)
 
     return
 
 
 @phantom.playbook_block()
-def add_comment_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("add_comment_1() called")
+def decision_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("decision_1() called")
 
-    find_listitem_1_result_data = phantom.collect2(container=container, datapath=["find_listitem_1:action_result.summary.found_matches"], action_results=results)
+    # check for 'if' condition 1
+    found_match_1 = phantom.decision(
+        container=container,
+        conditions=[
+            ["search_for_sop_mapping:action_result.summary.found_matches", "==", 0]
+        ],
+        delimiter=None)
 
-    find_listitem_1_summary_found_matches = [item[0] for item in find_listitem_1_result_data]
+    # call connected blocks if condition 1 matched
+    if found_match_1:
+        there_is_no_sop_mapping_to_this_allert(action=action, success=success, container=container, results=results, handle=handle)
+        return
+
+    # check for 'else' condition 2
+    there_is_a_mapping_between_sop_and_allert(action=action, success=success, container=container, results=results, handle=handle)
+
+    return
+
+
+@phantom.playbook_block()
+def there_is_no_sop_mapping_to_this_allert(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("there_is_no_sop_mapping_to_this_allert() called")
 
     ################################################################################
     ## Custom Code Start
@@ -68,7 +87,26 @@ def add_comment_1(action=None, success=None, container=None, results=None, handl
     ## Custom Code End
     ################################################################################
 
-    phantom.comment(container=container, comment=find_listitem_1_summary_found_matches)
+    phantom.comment(container=container, comment="There is no SOP mapping to this Allert")
+
+    return
+
+
+@phantom.playbook_block()
+def there_is_a_mapping_between_sop_and_allert(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("there_is_a_mapping_between_sop_and_allert() called")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.comment(container=container, comment="There is a mapping between SOP and allert")
 
     return
 
