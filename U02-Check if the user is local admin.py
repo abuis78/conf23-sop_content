@@ -31,12 +31,12 @@ def workbook_task_update_1(action=None, success=None, container=None, results=No
     # build parameters list for 'workbook_task_update_1' call
     for playbook_input_current_task_item in playbook_input_current_task:
         parameters.append({
+            "owner": "current",
+            "status": "complete",
+            "container": id_value,
             "task_name": playbook_input_current_task_item[0],
             "note_title": task_note_title,
             "note_content": task_note_content,
-            "status": "complete",
-            "owner": "current",
-            "container": id_value,
         })
 
     ################################################################################
