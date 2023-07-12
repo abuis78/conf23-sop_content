@@ -42,7 +42,7 @@ def get_file_information_extract_content(action=None, success=None, container=No
         with open(path) as file:
             data = json.load(file)
             entry = {
-                "name": data.get('sop_json')('name'),
+                "name": data['sop_json']['name'],
                 "sop_json": data.get('sop_json'),
                 "version": data.get('version'),
                 "creator": data.get('creator')
