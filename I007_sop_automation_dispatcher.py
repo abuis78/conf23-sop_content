@@ -79,14 +79,16 @@ def set_automation_phase(action=None, success=None, container=None, results=None
             phantom.debug("no playbook found")
         else:
             phantom.debug(data["data"][0]["id"])
-        #phantom.debug(playbook_id)
+            playbook_id = data["data"][0]["id"]
         
-        # trigger the Playbook
-        #url_run_playbook = phantom.build_phantom_rest_url('playbook_run')
-       # data = {'container_id': id_value, 'playbook_id': playbook_id, 'scope': 'new', 'run': 'true'}
-       # headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-       # response3 = phantom.requests.post(url_run_playbook, data=json.dumps(data), headers=headers, verify=False)
-        #phantom.debug("phantom returned status code {} with message {}".format(response3.status_code, response3.text))
+        
+            # trigger the Playbook
+            url_run_playbook = phantom.build_phantom_rest_url('playbook_run')
+            data = {'container_id': id_value, 'playbook_id': playbook_id, 'scope': 'new', 'run': 'true'}
+            headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+            response3 = phantom.requests.post(url_run_playbook, data=json.dumps(data), headers=headers, verify=False)
+            phantom.debug("phantom returned status code {} with message {}".format(response3.status_code, response3.text))
+            
     ################################################################################
     ## Custom Code End
     ################################################################################
