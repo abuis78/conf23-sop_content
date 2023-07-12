@@ -78,13 +78,6 @@
                     "targetPort": "6_in"
                 },
                 {
-                    "id": "port_8_to_port_10",
-                    "sourceNode": "8",
-                    "sourcePort": "8_out",
-                    "targetNode": "10",
-                    "targetPort": "10_in"
-                },
-                {
                     "id": "port_10_to_port_1",
                     "sourceNode": "10",
                     "sourcePort": "10_out",
@@ -102,9 +95,23 @@
                     "sourcePort": "9_out",
                     "targetNode": "1",
                     "targetPort": "1_in"
+                },
+                {
+                    "id": "port_8_to_port_11",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
+                    "targetNode": "11",
+                    "targetPort": "11_in"
+                },
+                {
+                    "id": "port_11_to_port_10",
+                    "sourceNode": "11",
+                    "sourcePort": "11_out",
+                    "targetNode": "10",
+                    "targetPort": "10_in"
                 }
             ],
-            "hash": "4389294b94ba320edf8fd00cd4bec7225ffd181d",
+            "hash": "05cf64032530794666bb687919104b32aecb67c4",
             "nodes": {
                 "0": {
                     "data": {
@@ -119,7 +126,7 @@
                     "id": "0",
                     "type": "start",
                     "warnings": {},
-                    "x": 190,
+                    "x": 280,
                     "y": 0
                 },
                 "1": {
@@ -135,8 +142,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 680,
-                    "y": 1380
+                    "x": 360,
+                    "y": 1476
                 },
                 "10": {
                     "data": {
@@ -197,6 +204,78 @@
                     "type": "utility",
                     "warnings": {},
                     "x": 340,
+                    "y": 1312
+                },
+                "11": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "check_automation_process_hud",
+                            "repoName": "conf23-sop_content"
+                        },
+                        "functionId": 5,
+                        "functionName": "check_automation_process_hud_5",
+                        "id": "11",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "check_automation_process_hud": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "list",
+                                        "label": "status",
+                                        "name": "status",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "container_id",
+                                        "name": "container_id",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "phase_id",
+                                        "name": "phase_id",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "check_automation_process_hud",
+                                "name": "check_automation_process_hud"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "check_automation_process_hud": {
+                                "container_id": "container:id",
+                                "phase_id": "playbook_i007_sop_automation_dispatcher_1:playbook_output:phase_id",
+                                "status": [
+                                    "1"
+                                ]
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "11",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 340,
                     "y": 1148
                 },
                 "2": {
@@ -245,7 +324,7 @@
                     "id": "2",
                     "type": "action",
                     "warnings": {},
-                    "x": 170,
+                    "x": 260,
                     "y": 148
                 },
                 "4": {
@@ -294,7 +373,7 @@
                     "id": "4",
                     "type": "decision",
                     "warnings": {},
-                    "x": 250,
+                    "x": 340,
                     "y": 296
                 },
                 "5": {
@@ -359,7 +438,7 @@
                     "type": "utility",
                     "warnings": {},
                     "x": 0,
-                    "y": 1148
+                    "y": 1312
                 },
                 "6": {
                     "data": {
@@ -532,7 +611,7 @@
                     "id": "9",
                     "type": "decision",
                     "warnings": {},
-                    "x": 420,
+                    "x": 510,
                     "y": 476
                 }
             },
@@ -545,7 +624,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-12T09:27:46.942708+00:00",
+    "create_time": "2023-07-12T09:36:25.687263+00:00",
     "draft_mode": false,
     "labels": [
         "*"

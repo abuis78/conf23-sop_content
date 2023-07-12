@@ -164,7 +164,7 @@ def playbook_i007_sop_automation_dispatcher_1(action=None, success=None, contain
     ################################################################################
 
     # call playbook "conf23-sop_content/I007_sop_automation_dispatcher", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I007_sop_automation_dispatcher", container=container, name="playbook_i007_sop_automation_dispatcher_1", callback=add_tag_to_container_a_progress, inputs=inputs)
+    playbook_run_id = phantom.playbook("conf23-sop_content/I007_sop_automation_dispatcher", container=container, name="playbook_i007_sop_automation_dispatcher_1", callback=check_automation_process_hud_5, inputs=inputs)
 
     return
 
@@ -210,6 +210,38 @@ def add_tag_to_container_a_progress(action=None, success=None, container=None, r
     phantom.add_tags(container=container, tags="a_progress")
 
     container = phantom.get_container(container.get('id', None))
+
+    return
+
+
+@phantom.playbook_block()
+def check_automation_process_hud_5(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("check_automation_process_hud_5() called")
+
+    id_value = container.get("id", None)
+    playbook_i007_sop_automation_dispatcher_1_output_phase_id = phantom.collect2(container=container, datapath=["playbook_i007_sop_automation_dispatcher_1:playbook_output:phase_id"])
+
+    parameters = []
+
+    # build parameters list for 'check_automation_process_hud_5' call
+    for playbook_i007_sop_automation_dispatcher_1_output_phase_id_item in playbook_i007_sop_automation_dispatcher_1_output_phase_id:
+        parameters.append({
+            "status": [1],
+            "container_id": id_value,
+            "phase_id": playbook_i007_sop_automation_dispatcher_1_output_phase_id_item[0],
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="conf23-sop_content/check_automation_process_hud", parameters=parameters, name="check_automation_process_hud_5", callback=add_tag_to_container_a_progress)
 
     return
 
