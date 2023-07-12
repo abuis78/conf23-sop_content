@@ -12,23 +12,9 @@
                     "sourcePort": "0_out",
                     "targetNode": "2",
                     "targetPort": "2_in"
-                },
-                {
-                    "id": "port_3_to_port_4",
-                    "sourceNode": "3",
-                    "sourcePort": "3_out",
-                    "targetNode": "4",
-                    "targetPort": "4_in"
-                },
-                {
-                    "id": "port_2_to_port_5",
-                    "sourceNode": "2",
-                    "sourcePort": "2_out",
-                    "targetNode": "5",
-                    "targetPort": "5_in"
                 }
             ],
-            "hash": "54b8886ee6d520410c74a9b0e9bf911f0a10a7cf",
+            "hash": "7a6ef3a6fe80c26bebd6e116ed936f565ae64bfc",
             "nodes": {
                 "0": {
                     "data": {
@@ -133,33 +119,6 @@
                     "warnings": {},
                     "x": 980,
                     "y": 544.5
-                },
-                "3": {
-                    "data": {
-                        "advanced": {
-                            "customName": "format list of files",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "functionId": 1,
-                        "functionName": "format_list_of_files",
-                        "id": "3",
-                        "parameters": [
-                            "git_list_files_1:custom_function_result.data.file_list"
-                        ],
-                        "template": "{0}",
-                        "type": "format"
-                    },
-                    "errors": {},
-                    "id": "3",
-                    "type": "format",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
-                    "x": 780,
-                    "y": 680
                 },
                 "4": {
                     "data": {
@@ -327,32 +286,8 @@
                     "id": "4",
                     "type": "utility",
                     "warnings": {},
-                    "x": 780,
-                    "y": 800
-                },
-                "5": {
-                    "data": {
-                        "advanced": {
-                            "customName": "add files to container",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "functionId": 1,
-                        "functionName": "add_files_to_container",
-                        "id": "5",
-                        "inputParameters": [
-                            "git_list_files_1:custom_function_result.data.file_list"
-                        ],
-                        "outputVariables": [],
-                        "type": "code"
-                    },
-                    "errors": {},
-                    "id": "5",
-                    "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(git_list_files_1_data_file_list[0])\n\n",
-                    "warnings": {},
-                    "x": 960,
-                    "y": 900
+                    "x": 500,
+                    "y": 820
                 }
             },
             "notes": ""
@@ -380,7 +315,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-12T06:21:29.374156+00:00",
+    "create_time": "2023-07-12T06:28:32.818360+00:00",
     "draft_mode": false,
     "labels": [
         "*"

@@ -48,35 +48,7 @@ def git_list_files_1(action=None, success=None, container=None, results=None, ha
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="git_list_files_1", callback=add_files_to_container)
-
-    return
-
-
-@phantom.playbook_block()
-def format_list_of_files(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("format_list_of_files() called")
-
-    template = """{0}"""
-
-    # parameter list for template variable replacement
-    parameters = [
-        "git_list_files_1:custom_function_result.data.file_list"
-    ]
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.format(container=container, template=template, parameters=parameters, name="format_list_of_files")
-
-    debug_2(container=container)
+    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="git_list_files_1")
 
     return
 
@@ -113,28 +85,6 @@ def debug_2(action=None, success=None, container=None, results=None, handle=None
     ################################################################################
 
     phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_2")
-
-    return
-
-
-@phantom.playbook_block()
-def add_files_to_container(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("add_files_to_container() called")
-
-    git_list_files_1__result = phantom.collect2(container=container, datapath=["git_list_files_1:custom_function_result.data.file_list"])
-
-    git_list_files_1_data_file_list = [item[0] for item in git_list_files_1__result]
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-    phantom.debug(git_list_files_1_data_file_list[0])
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
 
     return
 
