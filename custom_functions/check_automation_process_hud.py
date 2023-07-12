@@ -21,7 +21,7 @@ def check_automation_process_hud(status=None, container_id=None, phase_id=None, 
     response = phantom.requests.get(url,verify=False)
     data = response.json()
     phantom.debug(data.get('count'))  
-    done_tasks = data.get('count')
+    all_tasks = data.get('count')
     
     
     url_filter = "?_filter_container_id=" + str(container_id) + "&_filter_phase=" + str(phase_id) + "&_filter_status="+ str(status)
@@ -30,7 +30,7 @@ def check_automation_process_hud(status=None, container_id=None, phase_id=None, 
     response = phantom.requests.get(url,verify=False)
     data = response.json()
     phantom.debug(data.get('count'))
-    all_tasks = data.get('count')
+    done_tasks = data.get('count')
     
     message = "Current status of task automation"
     data = str(done_tasks) + "/" + str(all_tasks)
