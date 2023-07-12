@@ -71,8 +71,8 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     response = phantom.requests.get(url,verify=False,)
     
     #data = response.json()
-    data = response.json()['id']
-
+    data = response.json()
+    phantom.debug(data)
     
     def chunks(lst, n):
         """Yield successive n-sized chunks from lst."""
