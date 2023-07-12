@@ -59,7 +59,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     success, message, phase_id, phase_name = phantom.get_phase()
     phantom.debug(phase_id)
     
-    url_filter = "?_filter_container_id=" + id_value + "&_filter_phase=" + phase_id
+    url_filter = "?_filter_container_id=" + str(id_value) + "&_filter_phase=" + str(phase_id)
     rest_url = phantom.build_phantom_rest_url('workbook_task')
     url = rest_url + url_filter
     
