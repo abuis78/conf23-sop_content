@@ -25,7 +25,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
 
         dateien = subprocess.check_output(["git", "ls-files"]).decode("utf8")
         phantom.debug("Files in the local Git repository:")
-        phantom.debug(dateien)
+        phantom.debug('\n'.join(dateien))
 
     def check_git_diff(repo_path_remote):
         subprocess.run(["git", "remote", "set-url", "origin", repo_path_remote])
