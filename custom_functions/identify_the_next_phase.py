@@ -32,7 +32,7 @@ def identify_the_next_phase(current_phase_name=None, container_id=None, **kwargs
             break
             
     if target_order is not None:
-        for item in json_data['data']:
+        for item in json_data:
             if item['order'] == target_order and item['name'] != current_phase_name:
                 next_name = item['name']
                 break
