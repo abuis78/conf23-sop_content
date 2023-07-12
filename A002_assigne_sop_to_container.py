@@ -108,6 +108,48 @@ def there_is_a_mapping_between_sop_and_allert(action=None, success=None, contain
 
     phantom.comment(container=container, comment="There is a mapping between SOP and allert")
 
+    playbook_i006_automated_processing_sop_1(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def playbook_i006_automated_processing_sop_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("playbook_i006_automated_processing_sop_1() called")
+
+    search_for_sop_mapping_result_data = phantom.collect2(container=container, datapath=["search_for_sop_mapping:action_result.data.0.0"], action_results=results)
+
+    search_for_sop_mapping_result_item_0 = [item[0] for item in search_for_sop_mapping_result_data]
+
+    inputs = {
+        "sop": search_for_sop_mapping_result_item_0,
+    }
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    # call playbook "conf23-sop_content/I006_automated_processing_SOP", returns the playbook_run_id
+    playbook_run_id = phantom.playbook("conf23-sop_content/I006_automated_processing_SOP", container=container, name="playbook_i006_automated_processing_sop_1", callback=playbook_i006_automated_processing_sop_1_callback, inputs=inputs)
+
+    return
+
+
+@phantom.playbook_block()
+def playbook_i006_automated_processing_sop_1_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("playbook_i006_automated_processing_sop_1_callback() called")
+
+    
+    # Downstream End block cannot be called directly, since execution will call on_finish automatically.
+    # Using placeholder callback function so child playbook is run synchronously.
+
+
     return
 
 

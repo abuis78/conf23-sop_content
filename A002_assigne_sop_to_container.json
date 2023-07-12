@@ -43,9 +43,30 @@
                     "sourcePort": "4_out",
                     "targetNode": "6",
                     "targetPort": "6_in"
+                },
+                {
+                    "id": "port_5_to_port_1",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
+                },
+                {
+                    "id": "port_6_to_port_7",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
+                },
+                {
+                    "id": "port_7_to_port_1",
+                    "sourceNode": "7",
+                    "sourcePort": "7_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
                 }
             ],
-            "hash": "9e6debc077c6bdc1aa92ebc5ffc3b49b02173a22",
+            "hash": "5b5beaea0deda20928ffb1d1d7be8b02a11d023b",
             "nodes": {
                 "0": {
                     "data": {
@@ -76,8 +97,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 1000,
-                    "y": 1000
+                    "x": 1040,
+                    "y": 1160
                 },
                 "2": {
                     "data": {
@@ -303,6 +324,36 @@
                     "warnings": {},
                     "x": 1160,
                     "y": 864.5
+                },
+                "7": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "playbook_I006_automated_processing_SOP_1",
+                        "id": "7",
+                        "inputs": {
+                            "SOP": {
+                                "datapaths": [
+                                    "search_for_sop_mapping:action_result.data.0.0"
+                                ],
+                                "deduplicate": false
+                            }
+                        },
+                        "playbookName": "I006_automated_processing_SOP",
+                        "playbookRepo": 10,
+                        "playbookRepoName": "conf23-sop_content",
+                        "playbookType": "data",
+                        "synchronous": true,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "7",
+                    "type": "playbook",
+                    "warnings": {},
+                    "x": 1160,
+                    "y": 1024.5
                 }
             },
             "notes": ""
@@ -314,7 +365,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-12T07:48:56.784281+00:00",
+    "create_time": "2023-07-12T07:52:30.977697+00:00",
     "draft_mode": false,
     "labels": [
         "*"
