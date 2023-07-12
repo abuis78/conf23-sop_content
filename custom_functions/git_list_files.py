@@ -43,7 +43,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
     newer_files = []
 
     # Gehen Sie durch alle Commits von HEAD bis zum neuesten Fetch
-    for commit in local_repo.iter_commits('HEAD..origin/master'):
+    for commit in local_repo.iter_commits('HEAD..origin/conf23'):
         # Gehen Sie durch jede geänderte Datei in jedem Commit
         for file in commit.stats.files:
             newer_files.append(file)
