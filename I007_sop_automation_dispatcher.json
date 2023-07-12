@@ -12,9 +12,16 @@
                     "sourcePort": "0_out",
                     "targetNode": "5",
                     "targetPort": "5_in"
+                },
+                {
+                    "id": "port_5_to_port_1",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
                 }
             ],
-            "hash": "f65b780a85446321764b4cb1072975c02cd94771",
+            "hash": "13b6e7c8f44c84e7faa25c6d5c78ae40f71c2115",
             "nodes": {
                 "0": {
                     "data": {
@@ -30,7 +37,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999999
+                    "y": 419.9999999999998
                 },
                 "1": {
                     "data": {
@@ -106,7 +113,11 @@
                     "errors": {},
                     "id": "2",
                     "type": "utility",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 580,
                     "y": 580
                 },
@@ -124,13 +135,15 @@
                             "playbook_input:automation_phase",
                             "container:id"
                         ],
-                        "outputVariables": [],
+                        "outputVariables": [
+                            "phase_id"
+                        ],
                         "type": "code"
                     },
                     "errors": {},
                     "id": "5",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    phase = playbook_input_automation_phase_values[0]\n    success, message = phantom.set_phase(container=id_value,phase=phase)\n    success, message, phase_id, phase_name = phantom.get_phase()\n    phantom.debug(phase_id)\n    \n    url_filter = \"?_filter_container_id=\" + str(id_value) + \"&_filter_phase=\" + str(phase_id)\n    rest_url = phantom.build_phantom_rest_url('workbook_task')\n    url = rest_url + url_filter\n    \n    response = phantom.requests.get(url,verify=False,)\n    \n    data = response.json()\n    \n    for task in data[\"data\"]:\n        phantom.debug(task[\"name\"])\n        current_task = task[\"name\"]\n        # get the ID of the Playbook\n        url_filter = '?_filter_name=\"'+ current_task + '\"'\n        url_playbook = phantom.build_phantom_rest_url('playbook')\n        url = url_playbook + url_filter\n        response = phantom.requests.get(url,verify=False)\n        data = response.json()\n        if data[\"count\"] == 0:\n            phantom.debug(\"no playbook found\")\n        else:\n            phantom.debug(data[\"data\"][0][\"id\"])\n            playbook_id = data[\"data\"][0][\"id\"]\n        \n        \n            # trigger the Playbook\n            url_run_playbook = phantom.build_phantom_rest_url('playbook_run')\n            inputs = { \"current_task\": current_task}\n            data = {'container_id': id_value, 'playbook_id': playbook_id, 'scope': 'new', 'run': 'true','inputs': inputs}\n            headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}\n            response3 = phantom.requests.post(url_run_playbook, data=json.dumps(data), headers=headers, verify=False)\n            phantom.debug(\"phantom returned status code {} with message {}\".format(response3.status_code, response3.text))\n            \n",
+                    "userCode": "\n    # Write your custom code here...\n    phase = playbook_input_automation_phase_values[0]\n    success, message = phantom.set_phase(container=id_value,phase=phase)\n    success, message, phase_id, phase_name = phantom.get_phase()\n    phantom.debug(phase_id)\n    set_automation_phase__phase_id = phase_id\n    \n    url_filter = \"?_filter_container_id=\" + str(id_value) + \"&_filter_phase=\" + str(phase_id)\n    rest_url = phantom.build_phantom_rest_url('workbook_task')\n    url = rest_url + url_filter\n    \n    response = phantom.requests.get(url,verify=False,)\n    \n    data = response.json()\n    \n    for task in data[\"data\"]:\n        phantom.debug(task[\"name\"])\n        current_task = task[\"name\"]\n        # get the ID of the Playbook\n        url_filter = '?_filter_name=\"'+ current_task + '\"'\n        url_playbook = phantom.build_phantom_rest_url('playbook')\n        url = url_playbook + url_filter\n        response = phantom.requests.get(url,verify=False)\n        data = response.json()\n        if data[\"count\"] == 0:\n            phantom.debug(\"no playbook found\")\n        else:\n            phantom.debug(data[\"data\"][0][\"id\"])\n            playbook_id = data[\"data\"][0][\"id\"]\n        \n        \n            # trigger the Playbook\n            url_run_playbook = phantom.build_phantom_rest_url('playbook_run')\n            inputs = { \"current_task\": current_task}\n            data = {'container_id': id_value, 'playbook_id': playbook_id, 'scope': 'new', 'run': 'true','inputs': inputs}\n            headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}\n            response3 = phantom.requests.post(url_run_playbook, data=json.dumps(data), headers=headers, verify=False)\n            phantom.debug(\"phantom returned status code {} with message {}\".format(response3.status_code, response3.text))\n            \n",
                     "warnings": {},
                     "x": 980,
                     "y": 560
@@ -145,13 +158,24 @@
                 "name": "automation_phase"
             }
         ],
-        "output_spec": null,
+        "output_spec": [
+            {
+                "contains": [],
+                "datapaths": [
+                    "set_automation_phase:custom_function:phase_id"
+                ],
+                "deduplicate": false,
+                "description": "",
+                "metadata": {},
+                "name": "phase_id"
+            }
+        ],
         "playbook_type": "data",
         "python_version": "3",
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-12T09:01:20.476236+00:00",
+    "create_time": "2023-07-12T09:35:02.554039+00:00",
     "draft_mode": false,
     "labels": [
         "*"

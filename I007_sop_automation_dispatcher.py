@@ -49,6 +49,8 @@ def set_automation_phase(action=None, success=None, container=None, results=None
 
     playbook_input_automation_phase_values = [item[0] for item in playbook_input_automation_phase]
 
+    set_automation_phase__phase_id = None
+
     ################################################################################
     ## Custom Code Start
     ################################################################################
@@ -58,6 +60,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     success, message = phantom.set_phase(container=id_value,phase=phase)
     success, message, phase_id, phase_name = phantom.get_phase()
     phantom.debug(phase_id)
+    set_automation_phase__phase_id = phase_id
     
     url_filter = "?_filter_container_id=" + str(id_value) + "&_filter_phase=" + str(phase_id)
     rest_url = phantom.build_phantom_rest_url('workbook_task')
@@ -95,12 +98,20 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     ## Custom Code End
     ################################################################################
 
+    phantom.save_run_data(key="set_automation_phase:phase_id", value=json.dumps(set_automation_phase__phase_id))
+
     return
 
 
 @phantom.playbook_block()
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
+
+    set_automation_phase__phase_id = json.loads(_ if (_ := phantom.get_run_data(key="set_automation_phase:phase_id")) != "" else "null")  # pylint: disable=used-before-assignment
+
+    output = {
+        "phase_id": set_automation_phase__phase_id,
+    }
 
     ################################################################################
     ## Custom Code Start
@@ -111,5 +122,7 @@ def on_finish(container, summary):
     ################################################################################
     ## Custom Code End
     ################################################################################
+
+    phantom.save_playbook_output_data(output=output)
 
     return
