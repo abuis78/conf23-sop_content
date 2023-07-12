@@ -57,6 +57,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
             path_file = repo_path_local + item
             phantom.debug("path to file: {}".format(path_file))
             success, message, vault_id = phantom.vault_add(file_location=path_file,file_name=item)
+            phantom.debug("Add to vault: {} {}".format(success, message))
             phantom.debug("Vault-ID: {}".format(vault_id))
             
             # create new Artifact
