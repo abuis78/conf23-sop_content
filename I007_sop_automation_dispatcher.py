@@ -67,6 +67,22 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     
     data = response.json()
     phantom.debug(data)
+    
+    for task in data:
+        # get the ID of the Playbook
+        url_filter = '?_filter_name="'+ task['data']['name'] + '"'
+        url_playbook = phantom.build_phantom_rest_url('playbook')
+        url = url_playbook + url_filter
+        response = phantom.requests.get(url,verify=False)
+        playbook_id = response.json()['data'][0]['id']
+        phantom.debug(playbook_id)
+        
+        # trigger the Playbook
+        #url_run_playbook = phantom.build_phantom_rest_url('playbook_run')
+       # data = {'container_id': id_value, 'playbook_id': playbook_id, 'scope': 'new', 'run': 'true'}
+       # headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+       # response3 = phantom.requests.post(url_run_playbook, data=json.dumps(data), headers=headers, verify=False)
+        #phantom.debug("phantom returned status code {} with message {}".format(response3.status_code, response3.text))
     ################################################################################
     ## Custom Code End
     ################################################################################
