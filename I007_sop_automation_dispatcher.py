@@ -69,13 +69,14 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     phantom.debug(data["data"])
     
     for task in data["data"][0]:
+        phantom.debug(task)
         # get the ID of the Playbook
-        url_filter = '?_filter_name="'+ task['data']['name'] + '"'
-        url_playbook = phantom.build_phantom_rest_url('playbook')
-        url = url_playbook + url_filter
-        response = phantom.requests.get(url,verify=False)
-        playbook_id = response.json()['data'][0]['id']
-        phantom.debug(playbook_id)
+        #url_filter = '?_filter_name="'+ task['data']['name'] + '"'
+        #url_playbook = phantom.build_phantom_rest_url('playbook')
+        #url = url_playbook + url_filter
+        #response = phantom.requests.get(url,verify=False)
+        #playbook_id = response.json()['data'][0]['id']
+        #phantom.debug(playbook_id)
         
         # trigger the Playbook
         #url_run_playbook = phantom.build_phantom_rest_url('playbook_run')
