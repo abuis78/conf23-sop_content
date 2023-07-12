@@ -12,9 +12,15 @@
                     "sourcePort": "0_out",
                     "targetNode": "4",
                     "targetPort": "4_in"
+                },
+                {
+                    "id": "port_4_to_port_1",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
                 }
             ],
-            "hash": "8787f5293df7a4ab8f6fa0f07785bb78c520e217",
             "nodes": {
                 "0": {
                     "data": {
