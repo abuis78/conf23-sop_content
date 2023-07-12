@@ -24,7 +24,9 @@ def identify_the_next_phase(current_phase_name=None, container_id=None, **kwargs
     json_data = response.json()["data"]
     
     target_order = None
+    next_order = None
     next_name = None
+    
     for item in json_data:
         phantom.debug(item['name'])
         if item['name'] == current_phase_name:
@@ -33,12 +35,13 @@ def identify_the_next_phase(current_phase_name=None, container_id=None, **kwargs
             
     if target_order is not None:
         for item in json_data:
-            if item['order'] == target_order and item['name'] != current_phase_name:
+            if item['order'] > target_order:
+                next_order = item['order']
                 next_name = item['name']
                 break
     
     phantom.debug(f"Die 'order' Nummer des 'Generatedd SOP Tasks' ist: {target_order}")
-    phantom.debug(f"Der 'name' des nächsten Datensatzes mit der gleichen 'order' Nummer ist: {next_name}")
+    phantom.debug(f"Die nächste 'order' Nummer ist: {next_order} und der zugehörige 'name' ist: {next_name}")
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
     return outputs
