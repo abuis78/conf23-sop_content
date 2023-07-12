@@ -103,6 +103,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
                 data = {'container_id': id_value, 'playbook_id': playbook_id, 'scope': 'new', 'run': 'true','inputs': inputs}
                 headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
                 response3 = phantom.requests.post(url_run_playbook, data=json.dumps(data), headers=headers, verify=False)
+                time.sleep(1)
                 #phantom.debug("phantom returned status code {} with message {}".format(response3.status_code, response3.text))
             
 
