@@ -64,13 +64,6 @@
                     "targetPort": "23_in"
                 },
                 {
-                    "id": "port_0_to_port_26",
-                    "sourceNode": "0",
-                    "sourcePort": "0_out",
-                    "targetNode": "26",
-                    "targetPort": "26_in"
-                },
-                {
                     "conditions": [
                         {
                             "index": 0
@@ -90,14 +83,14 @@
                     "targetPort": "17_in"
                 },
                 {
-                    "id": "port_26_to_port_31",
-                    "sourceNode": "26",
-                    "sourcePort": "26_out",
-                    "targetNode": "31",
-                    "targetPort": "31_in"
+                    "id": "port_0_to_port_32",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "32",
+                    "targetPort": "32_in"
                 }
             ],
-            "hash": "062b6dad6fa6dd1b562781ea99d56fbef7731f9d",
+            "hash": "fe3bafa4db9efa8932f11ddb4b75cd727f5a054f",
             "nodes": {
                 "0": {
                     "data": {
@@ -607,7 +600,7 @@
                     "id": "26",
                     "type": "utility",
                     "warnings": {},
-                    "x": 0,
+                    "x": 320,
                     "y": -220
                 },
                 "27": {
@@ -642,7 +635,11 @@
                     "errors": {},
                     "id": "27",
                     "type": "filter",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 60,
                     "y": 60
                 },
@@ -678,9 +675,13 @@
                     "errors": {},
                     "id": "29",
                     "type": "playbook",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 20,
-                    "y": 319.99999999999994
+                    "y": 319.99999999999983
                 },
                 "31": {
                     "data": {
@@ -829,9 +830,7 @@
                         "utilityType": "custom_function",
                         "values": {
                             "debug": {
-                                "input_1": [
-                                    "git_list_files_1:custom_function_result.data.file_list"
-                                ],
+                                "input_1": "",
                                 "input_10": null,
                                 "input_2": null,
                                 "input_3": null,
@@ -847,9 +846,30 @@
                     "errors": {},
                     "id": "31",
                     "type": "utility",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 0,
                     "y": -75.5
+                },
+                "32": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 8,
+                        "functionName": "call_api_8",
+                        "id": "32",
+                        "type": "utility"
+                    },
+                    "errors": {},
+                    "id": "32",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 10,
+                    "y": -215.5
                 }
             },
             "notes": ""
@@ -861,7 +881,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T18:21:36.588580+00:00",
+    "create_time": "2023-07-16T18:30:51.443951+00:00",
     "draft_mode": false,
     "labels": [
         "*"
