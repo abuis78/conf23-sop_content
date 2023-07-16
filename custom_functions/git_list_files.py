@@ -53,6 +53,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         vault_id_list = []
         for root, dirs, files in os.walk(repo_path_local):
             for file in files:
+                phantom.debug(file)
                 if file.endswith('.json'):
                     phantom.debug(file)
                     parts = file.split('/')
