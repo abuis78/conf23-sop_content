@@ -54,12 +54,12 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         for root, dirs, files in os.walk(repo_path_local):
             for file in files:
                 if file.endswith('.json'):
-                    phantom.debug(os.path.join(root, file))
-                    #parts = file.split('/')
-                    #name = parts[-1]  
-                    #success, message, vault_id = phantom.vault_add(container=None, file_location=file, file_name=name, metadata=None, trace=False)
-                    #vault_id_list.append(vault_id)
-        #outputs["vault_id_list"] = vault_id_list
+                    file = os.path.join(root, file)
+                    parts = file.split('/')
+                    name = parts[-1]  
+                    success, message, vault_id = phantom.vault_add(container=None, file_location=file, file_name=name, metadata=None, trace=False)
+                    vault_id_list.append(vault_id)
+        outputs["vault_id_list"] = vault_id_list
         return vault_id_list
 
     auflisten_git_verzeichnis(repo_path_local)
