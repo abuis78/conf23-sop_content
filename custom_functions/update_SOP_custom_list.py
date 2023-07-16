@@ -33,7 +33,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
             for sublist in ln["content"]:
                 if n in sublist[0]:
                     if int(sublist[1]) <= int(v_id):
-                        phantom.debug(f"Daten 1 {sublist[1]} {v_id}")
+                        phantom.debug(f"Daten 1: {sublist[1]} {v_id}")
                         phantom.debug(f"Nothing to Update")
                     else:
                         phantom.debug(f"SOP Update")
