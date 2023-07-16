@@ -30,7 +30,6 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
             r_url = phantom.build_phantom_rest_url('decided_list',list_name)
             r2 = phantom.requests.get(r_url,verify=False)
             ln = r2.json()
-            phantom.debug(ln["content"])
             for sublist in ln["content"]:
                 if n in sublist:
                     phantom.debug(f"Sublist: {sublist}")
