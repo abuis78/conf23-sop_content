@@ -368,8 +368,8 @@ def format_list_json_append_sop(action=None, success=None, container=None, resul
 
     # parameter list for template variable replacement
     parameters = [
-        "playbook_input:sop_name",
-        "playbook_input:sop_version"
+        "filtered-data:filter_sop_artifacts:condition_1:artifact:*.cef.name",
+        "filtered-data:filter_sop_artifacts:condition_1:artifact:*.cef.version"
     ]
 
     ################################################################################

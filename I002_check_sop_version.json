@@ -257,7 +257,7 @@
                     "targetPort": "12_in"
                 }
             ],
-            "hash": "e7e932126fcfafb425e317aa65a77406527a5305",
+            "hash": "67f020f83e9b6f75d501fec25786da488fe8068f",
             "nodes": {
                 "0": {
                     "data": {
@@ -273,7 +273,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999998
+                    "y": 419.99999999999966
                 },
                 "1": {
                     "data": {
@@ -640,8 +640,8 @@
                         "functionName": "format_list_json_append_sop",
                         "id": "18",
                         "parameters": [
-                            "playbook_input:sop_name",
-                            "playbook_input:sop_version"
+                            "filtered-data:filter_sop_artifacts:condition_1:artifact:*.cef.name",
+                            "filtered-data:filter_sop_artifacts:condition_1:artifact:*.cef.version"
                         ],
                         "template": "[\"{0}\", \"{1}\"]",
                         "type": "format"
@@ -736,7 +736,7 @@
                     "type": "filter",
                     "warnings": {},
                     "x": 1060,
-                    "y": 1920
+                    "y": 1940
                 },
                 "22": {
                     "data": {
@@ -1396,7 +1396,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T21:06:44.728554+00:00",
+    "create_time": "2023-07-16T21:08:45.803196+00:00",
     "draft_mode": false,
     "labels": [
         "*"
