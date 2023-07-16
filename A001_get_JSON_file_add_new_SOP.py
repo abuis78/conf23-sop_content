@@ -240,7 +240,7 @@ def git_list_files_1(action=None, success=None, container=None, results=None, ha
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="git_list_files_1")
+    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="git_list_files_1", callback=debug_4)
 
     return
 
@@ -289,6 +289,44 @@ def playbook_i002_check_sop_version_1(action=None, success=None, container=None,
 
     # call playbook "conf23-sop_content/I002_check_sop_version", returns the playbook_run_id
     playbook_run_id = phantom.playbook("conf23-sop_content/I002_check_sop_version", container=container, name="playbook_i002_check_sop_version_1", callback=decision_1, inputs=inputs)
+
+    return
+
+
+@phantom.playbook_block()
+def debug_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("debug_4() called")
+
+    git_list_files_1__result = phantom.collect2(container=container, datapath=["git_list_files_1:custom_function_result.data.file_list"])
+
+    git_list_files_1_data_file_list = [item[0] for item in git_list_files_1__result]
+
+    parameters = []
+
+    parameters.append({
+        "input_1": git_list_files_1_data_file_list,
+        "input_2": None,
+        "input_3": None,
+        "input_4": None,
+        "input_5": None,
+        "input_6": None,
+        "input_7": None,
+        "input_8": None,
+        "input_9": None,
+        "input_10": None,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_4")
 
     return
 
