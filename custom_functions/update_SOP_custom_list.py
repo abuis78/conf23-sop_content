@@ -22,7 +22,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         r = phantom.requests.get(r_url,verify=False)
         d = r.json()["data"]
         v = d[0]["version"]
-        #phantom.debug(f"Version {v}")
+        phantom.debug(f"Version {v}")
         
     
     # Return a JSON-serializable object
