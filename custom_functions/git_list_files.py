@@ -46,11 +46,10 @@ def git_list_files(repo_path_local=None, pull_response=None, **kwargs):
         for file_name in file_liste:
             phantom.debug("for 1: {}".format(file_name))
             for root, directories, file in os.walk(repo_path_local):
-                phantom.debug("for schleife: {} {} {}".format(root, directories, file))
-                #if file_name in file:
-                    #voller_pfad = os.path.join(root, file_name)
-                    #phantom.debug("File Name: {}".format(file_name))
-                    #phantom.debug("root: {}".format(root))
+                if file_name in file:
+                    voller_pfad = os.path.join(root, file_name)
+                    phantom.debug("File Name: {}".format(file_name))
+                    phantom.debug("root: {}".format(root))
     else:
         phantom.debug("file_liste is emty")       
     
