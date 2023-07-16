@@ -102,9 +102,16 @@
                     "sourcePort": "13_out",
                     "targetNode": "28",
                     "targetPort": "28_in"
+                },
+                {
+                    "id": "port_13_to_port_15",
+                    "sourceNode": "13",
+                    "sourcePort": "13_out",
+                    "targetNode": "15",
+                    "targetPort": "15_in"
                 }
             ],
-            "hash": "762296911e5bc18c1af5cb85f67c5c684f2665c5",
+            "hash": "6abebdce3e1ff79eb8b6d9700840e97e3c455cd4",
             "nodes": {
                 "0": {
                     "data": {
@@ -207,12 +214,8 @@
                     "errors": {},
                     "id": "15",
                     "type": "playbook",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
-                    "x": -1.4210854715202004e-14,
+                    "warnings": {},
+                    "x": 0,
                     "y": 279.99999999999983
                 },
                 "17": {
@@ -511,11 +514,7 @@
                     "errors": {},
                     "id": "21",
                     "type": "playbook",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
+                    "warnings": {},
                     "x": -340,
                     "y": 820
                 },
@@ -559,11 +558,7 @@
                     "errors": {},
                     "id": "23",
                     "type": "playbook",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 0,
                     "y": 864.5
                 },
@@ -874,7 +869,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-12T07:11:49.791256+00:00",
+    "create_time": "2023-07-16T17:49:00.632700+00:00",
     "draft_mode": false,
     "labels": [
         "*"
