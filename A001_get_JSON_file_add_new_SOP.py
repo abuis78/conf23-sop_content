@@ -265,34 +265,6 @@ def playbook_i002_check_sop_version_1(action=None, success=None, container=None,
 
 
 @phantom.playbook_block()
-def playbook_i001_extract_json_from_file_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("playbook_i001_extract_json_from_file_1() called")
-
-    git_list_files_8__result = phantom.collect2(container=container, datapath=["git_list_files_8:custom_function_result.data.vault_id_list"])
-
-    git_list_files_8_data_vault_id_list = [item[0] for item in git_list_files_8__result]
-
-    inputs = {
-        "vault_id": git_list_files_8_data_vault_id_list,
-    }
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    # call playbook "conf23-sop_content/I001_extract_JSON_from_file", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_1", inputs=inputs)
-
-    return
-
-
-@phantom.playbook_block()
 def get_latest_version_of_files_from_git(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("get_latest_version_of_files_from_git() called")
 
@@ -310,7 +282,36 @@ def get_latest_version_of_files_from_git(action=None, success=None, container=No
     ## Custom Code End
     ################################################################################
 
-    phantom.act("git pull", parameters=parameters, name="get_latest_version_of_files_from_git", assets=["git 1"])
+    phantom.act("git pull", parameters=parameters, name="get_latest_version_of_files_from_git", assets=["git 1"], callback=create_liste_of_files)
+
+    return
+
+
+@phantom.playbook_block()
+def create_liste_of_files(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("create_liste_of_files() called")
+
+    get_latest_version_of_files_from_git_result_data = phantom.collect2(container=container, datapath=["get_latest_version_of_files_from_git:action_result.data.*.response"], action_results=results)
+
+    get_latest_version_of_files_from_git_result_item_0 = [item[0] for item in get_latest_version_of_files_from_git_result_data]
+
+    create_liste_of_files__file_name_liste = None
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+    import re
+    json_files = re.findall(r'\b\w+\.json\b', get_latest_version_of_files_from_git_result_item_0)
+    
+    phantom.debug(json_files)
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.save_run_data(key="create_liste_of_files:file_name_liste", value=json.dumps(create_liste_of_files__file_name_liste))
 
     return
 

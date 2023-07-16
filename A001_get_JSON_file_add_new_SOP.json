@@ -88,9 +88,16 @@
                     "sourcePort": "0_out",
                     "targetNode": "36",
                     "targetPort": "36_in"
+                },
+                {
+                    "id": "port_36_to_port_37",
+                    "sourceNode": "36",
+                    "sourcePort": "36_out",
+                    "targetNode": "37",
+                    "targetPort": "37_in"
                 }
             ],
-            "hash": "f38b7c226b6738a473c24ce565d098c3623cc1df",
+            "hash": "64c0301aeaa5c9c5d586b28e5a962fef46a32440",
             "nodes": {
                 "0": {
                     "data": {
@@ -589,41 +596,7 @@
                         ]
                     },
                     "x": 20,
-                    "y": 319.9999999999993
-                },
-                "33": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "functionId": 1,
-                        "functionName": "playbook_I001_extract_JSON_from_file_1",
-                        "id": "33",
-                        "inputs": {
-                            "vault_id": {
-                                "datapaths": [
-                                    "git_list_files_8:custom_function_result.data.vault_id_list"
-                                ],
-                                "deduplicate": false
-                            }
-                        },
-                        "playbookName": "I001_extract_JSON_from_file",
-                        "playbookRepo": 10,
-                        "playbookRepoName": "conf23-sop_content",
-                        "playbookType": "data",
-                        "synchronous": true,
-                        "type": "playbook"
-                    },
-                    "errors": {},
-                    "id": "33",
-                    "type": "playbook",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
-                    "x": 20,
-                    "y": -60
+                    "y": 319.99999999999926
                 },
                 "36": {
                     "data": {
@@ -653,6 +626,32 @@
                     "warnings": {},
                     "x": 100,
                     "y": -260
+                },
+                "37": {
+                    "data": {
+                        "advanced": {
+                            "customName": "create liste of files",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "create_liste_of_files",
+                        "id": "37",
+                        "inputParameters": [
+                            "get_latest_version_of_files_from_git:action_result.data.*.response"
+                        ],
+                        "outputVariables": [
+                            "file_name_liste"
+                        ],
+                        "type": "code"
+                    },
+                    "errors": {},
+                    "id": "37",
+                    "type": "code",
+                    "userCode": "\n    # Write your custom code here...\n    import re\n    json_files = re.findall(r'\\b\\w+\\.json\\b', get_latest_version_of_files_from_git_result_item_0)\n    \n    phantom.debug(json_files)\n\n",
+                    "warnings": {},
+                    "x": 100,
+                    "y": -100
                 }
             },
             "notes": ""
@@ -664,7 +663,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T19:27:09.915478+00:00",
+    "create_time": "2023-07-16T19:37:27.286493+00:00",
     "draft_mode": false,
     "labels": [
         "*"
