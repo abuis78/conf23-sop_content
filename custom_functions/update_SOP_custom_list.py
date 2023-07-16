@@ -30,14 +30,14 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
             r_url2 = phantom.build_phantom_rest_url('decided_list',list_name)
             r2 = phantom.requests.get(r_url2,verify=False)
             ln = r2.json()
-            phantom.debug(f"Looking for: {n}")
+            
             for sublist in ln["content"]:
                 if n in sublist[0]:
                     phantom.debug(f"Sublist >: {sublist}")
                     found = True
     
-        if not found:
-            phantom.debug(f"1")
+            if not found:
+                phantom.debug(f"1")
         
     
     # Return a JSON-serializable object
