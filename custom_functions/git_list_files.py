@@ -20,8 +20,6 @@ def git_list_files(repo_path_local=None, pull_response=None, **kwargs):
     # Write your custom code here...
 
     file_liste = re.findall(r'\b\w+\.json\b', pull_response)
-    
-    phantom.debug("file_liste: {}".format(file_liste))
     vault_id_list = []
     if file_liste:
         for file_name in file_liste:
