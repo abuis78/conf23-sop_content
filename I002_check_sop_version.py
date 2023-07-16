@@ -559,7 +559,7 @@ def format_comment_update(action=None, success=None, container=None, results=Non
 
     # parameter list for template variable replacement
     parameters = [
-        "playbook_input:sop_version"
+        "filtered-data:filter_sop_artifacts:condition_1:artifact:*.cef.version"
     ]
 
     ################################################################################
