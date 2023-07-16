@@ -337,7 +337,7 @@ def get_the_json_file_from_local_repo(action=None, success=None, container=None,
     parameters = []
 
     parameters.append({
-        "repo_path_local": "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23",
+        "repo_path_local": "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/",
         "repo_path_remote": "https://github.com/abuis78/conf23.git",
         "filter_file_endswith": "json",
         "artifact_name_prefix": "SOP",
