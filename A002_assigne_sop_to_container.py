@@ -23,17 +23,14 @@ def search_for_sop_mapping(action=None, success=None, container=None, results=No
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
-    name_value = container.get("name", None)
-
     parameters = []
 
-    if name_value is not None:
-        parameters.append({
-            "list": "SOP",
-            "values": name_value,
-            "exact_match": True,
-            "column_index": 2,
-        })
+    parameters.append({
+        "list": "SOP",
+        "values": "",
+        "exact_match": True,
+        "column_index": 2,
+    })
 
     ################################################################################
     ## Custom Code Start
@@ -340,7 +337,7 @@ def playbook_i010_identify_the_use_caes_1(action=None, success=None, container=N
     ################################################################################
 
     # call playbook "conf23-sop_content/I010_Identify_the_use_caes", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I010_Identify_the_use_caes", container=container, name="playbook_i010_identify_the_use_caes_1", inputs=inputs)
+    playbook_run_id = phantom.playbook("conf23-sop_content/I010_Identify_the_use_caes", container=container, name="playbook_i010_identify_the_use_caes_1", callback=search_for_sop_mapping, inputs=inputs)
 
     return
 

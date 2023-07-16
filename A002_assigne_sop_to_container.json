@@ -147,9 +147,16 @@
                     "sourcePort": "0_out",
                     "targetNode": "17",
                     "targetPort": "17_in"
+                },
+                {
+                    "id": "port_17_to_port_2",
+                    "sourceNode": "17",
+                    "sourcePort": "17_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
                 }
             ],
-            "hash": "17d1166be5b72dc4822f8eddd16e237f2c829b59",
+            "hash": "d484f541c03c4a282293033542702e64ff931e09",
             "nodes": {
                 "0": {
                     "data": {
@@ -537,7 +544,7 @@
                             "column_index": "2",
                             "exact_match": true,
                             "list": "SOP",
-                            "values": "container:name"
+                            "values": ""
                         },
                         "requiredParameters": [
                             {
@@ -560,11 +567,7 @@
                     "errors": {},
                     "id": "2",
                     "type": "action",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 260,
                     "y": 147.99999999999997
                 },
@@ -865,7 +868,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T17:34:33.529937+00:00",
+    "create_time": "2023-07-16T17:36:03.478620+00:00",
     "draft_mode": false,
     "labels": [
         "conf_alert"
