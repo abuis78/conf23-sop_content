@@ -25,7 +25,6 @@ def git_list_files(repo_path_local=None, pull_response=None, **kwargs):
     vault_id_list = []
     if file_liste:
         for file_name in file_liste:
-            phantom.debug("for 1: {}".format(file_name))
             for root, directories, file in os.walk(repo_path_local):
                 if file_name in file:
                     voller_pfad = os.path.join(root, file_name)
