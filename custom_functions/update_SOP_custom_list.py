@@ -21,7 +21,6 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         url_filter = '/'+ str(a) + '?_filter_name__icontains="' + str(prefix_filter) +'"'
         r_url = phantom.build_phantom_rest_url('artifact')
         url = r_url + url_filter
-        phantom.debug(f"URL {url}")
         r = phantom.requests.get(url,verify=False)
         v = r.json()
         v_id = v.get('cef', {}).get('version')
@@ -33,7 +32,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
             
             for sublist in ln["content"]:
                 if n in sublist[0]:
-                    phantom.debug(f"Sublist >: {sublist}")
+                    phantom.debug(f"Sublist >: {sublist[1]}")
                     
         else:
             phantom.debug(f"Nicht da")
