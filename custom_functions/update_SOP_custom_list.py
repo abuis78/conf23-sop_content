@@ -39,7 +39,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                         phantom.debug(f"SOP Update")
                     
         else:
-            phantom.debug(f"Nicht da")
+            phantom.debug(f"-------Nicht da")
         
     
     # Return a JSON-serializable object
