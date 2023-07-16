@@ -97,7 +97,7 @@
                     "targetPort": "39_in"
                 }
             ],
-            "hash": "762296911e5bc18c1af5cb85f67c5c684f2665c5",
+            "hash": "75930b500cf2a04ed22666e52229182c4edc3166",
             "nodes": {
                 "0": {
                     "data": {
@@ -550,11 +550,7 @@
                     "errors": {},
                     "id": "27",
                     "type": "filter",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 60,
                     "y": 60
                 },
@@ -590,11 +586,7 @@
                     "errors": {},
                     "id": "29",
                     "type": "playbook",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 20,
                     "y": 319.9999999999992
                 },
@@ -675,7 +667,7 @@
                         "values": {
                             "git_list_files": {
                                 "pull_response": "get_latest_version_of_files_from_git:action_result.data.*.response",
-                                "repo_path_local": "opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/"
+                                "repo_path_local": "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/"
                             }
                         }
                     },
@@ -696,7 +688,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T19:42:21.221304+00:00",
+    "create_time": "2023-07-16T20:11:45.793470+00:00",
     "draft_mode": false,
     "labels": [
         "*"

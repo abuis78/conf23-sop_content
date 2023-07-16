@@ -298,7 +298,7 @@ def git_list_files_12(action=None, success=None, container=None, results=None, h
     # build parameters list for 'git_list_files_12' call
     for get_latest_version_of_files_from_git_result_item in get_latest_version_of_files_from_git_result_data:
         parameters.append({
-            "repo_path_local": "opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/",
+            "repo_path_local": "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/",
             "pull_response": get_latest_version_of_files_from_git_result_item[0],
         })
 
