@@ -32,7 +32,6 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
             ln = r2.json()
             phantom.debug(f"Looking for: {n}")
             for sublist in ln["content"]:
-                phantom.debug(f"Sublist >>>: {sublist}")
                 if n in sublist[0]:
                     phantom.debug(f"Sublist >: {sublist}")
         
