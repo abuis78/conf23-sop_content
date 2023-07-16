@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'git_list_files_8' block
-    git_list_files_8(container=container)
+    # call 'get_the_json_file_from_local_repo' block
+    get_the_json_file_from_local_repo(container=container)
 
     return
 
@@ -265,35 +265,6 @@ def playbook_i002_check_sop_version_1(action=None, success=None, container=None,
 
 
 @phantom.playbook_block()
-def git_list_files_8(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("git_list_files_8() called")
-
-    parameters = []
-
-    parameters.append({
-        "repo_path_local": "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/",
-        "repo_path_remote": "https://github.com/abuis78/conf23.git",
-        "filter_file_endswith": "json",
-        "artifact_name_prefix": "SOP",
-        "artifact_severity": "low",
-    })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="git_list_files_8", callback=debug_9)
-
-    return
-
-
-@phantom.playbook_block()
 def playbook_i001_extract_json_from_file_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("playbook_i001_extract_json_from_file_1() called")
 
@@ -355,6 +326,35 @@ def debug_9(action=None, success=None, container=None, results=None, handle=None
     ################################################################################
 
     phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_9")
+
+    return
+
+
+@phantom.playbook_block()
+def get_the_json_file_from_local_repo(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("get_the_json_file_from_local_repo() called")
+
+    parameters = []
+
+    parameters.append({
+        "repo_path_local": "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/",
+        "repo_path_remote": "https://github.com/abuis78/conf23.git",
+        "filter_file_endswith": "json",
+        "artifact_name_prefix": "SOP",
+        "artifact_severity": "low",
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="get_the_json_file_from_local_repo")
 
     return
 
