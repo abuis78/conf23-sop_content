@@ -97,7 +97,7 @@
                     "targetPort": "34_in"
                 }
             ],
-            "hash": "aaa89d3b89180f2260580015f2beb8eaea8eea4a",
+            "hash": "e822617cc5dd399c354349ff31cd78b798897e5c",
             "nodes": {
                 "0": {
                     "data": {
@@ -550,7 +550,11 @@
                     "errors": {},
                     "id": "27",
                     "type": "filter",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 60,
                     "y": 60
                 },
@@ -586,9 +590,13 @@
                     "errors": {},
                     "id": "29",
                     "type": "playbook",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 20,
-                    "y": 319.9999999999995
+                    "y": 319.99999999999943
                 },
                 "33": {
                     "data": {
@@ -619,9 +627,6 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 20,
@@ -878,7 +883,7 @@
                                 "artifact_name_prefix": "SOP",
                                 "artifact_severity": "low",
                                 "filter_file_endswith": "json",
-                                "repo_path_local": "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/",
+                                "repo_path_local": "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23",
                                 "repo_path_remote": "https://github.com/abuis78/conf23.git"
                             }
                         }
@@ -900,7 +905,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T19:04:12.066375+00:00",
+    "create_time": "2023-07-16T19:07:36.211053+00:00",
     "draft_mode": false,
     "labels": [
         "*"
