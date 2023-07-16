@@ -69,8 +69,8 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
 
 
 
-    #auflisten_git_verzeichnis(repo_path_local)
-    #check_git_diff(repo_path_remote) 
+    auflisten_git_verzeichnis(repo_path_local)
+    check_git_diff(repo_path_remote) 
     list_json_files(repo_path_local)
     
         
