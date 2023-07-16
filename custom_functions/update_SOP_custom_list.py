@@ -21,7 +21,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         r_url = phantom.build_phantom_rest_url('artifact')
         r = phantom.requests.get(r_url,verify=False)
         d = r.json()["data"]
-        v = d["cef"]["version"]
+        v = d[0]["version"]
         #phantom.debug(f"Version {v}")
         
     
