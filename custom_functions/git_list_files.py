@@ -48,8 +48,9 @@ def git_list_files(repo_path_local=None, pull_response=None, **kwargs):
             for root, directories, file in os.walk(repo_path_local):
                 if file_name in file:
                     voller_pfad = os.path.join(root, file_name)
+                    file_location = voller_pfad
                     phantom.debug("File Name: {}".format(file_name))
-                    phantom.debug("root: {}".format(root))
+                    phantom.debug("voller_pfad: {}".format(file_location))
     else:
         phantom.debug("file_liste is emty")       
     
