@@ -42,6 +42,14 @@ def git_list_files(repo_path_local=None, pull_response=None, **kwargs):
     
     phantom.debug(json_files)
     
+    for file_name in json_files:
+        for root, directories, file in os.walk(repo_path_local):
+            if file_name in file:
+                voller_pfad = os.path.join(root, file_name)
+                phantom.debug(file_name)
+                phantom.debug(root)
+            
+    
     #list_json_files(repo_path_local)
     
         
