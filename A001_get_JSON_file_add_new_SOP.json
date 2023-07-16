@@ -90,14 +90,14 @@
                     "targetPort": "36_in"
                 },
                 {
-                    "id": "port_36_to_port_37",
+                    "id": "port_36_to_port_39",
                     "sourceNode": "36",
                     "sourcePort": "36_out",
-                    "targetNode": "37",
-                    "targetPort": "37_in"
+                    "targetNode": "39",
+                    "targetPort": "39_in"
                 }
             ],
-            "hash": "64c0301aeaa5c9c5d586b28e5a962fef46a32440",
+            "hash": "a37dc0647bb9aa93bbc8d36125893739fafdf553",
             "nodes": {
                 "0": {
                     "data": {
@@ -550,11 +550,7 @@
                     "errors": {},
                     "id": "27",
                     "type": "filter",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 60,
                     "y": 60
                 },
@@ -590,11 +586,7 @@
                     "errors": {},
                     "id": "29",
                     "type": "playbook",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 20,
                     "y": 319.99999999999926
                 },
@@ -627,31 +619,64 @@
                     "x": 100,
                     "y": -260
                 },
-                "37": {
+                "39": {
                     "data": {
                         "advanced": {
-                            "customName": "create liste of files",
-                            "customNameId": 0,
                             "join": []
                         },
-                        "functionId": 1,
-                        "functionName": "create_liste_of_files",
-                        "id": "37",
-                        "inputParameters": [
-                            "get_latest_version_of_files_from_git:action_result.data.*.response"
-                        ],
-                        "outputVariables": [
-                            "file_name_liste"
-                        ],
-                        "type": "code"
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "git_list_files",
+                            "repoName": "conf23-sop_content"
+                        },
+                        "functionId": 12,
+                        "functionName": "git_list_files_12",
+                        "id": "39",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "git_list_files": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "repo_path_local",
+                                        "name": "repo_path_local",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "pull_response",
+                                        "name": "pull_response",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "git_list_files",
+                                "name": "git_list_files"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "git_list_files": {
+                                "pull_response": "get_latest_version_of_files_from_git:action_result.data.*.response",
+                                "repo_path_local": "opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/"
+                            }
+                        }
                     },
                     "errors": {},
-                    "id": "37",
-                    "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    import re\n    json_files = re.findall(r'\\b\\w+\\.json\\b', get_latest_version_of_files_from_git_result_item_0)\n    \n    phantom.debug(json_files)\n\n",
+                    "id": "39",
+                    "type": "utility",
                     "warnings": {},
                     "x": 100,
-                    "y": -100
+                    "y": -95.5
                 }
             },
             "notes": ""
@@ -663,7 +688,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T19:37:27.286493+00:00",
+    "create_time": "2023-07-16T19:42:21.221304+00:00",
     "draft_mode": false,
     "labels": [
         "*"

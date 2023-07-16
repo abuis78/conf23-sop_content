@@ -282,36 +282,37 @@ def get_latest_version_of_files_from_git(action=None, success=None, container=No
     ## Custom Code End
     ################################################################################
 
-    phantom.act("git pull", parameters=parameters, name="get_latest_version_of_files_from_git", assets=["git 1"], callback=create_liste_of_files)
+    phantom.act("git pull", parameters=parameters, name="get_latest_version_of_files_from_git", assets=["git 1"], callback=git_list_files_12)
 
     return
 
 
 @phantom.playbook_block()
-def create_liste_of_files(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("create_liste_of_files() called")
+def git_list_files_12(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("git_list_files_12() called")
 
-    get_latest_version_of_files_from_git_result_data = phantom.collect2(container=container, datapath=["get_latest_version_of_files_from_git:action_result.data.*.response"], action_results=results)
+    get_latest_version_of_files_from_git_result_data = phantom.collect2(container=container, datapath=["get_latest_version_of_files_from_git:action_result.data.*.response","get_latest_version_of_files_from_git:action_result.parameter.context.artifact_id"], action_results=results)
 
-    get_latest_version_of_files_from_git_result_item_0 = [item[0] for item in get_latest_version_of_files_from_git_result_data]
+    parameters = []
 
-    create_liste_of_files__file_name_liste = None
+    # build parameters list for 'git_list_files_12' call
+    for get_latest_version_of_files_from_git_result_item in get_latest_version_of_files_from_git_result_data:
+        parameters.append({
+            "repo_path_local": "opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/",
+            "pull_response": get_latest_version_of_files_from_git_result_item[0],
+        })
 
     ################################################################################
     ## Custom Code Start
     ################################################################################
 
     # Write your custom code here...
-    import re
-    json_files = re.findall(r'\b\w+\.json\b', get_latest_version_of_files_from_git_result_item_0)
-    
-    phantom.debug(json_files)
 
     ################################################################################
     ## Custom Code End
     ################################################################################
 
-    phantom.save_run_data(key="create_liste_of_files:file_name_liste", value=json.dumps(create_liste_of_files__file_name_liste))
+    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="git_list_files_12")
 
     return
 
