@@ -36,7 +36,7 @@ def get_file_information_extract_content(action=None, success=None, container=No
     phantom.debug(playbook_input_vault_id_values)
     my_list = []
     
-    for item in playbook_input_vault_id_values:
+    for item in playbook_input_vault_id_values[0]:
         vault_id = playbook_input_vault_id_values[0]
         success, message, vault_info = phantom.vault_info(vault_id=vault_id[0])
         path = vault_info[0]["path"]
