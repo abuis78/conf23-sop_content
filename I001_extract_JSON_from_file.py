@@ -55,7 +55,7 @@ def get_file_information_extract_content(action=None, success=None, container=No
             raw = {}
             cef = {}
             cef['sop_json'] = str(data.get('sop_json'))
-            cef['name'] = str(data.get('name'))
+            cef['name'] = str(data['sop_json']['name'])
             cef['version'] = str(data.get('version'))
             cef['creator'] = str(data.get('creator'))
             cef['automation_phase'] = str(data.get('automation_phase'))
