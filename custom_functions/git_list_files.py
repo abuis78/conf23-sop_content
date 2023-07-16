@@ -8,7 +8,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         artifact_severity
     
     Returns a JSON-serializable object that implements the configured data paths:
-        file_list
+        vault_id_list
     """
     ############################ Custom Code Goes Below This Line #################################
     import json
@@ -50,17 +50,21 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
             phantom.debug("\nKeine Unterschiede gefunden. Das lokale Repository ist aktuell.")
 
     def list_json_files(repo_path_local):
-        json_files = []
+        vault_id_list = []
         for root, dirs, files in os.walk(repo_path_local):
             for file in files:
                 if file.endswith('.json'):
-                    json_files.append(os.path.join(root, file))
-        return json_files
+                    vault_id_list.append(vault_id)
+                    parts = file.split('/')
+                    name = parts[-1]  
+                    success, message, vault_id = phantom.vault_add(container=None, file_location=file, file_name=name, metadata=None, trace=False)
+                    vault_id_list.append(vault_id)
+        outputs["vault_id_list"] = vault_id_list
+        return vault_id_list
 
     auflisten_git_verzeichnis(repo_path_local)
-    check_git_diff(repo_path_remote)    
-    outputs["file_list"] = list_json_files(repo_path_local)
-
+    check_git_diff(repo_path_remote) 
+    
         
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
