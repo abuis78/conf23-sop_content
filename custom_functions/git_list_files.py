@@ -46,7 +46,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         phantom.debug(f"An error has occurred: {e}")
 
     if not repo.remotes:
-        emote = repo.create_remote('origin', url=repo_path_remote)
+        remote = repo.create_remote('origin', url=repo_path_remote)
 
     try:
         phantom.debug('Update the local repository...')
