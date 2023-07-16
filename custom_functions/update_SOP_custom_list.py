@@ -1,9 +1,10 @@
-def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filter=None, **kwargs):
+def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filter=None, list_name=None, **kwargs):
     """
     Args:
         artifact_id_list
         container_id
         prefix_filter
+        list_name
     
     Returns a JSON-serializable object that implements the configured data paths:
         
@@ -24,8 +25,15 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         r = phantom.requests.get(url,verify=False)
         v = r.json()
         v_id = v.get('cef', {}).get('version')
+        n = _id = v.get('cef', {}).get('name')
         if v_id is not None:
             phantom.debug(f"Version {a} {v.get('cef', {}).get('version')}")
+            r_url = phantom.build_phantom_rest_url('decided_list',list_name)
+            r2 = phantom.requests.get(r_url,verify=False)
+            ln = r2.json()
+            for sublist in ln["content"]:
+                if sublist[0] == n:
+                    phantom.debug(f"Sublist: {sublist}")
         
     
     # Return a JSON-serializable object
