@@ -208,7 +208,7 @@ def noop_5(action=None, success=None, container=None, results=None, handle=None,
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="community/noop", parameters=parameters, name="noop_5", callback=finde_sop_in_list)
+    phantom.custom_function(custom_function="community/noop", parameters=parameters, name="noop_5", callback=filter_sop_artifacts)
 
     return
 
@@ -220,19 +220,20 @@ def finde_sop_in_list(action=None, success=None, container=None, results=None, h
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
     playbook_input_liste_name = phantom.collect2(container=container, datapath=["playbook_input:liste_name"])
-    playbook_input_sop_name = phantom.collect2(container=container, datapath=["playbook_input:sop_name"])
+    filtered_artifact_0_data_filter_sop_artifacts = phantom.collect2(container=container, datapath=["filtered-data:filter_sop_artifacts:condition_1:artifact:*.cef.name","filtered-data:filter_sop_artifacts:condition_1:artifact:*.id"])
 
     parameters = []
 
     # build parameters list for 'finde_sop_in_list' call
     for playbook_input_liste_name_item in playbook_input_liste_name:
-        for playbook_input_sop_name_item in playbook_input_sop_name:
-            if playbook_input_liste_name_item[0] is not None and playbook_input_sop_name_item[0] is not None:
+        for filtered_artifact_0_item_filter_sop_artifacts in filtered_artifact_0_data_filter_sop_artifacts:
+            if playbook_input_liste_name_item[0] is not None and filtered_artifact_0_item_filter_sop_artifacts[0] is not None:
                 parameters.append({
                     "list": playbook_input_liste_name_item[0],
-                    "values": playbook_input_sop_name_item[0],
+                    "values": filtered_artifact_0_item_filter_sop_artifacts[0],
                     "exact_match": True,
                     "column_index": 0,
+                    "context": {'artifact_id': filtered_artifact_0_item_filter_sop_artifacts[1]},
                 })
 
     ################################################################################
@@ -447,7 +448,7 @@ def decision_version_check(action=None, success=None, container=None, results=No
     found_match_1 = phantom.decision(
         container=container,
         conditions=[
-            ["playbook_input:sop_version", ">", "filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.data.0.1"]
+            ["filtered-data:filter_sop_artifacts:condition_1:artifact:*.cef.version", ">", "filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.data.0.1"]
         ],
         delimiter=None)
 
@@ -460,7 +461,7 @@ def decision_version_check(action=None, success=None, container=None, results=No
     found_match_2 = phantom.decision(
         container=container,
         conditions=[
-            ["playbook_input:sop_version", "<=", "filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.data.0.1"]
+            ["filtered-data:filter_sop_artifacts:condition_1:artifact:*.cef.version", "<=", "filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.data.0.1"]
         ],
         delimiter=None)
 
@@ -480,7 +481,7 @@ def filter_found_sop(action=None, success=None, container=None, results=None, ha
     matched_artifacts_1, matched_results_1 = phantom.condition(
         container=container,
         conditions=[
-            ["finde_sop_in_list:action_result.data.0.0", "==", "playbook_input:sop_name"]
+            ["finde_sop_in_list:action_result.data.0.0", "==", "filtered-data:filter_sop_artifacts:condition_1:artifact:*.name"]
         ],
         name="filter_found_sop:condition_1",
         delimiter=None)
@@ -780,6 +781,27 @@ def set_type_of_update_in_the_list(action=None, success=None, container=None, re
     phantom.save_run_data(key="set_type_of_update_in_the_list:status_type", value=json.dumps(set_type_of_update_in_the_list__status_type))
 
     return
+
+@phantom.playbook_block()
+def filter_sop_artifacts(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("filter_sop_artifacts() called")
+
+    # collect filtered artifact ids and results for 'if' condition 1
+    matched_artifacts_1, matched_results_1 = phantom.condition(
+        container=container,
+        conditions=[
+            ["SOP", "in", "artifact:*.name"]
+        ],
+        name="filter_sop_artifacts:condition_1",
+        scope="all",
+        delimiter=None)
+
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_1 or matched_results_1:
+        finde_sop_in_list(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+
+    return
+
 
 @phantom.playbook_block()
 def on_finish(container, summary):

@@ -73,13 +73,6 @@
                     "targetPort": "11_in"
                 },
                 {
-                    "id": "port_11_to_port_12",
-                    "sourceNode": "11",
-                    "sourcePort": "11_out",
-                    "targetNode": "12",
-                    "targetPort": "12_in"
-                },
-                {
                     "id": "port_12_to_port_13",
                     "sourceNode": "12",
                     "sourcePort": "12_out",
@@ -250,9 +243,28 @@
                     "sourcePort": "35_out",
                     "targetNode": "1",
                     "targetPort": "1_in"
+                },
+                {
+                    "id": "port_11_to_port_36",
+                    "sourceNode": "11",
+                    "sourcePort": "11_out",
+                    "targetNode": "36",
+                    "targetPort": "36_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_36_to_port_12",
+                    "sourceNode": "36",
+                    "sourcePort": "36_out",
+                    "targetNode": "12",
+                    "targetPort": "12_in"
                 }
             ],
-            "hash": "15cd7df8efc97cb971bbde2b0d37a8bfe1f74bb5",
+            "hash": "2fea1e8099904e879386179de86df7f844105f68",
             "nodes": {
                 "0": {
                     "data": {
@@ -268,7 +280,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999999
+                    "y": 419.9999999999998
                 },
                 "1": {
                     "data": {
@@ -382,7 +394,7 @@
                             "column_index": "0",
                             "exact_match": true,
                             "list": "playbook_input:liste_name",
-                            "values": "playbook_input:sop_name"
+                            "values": "filtered-data:filter_sop_artifacts:condition_1:artifact:*.cef.name"
                         },
                         "requiredParameters": [
                             {
@@ -407,7 +419,7 @@
                     "type": "action",
                     "warnings": {},
                     "x": 1140,
-                    "y": 1424.5
+                    "y": 1480
                 },
                 "13": {
                     "data": {
@@ -580,7 +592,7 @@
                     "type": "utility",
                     "warnings": {},
                     "x": 920,
-                    "y": 1560
+                    "y": 1600
                 },
                 "14": {
                     "data": {
@@ -631,7 +643,7 @@
                     "type": "decision",
                     "warnings": {},
                     "x": 1220,
-                    "y": 1644.5
+                    "y": 1640
                 },
                 "15": {
                     "data": {
@@ -834,7 +846,7 @@
                                     {
                                         "conditionIndex": 0,
                                         "op": ">",
-                                        "param": "playbook_input:sop_version",
+                                        "param": "filtered-data:filter_sop_artifacts:condition_1:artifact:*.cef.version",
                                         "value": "filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.data.0.1"
                                     }
                                 ],
@@ -849,7 +861,7 @@
                                     {
                                         "conditionIndex": 1,
                                         "op": "<=",
-                                        "param": "playbook_input:sop_version",
+                                        "param": "filtered-data:filter_sop_artifacts:condition_1:artifact:*.cef.version",
                                         "value": "filtered-data:filter_found_sop:condition_1:finde_sop_in_list:action_result.data.0.1"
                                     }
                                 ],
@@ -886,7 +898,7 @@
                                         "conditionIndex": 0,
                                         "op": "==",
                                         "param": "finde_sop_in_list:action_result.data.0.0",
-                                        "value": "playbook_input:sop_name"
+                                        "value": "filtered-data:filter_sop_artifacts:condition_1:artifact:*.name"
                                     }
                                 ],
                                 "conditionIndex": 0,
@@ -903,8 +915,8 @@
                     "id": "20",
                     "type": "filter",
                     "warnings": {},
-                    "x": 1050,
-                    "y": 1924.5
+                    "x": 1060,
+                    "y": 1920
                 },
                 "22": {
                     "data": {
@@ -1273,6 +1285,40 @@
                     "x": 1180,
                     "y": 3344.5
                 },
+                "36": {
+                    "data": {
+                        "advanced": {
+                            "customName": "filter SOP artifacts",
+                            "customNameId": 0,
+                            "join": [],
+                            "scope": "all"
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "in",
+                                        "param": "SOP",
+                                        "value": "artifact:*.name"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "logic": "and"
+                            }
+                        ],
+                        "functionId": 2,
+                        "functionName": "filter_sop_artifacts",
+                        "id": "36",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "36",
+                    "type": "filter",
+                    "warnings": {},
+                    "x": 1200,
+                    "y": 1360
+                },
                 "4": {
                     "data": {
                         "advanced": {
@@ -1530,7 +1576,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-10T19:03:44.841930+00:00",
+    "create_time": "2023-07-16T20:59:19.930683+00:00",
     "draft_mode": false,
     "labels": [
         "*"
