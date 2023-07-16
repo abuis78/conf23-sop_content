@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'get_the_json_file_from_local_repo' block
-    get_the_json_file_from_local_repo(container=container)
+    # call 'get_latest_version_of_files_from_git' block
+    get_latest_version_of_files_from_git(container=container)
 
     return
 
@@ -293,27 +293,12 @@ def playbook_i001_extract_json_from_file_1(action=None, success=None, container=
 
 
 @phantom.playbook_block()
-def debug_9(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("debug_9() called")
+def get_latest_version_of_files_from_git(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("get_latest_version_of_files_from_git() called")
 
-    get_the_json_file_from_local_repo__result = phantom.collect2(container=container, datapath=["get_the_json_file_from_local_repo:custom_function_result.data.vault_id_list"])
-
-    get_the_json_file_from_local_repo_data_vault_id_list = [item[0] for item in get_the_json_file_from_local_repo__result]
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
     parameters = []
-
-    parameters.append({
-        "input_1": get_the_json_file_from_local_repo_data_vault_id_list,
-        "input_2": None,
-        "input_3": None,
-        "input_4": None,
-        "input_5": None,
-        "input_6": None,
-        "input_7": None,
-        "input_8": None,
-        "input_9": None,
-        "input_10": None,
-    })
 
     ################################################################################
     ## Custom Code Start
@@ -325,36 +310,7 @@ def debug_9(action=None, success=None, container=None, results=None, handle=None
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_9")
-
-    return
-
-
-@phantom.playbook_block()
-def get_the_json_file_from_local_repo(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("get_the_json_file_from_local_repo() called")
-
-    parameters = []
-
-    parameters.append({
-        "repo_path_local": "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/",
-        "repo_path_remote": "https://github.com/abuis78/conf23.git",
-        "filter_file_endswith": "json",
-        "artifact_name_prefix": "SOP",
-        "artifact_severity": "low",
-    })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="get_the_json_file_from_local_repo", callback=debug_9)
+    phantom.act("git pull", parameters=parameters, name="get_latest_version_of_files_from_git", assets=["git 1"])
 
     return
 
