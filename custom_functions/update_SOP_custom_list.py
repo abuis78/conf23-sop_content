@@ -24,7 +24,6 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         r = phantom.requests.get(url,verify=False)
         v = r.json()
         v_id = v.get('cef', {}).get('version')
-        phantom.debug(f"SOP Update {v_id}")
         n = v.get('cef', {}).get('name')
         if v_id is not None:
             r_url2 = phantom.build_phantom_rest_url('decided_list',list_name)
@@ -33,7 +32,6 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
             
             for sublist in ln["content"]:
                 if n in sublist[0]:
-                    phantom.debug(f"Sublist >: {sublist[1]}")
                     if int(sublist[1]) <= int(v_id):
                         phantom.debug(f"Nothing to Update")
                     else:
