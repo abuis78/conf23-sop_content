@@ -19,7 +19,22 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
     outputs = {}
     
     # Write your custom code here...
-
+    def list_json_files(repo_path_local):
+        json_files = []
+        vault_id_list = []
+        for root, dirs, files in os.walk(repo_path_local):
+            for file in files:
+                if file.endswith('.json'):
+                    json_files.append(os.path.join(root, file))
+                    file = os.path.join(root, file)
+                    parts = file.split('/')
+                    name = parts[-1]  
+                    success, message, vault_id = phantom.vault_add(container=None, file_location=file, file_name=name, metadata=None, trace=False)
+                    vault_id_list.append(vault_id)
+        phantom.debug("JSON file liste: {}".format(json_files))
+        phantom.debug("Vault ID file liste: {}".format(vault_id_list))
+        outputs["vault_id_list"] = vault_id_list
+        return vault_id_list
 
     def auflisten_git_verzeichnis(repo_path_local):
         # Wechseln Sie zum lokalen Repository-Verzeichnis
@@ -49,25 +64,10 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         else:
             phantom.debug("\nKeine Unterschiede gefunden. Das lokale Repository ist aktuell.")
 
-    def list_json_files(repo_path_local):
-        json_files = []
-        vault_id_list = []
-        for root, dirs, files in os.walk(repo_path_local):
-            for file in files:
-                if file.endswith('.json'):
-                    json_files.append(os.path.join(root, file))
-                    file = os.path.join(root, file)
-                    parts = file.split('/')
-                    name = parts[-1]  
-                    success, message, vault_id = phantom.vault_add(container=None, file_location=file, file_name=name, metadata=None, trace=False)
-                    vault_id_list.append(vault_id)
-        phantom.debug("JSON file liste: {}".format(json_files))
-        phantom.debug("Vault ID file liste: {}".format(vault_id_list))
-        outputs["vault_id_list"] = vault_id_list
-        return vault_id_list
 
-    auflisten_git_verzeichnis(repo_path_local)
-    check_git_diff(repo_path_remote) 
+
+    #auflisten_git_verzeichnis(repo_path_local)
+    #check_git_diff(repo_path_remote) 
     list_json_files(repo_path_local)
     
         
