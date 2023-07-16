@@ -23,14 +23,19 @@ def search_for_sop_mapping(action=None, success=None, container=None, results=No
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
+    playbook_i010_identify_the_use_caes_1_output_use_case_id = phantom.collect2(container=container, datapath=["playbook_i010_identify_the_use_caes_1:playbook_output:use_case_id"])
+
     parameters = []
 
-    parameters.append({
-        "list": "SOP",
-        "values": "",
-        "exact_match": True,
-        "column_index": 2,
-    })
+    # build parameters list for 'search_for_sop_mapping' call
+    for playbook_i010_identify_the_use_caes_1_output_use_case_id_item in playbook_i010_identify_the_use_caes_1_output_use_case_id:
+        if playbook_i010_identify_the_use_caes_1_output_use_case_id_item[0] is not None:
+            parameters.append({
+                "list": "SOP",
+                "values": playbook_i010_identify_the_use_caes_1_output_use_case_id_item[0],
+                "exact_match": True,
+                "column_index": 2,
+            })
 
     ################################################################################
     ## Custom Code Start

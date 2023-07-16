@@ -156,7 +156,7 @@
                     "targetPort": "2_in"
                 }
             ],
-            "hash": "68370fe4763cf35ecda83ee1d7a069b96122b4d0",
+            "hash": "c339fa7fba9f4eeb5638daf36877fc98e86d4da9",
             "nodes": {
                 "0": {
                     "data": {
@@ -544,7 +544,7 @@
                             "column_index": "2",
                             "exact_match": true,
                             "list": "SOP",
-                            "values": ""
+                            "values": "playbook_i010_identify_the_use_caes_1:playbook_output:use_case_id"
                         },
                         "requiredParameters": [
                             {
@@ -569,7 +569,7 @@
                     "type": "action",
                     "warnings": {},
                     "x": 260,
-                    "y": 147.99999999999997
+                    "y": 140
                 },
                 "4": {
                     "data": {
@@ -868,7 +868,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T17:36:03.478620+00:00",
+    "create_time": "2023-07-16T17:37:31.872839+00:00",
     "draft_mode": false,
     "labels": [
         "conf_alert"
