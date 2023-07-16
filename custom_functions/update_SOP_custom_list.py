@@ -27,8 +27,8 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         v_id = v.get('cef', {}).get('version')
         n = _id = v.get('cef', {}).get('name')
         if v_id is not None:
-            r_url = phantom.build_phantom_rest_url('decided_list',list_name)
-            r2 = phantom.requests.get(r_url,verify=False)
+            r_url2 = phantom.build_phantom_rest_url('decided_list',list_name)
+            r2 = phantom.requests.get(r_url2,verify=False)
             ln = r2.json()
             for sublist in ln["content"]:
                 if n in sublist:
