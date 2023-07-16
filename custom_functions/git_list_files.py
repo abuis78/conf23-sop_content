@@ -40,21 +40,11 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         outputs["vault_id_list"] = vault_id_list
         return vault_id_list
 
-    try:
-        repo = Repo(repo_path_local)
-        phantom.debug(f"local repo: {repo}")
-    except Exception as e:
-        phantom.debug(f"An error has occurred: {e}")
-
-    if not repo.remotes:
-        remote = repo.create_remote('origin', url=repo_path_remote)
-
-    try:
-        phantom.debug('Update the local repository...')
-        repo.remotes.origin.pull()
-        phantom.debug('Local repository has been updated.')
-    except Exception as e:
-        phantom.debug(f"An error has occurred: {e}")
+    if not os.path.exists(repo_path_local):
+        subprocess.call(['git', 'clone', repo_path_remote, repo_path_local])
+    else:
+        os.chdir(repo_path_local)
+        subprocess.call(['git', 'pull'])
     
     #list_json_files(repo_path_local)
     
