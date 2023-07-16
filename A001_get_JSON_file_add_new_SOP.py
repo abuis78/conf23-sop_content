@@ -296,14 +296,14 @@ def playbook_i001_extract_json_from_file_1(action=None, success=None, container=
 def debug_9(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_9() called")
 
-    git_list_files_8__result = phantom.collect2(container=container, datapath=["git_list_files_8:custom_function_result.data.vault_id_list"])
+    get_the_json_file_from_local_repo__result = phantom.collect2(container=container, datapath=["get_the_json_file_from_local_repo:custom_function_result.data.vault_id_list"])
 
-    git_list_files_8_data_vault_id_list = [item[0] for item in git_list_files_8__result]
+    get_the_json_file_from_local_repo_data_vault_id_list = [item[0] for item in get_the_json_file_from_local_repo__result]
 
     parameters = []
 
     parameters.append({
-        "input_1": git_list_files_8_data_vault_id_list,
+        "input_1": get_the_json_file_from_local_repo_data_vault_id_list,
         "input_2": None,
         "input_3": None,
         "input_4": None,
@@ -354,7 +354,7 @@ def get_the_json_file_from_local_repo(action=None, success=None, container=None,
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="get_the_json_file_from_local_repo")
+    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="get_the_json_file_from_local_repo", callback=debug_9)
 
     return
 

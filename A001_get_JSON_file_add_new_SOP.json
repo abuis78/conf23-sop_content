@@ -88,9 +88,16 @@
                     "sourcePort": "0_out",
                     "targetNode": "35",
                     "targetPort": "35_in"
+                },
+                {
+                    "id": "port_35_to_port_34",
+                    "sourceNode": "35",
+                    "sourcePort": "35_out",
+                    "targetNode": "34",
+                    "targetPort": "34_in"
                 }
             ],
-            "hash": "05ca95c952d9eb263f9542d9585ed0bb185b2dd0",
+            "hash": "aaa89d3b89180f2260580015f2beb8eaea8eea4a",
             "nodes": {
                 "0": {
                     "data": {
@@ -581,7 +588,7 @@
                     "type": "playbook",
                     "warnings": {},
                     "x": 20,
-                    "y": 319.99999999999955
+                    "y": 319.9999999999995
                 },
                 "33": {
                     "data": {
@@ -768,7 +775,7 @@
                         "values": {
                             "debug": {
                                 "input_1": [
-                                    "git_list_files_8:custom_function_result.data.vault_id_list"
+                                    "get_the_json_file_from_local_repo:custom_function_result.data.vault_id_list"
                                 ],
                                 "input_10": null,
                                 "input_2": null,
@@ -786,8 +793,8 @@
                     "id": "34",
                     "type": "utility",
                     "warnings": {},
-                    "x": 320,
-                    "y": -115.5
+                    "x": 200,
+                    "y": -140
                 },
                 "35": {
                     "data": {
@@ -893,7 +900,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T19:03:48.622447+00:00",
+    "create_time": "2023-07-16T19:04:12.066375+00:00",
     "draft_mode": false,
     "labels": [
         "*"
