@@ -97,7 +97,7 @@
                     "targetPort": "31_in"
                 }
             ],
-            "hash": "14969533149f857ca4774335d17ab6c57fbddfe8",
+            "hash": "e17c565dee17dc1d9835f342f740a5dfee2176af",
             "nodes": {
                 "0": {
                     "data": {
@@ -550,7 +550,11 @@
                     "errors": {},
                     "id": "27",
                     "type": "filter",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 60,
                     "y": 60
                 },
@@ -586,9 +590,13 @@
                     "errors": {},
                     "id": "29",
                     "type": "playbook",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 20,
-                    "y": 319.9999999999998
+                    "y": 319.9999999999997
                 },
                 "31": {
                     "data": {
@@ -838,9 +846,9 @@
                             "git_list_files": {
                                 "artifact_name_prefix": null,
                                 "artifact_severity": null,
-                                "filter_file_endswith": null,
-                                "repo_path_local": null,
-                                "repo_path_remote": null
+                                "filter_file_endswith": "json",
+                                "repo_path_local": "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/",
+                                "repo_path_remote": "https://github.com/abuis78/conf23.git"
                             }
                         }
                     },
@@ -861,7 +869,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T18:31:37.404836+00:00",
+    "create_time": "2023-07-16T18:39:43.240241+00:00",
     "draft_mode": false,
     "labels": [
         "*"
