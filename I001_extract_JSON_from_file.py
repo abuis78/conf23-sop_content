@@ -32,6 +32,8 @@ def get_file_information_extract_content(action=None, success=None, container=No
     ################################################################################
 
     # Write your custom code here...
+    phantom.debug(playbook_input_vault_id)
+    phantom.debug(playbook_input_vault_id_values)
     my_list = []
     
     for item in playbook_input_vault_id:
