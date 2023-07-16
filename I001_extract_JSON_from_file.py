@@ -58,8 +58,8 @@ def get_file_information_extract_content(action=None, success=None, container=No
             cef['name'] = str(data.get('name'))
             cef['version'] = str(data.get('version'))
             cef['creator'] = str(data.get('creator'))
-            cef['automation_phase'] = str(data['sop_json']['automation_phase'])
-            cef['allert'] = str(data['sop_json']['allert'])
+            cef['automation_phase'] = str(data.get('automation_phase'))
+            cef['allert'] = str(data.get('allert'))
             success, message, artifact_id = phantom.add_artifact(container=container, raw_data=raw, cef_data=cef, label='sop',name=name, severity='low',identifier=None)
 
             phantom.debug('artifact added as id:'+str(artifact_id))
