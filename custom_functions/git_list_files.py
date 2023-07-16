@@ -44,10 +44,11 @@ def git_list_files(repo_path_local=None, pull_response=None, **kwargs):
     
     for file_name in json_files:
         for root, directories, file in os.walk(repo_path_local):
+            phantom.debug("for schleife: {} {} {}".format(root, directories, file))
             if file_name in file:
                 voller_pfad = os.path.join(root, file_name)
-                phantom.debug(file_name)
-                phantom.debug(root)
+                phantom.debug("File Name: {}".format(file_name))
+                phantom.debug("root: {}".format(root))
             
     
     #list_json_files(repo_path_local)
