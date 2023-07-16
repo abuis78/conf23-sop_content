@@ -15,6 +15,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
     import phantom.rules as phantom
     import subprocess
     import os
+    from git import Repo
     
     outputs = {}
     
@@ -39,37 +40,21 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         outputs["vault_id_list"] = vault_id_list
         return vault_id_list
 
-    def auflisten_git_verzeichnis(repo_path_local):
-        # Wechseln Sie zum lokalen Repository-Verzeichnis
-        os.chdir(repo_path_local)
+    try:
+        repo = Repo(repo_path_local)
+    except Exception as e:
+        phantom.debug(f"An error has occurred: {e}")
 
-        # Liste alle Dateien, die vom lokalen Git-Repository verfolgt werden
-        dateien = subprocess.check_output(["git", "ls-files"]).decode("utf8")
-        phantom.debug("files in the local Git repository: {}".format(dateien))
+    if not repo.remotes:
+        emote = repo.create_remote('origin', url=repo_path_remote)
 
-    def check_git_diff(repo_path_remote):
-        # Holt die neuesten Informationen vom remote repository
-        subprocess.run(["git", "remote", "set-url", "origin", repo_path_remote])
-        subprocess.run(["git", "fetch"])
-        
-        # Holt die neuesten Informationen vom remote repository
-        subprocess.run(["git", "fetch"])
-        
-        # Überprüft den Unterschied zwischen dem lokalen und dem remote repository
-        result = subprocess.check_output(["git", "diff", "--name-only", "origin/main"]).decode("utf8")
-
-        if result:
-            phantom.debug("\nThere are differences between the local and remote repository:")
-            phantom.debug(result)
-            phantom.debug("\nAktualisiere das lokale Repository...")
-            subprocess.run(["git", "pull"])
-        else:
-            phantom.debug("\nNo differences found. The local repository is up to date.")
-
-
-
-    auflisten_git_verzeichnis(repo_path_local)
-    check_git_diff(repo_path_remote) 
+    try:
+        phantom.debug('Update the local repository...')
+        repo.remotes.origin.pull()
+        phantom.debug('Local repository has been updated.')
+    except Exception as e:
+        phantom.debug(f"An error has occurred: {e}")
+    
     list_json_files(repo_path_local)
     
         
