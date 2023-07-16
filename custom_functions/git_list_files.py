@@ -42,6 +42,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
 
     try:
         repo = Repo(repo_path_local)
+        phantom.debug(f"local repo: {repo}")
     except Exception as e:
         phantom.debug(f"An error has occurred: {e}")
 
@@ -55,7 +56,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
     except Exception as e:
         phantom.debug(f"An error has occurred: {e}")
     
-    list_json_files(repo_path_local)
+    #list_json_files(repo_path_local)
     
         
     # Return a JSON-serializable object
