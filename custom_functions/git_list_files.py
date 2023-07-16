@@ -1,11 +1,8 @@
-def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_endswith=None, artifact_name_prefix=None, artifact_severity=None, **kwargs):
+def git_list_files(repo_path_local=None, pull_response=None, **kwargs):
     """
     Args:
         repo_path_local
-        repo_path_remote
-        filter_file_endswith
-        artifact_name_prefix
-        artifact_severity
+        pull_response
     
     Returns a JSON-serializable object that implements the configured data paths:
         vault_id_list
@@ -15,6 +12,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
     import phantom.rules as phantom
     import subprocess
     import os
+    import re
     from git import Repo
     
     outputs = {}
@@ -40,11 +38,9 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         outputs["vault_id_list"] = vault_id_list
         return vault_id_list
 
-    if not os.path.exists(repo_path_local):
-        subprocess.call(['git', 'clone', repo_path_remote, repo_path_local])
-    else:
-        os.chdir(repo_path_local)
-        subprocess.call(['git', 'pull'])
+    json_files = re.findall(r'\b\w+\.json\b', pull_response)
+    
+    phantom.debug(json_files)
     
     #list_json_files(repo_path_local)
     
