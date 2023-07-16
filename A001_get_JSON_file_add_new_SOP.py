@@ -265,44 +265,6 @@ def playbook_i002_check_sop_version_1(action=None, success=None, container=None,
 
 
 @phantom.playbook_block()
-def debug_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("debug_4() called")
-
-    git_list_files_8__result = phantom.collect2(container=container, datapath=["git_list_files_8:custom_function_result.data.vault_id_list"])
-
-    git_list_files_8_data_vault_id_list = [item[0] for item in git_list_files_8__result]
-
-    parameters = []
-
-    parameters.append({
-        "input_1": git_list_files_8_data_vault_id_list,
-        "input_2": None,
-        "input_3": None,
-        "input_4": None,
-        "input_5": None,
-        "input_6": None,
-        "input_7": None,
-        "input_8": None,
-        "input_9": None,
-        "input_10": None,
-    })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_4")
-
-    return
-
-
-@phantom.playbook_block()
 def git_list_files_8(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("git_list_files_8() called")
 
@@ -326,7 +288,35 @@ def git_list_files_8(action=None, success=None, container=None, results=None, ha
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="git_list_files_8", callback=debug_4)
+    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="git_list_files_8", callback=playbook_i001_extract_json_from_file_1)
+
+    return
+
+
+@phantom.playbook_block()
+def playbook_i001_extract_json_from_file_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("playbook_i001_extract_json_from_file_1() called")
+
+    git_list_files_8__result = phantom.collect2(container=container, datapath=["git_list_files_8:custom_function_result.data.vault_id_list"])
+
+    git_list_files_8_data_vault_id_list = [item[0] for item in git_list_files_8__result]
+
+    inputs = {
+        "vault_id": git_list_files_8_data_vault_id_list,
+    }
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    # call playbook "conf23-sop_content/I001_extract_JSON_from_file", returns the playbook_run_id
+    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_1", inputs=inputs)
 
     return
 
