@@ -15,7 +15,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
     outputs = {}
     
     # Write your custom code here...
-    phantom.debug(f"a liste {artifact_id_list}")
+    
     for a in artifact_id_list:
         url_filter = '/'+ str(a) + '?_filter_name__icontains="' + str(prefix_filter) +'"'
         r_url = phantom.build_phantom_rest_url('artifact')
@@ -23,8 +23,8 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         phantom.debug(f"URL {url}")
         r = phantom.requests.get(url,verify=False)
         d = r.json()["data"]
-        #v = d[0]["version"]
-        #phantom.debug(f"Version {a} {v}")
+        v = d["version"]
+        phantom.debug(f"Version {a} {v}")
         
     
     # Return a JSON-serializable object
