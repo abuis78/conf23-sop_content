@@ -304,8 +304,8 @@ def set_next_phase_as_current_phase(action=None, success=None, container=None, r
     # build parameters list for 'set_next_phase_as_current_phase' call
     for search_for_sop_mapping_result_item in search_for_sop_mapping_result_data:
         parameters.append({
-            "current_phase_name": search_for_sop_mapping_result_item[0],
             "container_id": id_value,
+            "current_phase_name": search_for_sop_mapping_result_item[0],
         })
 
     ################################################################################
