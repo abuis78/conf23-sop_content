@@ -49,10 +49,17 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
         else:
             phantom.debug("\nKeine Unterschiede gefunden. Das lokale Repository ist aktuell.")
 
+    def list_json_files(repo_path_local):
+        json_files = []
+        for root, dirs, files in os.walk(repo_path_local):
+            for file in files:
+                if file.endswith('.json'):
+                    json_files.append(os.path.join(root, file))
+        return json_files
 
     auflisten_git_verzeichnis(repo_path_local)
     check_git_diff(repo_path_remote)    
-
+    outputs["file_list"] = list_json_files(repo_path_local)
 
         
     # Return a JSON-serializable object
