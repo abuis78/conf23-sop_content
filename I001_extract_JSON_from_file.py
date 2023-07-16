@@ -49,6 +49,15 @@ def get_file_information_extract_content(action=None, success=None, container=No
             }
             
             my_list.append(entry)
+        
+        raw = {}
+        cef = {}
+        cef['sourceAddress'] = '1.1.1.1'
+        success, message, artifact_id = phantom.add_artifact(container=container, raw_data=raw, cef_data=cef, label='netflow',name='test_event', severity='high',identifier=None,artifact_type='network')
+
+        phantom.debug('artifact added as id:'+str(artifact_id))
+    
+            
     phantom.debug(my_list)
     get_file_information_extract_content__data_list = my_list
     ################################################################################
