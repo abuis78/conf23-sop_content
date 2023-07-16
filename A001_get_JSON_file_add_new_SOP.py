@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'call_api_8' block
-    call_api_8(container=container)
+    # call 'git_list_files_8' block
+    git_list_files_8(container=container)
 
     return
 
@@ -217,35 +217,6 @@ def create_new_sop(action=None, success=None, container=None, results=None, hand
 
 
 @phantom.playbook_block()
-def git_list_files_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("git_list_files_1() called")
-
-    parameters = []
-
-    parameters.append({
-        "repo_path_local": "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/",
-        "repo_path_remote": "https://github.com/abuis78/conf23.git",
-        "artifact_severity": "low",
-        "artifact_name_prefix": "SOP ",
-        "filter_file_endswith": "json",
-    })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="git_list_files_1")
-
-    return
-
-
-@phantom.playbook_block()
 def filter_artifacts_for_sop_in_name(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("filter_artifacts_for_sop_in_name() called")
 
@@ -297,10 +268,14 @@ def playbook_i002_check_sop_version_1(action=None, success=None, container=None,
 def debug_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_4() called")
 
+    git_list_files_8__result = phantom.collect2(container=container, datapath=["git_list_files_8:custom_function_result.data.vault_id_list"])
+
+    git_list_files_8_data_vault_id_list = [item[0] for item in git_list_files_8__result]
+
     parameters = []
 
     parameters.append({
-        "input_1": None,
+        "input_1": git_list_files_8_data_vault_id_list,
         "input_2": None,
         "input_3": None,
         "input_4": None,
@@ -328,8 +303,18 @@ def debug_4(action=None, success=None, container=None, results=None, handle=None
 
 
 @phantom.playbook_block()
-def call_api_8(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("call_api_8() called")
+def git_list_files_8(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("git_list_files_8() called")
+
+    parameters = []
+
+    parameters.append({
+        "repo_path_local": None,
+        "repo_path_remote": None,
+        "filter_file_endswith": None,
+        "artifact_name_prefix": None,
+        "artifact_severity": None,
+    })
 
     ################################################################################
     ## Custom Code Start
@@ -340,6 +325,8 @@ def call_api_8(action=None, success=None, container=None, results=None, handle=N
     ################################################################################
     ## Custom Code End
     ################################################################################
+
+    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="git_list_files_8", callback=debug_4)
 
     return
 
