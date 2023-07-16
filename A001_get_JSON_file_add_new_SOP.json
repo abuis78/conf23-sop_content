@@ -102,9 +102,16 @@
                     "sourcePort": "39_out",
                     "targetNode": "43",
                     "targetPort": "43_in"
+                },
+                {
+                    "id": "port_43_to_port_27",
+                    "sourceNode": "43",
+                    "sourcePort": "43_out",
+                    "targetNode": "27",
+                    "targetPort": "27_in"
                 }
             ],
-            "hash": "762296911e5bc18c1af5cb85f67c5c684f2665c5",
+            "hash": "285d57e3473ddb8ff1976ead44887a9f0b36bf0a",
             "nodes": {
                 "0": {
                     "data": {
@@ -532,6 +539,9 @@
                             "customName": "filter artifacts for SOP in name",
                             "customNameId": 0,
                             "join": [],
+                            "notRequiredJoins": [
+                                "playbook_I001_extract_JSON_from_file_2"
+                            ],
                             "scope": "all"
                         },
                         "conditions": [
@@ -595,7 +605,7 @@
                     "type": "playbook",
                     "warnings": {},
                     "x": 20,
-                    "y": 319.9999999999991
+                    "y": 319.999999999999
                 },
                 "36": {
                     "data": {
@@ -712,8 +722,8 @@
                     "id": "43",
                     "type": "playbook",
                     "warnings": {},
-                    "x": 260,
-                    "y": 24.499999999999964
+                    "x": 300,
+                    "y": 0
                 }
             },
             "notes": ""
@@ -725,7 +735,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T20:28:42.525294+00:00",
+    "create_time": "2023-07-16T20:42:08.369765+00:00",
     "draft_mode": false,
     "labels": [
         "*"
