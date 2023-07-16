@@ -7,13 +7,14 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_0_to_port_2",
+                    "id": "port_0_to_port_3",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
-                    "targetNode": "2",
-                    "targetPort": "2_in"
+                    "targetNode": "3",
+                    "targetPort": "3_in"
                 }
             ],
+            "hash": "bf20e8e17fbc19aa5441f35f9df1f352505c8f7c",
             "nodes": {
                 "0": {
                     "data": {
@@ -29,7 +30,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999999
+                    "y": 419.9999999999998
                 },
                 "1": {
                     "data": {
@@ -47,7 +48,7 @@
                     "x": 1000,
                     "y": 1000
                 },
-                "2": {
+                "3": {
                     "data": {
                         "advanced": {
                             "join": []
@@ -57,9 +58,9 @@
                             "name": "update_SOP_custom_list",
                             "repoName": "conf23-sop_content"
                         },
-                        "functionId": 1,
-                        "functionName": "update_SOP_custom_list_1",
-                        "id": "2",
+                        "functionId": 2,
+                        "functionName": "update_SOP_custom_list_2",
+                        "id": "3",
                         "selectMore": false,
                         "type": "utility",
                         "utilities": {
@@ -95,6 +96,16 @@
                                         "placeholder": "",
                                         "renderType": "datapath",
                                         "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "list_name",
+                                        "name": "list_name",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
                                     }
                                 ],
                                 "label": "update_SOP_custom_list",
@@ -108,16 +119,17 @@
                                     "artifact:*.id"
                                 ],
                                 "container_id": "33526",
+                                "list_name": "SOP",
                                 "prefix_filter": "SOP"
                             }
                         }
                     },
                     "errors": {},
-                    "id": "2",
+                    "id": "3",
                     "type": "utility",
                     "warnings": {},
-                    "x": 980,
-                    "y": 584.5
+                    "x": 990,
+                    "y": 604.5
                 }
             },
             "notes": ""
@@ -129,7 +141,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T22:31:59.729719+00:00",
+    "create_time": "2023-07-16T23:06:47.953955+00:00",
     "draft_mode": false,
     "labels": [
         "*"

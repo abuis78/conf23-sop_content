@@ -12,14 +12,14 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'update_sop_custom_list_1' block
-    update_sop_custom_list_1(container=container)
+    # call 'update_sop_custom_list_2' block
+    update_sop_custom_list_2(container=container)
 
     return
 
 @phantom.playbook_block()
-def update_sop_custom_list_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("update_sop_custom_list_1() called")
+def update_sop_custom_list_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("update_sop_custom_list_2() called")
 
     container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.id","artifact:*.id"])
 
@@ -31,6 +31,7 @@ def update_sop_custom_list_1(action=None, success=None, container=None, results=
         "artifact_id_list": container_artifact_header_item_0,
         "container_id": 33526,
         "prefix_filter": "SOP",
+        "list_name": "SOP",
     })
 
     ################################################################################
@@ -43,7 +44,7 @@ def update_sop_custom_list_1(action=None, success=None, container=None, results=
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="conf23-sop_content/update_SOP_custom_list", parameters=parameters, name="update_sop_custom_list_1")
+    phantom.custom_function(custom_function="conf23-sop_content/update_SOP_custom_list", parameters=parameters, name="update_sop_custom_list_2")
 
     return
 
