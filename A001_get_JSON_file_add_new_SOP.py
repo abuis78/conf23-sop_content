@@ -40,51 +40,7 @@ def playbook_i001_extract_json_from_file_3(action=None, success=None, container=
     ################################################################################
 
     # call playbook "conf23-sop_content/I001_extract_JSON_from_file", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_3", callback=playbook_i001_extract_json_from_file_3_callback, inputs=inputs)
-
-    return
-
-
-@phantom.playbook_block()
-def playbook_i001_extract_json_from_file_3_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("playbook_i001_extract_json_from_file_3_callback() called")
-
-    
-    debug_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
-    playbook_i002_check_sop_version_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
-
-
-    return
-
-
-@phantom.playbook_block()
-def playbook_i002_check_sop_version_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("playbook_i002_check_sop_version_2() called")
-
-    playbook_i001_extract_json_from_file_3_output_name = phantom.collect2(container=container, datapath=["playbook_i001_extract_json_from_file_3:playbook_output:name"])
-    playbook_i001_extract_json_from_file_3_output_version = phantom.collect2(container=container, datapath=["playbook_i001_extract_json_from_file_3:playbook_output:version"])
-
-    playbook_i001_extract_json_from_file_3_output_name_values = [item[0] for item in playbook_i001_extract_json_from_file_3_output_name]
-    playbook_i001_extract_json_from_file_3_output_version_values = [item[0] for item in playbook_i001_extract_json_from_file_3_output_version]
-
-    inputs = {
-        "sop_name": playbook_i001_extract_json_from_file_3_output_name_values,
-        "liste_name": ["SOP"],
-        "sop_version": playbook_i001_extract_json_from_file_3_output_version_values,
-    }
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    # call playbook "conf23-sop_content/I002_check_sop_version", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I002_check_sop_version", container=container, name="playbook_i002_check_sop_version_2", callback=decision_1, inputs=inputs)
+    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_3", inputs=inputs)
 
     return
 
@@ -284,7 +240,7 @@ def git_list_files_1(action=None, success=None, container=None, results=None, ha
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="git_list_files_1", callback=filter_artifacts_for_sop_in_name)
+    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="git_list_files_1")
 
     return
 
@@ -312,27 +268,14 @@ def filter_artifacts_for_sop_in_name(action=None, success=None, container=None, 
 
 
 @phantom.playbook_block()
-def debug_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("debug_2() called")
+def playbook_i002_check_sop_version_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("playbook_i002_check_sop_version_1() called")
 
-    playbook_i001_extract_json_from_file_3_output_data_list = phantom.collect2(container=container, datapath=["playbook_i001_extract_json_from_file_3:playbook_output:data_list"])
-
-    playbook_i001_extract_json_from_file_3_output_data_list_values = [item[0] for item in playbook_i001_extract_json_from_file_3_output_data_list]
-
-    parameters = []
-
-    parameters.append({
-        "input_1": playbook_i001_extract_json_from_file_3_output_data_list_values,
-        "input_2": None,
-        "input_3": None,
-        "input_4": None,
-        "input_5": None,
-        "input_6": None,
-        "input_7": None,
-        "input_8": None,
-        "input_9": None,
-        "input_10": None,
-    })
+    inputs = {
+        "sop_name": [],
+        "sop_version": [],
+        "liste_name": [],
+    }
 
     ################################################################################
     ## Custom Code Start
@@ -344,7 +287,8 @@ def debug_2(action=None, success=None, container=None, results=None, handle=None
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_2")
+    # call playbook "conf23-sop_content/I002_check_sop_version", returns the playbook_run_id
+    playbook_run_id = phantom.playbook("conf23-sop_content/I002_check_sop_version", container=container, name="playbook_i002_check_sop_version_1", callback=decision_1, inputs=inputs)
 
     return
 
