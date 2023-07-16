@@ -36,8 +36,8 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                     phantom.debug(f"Sublist >: {sublist}")
                     found = True
     
-            if not found:
-                phantom.debug(f"1")
+                if not found:
+                    phantom.debug(f"1")
         
     
     # Return a JSON-serializable object
