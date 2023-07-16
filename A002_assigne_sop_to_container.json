@@ -7,13 +7,6 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_0_to_port_2",
-                    "sourceNode": "0",
-                    "sourcePort": "0_out",
-                    "targetNode": "2",
-                    "targetPort": "2_in"
-                },
-                {
                     "id": "port_2_to_port_4",
                     "sourceNode": "2",
                     "sourcePort": "2_out",
@@ -147,9 +140,16 @@
                     "sourcePort": "16_out",
                     "targetNode": "1",
                     "targetPort": "1_in"
+                },
+                {
+                    "id": "port_0_to_port_17",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "17",
+                    "targetPort": "17_in"
                 }
             ],
-            "hash": "af86cb1054e53b36e70f724e611b9563a3c62ba7",
+            "hash": "17d1166be5b72dc4822f8eddd16e237f2c829b59",
             "nodes": {
                 "0": {
                     "data": {
@@ -165,7 +165,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 280,
-                    "y": -1.2789769243681803e-13
+                    "y": -120
                 },
                 "1": {
                     "data": {
@@ -492,6 +492,29 @@
                     "x": 260,
                     "y": 1644.5
                 },
+                "17": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "playbook_I010_Identify_the_use_caes_1",
+                        "id": "17",
+                        "inputs": {},
+                        "playbookName": "I010_Identify_the_use_caes",
+                        "playbookRepo": 10,
+                        "playbookRepoName": "conf23-sop_content",
+                        "playbookType": "data",
+                        "synchronous": true,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "17",
+                    "type": "playbook",
+                    "warnings": {},
+                    "x": 260,
+                    "y": 4.499999999999972
+                },
                 "2": {
                     "data": {
                         "action": "find listitem",
@@ -537,9 +560,13 @@
                     "errors": {},
                     "id": "2",
                     "type": "action",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 260,
-                    "y": 148
+                    "y": 147.99999999999997
                 },
                 "4": {
                     "data": {
@@ -838,7 +865,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T17:27:13.891635+00:00",
+    "create_time": "2023-07-16T17:34:33.529937+00:00",
     "draft_mode": false,
     "labels": [
         "conf_alert"

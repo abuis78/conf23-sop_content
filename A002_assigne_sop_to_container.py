@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'search_for_sop_mapping' block
-    search_for_sop_mapping(container=container)
+    # call 'playbook_i010_identify_the_use_caes_1' block
+    playbook_i010_identify_the_use_caes_1(container=container)
 
     return
 
@@ -319,6 +319,28 @@ def set_next_phase_as_current_phase(action=None, success=None, container=None, r
     ################################################################################
 
     phantom.custom_function(custom_function="conf23-sop_content/identify_the_next_phase", parameters=parameters, name="set_next_phase_as_current_phase")
+
+    return
+
+
+@phantom.playbook_block()
+def playbook_i010_identify_the_use_caes_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("playbook_i010_identify_the_use_caes_1() called")
+
+    inputs = {}
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    # call playbook "conf23-sop_content/I010_Identify_the_use_caes", returns the playbook_run_id
+    playbook_run_id = phantom.playbook("conf23-sop_content/I010_Identify_the_use_caes", container=container, name="playbook_i010_identify_the_use_caes_1", inputs=inputs)
 
     return
 
