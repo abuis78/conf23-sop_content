@@ -274,8 +274,8 @@ def git_list_files_8(action=None, success=None, container=None, results=None, ha
         "repo_path_local": "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/",
         "repo_path_remote": "https://github.com/abuis78/conf23.git",
         "filter_file_endswith": "json",
-        "artifact_name_prefix": None,
-        "artifact_severity": None,
+        "artifact_name_prefix": "SOP",
+        "artifact_severity": "low",
     })
 
     ################################################################################

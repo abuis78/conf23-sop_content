@@ -97,7 +97,7 @@
                     "targetPort": "33_in"
                 }
             ],
-            "hash": "762296911e5bc18c1af5cb85f67c5c684f2665c5",
+            "hash": "6d298c37a16519d0178ac6ac706400f0cdca1a6e",
             "nodes": {
                 "0": {
                     "data": {
@@ -550,11 +550,7 @@
                     "errors": {},
                     "id": "27",
                     "type": "filter",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 60,
                     "y": 60
                 },
@@ -590,11 +586,7 @@
                     "errors": {},
                     "id": "29",
                     "type": "playbook",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 20,
                     "y": 319.99999999999966
                 },
@@ -675,8 +667,8 @@
                         "utilityType": "custom_function",
                         "values": {
                             "git_list_files": {
-                                "artifact_name_prefix": null,
-                                "artifact_severity": null,
+                                "artifact_name_prefix": "SOP",
+                                "artifact_severity": "low",
                                 "filter_file_endswith": "json",
                                 "repo_path_local": "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/",
                                 "repo_path_remote": "https://github.com/abuis78/conf23.git"
@@ -730,7 +722,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T18:44:37.157533+00:00",
+    "create_time": "2023-07-16T18:48:40.043564+00:00",
     "draft_mode": false,
     "labels": [
         "*"
