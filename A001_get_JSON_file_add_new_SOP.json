@@ -64,18 +64,6 @@
                     "targetPort": "23_in"
                 },
                 {
-                    "conditions": [
-                        {
-                            "index": 0
-                        }
-                    ],
-                    "id": "port_27_to_port_13",
-                    "sourceNode": "27",
-                    "sourcePort": "27_out",
-                    "targetNode": "13",
-                    "targetPort": "13_in"
-                },
-                {
                     "id": "port_29_to_port_17",
                     "sourceNode": "29",
                     "sourcePort": "29_out",
@@ -109,9 +97,21 @@
                     "sourcePort": "43_out",
                     "targetNode": "27",
                     "targetPort": "27_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_27_to_port_29",
+                    "sourceNode": "27",
+                    "sourcePort": "27_out",
+                    "targetNode": "29",
+                    "targetPort": "29_in"
                 }
             ],
-            "hash": "285d57e3473ddb8ff1976ead44887a9f0b36bf0a",
+            "hash": "6616791d510da6273e53f967ac9a49cb120d6bd3",
             "nodes": {
                 "0": {
                     "data": {
@@ -144,37 +144,6 @@
                     "warnings": {},
                     "x": -40.000000000000014,
                     "y": 1240
-                },
-                "13": {
-                    "data": {
-                        "advanced": {
-                            "join": [],
-                            "scope": "all"
-                        },
-                        "functionId": 3,
-                        "functionName": "playbook_I001_extract_JSON_from_file_3",
-                        "id": "13",
-                        "inputs": {
-                            "vault_id": {
-                                "datapaths": [
-                                    "filtered-data:filter_artifacts_for_sop_in_name:condition_1:artifact:*.cef.vaultId"
-                                ],
-                                "deduplicate": false
-                            }
-                        },
-                        "playbookName": "I001_extract_JSON_from_file",
-                        "playbookRepo": 10,
-                        "playbookRepoName": "conf23-sop_content",
-                        "playbookType": "data",
-                        "synchronous": true,
-                        "type": "playbook"
-                    },
-                    "errors": {},
-                    "id": "13",
-                    "type": "playbook",
-                    "warnings": {},
-                    "x": 0,
-                    "y": 200
                 },
                 "17": {
                     "data": {
@@ -581,7 +550,9 @@
                         "id": "29",
                         "inputs": {
                             "liste_name": {
-                                "datapaths": [],
+                                "datapaths": [
+                                    "SOP"
+                                ],
                                 "deduplicate": false
                             },
                             "sop_name": {
@@ -605,7 +576,7 @@
                     "type": "playbook",
                     "warnings": {},
                     "x": 20,
-                    "y": 319.999999999999
+                    "y": 319.9999999999989
                 },
                 "36": {
                     "data": {
@@ -735,7 +706,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T20:42:08.369765+00:00",
+    "create_time": "2023-07-16T20:46:07.754295+00:00",
     "draft_mode": false,
     "labels": [
         "*"

@@ -18,34 +18,6 @@ def on_start(container):
     return
 
 @phantom.playbook_block()
-def playbook_i001_extract_json_from_file_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("playbook_i001_extract_json_from_file_3() called")
-
-    filtered_artifact_0_data_filter_artifacts_for_sop_in_name = phantom.collect2(container=container, datapath=["filtered-data:filter_artifacts_for_sop_in_name:condition_1:artifact:*.cef.vaultId"], scope="all")
-
-    filtered_artifact_0__cef_vaultid = [item[0] for item in filtered_artifact_0_data_filter_artifacts_for_sop_in_name]
-
-    inputs = {
-        "vault_id": filtered_artifact_0__cef_vaultid,
-    }
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    # call playbook "conf23-sop_content/I001_extract_JSON_from_file", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_3", inputs=inputs)
-
-    return
-
-
-@phantom.playbook_block()
 def decision_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("decision_1() called")
 
@@ -233,7 +205,7 @@ def filter_artifacts_for_sop_in_name(action=None, success=None, container=None, 
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        playbook_i001_extract_json_from_file_3(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        playbook_i002_check_sop_version_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 
@@ -245,7 +217,7 @@ def playbook_i002_check_sop_version_1(action=None, success=None, container=None,
     inputs = {
         "sop_name": [],
         "sop_version": [],
-        "liste_name": [],
+        "liste_name": ["SOP"],
     }
 
     ################################################################################
