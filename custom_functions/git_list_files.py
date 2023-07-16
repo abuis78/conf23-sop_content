@@ -22,6 +22,7 @@ def git_list_files(repo_path_local=None, repo_path_remote=None, filter_file_ends
     def list_json_files(repo_path_local):
         json_files = []
         vault_id_list = []
+        phantom.debug(repo_path_local)
         for root, dirs, files in os.walk(repo_path_local):
             for file in files:
                 if file.endswith('.json'):
