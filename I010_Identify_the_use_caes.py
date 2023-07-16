@@ -49,6 +49,12 @@ def identify_the_use_cases_by_the_alert_name(action=None, success=None, containe
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
 
+    identify_the_use_cases_by_the_alert_name__use_case_id = json.loads(_ if (_ := phantom.get_run_data(key="identify_the_use_cases_by_the_alert_name:use_case_id")) != "" else "null")  # pylint: disable=used-before-assignment
+
+    output = {
+        "use_case_id": identify_the_use_cases_by_the_alert_name__use_case_id,
+    }
+
     ################################################################################
     ## Custom Code Start
     ################################################################################
@@ -58,5 +64,7 @@ def on_finish(container, summary):
     ################################################################################
     ## Custom Code End
     ################################################################################
+
+    phantom.save_playbook_output_data(output=output)
 
     return
