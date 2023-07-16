@@ -104,7 +104,7 @@
                     "targetPort": "43_in"
                 }
             ],
-            "hash": "dfa346200b08488a1965c4640a86838d21e6c6e4",
+            "hash": "762296911e5bc18c1af5cb85f67c5c684f2665c5",
             "nodes": {
                 "0": {
                     "data": {
@@ -557,11 +557,7 @@
                     "errors": {},
                     "id": "27",
                     "type": "filter",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 60,
                     "y": 60
                 },
@@ -597,11 +593,7 @@
                     "errors": {},
                     "id": "29",
                     "type": "playbook",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 20,
                     "y": 319.9999999999991
                 },
