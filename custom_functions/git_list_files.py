@@ -38,11 +38,11 @@ def git_list_files(repo_path_local=None, pull_response=None, **kwargs):
         outputs["vault_id_list"] = vault_id_list
         return vault_id_list
 
-    json_files = re.findall(r'\b\w+\.json\b', pull_response)
+    file_liste = re.findall(r'\b\w+\.json\b', pull_response)
     
-    phantom.debug(json_files)
+    phantom.debug("file_liste: {}".format(file_liste))
     
-    for file_name in json_files:
+    for file_name in file_liste:
         for root, directories, file in os.walk(repo_path_local):
             phantom.debug("for schleife: {} {} {}".format(root, directories, file))
             if file_name in file:
