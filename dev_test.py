@@ -21,10 +21,14 @@ def on_start(container):
 def update_sop_custom_list_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("update_sop_custom_list_1() called")
 
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.id","artifact:*.id"])
+
+    container_artifact_header_item_0 = [item[0] for item in container_artifact_data]
+
     parameters = []
 
     parameters.append({
-        "artifact_id_list": ["[2298]"],
+        "artifact_id_list": container_artifact_header_item_0,
         "container_id": 33526,
         "prefix_filter": "SOP",
     })

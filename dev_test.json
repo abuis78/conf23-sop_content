@@ -14,7 +14,7 @@
                     "targetPort": "2_in"
                 }
             ],
-            "hash": "db18c39481ddc66847eb65a7a1446acbd69515f3",
+            "hash": "66d7a79fc376f6309aa623034f2963ff8448df98",
             "nodes": {
                 "0": {
                     "data": {
@@ -106,7 +106,7 @@
                         "values": {
                             "update_SOP_custom_list": {
                                 "artifact_id_list": [
-                                    "[2298]"
+                                    "artifact:*.id"
                                 ],
                                 "container_id": "33526",
                                 "prefix_filter": "SOP"
@@ -130,7 +130,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T22:31:37.949193+00:00",
+    "create_time": "2023-07-16T22:31:59.729719+00:00",
     "draft_mode": false,
     "labels": [
         "*"
