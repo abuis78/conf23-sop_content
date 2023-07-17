@@ -47,7 +47,19 @@ def search_for_sop_mapping(action=None, success=None, container=None, results=No
     ## Custom Code End
     ################################################################################
 
-    phantom.act("find listitem", parameters=parameters, name="search_for_sop_mapping", assets=["phantom"], callback=decision_1)
+    phantom.act("find listitem", parameters=parameters, name="search_for_sop_mapping", assets=["phantom"], callback=search_for_sop_mapping_callback)
+
+    return
+
+
+@phantom.playbook_block()
+def search_for_sop_mapping_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("search_for_sop_mapping_callback() called")
+
+    
+    decision_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+    debug_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+
 
     return
 
@@ -342,19 +354,7 @@ def playbook_i010_identify_the_use_caes_1(action=None, success=None, container=N
     ################################################################################
 
     # call playbook "conf23-sop_content/I010_Identify_the_use_caes", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I010_Identify_the_use_caes", container=container, name="playbook_i010_identify_the_use_caes_1", callback=playbook_i010_identify_the_use_caes_1_callback, inputs=inputs)
-
-    return
-
-
-@phantom.playbook_block()
-def playbook_i010_identify_the_use_caes_1_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("playbook_i010_identify_the_use_caes_1_callback() called")
-
-    
-    search_for_sop_mapping(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
-    debug_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
-
+    playbook_run_id = phantom.playbook("conf23-sop_content/I010_Identify_the_use_caes", container=container, name="playbook_i010_identify_the_use_caes_1", callback=search_for_sop_mapping, inputs=inputs)
 
     return
 
@@ -364,14 +364,16 @@ def debug_1(action=None, success=None, container=None, results=None, handle=None
     phantom.debug("debug_1() called")
 
     playbook_i010_identify_the_use_caes_1_output_use_case_id = phantom.collect2(container=container, datapath=["playbook_i010_identify_the_use_caes_1:playbook_output:use_case_id"])
+    search_for_sop_mapping_result_data = phantom.collect2(container=container, datapath=["search_for_sop_mapping:action_result.summary.found_matches","search_for_sop_mapping:action_result.parameter.context.artifact_id"], action_results=results)
 
     playbook_i010_identify_the_use_caes_1_output_use_case_id_values = [item[0] for item in playbook_i010_identify_the_use_caes_1_output_use_case_id]
+    search_for_sop_mapping_summary_found_matches = [item[0] for item in search_for_sop_mapping_result_data]
 
     parameters = []
 
     parameters.append({
         "input_1": playbook_i010_identify_the_use_caes_1_output_use_case_id_values,
-        "input_2": None,
+        "input_2": search_for_sop_mapping_summary_found_matches,
         "input_3": None,
         "input_4": None,
         "input_5": None,

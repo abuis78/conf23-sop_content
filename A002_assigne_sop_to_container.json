@@ -156,14 +156,14 @@
                     "targetPort": "2_in"
                 },
                 {
-                    "id": "port_17_to_port_18",
-                    "sourceNode": "17",
-                    "sourcePort": "17_out",
+                    "id": "port_2_to_port_18",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
                     "targetNode": "18",
                     "targetPort": "18_in"
                 }
             ],
-            "hash": "4cb644c0d8f310477721db9ad201bd8b87d1af70",
+            "hash": "0367398ff243b04cda3da548c98d12eda8587246",
             "nodes": {
                 "0": {
                     "data": {
@@ -680,7 +680,9 @@
                                     "playbook_i010_identify_the_use_caes_1:playbook_output:use_case_id"
                                 ],
                                 "input_10": null,
-                                "input_2": null,
+                                "input_2": [
+                                    "search_for_sop_mapping:action_result.summary.found_matches"
+                                ],
                                 "input_3": null,
                                 "input_4": null,
                                 "input_5": null,
@@ -695,8 +697,8 @@
                     "id": "18",
                     "type": "utility",
                     "warnings": {},
-                    "x": 540,
-                    "y": 164.5
+                    "x": 600,
+                    "y": 260
                 },
                 "2": {
                     "data": {
@@ -1044,7 +1046,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-17T19:40:29.663047+00:00",
+    "create_time": "2023-07-17T19:43:02.159079+00:00",
     "draft_mode": false,
     "labels": [
         "conf_alert"
