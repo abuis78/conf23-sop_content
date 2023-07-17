@@ -30,6 +30,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         phantom.debug(f"v_id: {v_id}\n")
         for item in v['data']:
             phantom.debug(item['cef']['version'])
+            phantom.debug(item['cef']['name'])
         if v_id is not None:
             r_url2 = phantom.build_phantom_rest_url('decided_list',list_name)
             r2 = phantom.requests.get(r_url2,verify=False)
