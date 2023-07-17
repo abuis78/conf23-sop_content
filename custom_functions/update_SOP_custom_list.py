@@ -42,15 +42,14 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                     #phantom.debug(f"sublist {sublist}")
                     f = False
                     if sublist[0] == n:
-                        phantom.debug(f"{n} ist in Subliste - in Zeile {i}")
+                        phantom.debug(f"{n} ist in Subliste - in row {i}")
                         f = True
                         break
                         
                     if f:
                         phantom.debug(f"SOP {n} was found!")
                     else:
-                        if not f:
-                            phantom.debug(f"SOP {n} was NOT found!")
+                        phantom.debug(f"SOP {n} was NOT found!")
                     """
                     if n in sublist[0]:
                         phantom.debug(f"The SOP {n} is in the list Available")
