@@ -67,7 +67,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
             elif v_id is  None:
                 phantom.debug(f"-------")
                 phantom.debug(f"It's not SOP Artifact {n}")
-            
+    phantom.debug(f"---ENDE----")
         
     
     # Return a JSON-serializable object
