@@ -44,14 +44,18 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                 f = False
                 for i, sublist in enumerate(ln["content"]):
                     #phantom.debug(f"sublist {sublist}")
-                    
-                    
                     if n == sublist[0]:
                         #phantom.debug(f"{n} ist in Subliste - in row {i}")
                         f = True
                         break
                 if not f:
                     phantom.debug(f"Create new entry for {n}")
+                    r_url4 = phantom.build_phantom_rest_url('decided_list',list_name)
+                    phantom.debug(f"New Data: {n} {v_id} {ap} {a}")
+                    sublist = [n,v_id,ap,a]
+                    data = { "append_rows": [sublist] }
+                    phantom.debug(f"New Data: {data}")
+                    r4 = phantom.requests.post(r_url4, json=data, verify=False).json()
                         
 
 
