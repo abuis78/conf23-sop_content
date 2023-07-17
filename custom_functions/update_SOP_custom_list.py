@@ -35,7 +35,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                 r_url2 = phantom.build_phantom_rest_url('decided_list',list_name)
                 r2 = phantom.requests.get(r_url2,verify=False)
                 ln = r2.json()
-            
+                phantom.debug(f"None v_id: {v_id}")
                 for i, sublist in enumerate(ln["content"]):
                     if n in sublist[0]:
                         if int(v_id) <= int(sublist[1]):
