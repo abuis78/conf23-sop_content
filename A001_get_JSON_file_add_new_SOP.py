@@ -65,7 +65,19 @@ def git_list_files_12(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="git_list_files_12", callback=playbook_i001_extract_json_from_file_2)
+    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="git_list_files_12", callback=git_list_files_12_callback)
+
+    return
+
+
+@phantom.playbook_block()
+def git_list_files_12_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("git_list_files_12_callback() called")
+
+    
+    playbook_i001_extract_json_from_file_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+    debug_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+
 
     return
 
@@ -184,6 +196,44 @@ def check_sop_list(action=None, success=None, container=None, results=None, hand
     phantom.save_run_data(key="check_sop_list:list_name", value=json.dumps(check_sop_list__list_name))
 
     update_sop_custom_list_1(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def debug_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("debug_2() called")
+
+    git_list_files_12__result = phantom.collect2(container=container, datapath=["git_list_files_12:custom_function_result.data.vault_id_list"])
+
+    git_list_files_12_data_vault_id_list = [item[0] for item in git_list_files_12__result]
+
+    parameters = []
+
+    parameters.append({
+        "input_1": git_list_files_12_data_vault_id_list,
+        "input_2": None,
+        "input_3": None,
+        "input_4": None,
+        "input_5": None,
+        "input_6": None,
+        "input_7": None,
+        "input_8": None,
+        "input_9": None,
+        "input_10": None,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_2")
 
     return
 
