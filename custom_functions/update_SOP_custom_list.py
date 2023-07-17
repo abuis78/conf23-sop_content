@@ -54,7 +54,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                             phantom.debug(f"New Data: {data}")
                             r3 = phantom.requests.post(r_url3, json=data, verify=False).json()
                             phantom.debug(r3)
-                    else:
+                    elif n not in sublist[0]:
                         phantom.debug("SOP ist not in list")
                         phantom.debug(f"missing SOP: {a}")
                         r_url4 = phantom.build_phantom_rest_url('decided_list',list_name)
