@@ -47,7 +47,8 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                         phantom.debug(r3)
                     
         else:
-            phantom.debug(f"-------Nicht da {v}")
+            phantom.debug(f"-------")
+            phantom.debug(f"It's not SOP Artifact {v}")
             r_url4 = phantom.build_phantom_rest_url('decided_list',list_name)
             name = v["name"]
             version = str(v["version"])
