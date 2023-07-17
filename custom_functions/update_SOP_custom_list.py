@@ -33,8 +33,9 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
             ap = item['cef']['automation_phase']
             a = item['cef']['alert']
             phantom.debug(f"row {row}")
-            row = 0
+            
             if v_id is not None:
+                row = 0
                 r_url2 = phantom.build_phantom_rest_url('decided_list',list_name)
                 r2 = phantom.requests.get(r_url2,verify=False)
                 ln = r2.json()
