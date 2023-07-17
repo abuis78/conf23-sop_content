@@ -54,7 +54,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "d5adac0334309c2d5e95dba4944a26e0ade20864",
+            "hash": "f4bb3068d5dc23c7cfa86fbb43ac471e569b28f5",
             "nodes": {
                 "0": {
                     "data": {
@@ -312,10 +312,12 @@
                         "utilityType": "custom_function",
                         "values": {
                             "update_SOP_custom_list": {
-                                "artifact_id_list": null,
-                                "container_id": null,
-                                "list_name": null,
-                                "prefix_filter": null
+                                "artifact_id_list": [
+                                    "filtered-data:filter_artifacts_for_sop_in_name:condition_1:artifact:*.id"
+                                ],
+                                "container_id": "container:id",
+                                "list_name": "SOP",
+                                "prefix_filter": "SOP"
                             }
                         }
                     },
@@ -336,7 +338,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-17T15:26:14.248527+00:00",
+    "create_time": "2023-07-17T15:28:53.985140+00:00",
     "draft_mode": false,
     "labels": [
         "*"

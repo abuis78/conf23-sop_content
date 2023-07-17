@@ -124,13 +124,18 @@ def playbook_i001_extract_json_from_file_2(action=None, success=None, container=
 def update_sop_custom_list_14(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("update_sop_custom_list_14() called")
 
+    id_value = container.get("id", None)
+    filtered_artifact_0_data_filter_artifacts_for_sop_in_name = phantom.collect2(container=container, datapath=["filtered-data:filter_artifacts_for_sop_in_name:condition_1:artifact:*.id","filtered-data:filter_artifacts_for_sop_in_name:condition_1:artifact:*.id"])
+
+    filtered_artifact_0__id = [item[0] for item in filtered_artifact_0_data_filter_artifacts_for_sop_in_name]
+
     parameters = []
 
     parameters.append({
-        "artifact_id_list": None,
-        "container_id": None,
-        "prefix_filter": None,
-        "list_name": None,
+        "artifact_id_list": filtered_artifact_0__id,
+        "container_id": id_value,
+        "prefix_filter": "SOP",
+        "list_name": "SOP",
     })
 
     ################################################################################
