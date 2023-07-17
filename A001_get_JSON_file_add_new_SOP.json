@@ -61,7 +61,7 @@
                     "targetPort": "43_in"
                 }
             ],
-            "hash": "f1001cd65209e2895d78d5ed91a39295b36bc446",
+            "hash": "7e4e1befb1ea968cd3cd958692a89dfa05e42f4e",
             "nodes": {
                 "0": {
                     "data": {
@@ -76,7 +76,7 @@
                     "id": "0",
                     "type": "start",
                     "warnings": {},
-                    "x": 190,
+                    "x": 20,
                     "y": 0
                 },
                 "1": {
@@ -93,7 +93,7 @@
                     "type": "end",
                     "warnings": {},
                     "x": 20,
-                    "y": 1280
+                    "y": 1100
                 },
                 "36": {
                     "data": {
@@ -121,7 +121,7 @@
                     "id": "36",
                     "type": "action",
                     "warnings": {},
-                    "x": 170,
+                    "x": 0,
                     "y": 148
                 },
                 "39": {
@@ -180,7 +180,7 @@
                     "id": "39",
                     "type": "utility",
                     "warnings": {},
-                    "x": 170,
+                    "x": 0,
                     "y": 312
                 },
                 "43": {
@@ -211,7 +211,7 @@
                     "type": "playbook",
                     "warnings": {},
                     "x": 0,
-                    "y": 640
+                    "y": 460
                 },
                 "46": {
                     "data": {
@@ -299,7 +299,7 @@
                     "type": "utility",
                     "warnings": {},
                     "x": 0,
-                    "y": 1132
+                    "y": 952
                 },
                 "47": {
                     "data": {
@@ -336,7 +336,7 @@
                     "type": "filter",
                     "warnings": {},
                     "x": 60,
-                    "y": 804
+                    "y": 624
                 },
                 "48": {
                     "data": {
@@ -362,7 +362,7 @@
                     "userCode": "\n    # Write your custom code here...\n    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list')\n    filter_parameter = '?_filter_name=\"' + input_parameter_0 + '\"'\n    url = decided_list_tag_url + filter_parameter\n    response = phantom.requests.get(url,verify=False)\n    # phantom.debug(response.json()['count'])\n    l_r = response.json()['count']\n    if l_r == 0:\n        phantom.debug(f\"Create new List {input_parameter_0}\")\n        url = phantom.build_phantom_rest_url('decided_list')\n        data = {\"content\":[[\"name\",\"version\",\"automation_phase\",\"alert\"]],\"name\":\"SOP\"}\n        response_data = phantom.requests.post(url, json=data, verify=False).json()\n    \n",
                     "warnings": {},
                     "x": 0,
-                    "y": 984
+                    "y": 804
                 }
             },
             "notes": ""
@@ -374,10 +374,10 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-17T16:39:53.912372+00:00",
+    "create_time": "2023-07-17T16:40:51.011428+00:00",
     "draft_mode": false,
     "labels": [
-        "*"
+        "conf_sop"
     ],
     "tags": []
 }
