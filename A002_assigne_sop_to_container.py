@@ -33,7 +33,7 @@ def search_for_sop_mapping(action=None, success=None, container=None, results=No
             parameters.append({
                 "list": "SOP",
                 "values": playbook_i010_identify_the_use_caes_1_output_use_case_id_item[0],
-                "exact_match": True,
+                "exact_match": False,
                 "column_index": 2,
             })
 
