@@ -43,13 +43,13 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                 phantom.debug(f"---START Check Liste----")
                 f = False
                 for i, sublist in enumerate(ln["content"]):
-                    #phantom.debug(f"sublist {sublist}")
                     if n == sublist[0]:
-                        #phantom.debug(f"{n} ist in Subliste - in row {i}")
                         f = True
                         if int(v_id) <= int(sublist[1]):
+                            # SOP is in the SOP Custom List
                             phantom.debug(f"Nothing to Update for SOP: {n} this one is still up to date")
                         elif int(v_id) > int(sublist[1]):
+                            # SOP needes to be update due to the new version no
                             phantom.debug(f"SOP Update")
                             phantom.debug(f"Element was found in row {i + 1} ")
                             row = i
@@ -61,6 +61,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                             r3 = phantom.requests.post(r_url3, json=data, verify=False).json()
                         break
                 if not f:
+                    # SOP is not jet in the Custom List create a new entry
                     phantom.debug(f"Create new entry for {n}")
                     r_url4 = phantom.build_phantom_rest_url('decided_list',list_name)
                     phantom.debug(f"New Data: {n} {v_id} {ap} {a}")
