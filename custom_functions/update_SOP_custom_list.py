@@ -37,7 +37,6 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
             ap = item['cef']['automation_phase']
             a = item['cef']['alert']
             json_data = item['cef']['sop_json']
-            phantom.debug(f"row {row}")
             
             if v_id is not None:
                 
