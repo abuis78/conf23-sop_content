@@ -51,8 +51,8 @@ def git_list_files_12(action=None, success=None, container=None, results=None, h
     # build parameters list for 'git_list_files_12' call
     for get_latest_version_of_files_from_git_result_item in get_latest_version_of_files_from_git_result_data:
         parameters.append({
-            "repo_path_local": "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/",
             "pull_response": get_latest_version_of_files_from_git_result_item[0],
+            "repo_path_local": "/opt/soar/local_data/app_states/ff116964-86f7-4e29-8763-4462ce0d39a7/conf23/",
         })
 
     ################################################################################
@@ -93,20 +93,28 @@ def playbook_i001_extract_json_from_file_2(action=None, success=None, container=
     ################################################################################
 
     # call playbook "conf23-sop_content/I001_extract_JSON_from_file", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_2", callback=playbook_i002_check_sop_version_3, inputs=inputs)
+    playbook_run_id = phantom.playbook("conf23-sop_content/I001_extract_JSON_from_file", container=container, name="playbook_i001_extract_json_from_file_2", callback=filter_for_sop_artifatcs, inputs=inputs)
 
     return
 
 
 @phantom.playbook_block()
-def playbook_i002_check_sop_version_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("playbook_i002_check_sop_version_3() called")
+def update_sop_custom_list_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("update_sop_custom_list_1() called")
 
-    inputs = {
-        "sop_name": [],
-        "sop_version": [],
-        "liste_name": [],
-    }
+    id_value = container.get("id", None)
+    filtered_artifact_0_data_filter_for_sop_artifatcs = phantom.collect2(container=container, datapath=["filtered-data:filter_for_sop_artifatcs:condition_1:artifact:*.id","filtered-data:filter_for_sop_artifatcs:condition_1:artifact:*.id"])
+
+    filtered_artifact_0__id = [item[0] for item in filtered_artifact_0_data_filter_for_sop_artifatcs]
+
+    parameters = []
+
+    parameters.append({
+        "artifact_id_list": filtered_artifact_0__id,
+        "container_id": id_value,
+        "prefix_filter": "SOP",
+        "list_name": "SOP",
+    })
 
     ################################################################################
     ## Custom Code Start
@@ -118,20 +126,28 @@ def playbook_i002_check_sop_version_3(action=None, success=None, container=None,
     ## Custom Code End
     ################################################################################
 
-    # call playbook "conf23-sop_content/I002_check_sop_version", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I002_check_sop_version", container=container, name="playbook_i002_check_sop_version_3", callback=playbook_i002_check_sop_version_3_callback, inputs=inputs)
+    phantom.custom_function(custom_function="conf23-sop_content/update_SOP_custom_list", parameters=parameters, name="update_sop_custom_list_1")
 
     return
 
 
 @phantom.playbook_block()
-def playbook_i002_check_sop_version_3_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("playbook_i002_check_sop_version_3_callback() called")
+def filter_for_sop_artifatcs(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("filter_for_sop_artifatcs() called")
 
-    
-    # Downstream End block cannot be called directly, since execution will call on_finish automatically.
-    # Using placeholder callback function so child playbook is run synchronously.
+    # collect filtered artifact ids and results for 'if' condition 1
+    matched_artifacts_1, matched_results_1 = phantom.condition(
+        container=container,
+        conditions=[
+            ["SOP", "in", "artifact:*.name"]
+        ],
+        name="filter_for_sop_artifatcs:condition_1",
+        scope="all",
+        delimiter=None)
 
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_1 or matched_results_1:
+        update_sop_custom_list_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 

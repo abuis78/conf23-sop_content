@@ -28,21 +28,26 @@
                     "targetPort": "43_in"
                 },
                 {
-                    "id": "port_43_to_port_45",
+                    "id": "port_43_to_port_47",
                     "sourceNode": "43",
                     "sourcePort": "43_out",
-                    "targetNode": "45",
-                    "targetPort": "45_in"
+                    "targetNode": "47",
+                    "targetPort": "47_in"
                 },
                 {
-                    "id": "port_45_to_port_1",
-                    "sourceNode": "45",
-                    "sourcePort": "45_out",
-                    "targetNode": "1",
-                    "targetPort": "1_in"
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_47_to_port_46",
+                    "sourceNode": "47",
+                    "sourcePort": "47_out",
+                    "targetNode": "46",
+                    "targetPort": "46_in"
                 }
             ],
-            "hash": "14a3bd48c14678ca0adad423bb04c3c7d9228589",
+            "hash": "776a59e93031d8b22b1c7995c5d6c5990c3252b5",
             "nodes": {
                 "0": {
                     "data": {
@@ -57,8 +62,8 @@
                     "id": "0",
                     "type": "start",
                     "warnings": {},
-                    "x": 20,
-                    "y": 0
+                    "x": 19.999999999999986,
+                    "y": -6.394884621840902e-14
                 },
                 "1": {
                     "data": {
@@ -73,7 +78,7 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 20,
+                    "x": 19.999999999999986,
                     "y": 920
                 },
                 "36": {
@@ -102,8 +107,8 @@
                     "id": "36",
                     "type": "action",
                     "warnings": {},
-                    "x": 0,
-                    "y": 148
+                    "x": -1.4210854715202004e-14,
+                    "y": 147.99999999999997
                 },
                 "39": {
                     "data": {
@@ -191,44 +196,128 @@
                     "id": "43",
                     "type": "playbook",
                     "warnings": {},
-                    "x": 0,
-                    "y": 460
+                    "x": -1.4210854715202004e-14,
+                    "y": 459.99999999999994
                 },
-                "45": {
+                "46": {
                     "data": {
                         "advanced": {
                             "join": []
                         },
-                        "functionId": 3,
-                        "functionName": "playbook_I002_check_sop_version_3",
-                        "id": "45",
-                        "inputs": {
-                            "liste_name": {
-                                "datapaths": [],
-                                "deduplicate": false
-                            },
-                            "sop_name": {
-                                "datapaths": [],
-                                "deduplicate": false
-                            },
-                            "sop_version": {
-                                "datapaths": [],
-                                "deduplicate": false
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "update_SOP_custom_list",
+                            "repoName": "conf23-sop_content"
+                        },
+                        "functionId": 1,
+                        "functionName": "update_SOP_custom_list_1",
+                        "id": "46",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "update_SOP_custom_list": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "list",
+                                        "label": "artifact_id_list",
+                                        "name": "artifact_id_list",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "container_id",
+                                        "name": "container_id",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "prefix_filter",
+                                        "name": "prefix_filter",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "list_name",
+                                        "name": "list_name",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "update_SOP_custom_list",
+                                "name": "update_SOP_custom_list"
                             }
                         },
-                        "playbookName": "I002_check_sop_version",
-                        "playbookRepo": 10,
-                        "playbookRepoName": "conf23-sop_content",
-                        "playbookType": "data",
-                        "synchronous": true,
-                        "type": "playbook"
+                        "utilityType": "custom_function",
+                        "values": {
+                            "update_SOP_custom_list": {
+                                "artifact_id_list": [
+                                    "filtered-data:filter_for_sop_artifatcs:condition_1:artifact:*.id"
+                                ],
+                                "container_id": "container:id",
+                                "list_name": "SOP",
+                                "prefix_filter": "SOP"
+                            }
+                        }
                     },
                     "errors": {},
-                    "id": "45",
-                    "type": "playbook",
+                    "id": "46",
+                    "type": "utility",
                     "warnings": {},
-                    "x": 10,
-                    "y": 644.5
+                    "x": 0,
+                    "y": 760
+                },
+                "47": {
+                    "data": {
+                        "advanced": {
+                            "customName": "filter for SOP artifatcs",
+                            "customNameId": 0,
+                            "join": [],
+                            "notRequiredJoins": [
+                                "playbook_I001_extract_JSON_from_file_2"
+                            ],
+                            "scope": "all"
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "in",
+                                        "param": "SOP",
+                                        "value": "artifact:*.name"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "logic": "and"
+                            }
+                        ],
+                        "functionId": 1,
+                        "functionName": "filter_for_sop_artifatcs",
+                        "id": "47",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "47",
+                    "type": "filter",
+                    "warnings": {},
+                    "x": 60,
+                    "y": 580
                 }
             },
             "notes": ""
@@ -240,7 +329,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-17T15:43:14.766248+00:00",
+    "create_time": "2023-07-17T15:56:48.188015+00:00",
     "draft_mode": false,
     "labels": [
         "*"
