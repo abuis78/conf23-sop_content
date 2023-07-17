@@ -20,17 +20,21 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         decided_list_tag_url = phantom.build_phantom_rest_url('decided_list')
         filter_parameter = '?_filter_name="' + liste_name + '"'
         url = decided_list_tag_url + filter_parameter
-        phantom.debug(url)
         response = phantom.requests.get(url,verify=False)
-    
-        phantom.debug(response.json()['count'])
-        check_if_reference_list_exists__list_status = response.json()['count']
+        # phantom.debug(response.json()['count'])
+        l_r = response.json()['count']
+        if l_r == 0:
+            phantom.debug(f"Create new List {liste_name}")
     
     def create_update_workbook(task,name, json):
         phantom.debug(f"task: {task}")
         phantom.debug(f"name: {name}")
         phantom.debug(f"json: {json}")
-        
+    
+                          
+    #check if List
+    check_iflist_exists(list_name)
+    
     for a in artifact_id_list:
         phantom.debug(f"Art ID: {a}")
         url_filter = '?_filter_name__icontains="' + str(prefix_filter) +'"&_filter_container="' + str(container_id) +'"&_filter_id="' + str(a) + '"'
