@@ -16,7 +16,8 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
     outputs = {}
     
     # Write your custom code here...
-    def create_update_workbook(name, json):
+    def create_update_workbook(task,name, json):
+        phantom.debug(f"task: {task}")
         phantom.debug(f"name: {name}")
         phantom.debug(f"json: {json}")
         
@@ -35,6 +36,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
             v_id = item['cef']['version']
             ap = item['cef']['automation_phase']
             a = item['cef']['alert']
+            json_data = item['cef']['sop_json']
             phantom.debug(f"row {row}")
             
             if v_id is not None:
@@ -62,6 +64,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                             data = { "update_rows": { row : sublist }}
                             phantom.debug(f"New Data: {data}")
                             r3 = phantom.requests.post(r_url3, json=data, verify=False).json()
+                            create_update_workbook("u",n, json_data)
                         break
                 if not f:
                     # SOP is not jet in the Custom List create a new entry
@@ -72,6 +75,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                     data = { "append_rows": [sublist] }
                     phantom.debug(f"New Data: {data}")
                     r4 = phantom.requests.post(r_url4, json=data, verify=False).json()
+                    create_update_workbook("c",n, json_data)
                         
     phantom.debug(f"---ENDE----")
         
