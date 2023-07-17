@@ -29,7 +29,7 @@ def update_sop_custom_list_2(action=None, success=None, container=None, results=
 
     parameters.append({
         "artifact_id_list": filtered_artifact_0__id,
-        "container_id": 33526,
+        "container_id": 34105,
         "prefix_filter": "SOP",
         "list_name": "SOP",
     })
