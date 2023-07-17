@@ -53,6 +53,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
             version = str(a["version"])
             automation_phase = a["automation_phase"]
             allert = a["allert"]
+            phantom.debug(f"New Data: {name} {version} {automation_phase} {allert}")
             sublist = [name,version,automation_phase,allert]
             data = { "append_rows": [sublist] }
             phantom.debug(f"New Data: {data}")
