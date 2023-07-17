@@ -24,19 +24,15 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         url = r_url + url_filter
         r = phantom.requests.get(url,verify=False)
         v = r.json()
-        # v_id = v.get('cef', {}).get('version')
-        #v_id = [item['cef']['version'] for item in v['data']]
-        #n = v.get('cef', {}).get('name')
-        #phantom.debug(f"v_id: {v_id}\n")
-        #for item in v['data']:
-        for item in [item for item in v['data'] if item['cef']['version'] is not None]:
-            v_id = item['cef']['version']
-            n = item['cef']['name']
-            #if v_id is not None:
+        v_id = v.get[0].get('cef', {}).get('version')
+        phantom.debug(f"------------{v}----------------\n")
+        n = v.get('cef', {}).get('name')
+        phantom.debug(f"v_id: {v}\n")
+        if v_id is not None:
             r_url2 = phantom.build_phantom_rest_url('decided_list',list_name)
             r2 = phantom.requests.get(r_url2,verify=False)
             ln = r2.json()
-            phantom.debug(f"None v_id: {v_id}")
+            
             for i, sublist in enumerate(ln["content"]):
                 if n in sublist[0]:
                     if int(v_id) <= int(sublist[1]):
@@ -55,9 +51,9 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                     else:
                         phantom.debug("SOP ist not in list")
             
-            #v_id is  None:
-                #phantom.debug(f"-------")
-                #phantom.debug(f"It's not SOP Artifact {n}")
+        elif v_id is  None:
+            phantom.debug(f"-------")
+            phantom.debug(f"It's not SOP Artifact {n}")
             
         
     
