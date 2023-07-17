@@ -42,8 +42,8 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                     #phantom.debug(f"sublist {sublist}")
                     
                     if n in sublist[0]:
-                        phantom.debug(f"N ist in Subliste {n} in Zeile {i}")
-                    if i == "":
+                        phantom.debug(f"{n} ist in Subliste - in Zeile {i}")
+                    elif i == "":
                         phantom.debug(f"N ist NICHT in Subliste {n}")
                     """
                     if n in sublist[0]:
