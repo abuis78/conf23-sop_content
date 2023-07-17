@@ -47,12 +47,12 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                         phantom.debug(r3)
                     
         else:
-            phantom.debug(f"-------Nicht da {a}")
+            phantom.debug(f"-------Nicht da {v}")
             r_url4 = phantom.build_phantom_rest_url('decided_list',list_name)
-            name = a["name"]
-            version = str(a["version"])
-            automation_phase = a["automation_phase"]
-            allert = a["allert"]
+            name = v["name"]
+            version = str(v["version"])
+            automation_phase = v["automation_phase"]
+            allert = v["allert"]
             phantom.debug(f"New Data: {name} {version} {automation_phase} {allert}")
             sublist = [name,version,automation_phase,allert]
             data = { "append_rows": [sublist] }
