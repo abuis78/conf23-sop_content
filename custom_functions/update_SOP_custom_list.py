@@ -16,6 +16,16 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
     outputs = {}
     
     # Write your custom code here...
+    def check_iflist_exists(liste_name):
+        decided_list_tag_url = phantom.build_phantom_rest_url('decided_list')
+        filter_parameter = '?_filter_name="' + liste_name + '"'
+        url = decided_list_tag_url + filter_parameter
+        phantom.debug(url)
+        response = phantom.requests.get(url,verify=False)
+    
+        phantom.debug(response.json()['count'])
+        check_if_reference_list_exists__list_status = response.json()['count']
+    
     def create_update_workbook(task,name, json):
         phantom.debug(f"task: {task}")
         phantom.debug(f"name: {name}")
