@@ -40,7 +40,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                 phantom.debug(f"---START Check Liste----")
                 for i, sublist in enumerate(ln["content"]):
                     #phantom.debug(f"sublist {sublist}")
-                    """
+                    
                     if n in sublist[0]:
                         phantom.debug(f"N ist in Subliste {n} in Zeile {i}")
                     elif i == "":
@@ -70,7 +70,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                         data = { "append_rows": [sublist] }
                         phantom.debug(f"New Data: {data}")
                         r4 = phantom.requests.post(r_url4, json=data, verify=False).json()
-
+"""
             
             elif v_id is  None:
                 phantom.debug(f"-------")
