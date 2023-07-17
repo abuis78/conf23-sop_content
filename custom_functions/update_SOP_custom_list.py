@@ -38,9 +38,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                 #phantom.debug(f"Custom-Liste: {ln}")
                 phantom.debug(f"---START Check Liste----")
                 for i, sublist in enumerate(ln["content"]):
-                    phantom.debug(f"sublist: {sublist}")
                     if n == sublist[0]:
-                        phantom.debug(f"N in Subliste: {n}")
                         if int(v_id) <= int(sublist[1]):
                             phantom.debug(f"Nothing to Update for SOP: {n} this one is still up to date")
                         else:
