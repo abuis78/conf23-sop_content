@@ -41,7 +41,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                     if n in sublist[0]:
                         if int(v_id) <= int(sublist[1]):
                             phantom.debug(f"Nothing to Update for SOP: {n} this one is still up to date")
-                        else:
+                        elif int(v_id) > int(sublist[1]):
                             phantom.debug(f"SOP Update")
                             phantom.debug(f"Element was found in row {i + 1} ")
                             row = i
