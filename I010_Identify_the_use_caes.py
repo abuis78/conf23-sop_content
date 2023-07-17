@@ -32,7 +32,7 @@ def identify_the_use_cases_by_the_alert_name(action=None, success=None, containe
     # Write your custom code here...
     import re
     phantom.debug(f"name_value: {name_value}")
-    match = re.match(r'(\d+)_', name_value)
+    match = re.match(r"^(\d+)[_ ]", name_value)
     if match:
         number = match.group(1)
         phantom.debug(f"use case ID: {number}")
