@@ -44,8 +44,8 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                     if sublist[0] == n:
                         phantom.debug(f"{n} ist in Subliste - in row {i}")
                         f = True
-                        break
-                    phantom.debug(f"F: {f}")   
+                    else:
+                        f = False
                     if f:
                         phantom.debug(f"SOP {n} was found! - in row {i}")
                     else:
