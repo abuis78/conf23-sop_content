@@ -39,14 +39,17 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                 #phantom.debug(f"Custom-Liste: {ln}")
                 phantom.debug(f"---START Check Liste----")
                 for i, sublist in enumerate(ln["content"]):
-                    phantom.debug(f"sublist {sublist}")
+                    #phantom.debug(f"sublist {sublist}")
                     f = False
                     if n in sublist[0]:
                         phantom.debug(f"{n} ist in Subliste - in Zeile {i}")
                         f = True
                         break
                         
-                    phantom.debug(f"Found SOP? {f}")
+                    if f:
+                        phantom.debug(f"SOP {n} was found!")
+                    else:
+                        phantom.debug(f"SOP {n} was NOT found!")
                     """
                     if n in sublist[0]:
                         phantom.debug(f"The SOP {n} is in the list Available")
