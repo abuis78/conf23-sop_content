@@ -52,6 +52,17 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                             phantom.debug(r3)
                     else:
                         phantom.debug("SOP ist not in list")
+                        r_url4 = phantom.build_phantom_rest_url('decided_list',list_name)
+                        name = v["name"]
+                        version = str(v["version"])
+                        automation_phase = v["automation_phase"]
+                        allert = v["allert"]
+                        phantom.debug(f"New Data: {name} {version} {automation_phase} {allert}")
+                        sublist = [name,version,automation_phase,allert]
+                        data = { "append_rows": [sublist] }
+                        phantom.debug(f"New Data: {data}")
+                        r4 = phantom.requests.post(r_url4, json=data, verify=False).json()
+
             
             elif v_id is  None:
                 phantom.debug(f"-------")
