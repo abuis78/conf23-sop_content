@@ -16,18 +16,17 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
     outputs = {}
     
     # Write your custom code here...
-    def check_iflist_exists(liste_name):
-        decided_list_tag_url = phantom.build_phantom_rest_url('decided_list')
-        filter_parameter = '?_filter_name="' + liste_name + '"'
-        url = decided_list_tag_url + filter_parameter
-        response = phantom.requests.get(url,verify=False)
-        # phantom.debug(response.json()['count'])
-        l_r = response.json()['count']
-        if l_r == 0:
-            phantom.debug(f"Create new List {liste_name}")
-            url = phantom.build_phantom_rest_url('decided_list')
-            data = {"content":[["name","version","automation_phase","alert"]],"name":"SOP"}
-            response_data = phantom.requests.post(url, json=data, verify=False).json()
+    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list')
+    filter_parameter = '?_filter_name="' + list_name + '"'
+    url = decided_list_tag_url + filter_parameter
+    response = phantom.requests.get(url,verify=False)
+    # phantom.debug(response.json()['count'])
+    l_r = response.json()['count']
+    if l_r == 0:
+        phantom.debug(f"Create new List {list_name}")
+        url = phantom.build_phantom_rest_url('decided_list')
+        data = {"content":[["name","version","automation_phase","alert"]],"name":"SOP"}
+        response_data = phantom.requests.post(url, json=data, verify=False).json()
     
     def create_update_workbook(task,name, json):
         phantom.debug(f"task: {task}")
@@ -36,7 +35,6 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
     
                           
     #check if List
-    check_iflist_exists(list_name)
     
     for a in artifact_id_list:
         phantom.debug(f"Art ID: {a}")
