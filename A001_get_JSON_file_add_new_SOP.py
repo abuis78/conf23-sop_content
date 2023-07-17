@@ -103,7 +103,7 @@ def update_sop_custom_list_1(action=None, success=None, container=None, results=
     phantom.debug("update_sop_custom_list_1() called")
 
     id_value = container.get("id", None)
-    filtered_artifact_0_data_filter_for_sop_artifatcs = phantom.collect2(container=container, datapath=["filtered-data:filter_for_sop_artifatcs:condition_1:artifact:*.id","filtered-data:filter_for_sop_artifatcs:condition_1:artifact:*.id"])
+    filtered_artifact_0_data_filter_for_sop_artifatcs = phantom.collect2(container=container, datapath=["filtered-data:filter_for_sop_artifatcs:condition_1:artifact:*.id","filtered-data:filter_for_sop_artifatcs:condition_1:artifact:*.id"], scope="all")
 
     filtered_artifact_0__id = [item[0] for item in filtered_artifact_0_data_filter_for_sop_artifatcs]
 

@@ -61,7 +61,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "14a3bd48c14678ca0adad423bb04c3c7d9228589",
+            "hash": "f1001cd65209e2895d78d5ed91a39295b36bc446",
             "nodes": {
                 "0": {
                     "data": {
@@ -216,7 +216,11 @@
                 "46": {
                     "data": {
                         "advanced": {
-                            "join": []
+                            "join": [],
+                            "notRequiredJoins": [
+                                "playbook_I001_extract_JSON_from_file_2"
+                            ],
+                            "scope": "all"
                         },
                         "customFunction": {
                             "draftMode": false,
@@ -369,7 +373,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-17T16:14:40.283427+00:00",
+    "create_time": "2023-07-17T16:27:49.592621+00:00",
     "draft_mode": false,
     "labels": [
         "*"
