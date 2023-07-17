@@ -21,12 +21,16 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         phantom.debug(f"task: {task}")
         phantom.debug(f"name: {name}")
         phantom.debug(f"json: {json}")
+        
+        data_dict = eval(json)
+        json_data = json.dumps(data_dict)
+
         w_url = phantom.build_phantom_rest_url('workflow_template')
-        #if task == "c":
-        response_data = phantom.requests.post(w_url, json=json, verify=False).json()
-        phantom.debug(response_data)
-        #else:
-            #phantom.debug(f"update")
+        if task == "c":
+            response_data = phantom.requests.post(w_url, json=json_data, verify=False).json()
+            phantom.debug(response_data)
+        else:
+            phantom.debug(f"update")
     
                           
     #check if List
