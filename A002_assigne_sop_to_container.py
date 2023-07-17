@@ -342,30 +342,33 @@ def playbook_i010_identify_the_use_caes_1(action=None, success=None, container=N
     ################################################################################
 
     # call playbook "conf23-sop_content/I010_Identify_the_use_caes", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I010_Identify_the_use_caes", container=container, name="playbook_i010_identify_the_use_caes_1", callback=find_listitem_2, inputs=inputs)
+    playbook_run_id = phantom.playbook("conf23-sop_content/I010_Identify_the_use_caes", container=container, name="playbook_i010_identify_the_use_caes_1", callback=debug_1, inputs=inputs)
 
     return
 
 
 @phantom.playbook_block()
-def find_listitem_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("find_listitem_2() called")
-
-    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+def debug_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("debug_1() called")
 
     playbook_i010_identify_the_use_caes_1_output_use_case_id = phantom.collect2(container=container, datapath=["playbook_i010_identify_the_use_caes_1:playbook_output:use_case_id"])
 
+    playbook_i010_identify_the_use_caes_1_output_use_case_id_values = [item[0] for item in playbook_i010_identify_the_use_caes_1_output_use_case_id]
+
     parameters = []
 
-    # build parameters list for 'find_listitem_2' call
-    for playbook_i010_identify_the_use_caes_1_output_use_case_id_item in playbook_i010_identify_the_use_caes_1_output_use_case_id:
-        if playbook_i010_identify_the_use_caes_1_output_use_case_id_item[0] is not None:
-            parameters.append({
-                "exact_match": False,
-                "list": "SOP",
-                "column_index": 0,
-                "values": playbook_i010_identify_the_use_caes_1_output_use_case_id_item[0],
-            })
+    parameters.append({
+        "input_1": playbook_i010_identify_the_use_caes_1_output_use_case_id_values,
+        "input_2": None,
+        "input_3": None,
+        "input_4": None,
+        "input_5": None,
+        "input_6": None,
+        "input_7": None,
+        "input_8": None,
+        "input_9": None,
+        "input_10": None,
+    })
 
     ################################################################################
     ## Custom Code Start
@@ -377,7 +380,7 @@ def find_listitem_2(action=None, success=None, container=None, results=None, han
     ## Custom Code End
     ################################################################################
 
-    phantom.act("find listitem", parameters=parameters, name="find_listitem_2", assets=["phantom"])
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_1")
 
     return
 
