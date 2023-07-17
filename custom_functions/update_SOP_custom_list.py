@@ -40,7 +40,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                 phantom.debug(f"---START Check Liste----")
                 for i, sublist in enumerate(ln["content"]):
                     phantom.debug(f"sublist {sublist}")
-                    
+                    f = False
                     if n in sublist[0]:
                         phantom.debug(f"{n} ist in Subliste - in Zeile {i}")
                         f = True
