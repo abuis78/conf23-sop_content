@@ -21,8 +21,9 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         phantom.debug(f"Artifact ID: {a}")
         url_filter = '/'+ str(a) + '?_filter_name__icontains="' + str(prefix_filter) +'"'
         r_url = phantom.build_phantom_rest_url('artifact')
-        phantom.debug(f"URL: {r_url}")
+        
         url = r_url + url_filter
+        phantom.debug(f"URL: {r_url}")
         r = phantom.requests.get(url,verify=False)
         v = r.json()
         v_id = v.get('cef', {}).get('version')
