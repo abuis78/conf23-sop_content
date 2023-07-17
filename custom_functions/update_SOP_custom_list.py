@@ -18,25 +18,20 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
     # Write your custom code here...
     
     for a in artifact_id_list:
-        phantom.debug(f"a ID: {a}\n")
         url_filter = '?_filter_name__icontains="' + str(prefix_filter) +'"&_filter_container="' + str(container_id) +'"'
         r_url = phantom.build_phantom_rest_url('artifact')
         
         url = r_url + url_filter
         r = phantom.requests.get(url,verify=False)
         v = r.json()
-        #v_id = v.get[0].get('cef', {}).get('version')
-        phantom.debug(f"Count: {v['count']}\n")
-        #n = v.get('cef', {}).get('name')
         for item in v['data']:
-            phantom.debug(f"v_id: {item['cef']['version']}\n")
             v_id = item['cef']['version']
             n = item['cef']['version']
             if v_id is not None:
                 r_url2 = phantom.build_phantom_rest_url('decided_list',list_name)
                 r2 = phantom.requests.get(r_url2,verify=False)
                 ln = r2.json()
-            
+                phantom.debug(f"Custom-Liste: {ln}")
                 for i, sublist in enumerate(ln["content"]):
                     if n in sublist[0]:
                         if int(v_id) <= int(sublist[1]):
