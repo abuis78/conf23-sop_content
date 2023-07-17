@@ -33,7 +33,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
             for i, sublist in enumerate(ln["content"]):
                 if n in sublist[0]:
                     if int(v_id) <= int(sublist[1]):
-                        phantom.debug(f"Nothing to Update")
+                        phantom.debug(f"Nothing to Update for SOP: {n} this one is still up to date")
                     elif int(v_id) > int(sublist[1]):
                         phantom.debug(f"SOP Update")
                         phantom.debug(f"Element was found in row {i + 1} ")
@@ -48,20 +48,21 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         elif v_id is  None:
             phantom.debug(f"-------")
             phantom.debug(f"SOP is not in Custom List: {list_name}. The SOP {n} is now created in the list")
-        else:
-            phantom.debug(f"-------")
-            phantom.debug(f"It's not SOP Artifact {v}")
             r_url4 = phantom.build_phantom_rest_url('decided_list',list_name)
             name = v["name"]
             version = str(v["version"])
-            #automation_phase = v["automation_phase"]
+            automation_phase = v["automation_phase"]
             allert = v["allert"]
-            phantom.debug(f"New Data: {name} {version}")
-            sublist = [name,version]
+            phantom.debug(f"New Data: {name} {version} {automation_phase} {allert}")
+            sublist = [name,version,automation_phase,allert]
             data = { "append_rows": [sublist] }
             phantom.debug(f"New Data: {data}")
             r4 = phantom.requests.post(r_url4, json=data, verify=False).json()
             phantom.debug(r4)
+        else:
+            phantom.debug(f"-------")
+            phantom.debug(f"It's not SOP Artifact {v}")
+            
         
     
     # Return a JSON-serializable object
