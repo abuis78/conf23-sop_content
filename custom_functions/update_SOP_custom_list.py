@@ -31,8 +31,9 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                 r_url2 = phantom.build_phantom_rest_url('decided_list',list_name)
                 r2 = phantom.requests.get(r_url2,verify=False)
                 ln = r2.json()
-                phantom.debug(f"Custom-Liste: {ln}")
+                #phantom.debug(f"Custom-Liste: {ln}")
                 for i, sublist in enumerate(ln["content"]):
+                    phantom.debug(f"sublist: {sublist}")
                     if n in sublist[0]:
                         if int(v_id) <= int(sublist[1]):
                             phantom.debug(f"Nothing to Update for SOP: {n} this one is still up to date")
