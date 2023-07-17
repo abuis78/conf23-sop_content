@@ -41,7 +41,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                         r_url3 = phantom.build_phantom_rest_url('decided_list',list_name)
                         sublist[1] = str(v_id) 
                         l_e = sublist
-                        data = { "update_rows": { row : [sublist[1]] }}
+                        data = { "update_rows": { row : [sublist] }}
                         phantom.debug(f"New Data: {data}")
                         r3 = phantom.requests.post(r_url3, json=data, verify=False).json()
                         phantom.debug(r3)
