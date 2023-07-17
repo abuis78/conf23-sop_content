@@ -25,6 +25,9 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         l_r = response.json()['count']
         if l_r == 0:
             phantom.debug(f"Create new List {liste_name}")
+            url = phantom.build_phantom_rest_url('decided_list')
+            data = {"content":[["name","version","automation_phase","alert"]],"name":"SOP"}
+            response_data = phantom.requests.post(url, json=data, verify=False).json()
     
     def create_update_workbook(task,name, json):
         phantom.debug(f"task: {task}")
