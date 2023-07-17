@@ -27,7 +27,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         # v_id = v.get('cef', {}).get('version')
         #v_id = [item['cef']['version'] for item in v['data']]
         #n = v.get('cef', {}).get('name')
-        phantom.debug(f"v_id: {v_id}\n")
+        #phantom.debug(f"v_id: {v_id}\n")
         for item in v['data']:
             phantom.debug(item['cef']['version'])
             v_id = item['cef']['version']
