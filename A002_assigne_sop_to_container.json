@@ -156,7 +156,7 @@
                     "targetPort": "19_in"
                 }
             ],
-            "hash": "c339fa7fba9f4eeb5638daf36877fc98e86d4da9",
+            "hash": "553f76770c7810b9f1a1a7b98ee3287316ea4cc2",
             "nodes": {
                 "0": {
                     "data": {
@@ -670,7 +670,7 @@
                         "values": {
                             "debug": {
                                 "input_1": [
-                                    "playbook_i010_identify_the_use_caes_1:playbook_output:use_case_id"
+                                    "playbook_i010_identify_the_use_caes_1:playbook_output:use_case_name"
                                 ],
                                 "input_10": null,
                                 "input_2": null,
@@ -739,9 +739,6 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 260,
@@ -1044,7 +1041,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-17T19:26:39.068068+00:00",
+    "create_time": "2023-07-17T19:33:11.908829+00:00",
     "draft_mode": false,
     "labels": [
         "conf_alert"

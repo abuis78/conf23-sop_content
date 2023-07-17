@@ -351,14 +351,14 @@ def playbook_i010_identify_the_use_caes_1(action=None, success=None, container=N
 def debug_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_1() called")
 
-    playbook_i010_identify_the_use_caes_1_output_use_case_id = phantom.collect2(container=container, datapath=["playbook_i010_identify_the_use_caes_1:playbook_output:use_case_id"])
+    playbook_i010_identify_the_use_caes_1_output_use_case_name = phantom.collect2(container=container, datapath=["playbook_i010_identify_the_use_caes_1:playbook_output:use_case_name"])
 
-    playbook_i010_identify_the_use_caes_1_output_use_case_id_values = [item[0] for item in playbook_i010_identify_the_use_caes_1_output_use_case_id]
+    playbook_i010_identify_the_use_caes_1_output_use_case_name_values = [item[0] for item in playbook_i010_identify_the_use_caes_1_output_use_case_name]
 
     parameters = []
 
     parameters.append({
-        "input_1": playbook_i010_identify_the_use_caes_1_output_use_case_id_values,
+        "input_1": playbook_i010_identify_the_use_caes_1_output_use_case_name_values,
         "input_2": None,
         "input_3": None,
         "input_4": None,
