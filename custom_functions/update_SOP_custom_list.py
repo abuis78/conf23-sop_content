@@ -27,7 +27,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
 
         w_url = phantom.build_phantom_rest_url('workflow_template')
         if task == "c":
-            response_data = phantom.requests.post(w_url, json=json_data, verify=False).json()
+            response_data = phantom.requests.post(w_url, json=json_data, verify=False)
             phantom.debug(response_data)
         else:
             phantom.debug(f"update")
