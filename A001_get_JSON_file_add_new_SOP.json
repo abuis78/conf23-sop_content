@@ -7,70 +7,6 @@
             "description": "",
             "edges": [
                 {
-                    "conditions": [
-                        {
-                            "index": 0
-                        }
-                    ],
-                    "id": "port_17_to_port_18",
-                    "sourceNode": "17",
-                    "sourcePort": "17_out",
-                    "targetNode": "18",
-                    "targetPort": "18_in"
-                },
-                {
-                    "conditions": [
-                        {
-                            "index": 1
-                        }
-                    ],
-                    "id": "port_17_to_port_19",
-                    "sourceNode": "17",
-                    "sourcePort": "17_out",
-                    "targetNode": "19",
-                    "targetPort": "19_in"
-                },
-                {
-                    "conditions": [
-                        {
-                            "index": 2
-                        }
-                    ],
-                    "id": "port_17_to_port_20",
-                    "sourceNode": "17",
-                    "sourcePort": "17_out",
-                    "targetNode": "20",
-                    "targetPort": "20_in"
-                },
-                {
-                    "id": "port_18_to_port_21",
-                    "sourceNode": "18",
-                    "sourcePort": "18_out",
-                    "targetNode": "21",
-                    "targetPort": "21_in"
-                },
-                {
-                    "id": "port_20_to_port_1",
-                    "sourceNode": "20",
-                    "sourcePort": "20_out",
-                    "targetNode": "1",
-                    "targetPort": "1_in"
-                },
-                {
-                    "id": "port_19_to_port_23",
-                    "sourceNode": "19",
-                    "sourcePort": "19_out",
-                    "targetNode": "23",
-                    "targetPort": "23_in"
-                },
-                {
-                    "id": "port_29_to_port_17",
-                    "sourceNode": "29",
-                    "sourcePort": "29_out",
-                    "targetNode": "17",
-                    "targetPort": "17_in"
-                },
-                {
                     "id": "port_0_to_port_36",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
@@ -92,26 +28,33 @@
                     "targetPort": "43_in"
                 },
                 {
-                    "conditions": [
-                        {
-                            "index": 0
-                        }
-                    ],
-                    "id": "port_27_to_port_29",
-                    "sourceNode": "27",
-                    "sourcePort": "27_out",
-                    "targetNode": "29",
-                    "targetPort": "29_in"
-                },
-                {
                     "id": "port_43_to_port_27",
                     "sourceNode": "43",
                     "sourcePort": "43_out",
                     "targetNode": "27",
                     "targetPort": "27_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_27_to_port_44",
+                    "sourceNode": "27",
+                    "sourcePort": "27_out",
+                    "targetNode": "44",
+                    "targetPort": "44_in"
+                },
+                {
+                    "id": "port_44_to_port_1",
+                    "sourceNode": "44",
+                    "sourcePort": "44_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
                 }
             ],
-            "hash": "762296911e5bc18c1af5cb85f67c5c684f2665c5",
+            "hash": "d5adac0334309c2d5e95dba4944a26e0ade20864",
             "nodes": {
                 "0": {
                     "data": {
@@ -126,8 +69,8 @@
                     "id": "0",
                     "type": "start",
                     "warnings": {},
-                    "x": 120,
-                    "y": -380
+                    "x": 20,
+                    "y": 0
                 },
                 "1": {
                     "data": {
@@ -142,364 +85,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": -40.000000000000014,
-                    "y": 1240
-                },
-                "17": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "conditions": [
-                            {
-                                "comparisons": [
-                                    {
-                                        "conditionIndex": 0,
-                                        "op": "==",
-                                        "param": "playbook_i002_check_sop_version_2:playbook_output:sop_in_list_status",
-                                        "value": "update"
-                                    }
-                                ],
-                                "conditionIndex": 0,
-                                "customName": "update",
-                                "display": "If",
-                                "logic": "and",
-                                "type": "if"
-                            },
-                            {
-                                "comparisons": [
-                                    {
-                                        "conditionIndex": 1,
-                                        "op": "==",
-                                        "param": "playbook_i002_check_sop_version_2:playbook_output:sop_in_list_status",
-                                        "value": "newly_created"
-                                    }
-                                ],
-                                "conditionIndex": 1,
-                                "customName": "newly_created",
-                                "display": "Else If",
-                                "logic": "and",
-                                "type": "elif"
-                            },
-                            {
-                                "comparisons": [
-                                    {
-                                        "conditionIndex": 2,
-                                        "op": "==",
-                                        "param": "playbook_i002_check_sop_version_2:playbook_output:sop_in_list_status",
-                                        "value": "nothing_to_do"
-                                    }
-                                ],
-                                "conditionIndex": 2,
-                                "customName": "nothing_to_do",
-                                "display": "Else If",
-                                "logic": "and",
-                                "type": "elif"
-                            }
-                        ],
-                        "functionId": 1,
-                        "functionName": "decision_1",
-                        "id": "17",
-                        "type": "decision"
-                    },
-                    "errors": {},
-                    "id": "17",
-                    "type": "decision",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
-                    "x": 100,
-                    "y": 420
-                },
-                "18": {
-                    "data": {
-                        "advanced": {
-                            "customName": "Comment Existing SOP is being updated",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "functionId": 5,
-                        "functionName": "comment_existing_sop_is_being_updated",
-                        "id": "18",
-                        "selectMore": false,
-                        "tab": "apis",
-                        "type": "utility",
-                        "utilities": {
-                            "comment": {
-                                "description": "",
-                                "fields": [
-                                    {
-                                        "description": "",
-                                        "label": "comment",
-                                        "name": "comment",
-                                        "placeholder": "Enter a comment",
-                                        "renderType": "datapath",
-                                        "required": true
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "container",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "author",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "trace",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "add comment",
-                                "name": "comment"
-                            }
-                        },
-                        "utilityType": "api",
-                        "values": {
-                            "comment": {
-                                "_internal": [
-                                    "container",
-                                    "author",
-                                    "trace"
-                                ],
-                                "comment": "Existing SOP is being updated"
-                            }
-                        }
-                    },
-                    "errors": {},
-                    "id": "18",
-                    "type": "utility",
-                    "warnings": {},
-                    "x": -340,
-                    "y": 620
-                },
-                "19": {
-                    "data": {
-                        "advanced": {
-                            "customName": "Comment The new SOP is being created",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "functionId": 6,
-                        "functionName": "comment_the_new_sop_is_being_created",
-                        "id": "19",
-                        "selectMore": false,
-                        "tab": "apis",
-                        "type": "utility",
-                        "utilities": {
-                            "comment": {
-                                "description": "",
-                                "fields": [
-                                    {
-                                        "description": "",
-                                        "label": "comment",
-                                        "name": "comment",
-                                        "placeholder": "Enter a comment",
-                                        "renderType": "datapath",
-                                        "required": true
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "container",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "author",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "trace",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "add comment",
-                                "name": "comment"
-                            }
-                        },
-                        "utilityType": "api",
-                        "values": {
-                            "comment": {
-                                "_internal": [
-                                    "container",
-                                    "author",
-                                    "trace"
-                                ],
-                                "comment": "The new SOP is being created"
-                            }
-                        }
-                    },
-                    "errors": {},
-                    "id": "19",
-                    "type": "utility",
-                    "warnings": {},
-                    "x": -1.4210854715202004e-14,
-                    "y": 620
-                },
-                "20": {
-                    "data": {
-                        "advanced": {
-                            "customName": "Comment There is no need for action",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "functionId": 7,
-                        "functionName": "comment_there_is_no_need_for_action",
-                        "id": "20",
-                        "selectMore": false,
-                        "tab": "apis",
-                        "type": "utility",
-                        "utilities": {
-                            "comment": {
-                                "description": "",
-                                "fields": [
-                                    {
-                                        "description": "",
-                                        "label": "comment",
-                                        "name": "comment",
-                                        "placeholder": "Enter a comment",
-                                        "renderType": "datapath",
-                                        "required": true
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "container",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "author",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "trace",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "add comment",
-                                "name": "comment"
-                            }
-                        },
-                        "utilityType": "api",
-                        "values": {
-                            "comment": {
-                                "_internal": [
-                                    "container",
-                                    "author",
-                                    "trace"
-                                ],
-                                "comment": "There is no need for action"
-                            }
-                        }
-                    },
-                    "errors": {},
-                    "id": "20",
-                    "type": "utility",
-                    "warnings": {},
-                    "x": 360,
-                    "y": 620
-                },
-                "21": {
-                    "data": {
-                        "advanced": {
-                            "customName": "update SOP",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "functionId": 1,
-                        "functionName": "update_sop",
-                        "id": "21",
-                        "inputs": {
-                            "sop_json": {
-                                "datapaths": [
-                                    "playbook_i001_extract_json_from_file_3:playbook_output:json_content"
-                                ],
-                                "deduplicate": false
-                            },
-                            "sop_name": {
-                                "datapaths": [
-                                    "playbook_i001_extract_json_from_file_3:playbook_output:name"
-                                ],
-                                "deduplicate": false
-                            },
-                            "task": {
-                                "datapaths": [
-                                    "update"
-                                ],
-                                "deduplicate": false
-                            }
-                        },
-                        "playbookName": "I003_create_SOP_as_Workbook",
-                        "playbookRepo": 10,
-                        "playbookRepoName": "conf23-sop_content",
-                        "playbookType": "data",
-                        "synchronous": true,
-                        "type": "playbook"
-                    },
-                    "errors": {},
-                    "id": "21",
-                    "type": "playbook",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
-                    "x": -340,
-                    "y": 820
-                },
-                "23": {
-                    "data": {
-                        "advanced": {
-                            "customName": "create new SOP ",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "functionId": 1,
-                        "functionName": "create_new_sop",
-                        "id": "23",
-                        "inputs": {
-                            "sop_json": {
-                                "datapaths": [
-                                    "playbook_i001_extract_json_from_file_3:playbook_output:json_content"
-                                ],
-                                "deduplicate": false
-                            },
-                            "sop_name": {
-                                "datapaths": [
-                                    "playbook_i001_extract_json_from_file_3:playbook_output:name"
-                                ],
-                                "deduplicate": false
-                            },
-                            "task": {
-                                "datapaths": [
-                                    "create"
-                                ],
-                                "deduplicate": false
-                            }
-                        },
-                        "playbookName": "I003_create_SOP_as_Workbook",
-                        "playbookRepo": 10,
-                        "playbookRepoName": "conf23-sop_content",
-                        "playbookType": "data",
-                        "synchronous": true,
-                        "type": "playbook"
-                    },
-                    "errors": {},
-                    "id": "23",
-                    "type": "playbook",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
-                    "x": 0,
-                    "y": 864.5
+                    "x": 20,
+                    "y": 920
                 },
                 "27": {
                     "data": {
@@ -538,45 +125,7 @@
                     "type": "filter",
                     "warnings": {},
                     "x": 60,
-                    "y": 60
-                },
-                "29": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "functionId": 1,
-                        "functionName": "playbook_I002_check_sop_version_1",
-                        "id": "29",
-                        "inputs": {
-                            "liste_name": {
-                                "datapaths": [
-                                    "SOP"
-                                ],
-                                "deduplicate": false
-                            },
-                            "sop_name": {
-                                "datapaths": [],
-                                "deduplicate": false
-                            },
-                            "sop_version": {
-                                "datapaths": [],
-                                "deduplicate": false
-                            }
-                        },
-                        "playbookName": "I002_check_sop_version",
-                        "playbookRepo": 10,
-                        "playbookRepoName": "conf23-sop_content",
-                        "playbookType": "data",
-                        "synchronous": true,
-                        "type": "playbook"
-                    },
-                    "errors": {},
-                    "id": "29",
-                    "type": "playbook",
-                    "warnings": {},
-                    "x": 20,
-                    "y": 319.9999999999989
+                    "y": 624
                 },
                 "36": {
                     "data": {
@@ -604,8 +153,8 @@
                     "id": "36",
                     "type": "action",
                     "warnings": {},
-                    "x": 100,
-                    "y": -260
+                    "x": 0,
+                    "y": 148
                 },
                 "39": {
                     "data": {
@@ -663,8 +212,8 @@
                     "id": "39",
                     "type": "utility",
                     "warnings": {},
-                    "x": 100,
-                    "y": -120
+                    "x": 0,
+                    "y": 312
                 },
                 "43": {
                     "data": {
@@ -693,8 +242,89 @@
                     "id": "43",
                     "type": "playbook",
                     "warnings": {},
-                    "x": 300,
-                    "y": 0
+                    "x": 0,
+                    "y": 460
+                },
+                "44": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "update_SOP_custom_list",
+                            "repoName": "conf23-sop_content"
+                        },
+                        "functionId": 14,
+                        "functionName": "update_SOP_custom_list_14",
+                        "id": "44",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "update_SOP_custom_list": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "list",
+                                        "label": "artifact_id_list",
+                                        "name": "artifact_id_list",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "container_id",
+                                        "name": "container_id",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "prefix_filter",
+                                        "name": "prefix_filter",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "list_name",
+                                        "name": "list_name",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "update_SOP_custom_list",
+                                "name": "update_SOP_custom_list"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "update_SOP_custom_list": {
+                                "artifact_id_list": null,
+                                "container_id": null,
+                                "list_name": null,
+                                "prefix_filter": null
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "44",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 0,
+                    "y": 804
                 }
             },
             "notes": ""
@@ -706,7 +336,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T20:55:04.115451+00:00",
+    "create_time": "2023-07-17T15:26:14.248527+00:00",
     "draft_mode": false,
     "labels": [
         "*"
