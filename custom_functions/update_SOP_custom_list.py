@@ -18,6 +18,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
     # Write your custom code here...
     
     for a in artifact_id_list:
+        phantom.debug(f"Art ID: {a}")
         url_filter = '?_filter_name__icontains="' + str(prefix_filter) +'"&_filter_container="' + str(container_id) +'"&_filter_id="' + str(a) + '"'
         r_url = phantom.build_phantom_rest_url('artifact')
         
