@@ -70,34 +70,6 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                     phantom.debug(f"New Data: {data}")
                     r4 = phantom.requests.post(r_url4, json=data, verify=False).json()
                         
-
-
-    """
-                    if n in sublist[0]:
-                        phantom.debug(f"The SOP {n} is in the list Available")
-                        if int(v_id) <= int(sublist[1]):
-                            phantom.debug(f"Nothing to Update for SOP: {n} this one is still up to date")
-                        elif int(v_id) > int(sublist[1]):
-                            phantom.debug(f"SOP Update")
-                            phantom.debug(f"Element was found in row {i + 1} ")
-                            row = i
-                            r_url3 = phantom.build_phantom_rest_url('decided_list',list_name)
-                            sublist[1] = str(v_id) 
-                            l_e = sublist
-                            data = { "update_rows": { row : sublist }}
-                            phantom.debug(f"New Data: {data}")
-                            r3 = phantom.requests.post(r_url3, json=data, verify=False).json()
-                            phantom.debug(r3)
-                    elif i == "":
-                        phantom.debug("SOP ist not in list")
-                        phantom.debug(f"missing SOP: {a}")
-                        r_url4 = phantom.build_phantom_rest_url('decided_list',list_name)
-                        phantom.debug(f"New Data: {n} {v_id} {ap} {a}")
-                        sublist = [n,v_id,ap,a]
-                        data = { "append_rows": [sublist] }
-                        phantom.debug(f"New Data: {data}")
-                        r4 = phantom.requests.post(r_url4, json=data, verify=False).json()
-    """
     phantom.debug(f"---ENDE----")
         
     
