@@ -23,12 +23,10 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         r_url = phantom.build_phantom_rest_url('artifact')
         
         url = r_url + url_filter
-        phantom.debug(f"URL: {url}")
         r = phantom.requests.get(url,verify=False)
         v = r.json()
         v_id = v.get('cef', {}).get('version')
         n = v.get('cef', {}).get('name')
-        phantom.debug(f"v_id ID: {v_id}")
         if v_id is not None:
             r_url2 = phantom.build_phantom_rest_url('decided_list',list_name)
             r2 = phantom.requests.get(r_url2,verify=False)
