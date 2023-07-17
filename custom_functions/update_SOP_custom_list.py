@@ -35,7 +35,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
             phantom.debug(f"row {row}")
             
             if v_id is not None:
-                row = 0
+                
                 r_url2 = phantom.build_phantom_rest_url('decided_list',list_name)
                 r2 = phantom.requests.get(r_url2,verify=False)
                 ln = r2.json()
@@ -43,6 +43,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                 phantom.debug(f"---START Check Liste----")
                 for i, sublist in enumerate(ln["content"]):
                     #phantom.debug(f"sublist {sublist}")
+                    row = 0
                     f = False
                     if sublist[0] == n:
                         #phantom.debug(f"{n} ist in Subliste - in row {i}")
