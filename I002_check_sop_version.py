@@ -747,7 +747,40 @@ def filter_sop_artifacts(action=None, success=None, container=None, results=None
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        finde_sop_in_list(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        update_sop_custom_list_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+
+    return
+
+
+@phantom.playbook_block()
+def update_sop_custom_list_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("update_sop_custom_list_1() called")
+
+    id_value = container.get("id", None)
+    filtered_artifact_0_data_filter_sop_artifacts = phantom.collect2(container=container, datapath=["filtered-data:filter_sop_artifacts:condition_1:artifact:*.id","filtered-data:filter_sop_artifacts:condition_1:artifact:*.id"])
+
+    filtered_artifact_0__id = [item[0] for item in filtered_artifact_0_data_filter_sop_artifacts]
+
+    parameters = []
+
+    parameters.append({
+        "artifact_id_list": filtered_artifact_0__id,
+        "container_id": id_value,
+        "prefix_filter": "SOP",
+        "list_name": "SOP",
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="conf23-sop_content/update_SOP_custom_list", parameters=parameters, name="update_sop_custom_list_1")
 
     return
 

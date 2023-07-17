@@ -250,14 +250,14 @@
                             "index": 0
                         }
                     ],
-                    "id": "port_36_to_port_12",
+                    "id": "port_36_to_port_37",
                     "sourceNode": "36",
                     "sourcePort": "36_out",
-                    "targetNode": "12",
-                    "targetPort": "12_in"
+                    "targetNode": "37",
+                    "targetPort": "37_in"
                 }
             ],
-            "hash": "d51f979af1fe2187a09d7d05a2b1dd615dd90542",
+            "hash": "ab4f7ce9e8f5921c393a53977b48514a8d781579",
             "nodes": {
                 "0": {
                     "data": {
@@ -273,7 +273,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.99999999999966
+                    "y": 419.99999999999955
                 },
                 "1": {
                     "data": {
@@ -410,9 +410,16 @@
                     "errors": {},
                     "id": "12",
                     "type": "action",
-                    "warnings": {},
-                    "x": 1140,
-                    "y": 1480
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
+                    "x": 900,
+                    "y": 1560
                 },
                 "14": {
                     "data": {
@@ -649,7 +656,11 @@
                     "errors": {},
                     "id": "18",
                     "type": "format",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 1320,
                     "y": 1920
                 },
@@ -700,7 +711,11 @@
                     "errors": {},
                     "id": "19",
                     "type": "decision",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 1080,
                     "y": 2200
                 },
@@ -734,7 +749,11 @@
                     "errors": {},
                     "id": "20",
                     "type": "filter",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 1060,
                     "y": 1940
                 },
@@ -970,7 +989,11 @@
                     "errors": {},
                     "id": "28",
                     "type": "format",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 820,
                     "y": 2804.5
                 },
@@ -1138,6 +1161,89 @@
                     "warnings": {},
                     "x": 1200,
                     "y": 1360
+                },
+                "37": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "update_SOP_custom_list",
+                            "repoName": "conf23-sop_content"
+                        },
+                        "functionId": 1,
+                        "functionName": "update_SOP_custom_list_1",
+                        "id": "37",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "update_SOP_custom_list": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "list",
+                                        "label": "artifact_id_list",
+                                        "name": "artifact_id_list",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "container_id",
+                                        "name": "container_id",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "prefix_filter",
+                                        "name": "prefix_filter",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "list_name",
+                                        "name": "list_name",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "update_SOP_custom_list",
+                                "name": "update_SOP_custom_list"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "update_SOP_custom_list": {
+                                "artifact_id_list": [
+                                    "filtered-data:filter_sop_artifacts:condition_1:artifact:*.id"
+                                ],
+                                "container_id": "container:id",
+                                "list_name": "SOP",
+                                "prefix_filter": "SOP"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "37",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 1360,
+                    "y": 1520
                 },
                 "4": {
                     "data": {
@@ -1396,7 +1502,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T21:10:40.712853+00:00",
+    "create_time": "2023-07-17T15:42:53.473337+00:00",
     "draft_mode": false,
     "labels": [
         "*"
