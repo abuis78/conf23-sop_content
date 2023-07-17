@@ -53,7 +53,7 @@ def on_finish(container, summary):
     identify_the_use_cases_by_the_alert_name__use_case_id = json.loads(_ if (_ := phantom.get_run_data(key="identify_the_use_cases_by_the_alert_name:use_case_id")) != "" else "null")  # pylint: disable=used-before-assignment
 
     output = {
-        "use_case_name": identify_the_use_cases_by_the_alert_name__use_case_id,
+        "use_case_id": identify_the_use_cases_by_the_alert_name__use_case_id,
     }
 
     ################################################################################
