@@ -41,24 +41,19 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                 ln = r2.json()
                 #phantom.debug(f"Custom-Liste: {ln}")
                 phantom.debug(f"---START Check Liste----")
+                f = False
                 for i, sublist in enumerate(ln["content"]):
                     #phantom.debug(f"sublist {sublist}")
                     
-                    f = False
-                    if sublist[0] == n:
+                    
+                    if n == sublist[0]:
                         #phantom.debug(f"{n} ist in Subliste - in row {i}")
                         f = True
-                    else:
-                        f = False
+                        break
+                if not f:
+                    phantom.debug(f"Create new entry for {n}")
                         
-                    if f:
-                        # phantom.debug(f"SOP {n} was found! - in row {i}")
-                        row = i
-                    else:
-                        # phantom.debug(f"SOP {n} was NOT found!")
-                        row = 0
-                        
-                    phantom.debug(f"row {row}")
+
 
     """
                     if n in sublist[0]:
