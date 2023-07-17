@@ -55,12 +55,13 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                             phantom.debug(r3)
                     else:
                         phantom.debug("SOP ist not in list")
-                        r_url4 = phantom.build_phantom_rest_url('decided_list',list_name)
-                        phantom.debug(f"New Data: {n} {v_id} {ap} {a}")
-                        sublist = [n,v_id,ap,a]
-                        data = { "append_rows": [sublist] }
-                        phantom.debug(f"New Data: {data}")
-                        r4 = phantom.requests.post(r_url4, json=data, verify=False).json()
+                        phantom.debug(f"missing SOP: {a}")
+                        #r_url4 = phantom.build_phantom_rest_url('decided_list',list_name)
+                        #phantom.debug(f"New Data: {n} {v_id} {ap} {a}")
+                        #sublist = [n,v_id,ap,a]
+                        #data = { "append_rows": [sublist] }
+                        #phantom.debug(f"New Data: {data}")
+                        #r4 = phantom.requests.post(r_url4, json=data, verify=False).json()
 
             
             elif v_id is  None:
