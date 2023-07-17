@@ -342,45 +342,7 @@ def playbook_i010_identify_the_use_caes_1(action=None, success=None, container=N
     ################################################################################
 
     # call playbook "conf23-sop_content/I010_Identify_the_use_caes", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I010_Identify_the_use_caes", container=container, name="playbook_i010_identify_the_use_caes_1", callback=debug_1, inputs=inputs)
-
-    return
-
-
-@phantom.playbook_block()
-def debug_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("debug_1() called")
-
-    playbook_i010_identify_the_use_caes_1_output_use_case_name = phantom.collect2(container=container, datapath=["playbook_i010_identify_the_use_caes_1:playbook_output:use_case_name"])
-
-    playbook_i010_identify_the_use_caes_1_output_use_case_name_values = [item[0] for item in playbook_i010_identify_the_use_caes_1_output_use_case_name]
-
-    parameters = []
-
-    parameters.append({
-        "input_1": playbook_i010_identify_the_use_caes_1_output_use_case_name_values,
-        "input_2": None,
-        "input_3": None,
-        "input_4": None,
-        "input_5": None,
-        "input_6": None,
-        "input_7": None,
-        "input_8": None,
-        "input_9": None,
-        "input_10": None,
-    })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_1")
+    playbook_run_id = phantom.playbook("conf23-sop_content/I010_Identify_the_use_caes", container=container, name="playbook_i010_identify_the_use_caes_1", callback=search_for_sop_mapping, inputs=inputs)
 
     return
 
