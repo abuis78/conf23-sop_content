@@ -149,14 +149,14 @@
                     "targetPort": "17_in"
                 },
                 {
-                    "id": "port_17_to_port_2",
+                    "id": "port_17_to_port_18",
                     "sourceNode": "17",
                     "sourcePort": "17_out",
-                    "targetNode": "2",
-                    "targetPort": "2_in"
+                    "targetNode": "18",
+                    "targetPort": "18_in"
                 }
             ],
-            "hash": "c339fa7fba9f4eeb5638daf36877fc98e86d4da9",
+            "hash": "5bb8e5262bf834d2e54d8ea1ced032afd4595ea0",
             "nodes": {
                 "0": {
                     "data": {
@@ -522,6 +522,52 @@
                     "x": 260,
                     "y": 4.499999999999943
                 },
+                "18": {
+                    "data": {
+                        "action": "find listitem",
+                        "actionType": "investigate",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "Phantom",
+                        "connectorConfigs": [
+                            "phantom"
+                        ],
+                        "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
+                        "connectorVersion": "v1",
+                        "functionId": 2,
+                        "functionName": "find_listitem_2",
+                        "id": "18",
+                        "parameters": {
+                            "column_index": "0",
+                            "exact_match": false,
+                            "list": "SOP",
+                            "values": "playbook_i010_identify_the_use_caes_1:playbook_output:use_case_id"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "list"
+                            },
+                            {
+                                "data_type": "string",
+                                "field": "values"
+                            },
+                            {
+                                "data_type": "boolean",
+                                "default": true,
+                                "field": "exact_match"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "18",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 520,
+                    "y": 124.5
+                },
                 "2": {
                     "data": {
                         "action": "find listitem",
@@ -567,9 +613,16 @@
                     "errors": {},
                     "id": "2",
                     "type": "action",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 260,
-                    "y": 140
+                    "y": 139.99999999999994
                 },
                 "4": {
                     "data": {
@@ -868,7 +921,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T17:37:31.872839+00:00",
+    "create_time": "2023-07-17T19:26:05.245208+00:00",
     "draft_mode": false,
     "labels": [
         "conf_alert"
