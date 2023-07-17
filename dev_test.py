@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'update_sop_custom_list_2' block
-    update_sop_custom_list_2(container=container)
+    # call 'filter_1' block
+    filter_1(container=container)
 
     return
 
@@ -21,14 +21,14 @@ def on_start(container):
 def update_sop_custom_list_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("update_sop_custom_list_2() called")
 
-    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.id","artifact:*.id"])
+    filtered_artifact_0_data_filter_1 = phantom.collect2(container=container, datapath=["filtered-data:filter_1:condition_1:artifact:*.id","filtered-data:filter_1:condition_1:artifact:*.id"])
 
-    container_artifact_header_item_0 = [item[0] for item in container_artifact_data]
+    filtered_artifact_0__id = [item[0] for item in filtered_artifact_0_data_filter_1]
 
     parameters = []
 
     parameters.append({
-        "artifact_id_list": container_artifact_header_item_0,
+        "artifact_id_list": filtered_artifact_0__id,
         "container_id": 33526,
         "prefix_filter": "SOP",
         "list_name": "SOP",
@@ -45,6 +45,26 @@ def update_sop_custom_list_2(action=None, success=None, container=None, results=
     ################################################################################
 
     phantom.custom_function(custom_function="conf23-sop_content/update_SOP_custom_list", parameters=parameters, name="update_sop_custom_list_2")
+
+    return
+
+
+@phantom.playbook_block()
+def filter_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("filter_1() called")
+
+    # collect filtered artifact ids and results for 'if' condition 1
+    matched_artifacts_1, matched_results_1 = phantom.condition(
+        container=container,
+        conditions=[
+            ["SOP", "in", "artifact:*.name"]
+        ],
+        name="filter_1:condition_1",
+        delimiter=None)
+
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_1 or matched_results_1:
+        update_sop_custom_list_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 

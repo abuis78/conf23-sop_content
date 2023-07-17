@@ -7,14 +7,26 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_0_to_port_3",
+                    "id": "port_0_to_port_4",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_4_to_port_3",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
                     "targetNode": "3",
                     "targetPort": "3_in"
                 }
             ],
-            "hash": "bf20e8e17fbc19aa5441f35f9df1f352505c8f7c",
+            "hash": "d1da491767d292524525c3f87231f5b0671e351b",
             "nodes": {
                 "0": {
                     "data": {
@@ -116,7 +128,7 @@
                         "values": {
                             "update_SOP_custom_list": {
                                 "artifact_id_list": [
-                                    "artifact:*.id"
+                                    "filtered-data:filter_1:condition_1:artifact:*.id"
                                 ],
                                 "container_id": "33526",
                                 "list_name": "SOP",
@@ -128,8 +140,39 @@
                     "id": "3",
                     "type": "utility",
                     "warnings": {},
-                    "x": 990,
-                    "y": 604.5
+                    "x": 980,
+                    "y": 680
+                },
+                "4": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "in",
+                                        "param": "SOP",
+                                        "value": "artifact:*.name"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "logic": "and"
+                            }
+                        ],
+                        "functionId": 1,
+                        "functionName": "filter_1",
+                        "id": "4",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "filter",
+                    "warnings": {},
+                    "x": 1040,
+                    "y": 544.5
                 }
             },
             "notes": ""
@@ -141,7 +184,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T23:06:47.953955+00:00",
+    "create_time": "2023-07-17T10:45:54.898286+00:00",
     "draft_mode": false,
     "labels": [
         "*"
