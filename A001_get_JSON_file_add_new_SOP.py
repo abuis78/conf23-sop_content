@@ -189,25 +189,6 @@ def check_sop_list(action=None, success=None, container=None, results=None, hand
 
 
 @phantom.playbook_block()
-def add_comment_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("add_comment_3() called")
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.comment(container=container, comment="No new Files")
-
-    return
-
-
-@phantom.playbook_block()
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
 
