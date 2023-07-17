@@ -48,6 +48,12 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                     
         else:
             phantom.debug(f"-------Nicht da")
+            r_url4 = phantom.build_phantom_rest_url('decided_list',list_name)
+            sublist = [n,v_id]
+            data = { "append_rows": { row : sublist }}
+            phantom.debug(f"New Data: {data}")
+            r4 = phantom.requests.post(r_url4, json=data, verify=False).json()
+            phantom.debug(r4)
         
     
     # Return a JSON-serializable object
