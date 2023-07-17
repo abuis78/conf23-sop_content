@@ -40,14 +40,21 @@
                             "index": 0
                         }
                     ],
-                    "id": "port_47_to_port_46",
+                    "id": "port_47_to_port_48",
                     "sourceNode": "47",
                     "sourcePort": "47_out",
+                    "targetNode": "48",
+                    "targetPort": "48_in"
+                },
+                {
+                    "id": "port_48_to_port_46",
+                    "sourceNode": "48",
+                    "sourcePort": "48_out",
                     "targetNode": "46",
                     "targetPort": "46_in"
                 }
             ],
-            "hash": "776a59e93031d8b22b1c7995c5d6c5990c3252b5",
+            "hash": "8a5366c9ae5d709b745ecd9b32de1da678ac72de",
             "nodes": {
                 "0": {
                     "data": {
@@ -280,7 +287,7 @@
                     "type": "utility",
                     "warnings": {},
                     "x": 0,
-                    "y": 760
+                    "y": 820
                 },
                 "47": {
                     "data": {
@@ -318,6 +325,32 @@
                     "warnings": {},
                     "x": 60,
                     "y": 580
+                },
+                "48": {
+                    "data": {
+                        "advanced": {
+                            "customName": "check SOP list",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "check_sop_list",
+                        "id": "48",
+                        "inputParameters": [
+                            "SOP"
+                        ],
+                        "outputVariables": [
+                            "list_name"
+                        ],
+                        "type": "code"
+                    },
+                    "errors": {},
+                    "id": "48",
+                    "type": "code",
+                    "userCode": "\n    # Write your custom code here...\n    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list')\n    filter_parameter = '?_filter_name=\"' + input_parameter_0 + '\"'\n    url = decided_list_tag_url + filter_parameter\n    response = phantom.requests.get(url,verify=False)\n    # phantom.debug(response.json()['count'])\n    l_r = response.json()['count']\n    if l_r == 0:\n        phantom.debug(f\"Create new List {input_parameter_0}\")\n        url = phantom.build_phantom_rest_url('decided_list')\n        data = {\"content\":[[\"name\",\"version\",\"automation_phase\",\"alert\"]],\"name\":\"SOP\"}\n        response_data = phantom.requests.post(url, json=data, verify=False).json()\n    \n",
+                    "warnings": {},
+                    "x": 280,
+                    "y": 700
                 }
             },
             "notes": ""
@@ -329,7 +362,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-17T15:56:48.188015+00:00",
+    "create_time": "2023-07-17T16:14:40.283427+00:00",
     "draft_mode": false,
     "labels": [
         "*"

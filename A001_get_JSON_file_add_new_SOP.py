@@ -147,7 +147,43 @@ def filter_for_sop_artifatcs(action=None, success=None, container=None, results=
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        update_sop_custom_list_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        check_sop_list(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+
+    return
+
+
+@phantom.playbook_block()
+def check_sop_list(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("check_sop_list() called")
+
+    input_parameter_0 = "SOP"
+
+    check_sop_list__list_name = None
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list')
+    filter_parameter = '?_filter_name="' + input_parameter_0 + '"'
+    url = decided_list_tag_url + filter_parameter
+    response = phantom.requests.get(url,verify=False)
+    # phantom.debug(response.json()['count'])
+    l_r = response.json()['count']
+    if l_r == 0:
+        phantom.debug(f"Create new List {input_parameter_0}")
+        url = phantom.build_phantom_rest_url('decided_list')
+        data = {"content":[["name","version","automation_phase","alert"]],"name":"SOP"}
+        response_data = phantom.requests.post(url, json=data, verify=False).json()
+    
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.save_run_data(key="check_sop_list:list_name", value=json.dumps(check_sop_list__list_name))
+
+    update_sop_custom_list_1(container=container)
 
     return
 
