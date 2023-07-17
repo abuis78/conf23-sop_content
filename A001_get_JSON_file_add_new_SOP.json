@@ -52,9 +52,16 @@
                     "sourcePort": "48_out",
                     "targetNode": "46",
                     "targetPort": "46_in"
+                },
+                {
+                    "id": "port_46_to_port_1",
+                    "sourceNode": "46",
+                    "sourcePort": "46_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
                 }
             ],
-            "hash": "8a5366c9ae5d709b745ecd9b32de1da678ac72de",
+            "hash": "14a3bd48c14678ca0adad423bb04c3c7d9228589",
             "nodes": {
                 "0": {
                     "data": {
@@ -287,7 +294,7 @@
                     "type": "utility",
                     "warnings": {},
                     "x": 0,
-                    "y": 820
+                    "y": 840
                 },
                 "47": {
                     "data": {
@@ -349,8 +356,8 @@
                     "type": "code",
                     "userCode": "\n    # Write your custom code here...\n    decided_list_tag_url = phantom.build_phantom_rest_url('decided_list')\n    filter_parameter = '?_filter_name=\"' + input_parameter_0 + '\"'\n    url = decided_list_tag_url + filter_parameter\n    response = phantom.requests.get(url,verify=False)\n    # phantom.debug(response.json()['count'])\n    l_r = response.json()['count']\n    if l_r == 0:\n        phantom.debug(f\"Create new List {input_parameter_0}\")\n        url = phantom.build_phantom_rest_url('decided_list')\n        data = {\"content\":[[\"name\",\"version\",\"automation_phase\",\"alert\"]],\"name\":\"SOP\"}\n        response_data = phantom.requests.post(url, json=data, verify=False).json()\n    \n",
                     "warnings": {},
-                    "x": 280,
-                    "y": 700
+                    "x": 0,
+                    "y": 740
                 }
             },
             "notes": ""
