@@ -65,7 +65,7 @@ def git_list_files_12(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="git_list_files_12", callback=decision_1)
+    phantom.custom_function(custom_function="conf23-sop_content/git_list_files", parameters=parameters, name="git_list_files_12", callback=playbook_i001_extract_json_from_file_2)
 
     return
 
@@ -184,29 +184,6 @@ def check_sop_list(action=None, success=None, container=None, results=None, hand
     phantom.save_run_data(key="check_sop_list:list_name", value=json.dumps(check_sop_list__list_name))
 
     update_sop_custom_list_1(container=container)
-
-    return
-
-
-@phantom.playbook_block()
-def decision_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("decision_1() called")
-
-    # check for 'if' condition 1
-    found_match_1 = phantom.decision(
-        container=container,
-        conditions=[
-            ["git_list_files_12:custom_function_result.data.vault_id_list", "not in", ""]
-        ],
-        delimiter=None)
-
-    # call connected blocks if condition 1 matched
-    if found_match_1:
-        playbook_i001_extract_json_from_file_2(action=action, success=success, container=container, results=results, handle=handle)
-        return
-
-    # check for 'else' condition 2
-    add_comment_3(action=action, success=success, container=container, results=results, handle=handle)
 
     return
 
