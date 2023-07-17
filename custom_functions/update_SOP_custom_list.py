@@ -50,7 +50,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
             phantom.debug(f"-------Nicht da")
             r_url4 = phantom.build_phantom_rest_url('decided_list',list_name)
             name = a["name"]
-            version = a["version"]
+            version = str(a["version"])
             automation_phase = a["automation_phase"]
             allert = a["allert"]
             sublist = [name,version,automation_phase,allert]
