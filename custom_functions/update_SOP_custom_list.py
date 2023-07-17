@@ -26,7 +26,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         v = r.json()
         v_id = v.get[0].get('cef', {}).get('version')
         phantom.debug(f"------------{v}----------------\n")
-        n = v.get('cef', {}).get('name')
+        n = v.get('cef').get('name')
         phantom.debug(f"v_id: {v}\n")
         if v_id is not None:
             r_url2 = phantom.build_phantom_rest_url('decided_list',list_name)
