@@ -23,7 +23,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         r_url = phantom.build_phantom_rest_url('artifact')
         
         url = r_url + url_filter
-        phantom.debug(f"URL: {r_url}")
+        phantom.debug(f"URL: {url}")
         r = phantom.requests.get(url,verify=False)
         v = r.json()
         v_id = v.get('cef', {}).get('version')
