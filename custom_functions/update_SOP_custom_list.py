@@ -22,8 +22,9 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         phantom.debug(f"name: {name}")
         phantom.debug(f"json: {json}")
         
-        json = eval(json)
         json = json.replace("'", '"')
+        json = eval(json)
+        
         json_data = json.dumps(json)
 
         w_url = phantom.build_phantom_rest_url('workflow_template')
