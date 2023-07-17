@@ -21,7 +21,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "ef0c5c01500a5492d6d5ef976a5d51accfce6bae",
+            "hash": "f0aaf10d891d4fbbecd80135ed6718e03ba6653a",
             "nodes": {
                 "0": {
                     "data": {
@@ -37,7 +37,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 19.999999999999986,
-                    "y": -2.5579538487363607e-13
+                    "y": -3.197442310920451e-13
                 },
                 "1": {
                     "data": {
@@ -53,7 +53,7 @@
                     "type": "end",
                     "warnings": {},
                     "x": 19.999999999999986,
-                    "y": 311.99999999999955
+                    "y": 311.99999999999943
                 },
                 "2": {
                     "data": {
@@ -76,10 +76,10 @@
                     "errors": {},
                     "id": "2",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(playbook_input_vault_id)\n    phantom.debug(playbook_input_vault_id_values)\n    my_list = []\n    \n    for item in playbook_input_vault_id_values[0]:\n        success, message, vault_info = phantom.vault_info(vault_id=item)\n        path = vault_info[0][\"path\"]\n        \n        with open(path, 'r') as file:\n            data = json.load(file)\n            entry = {\n                \"name\": data['sop_json']['name'],\n                \"sop_json\": data.get('sop_json'),\n                \"version\": data.get('version'),\n                \"creator\": data.get('creator')\n            }\n            \n            my_list.append(entry)\n        \n            name = \"SOP \" + data['sop_json']['name']\n            raw = {}\n            cef = {}\n            cef['sop_json'] = str(data.get('sop_json'))\n            cef['name'] = str(data['sop_json']['name'])\n            cef['version'] = str(data.get('version'))\n            cef['creator'] = str(data.get('creator'))\n            cef['automation_phase'] = str(data.get('automation_phase'))\n            cef['allert'] = str(data.get('allert'))\n            success, message, artifact_id = phantom.add_artifact(container=container, raw_data=raw, cef_data=cef, label='sop',name=name, severity='low',identifier=None)\n\n            phantom.debug('artifact added as id:'+str(artifact_id))\n    \n            \n    phantom.debug(my_list)\n    get_file_information_extract_content__data_list = my_list\n",
+                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(playbook_input_vault_id)\n    phantom.debug(playbook_input_vault_id_values)\n    my_list = []\n    \n    for item in playbook_input_vault_id_values[0]:\n        success, message, vault_info = phantom.vault_info(vault_id=item)\n        path = vault_info[0][\"path\"]\n        \n        with open(path, 'r') as file:\n            data = json.load(file)\n            entry = {\n                \"name\": data['sop_json']['name'],\n                \"sop_json\": data.get('sop_json'),\n                \"version\": data.get('version'),\n                \"creator\": data.get('creator')\n            }\n            \n            my_list.append(entry)\n        \n            name = \"SOP \" + data['sop_json']['name']\n            raw = {}\n            cef = {}\n            cef['sop_json'] = str(data.get('sop_json'))\n            cef['name'] = str(data['sop_json']['name'])\n            cef['version'] = str(data.get('version'))\n            cef['creator'] = str(data.get('creator'))\n            cef['automation_phase'] = str(data.get('automation_phase'))\n            cef['alert'] = str(data.get('allert'))\n            success, message, artifact_id = phantom.add_artifact(container=container, raw_data=raw, cef_data=cef, label='sop',name=name, severity='low',identifier=None)\n\n            phantom.debug('artifact added as id:'+str(artifact_id))\n    \n            \n    phantom.debug(my_list)\n    get_file_information_extract_content__data_list = my_list\n",
                     "warnings": {},
-                    "x": 0,
-                    "y": 140
+                    "x": -1.4210854715202004e-14,
+                    "y": 139.99999999999997
                 }
             },
             "notes": ""
@@ -108,7 +108,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-16T20:54:47.356195+00:00",
+    "create_time": "2023-07-17T15:38:45.130184+00:00",
     "draft_mode": false,
     "labels": [
         "*"
