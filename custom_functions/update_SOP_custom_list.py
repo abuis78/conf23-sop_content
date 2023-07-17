@@ -33,12 +33,15 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
             for i, sublist in enumerate(ln["content"]):
                 if n in sublist[0]:
                     if int(v_id) <= int(sublist[1]):
-                        phantom.debug(f"Daten 1: {sublist[1]} {v_id}")
                         phantom.debug(f"Nothing to Update")
                     elif int(v_id) > int(sublist[1]):
-                        phantom.debug(f"Daten 1: {sublist[1]} {v_id}")
                         phantom.debug(f"SOP Update")
                         phantom.debug(f"Element was found in row {i + 1} ")
+                        r_url3 = phantom.build_phantom_rest_url('decided_list',list_name)
+                        sublist[1] = str(v_id) 
+                        data = sublist
+                        phantom.debug(f"New Data: {data}")
+                        #r3 = phantom.requests.post(url, json=data, verify=False).json()
                     
         else:
             phantom.debug(f"-------Nicht da")
