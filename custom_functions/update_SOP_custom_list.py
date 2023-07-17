@@ -31,7 +31,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
             v_id = item['cef']['version']
             ap = item['cef']['automation_phase']
             a = item['cef']['alert']
-            
+            phantom.debug(f"row {row}")
             if v_id is not None:
                 r_url2 = phantom.build_phantom_rest_url('decided_list',list_name)
                 r2 = phantom.requests.get(r_url2,verify=False)
@@ -47,11 +47,15 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                     else:
                         f = False
                     if f:
-                        phantom.debug(f"SOP {n} was found! - in row {i}")
+                        # phantom.debug(f"SOP {n} was found! - in row {i}")
+                        row = i
                     else:
-                        phantom.debug(f"SOP {n} was NOT found!")
-                
-                    """
+                        # phantom.debug(f"SOP {n} was NOT found!")
+                        row = 0
+                        
+            phantom.debug(f"row {row}")
+
+    """
                     if n in sublist[0]:
                         phantom.debug(f"The SOP {n} is in the list Available")
                         if int(v_id) <= int(sublist[1]):
@@ -76,11 +80,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                         data = { "append_rows": [sublist] }
                         phantom.debug(f"New Data: {data}")
                         r4 = phantom.requests.post(r_url4, json=data, verify=False).json()
-"""
-            
-            elif v_id is  None:
-                phantom.debug(f"-------")
-                phantom.debug(f"It's not SOP Artifact {n}")
+    """
     phantom.debug(f"---ENDE----")
         
     
