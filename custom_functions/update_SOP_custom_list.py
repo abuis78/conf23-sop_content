@@ -22,6 +22,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         phantom.debug(f"name: {name}")
         phantom.debug(f"json: {json}")
         
+        json = eval(json)
         json = json.replace("'", '"')
         json_data = json.dumps(json)
 
