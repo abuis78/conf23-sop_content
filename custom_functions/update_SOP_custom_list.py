@@ -30,7 +30,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
             r2 = phantom.requests.get(r_url2,verify=False)
             ln = r2.json()
             
-            for sublist in ln["content"]:
+            for i, sublist in enumerate(ln["content"]):
                 if n in sublist[0]:
                     if int(v_id) <= int(sublist[1]):
                         phantom.debug(f"Daten 1: {sublist[1]} {v_id}")
@@ -38,6 +38,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                     elif int(v_id) > int(sublist[1]):
                         phantom.debug(f"Daten 1: {sublist[1]} {v_id}")
                         phantom.debug(f"SOP Update")
+                        phantom.debug(f"Element was found in row {i + 1} ")
                     
         else:
             phantom.debug(f"-------Nicht da")
