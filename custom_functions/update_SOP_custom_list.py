@@ -26,7 +26,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         r = phantom.requests.get(url,verify=False)
         v = r.json()
         # phantom.debug(f"Daten: {v['data']}")
-        row = 0
+        
         for item in v['data']:
             n = item['cef']['name']
             v_id = item['cef']['version']
@@ -48,6 +48,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                         f = True
                     else:
                         f = False
+                        
                     if f:
                         # phantom.debug(f"SOP {n} was found! - in row {i}")
                         row = i
@@ -55,7 +56,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                         # phantom.debug(f"SOP {n} was NOT found!")
                         row = 0
                         
-            phantom.debug(f"row {row}")
+                    phantom.debug(f"row {row}")
 
     """
                     if n in sublist[0]:
