@@ -85,7 +85,7 @@
                     "targetPort": "52_in"
                 }
             ],
-            "hash": "4a1577bbb33799f55073270192145f63686b84ae",
+            "hash": "e19c0a4ef5e196e4d28b22a56f29881b750585e3",
             "nodes": {
                 "0": {
                     "data": {
@@ -398,9 +398,9 @@
                                 "comparisons": [
                                     {
                                         "conditionIndex": 0,
-                                        "op": "!=",
-                                        "param": "git_list_files_12:custom_function_result.data.vault_id_list",
-                                        "value": ""
+                                        "op": "not in",
+                                        "param": "",
+                                        "value": "git_list_files_12:custom_function_result.data.vault_id_list"
                                     }
                                 ],
                                 "conditionIndex": 0,
@@ -433,7 +433,7 @@
                     "id": "51",
                     "type": "decision",
                     "warnings": {},
-                    "x": 250,
+                    "x": 260,
                     "y": 460
                 },
                 "52": {
@@ -496,7 +496,7 @@
                     "type": "utility",
                     "warnings": {},
                     "x": 340,
-                    "y": 648
+                    "y": 640
                 }
             },
             "notes": ""
@@ -508,7 +508,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-17T16:33:42.770798+00:00",
+    "create_time": "2023-07-17T16:34:29.562744+00:00",
     "draft_mode": false,
     "labels": [
         "*"
