@@ -46,6 +46,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                         r3 = phantom.requests.post(r_url3, json=data, verify=False).json()
                         phantom.debug(r3)
         elif v_id is  None:
+            phantom.debug(f"Artifact ID: {v_id}")
             phantom.debug(f"-------")
             phantom.debug(f"SOP is not in Custom List: {list_name}. The SOP {n} is now created in the list")
             r_url4 = phantom.build_phantom_rest_url('decided_list',list_name)
