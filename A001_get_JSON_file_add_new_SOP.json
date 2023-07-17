@@ -61,7 +61,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "f1001cd65209e2895d78d5ed91a39295b36bc446",
+            "hash": "14a3bd48c14678ca0adad423bb04c3c7d9228589",
             "nodes": {
                 "0": {
                     "data": {
@@ -220,6 +220,7 @@
                             "notRequiredJoins": [
                                 "playbook_I001_extract_JSON_from_file_2"
                             ],
+                            "refreshNotableData": true,
                             "scope": "all"
                         },
                         "customFunction": {
