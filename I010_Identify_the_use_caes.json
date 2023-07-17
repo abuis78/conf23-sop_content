@@ -21,7 +21,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "5145118b8b109a259411233ddfd281430390bff8",
+            "hash": "06e273692e39c761cb1383aa42cdf6c0f557d9a4",
             "nodes": {
                 "0": {
                     "data": {
@@ -76,7 +76,7 @@
                     "errors": {},
                     "id": "2",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    import re\n    match = re.match(r'(\\d+)_', name_value)\n    if match:\n        number = match.group(1)\n        phantom.debug(f\"use case ID: {number}\")\n        identify_the_use_cases_by_the_alert_name__use_case_id = number\n",
+                    "userCode": "\n    # Write your custom code here...\n    import re\n    phantom.debug(f\"name_value: {name_value}\")\n    match = re.match(r'(\\d+)_', name_value)\n    if match:\n        number = match.group(1)\n        phantom.debug(f\"use case ID: {number}\")\n        identify_the_use_cases_by_the_alert_name__use_case_id = number\n",
                     "warnings": {},
                     "x": 980,
                     "y": 580
@@ -102,7 +102,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-17T19:28:44.662859+00:00",
+    "create_time": "2023-07-17T19:29:53.743961+00:00",
     "draft_mode": false,
     "labels": [
         "*"
