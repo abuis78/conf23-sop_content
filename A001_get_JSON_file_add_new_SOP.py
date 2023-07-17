@@ -196,7 +196,7 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
     found_match_1 = phantom.decision(
         container=container,
         conditions=[
-            ["", "not in", "git_list_files_12:custom_function_result.data.vault_id_list"]
+            ["git_list_files_12:custom_function_result.data.vault_id_list", "not in", ""]
         ],
         delimiter=None)
 

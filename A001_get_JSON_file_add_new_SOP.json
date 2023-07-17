@@ -85,7 +85,7 @@
                     "targetPort": "52_in"
                 }
             ],
-            "hash": "e19c0a4ef5e196e4d28b22a56f29881b750585e3",
+            "hash": "2ca62f6cd1c50651e5f6ec9066dd63c67899dfc7",
             "nodes": {
                 "0": {
                     "data": {
@@ -399,8 +399,8 @@
                                     {
                                         "conditionIndex": 0,
                                         "op": "not in",
-                                        "param": "",
-                                        "value": "git_list_files_12:custom_function_result.data.vault_id_list"
+                                        "param": "git_list_files_12:custom_function_result.data.vault_id_list",
+                                        "value": ""
                                     }
                                 ],
                                 "conditionIndex": 0,
@@ -508,7 +508,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-17T16:34:29.562744+00:00",
+    "create_time": "2023-07-17T16:34:53.735617+00:00",
     "draft_mode": false,
     "labels": [
         "*"
