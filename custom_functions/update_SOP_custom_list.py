@@ -73,7 +73,8 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
             phantom.debug(r)
         else:
             phantom.debug("update")
-            url_d = phantom.build_phantom_rest_url('workbook_template','69')
+            url_d = phantom.build_phantom_rest_url('workbook_template','70')
+            phantom.debug(url_d)
             r_d = phantom.requests.delete(url, verify=False)
             phantom.debug(r_d)
         
