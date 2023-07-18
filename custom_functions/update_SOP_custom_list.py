@@ -16,13 +16,31 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
     outputs = {}
     
     # Write your custom code here...
+    def check_and_format_json(data):
+        if isinstance(data, str):  # If data is a string, we try to load it as JSON
+            try:
+                json.loads(data)  # Try to parse string as JSON
+                phantom.debug("The string is a valid JSON.")
+            except json.JSONDecodeError:
+                phantom.debug("The string is not a valid JSON.")
+                # You might want to format your string into a valid JSON here
+                # This is just an example, replace it with your actual formatting code
+                data = json.dumps({"key": "value"})
+                phantom.debug("The string has been formatted into a valid JSON:", data)
+        else:  # If data is not a string, we dump it into a JSON string
+            try:
+                data = json.dumps(data)
+                phantom.debug("The data has been formatted into a valid JSON string:", data)
+            except (TypeError, ValueError):
+                phantom.debug("The data could not be formatted into a valid JSON string.")
+        return data
 
     def create_update_workbook(task,name,json,a):
         phantom.debug(f"task: {task}")
         phantom.debug(f"name: {name}")
         phantom.debug(f"json: {json}")
         phantom.debug(f"Art ID: {a}")
-
+        check_and_format_json(json)
     
                           
     #check if List
