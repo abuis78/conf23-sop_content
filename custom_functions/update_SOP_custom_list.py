@@ -35,11 +35,12 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                 phantom.debug("The dictionary could not be formatted into a valid JSON string.")
         else:
             phantom.debug("The data is neither a dictionary nor a JSON string.")
+        phantom.debug(f"JSON Daten: {data}")
         return data
 
     def create_update_workbook(task,name,json,a):
         check_and_format_json(json)
-        phantom.debug(f"JSON Daten: {data}")
+        
     
                           
     #check if List
