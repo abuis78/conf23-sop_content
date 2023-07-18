@@ -65,7 +65,11 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         url = url + filter_url
         r = phantom.requests.get(url, verify=False)
         data = r.json()
-        data = data['data'][0]['cef']['sop_json']
+        if len(data['data']) > 0:
+            sop_json = data['data'][0]['cef']['sop_json']
+        else:
+            phantom.debug("Die Liste 'data' ist leer.")
+
         phantom.debug(f"request r {data}")
         
     
