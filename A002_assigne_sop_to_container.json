@@ -156,7 +156,7 @@
                     "targetPort": "18_in"
                 }
             ],
-            "hash": "4777f9b0a126a5f2d79f95e1f4afd9df27b209fc",
+            "hash": "bb4716760a47b6e411e11e5be39596e8459549e6",
             "nodes": {
                 "0": {
                     "data": {
@@ -717,7 +717,7 @@
                     "errors": {},
                     "id": "19",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(f\"playbook_i010_identify_the_use_caes_1_output_use_case_id_values\")\n    success, message, execs = phantom.get_list(list_name=input_parameter_0, values=playbook_i010_identify_the_use_caes_1_output_use_case_id_values, column_index=0, trace=False)\n    \n    phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, execs))\n\n",
+                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(playbook_i010_identify_the_use_caes_1_output_use_case_id_values)\n    success, message, execs = phantom.get_list(list_name=input_parameter_0, values=playbook_i010_identify_the_use_caes_1_output_use_case_id_values, column_index=0, trace=False)\n    \n    phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, execs))\n\n",
                     "warnings": {},
                     "x": 260,
                     "y": 140
@@ -774,6 +774,9 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 600,
@@ -827,9 +830,6 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 340,
@@ -1091,7 +1091,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-18T04:14:22.316641+00:00",
+    "create_time": "2023-07-18T04:15:12.789085+00:00",
     "draft_mode": false,
     "labels": [
         "conf_alert"

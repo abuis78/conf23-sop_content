@@ -400,7 +400,7 @@ def check_if_alert_has_a_mapping_to_an_sop(action=None, success=None, container=
     ################################################################################
 
     # Write your custom code here...
-    phantom.debug(f"playbook_i010_identify_the_use_caes_1_output_use_case_id_values")
+    phantom.debug(playbook_i010_identify_the_use_caes_1_output_use_case_id_values)
     success, message, execs = phantom.get_list(list_name=input_parameter_0, values=playbook_i010_identify_the_use_caes_1_output_use_case_id_values, column_index=0, trace=False)
     
     phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, execs))
