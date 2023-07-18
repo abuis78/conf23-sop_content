@@ -59,14 +59,9 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
 
 
     def create_update_workbook(task,name,json,a):
-        try:
-            foo = json.loads(json)
-        except json.JSONDecodeError:
-            phantom.debug('Not a valid JSON formatted string')
-        #data = json.loads()
-        #url = phantom.build_phantom_rest_url('workbook_template')
-        #response_data = phantom.requests.post(url, json=data, verify=False).json()
-        #phantom.debug(response_data)
+        url = phantom.build_phantom_rest_url('workbook_template')
+        response_data = phantom.requests.post(url, json=json, verify=False).json()
+        phantom.debug(response_data)
         
     
                           
