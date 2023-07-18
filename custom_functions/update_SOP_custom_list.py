@@ -19,6 +19,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
     def check_and_format_json(data):
         if isinstance(data, str):  # If data is a string, we try to load it as JSON
             try:
+                data = data.replace("'", '"') 
                 json.loads(data)  # Try to parse string as JSON
                 phantom.debug("The string is a valid JSON.")
             except json.JSONDecodeError:
