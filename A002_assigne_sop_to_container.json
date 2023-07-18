@@ -163,7 +163,7 @@
                     "targetPort": "18_in"
                 }
             ],
-            "hash": "0367398ff243b04cda3da548c98d12eda8587246",
+            "hash": "875a90b63fe0c5a937975d21402ab6d2b136276e",
             "nodes": {
                 "0": {
                     "data": {
@@ -707,7 +707,11 @@
                         "advanced": {
                             "customName": "search for SOP mapping",
                             "customNameId": 0,
-                            "join": []
+                            "join": [],
+                            "notRequiredJoins": [
+                                "playbook_I010_Identify_the_use_caes_1"
+                            ],
+                            "scope": "all"
                         },
                         "connector": "Phantom",
                         "connectorConfigs": [
@@ -747,7 +751,7 @@
                     "type": "action",
                     "warnings": {},
                     "x": 260,
-                    "y": 139.99999999999994
+                    "y": 140
                 },
                 "4": {
                     "data": {
@@ -796,7 +800,7 @@
                     "type": "decision",
                     "warnings": {},
                     "x": 340,
-                    "y": 296
+                    "y": 300
                 },
                 "5": {
                     "data": {
@@ -1046,7 +1050,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-17T19:43:02.159079+00:00",
+    "create_time": "2023-07-18T04:07:46.020954+00:00",
     "draft_mode": false,
     "labels": [
         "conf_alert"
