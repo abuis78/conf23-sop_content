@@ -34,6 +34,35 @@ def get_file_information_extract_content(action=None, success=None, container=No
     # Write your custom code here...
     phantom.debug(playbook_input_vault_id)
     phantom.debug(playbook_input_vault_id_values)
+    import re
+    def check_and_format_json(data):
+        if isinstance(data, str):  # If data is a string, we try to load it as JSON
+            try:
+                # Check if the string contains 'false' or 'true'
+                if re.search(r"'false'|'true'", data, re.IGNORECASE):
+                    # Replace 'false' and 'true' with "false" and "true"
+                    data = re.sub(r"'false'", '"false"', data, flags=re.IGNORECASE)
+                    data = re.sub(r"'true'", '"true"', data, flags=re.IGNORECASE)
+                else:
+                    data = data.replace("'", '"')  # Replace single quotes with double quotes
+                
+                data = json.loads(data)  # Try to parse string as JSON
+                phantom.debug("The string is a valid JSON.")
+            except json.JSONDecodeError:
+                phantom.debug("The string is not a valid JSON.")
+                pass
+        elif isinstance(data, dict):  # If data is a dictionary, we dump it into a JSON string
+            try:
+                data = json.dumps(data)
+                phantom.debug("The dictionary has been formatted into a valid JSON string:", data)
+            except (TypeError, ValueError):
+                phantom.debug("The dictionary could not be formatted into a valid JSON string.")
+        else:
+            phantom.debug("The data is neither a dictionary nor a JSON string.")
+        phantom.debug(f"JSON Daten: {data}")
+        return data
+    
+    
     my_list = []
     
     for item in playbook_input_vault_id_values[0]:
@@ -44,7 +73,7 @@ def get_file_information_extract_content(action=None, success=None, container=No
             data = json.load(file)
             entry = {
                 "name": data['sop_json']['name'],
-                "sop_json": data.get('sop_json'),
+                "sop_json": check_and_format_json(data.get('sop_json')),
                 "version": data.get('version'),
                 "automation_phase": data.get('automation_phase'),
                 "alert": data.get('alert'),

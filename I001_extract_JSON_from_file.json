@@ -21,7 +21,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "60b1ad9563167c082a02ab14bedb591dd86d686f",
+            "hash": "4054dd095c79b3f4217a910af501d88c6f904a41",
             "nodes": {
                 "0": {
                     "data": {
@@ -37,7 +37,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 19.999999999999986,
-                    "y": -3.836930773104541e-13
+                    "y": -4.476419235288631e-13
                 },
                 "1": {
                     "data": {
@@ -53,7 +53,7 @@
                     "type": "end",
                     "warnings": {},
                     "x": 19.999999999999986,
-                    "y": 311.9999999999993
+                    "y": 311.9999999999992
                 },
                 "2": {
                     "data": {
@@ -76,10 +76,10 @@
                     "errors": {},
                     "id": "2",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(playbook_input_vault_id)\n    phantom.debug(playbook_input_vault_id_values)\n    my_list = []\n    \n    for item in playbook_input_vault_id_values[0]:\n        success, message, vault_info = phantom.vault_info(vault_id=item)\n        path = vault_info[0][\"path\"]\n        \n        with open(path, 'r') as file:\n            data = json.load(file)\n            entry = {\n                \"name\": data['sop_json']['name'],\n                \"sop_json\": data.get('sop_json'),\n                \"version\": data.get('version'),\n                \"automation_phase\": data.get('automation_phase'),\n                \"alert\": data.get('alert'),\n                \"creator\": data.get('creator')\n            }\n            \n            my_list.append(entry)\n        \n            name = \"SOP \" + data['sop_json']['name']\n            raw = {}\n            cef = {}\n            cef['sop_json'] = str(data.get('sop_json'))\n            cef['name'] = str(data['sop_json']['name'])\n            cef['version'] = str(data.get('version'))\n            cef['creator'] = str(data.get('creator'))\n            cef['automation_phase'] = str(data.get('automation_phase'))\n            cef['alert'] = str(data.get('alert'))\n            success, message, artifact_id = phantom.add_artifact(container=container, raw_data=raw, cef_data=cef, label='sop',name=name, severity='low',identifier=None)\n\n            phantom.debug('artifact added as id:'+str(artifact_id))\n    \n            \n    phantom.debug(my_list)\n    get_file_information_extract_content__data_list = my_list\n",
+                    "userCode": "\n    # Write your custom code here...\n    phantom.debug(playbook_input_vault_id)\n    phantom.debug(playbook_input_vault_id_values)\n    import re\n    def check_and_format_json(data):\n        if isinstance(data, str):  # If data is a string, we try to load it as JSON\n            try:\n                # Check if the string contains 'false' or 'true'\n                if re.search(r\"'false'|'true'\", data, re.IGNORECASE):\n                    # Replace 'false' and 'true' with \"false\" and \"true\"\n                    data = re.sub(r\"'false'\", '\"false\"', data, flags=re.IGNORECASE)\n                    data = re.sub(r\"'true'\", '\"true\"', data, flags=re.IGNORECASE)\n                else:\n                    data = data.replace(\"'\", '\"')  # Replace single quotes with double quotes\n                \n                data = json.loads(data)  # Try to parse string as JSON\n                phantom.debug(\"The string is a valid JSON.\")\n            except json.JSONDecodeError:\n                phantom.debug(\"The string is not a valid JSON.\")\n                pass\n        elif isinstance(data, dict):  # If data is a dictionary, we dump it into a JSON string\n            try:\n                data = json.dumps(data)\n                phantom.debug(\"The dictionary has been formatted into a valid JSON string:\", data)\n            except (TypeError, ValueError):\n                phantom.debug(\"The dictionary could not be formatted into a valid JSON string.\")\n        else:\n            phantom.debug(\"The data is neither a dictionary nor a JSON string.\")\n        phantom.debug(f\"JSON Daten: {data}\")\n        return data\n    \n    \n    my_list = []\n    \n    for item in playbook_input_vault_id_values[0]:\n        success, message, vault_info = phantom.vault_info(vault_id=item)\n        path = vault_info[0][\"path\"]\n        \n        with open(path, 'r') as file:\n            data = json.load(file)\n            entry = {\n                \"name\": data['sop_json']['name'],\n                \"sop_json\": check_and_format_json(data.get('sop_json')),\n                \"version\": data.get('version'),\n                \"automation_phase\": data.get('automation_phase'),\n                \"alert\": data.get('alert'),\n                \"creator\": data.get('creator')\n            }\n            \n            my_list.append(entry)\n        \n            name = \"SOP \" + data['sop_json']['name']\n            raw = {}\n            cef = {}\n            cef['sop_json'] = str(data.get('sop_json'))\n            cef['name'] = str(data['sop_json']['name'])\n            cef['version'] = str(data.get('version'))\n            cef['creator'] = str(data.get('creator'))\n            cef['automation_phase'] = str(data.get('automation_phase'))\n            cef['alert'] = str(data.get('alert'))\n            success, message, artifact_id = phantom.add_artifact(container=container, raw_data=raw, cef_data=cef, label='sop',name=name, severity='low',identifier=None)\n\n            phantom.debug('artifact added as id:'+str(artifact_id))\n    \n            \n    phantom.debug(my_list)\n    get_file_information_extract_content__data_list = my_list\n",
                     "warnings": {},
-                    "x": 0,
-                    "y": 140
+                    "x": -1.4210854715202004e-14,
+                    "y": 139.99999999999997
                 }
             },
             "notes": ""
@@ -108,7 +108,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-17T16:24:09.835802+00:00",
+    "create_time": "2023-07-18T12:33:36.450893+00:00",
     "draft_mode": false,
     "labels": [
         "*"
