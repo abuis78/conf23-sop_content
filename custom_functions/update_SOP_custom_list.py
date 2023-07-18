@@ -12,6 +12,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
     ############################ Custom Code Goes Below This Line #################################
     import json
     import phantom.rules as phantom
+    import re
     
     outputs = {}
     
@@ -19,13 +20,18 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
     def check_and_format_json(data):
         if isinstance(data, str):  # If data is a string, we try to load it as JSON
             try:
-                data = data.replace("'", '"')  # Replace single quotes with double quotes
+                # Check if the string contains 'false' or 'true'
+                if re.search(r"'false'|'true'", data, re.IGNORECASE):
+                    # Replace 'false' and 'true' with "false" and "true"
+                    data = re.sub(r"'false'", '"false"', data, flags=re.IGNORECASE)
+                    data = re.sub(r"'true'", '"true"', data, flags=re.IGNORECASE)
+                else:
+                    data = data.replace("'", '"')  # Replace single quotes with double quotes
+                
                 data = json.loads(data)  # Try to parse string as JSON
                 phantom.debug("The string is a valid JSON.")
             except json.JSONDecodeError:
                 phantom.debug("The string is not a valid JSON.")
-                # If string is not valid JSON, you might want to handle it here
-                # Replace pass with your code
                 pass
         elif isinstance(data, dict):  # If data is a dictionary, we dump it into a JSON string
             try:
@@ -38,9 +44,9 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         phantom.debug(f"JSON Daten: {data}")
         return data
 
+
     def create_update_workbook(task,name,json,a):
         check_and_format_json(json)
-        
     
                           
     #check if List
