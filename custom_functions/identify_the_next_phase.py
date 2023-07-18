@@ -16,7 +16,7 @@ def identify_the_next_phase(current_phase_name=None, container_id=None, **kwargs
     outputs = {}
     
     # Write your custom code here...
-    
+    phantom.debug(f"CF input current_phase_name: {current_phase_name}")
     url_filter = "?_filter_container_id="+ str(container_id)
     w_url = phantom.build_phantom_rest_url('workbook_phase')
     url = w_url + url_filter
