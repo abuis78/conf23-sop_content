@@ -38,11 +38,8 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         return data
 
     def create_update_workbook(task,name,json,a):
-        phantom.debug(f"task: {task}")
-        phantom.debug(f"name: {name}")
-        phantom.debug(f"json: {json}")
-        phantom.debug(f"Art ID: {a}")
         check_and_format_json(json)
+        phantom.debug(f"JSON Daten: {data}")
     
                           
     #check if List
