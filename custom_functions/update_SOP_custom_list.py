@@ -77,9 +77,9 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                           
     #check if List
     
-    for a in artifact_id_list:
-        phantom.debug(f"Art ID: {a}")
-        url_filter = '?_filter_name__icontains="' + str(prefix_filter) +'"&_filter_container="' + str(container_id) +'"&_filter_id="' + str(a) + '"'
+    for a_id in artifact_id_list:
+        phantom.debug(f"Art ID: {a_id}")
+        url_filter = '?_filter_name__icontains="' + str(prefix_filter) +'"&_filter_container="' + str(container_id) +'"&_filter_id="' + str(a_id) + '"'
         r_url = phantom.build_phantom_rest_url('artifact')
         
         url = r_url + url_filter
@@ -119,7 +119,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                             data = { "update_rows": { row : sublist }}
                             phantom.debug(f"New Data: {data}")
                             r3 = phantom.requests.post(r_url3, json=data, verify=False).json()
-                            create_update_workbook("u",n, json_data,a)
+                            create_update_workbook("u",n, json_data,a_id)
                         break
                 if not f:
                     # SOP is not jet in the Custom List create a new entry
@@ -130,7 +130,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                     data = { "append_rows": [sublist] }
                     phantom.debug(f"New Data: {data}")
                     r4 = phantom.requests.post(r_url4, json=data, verify=False).json()
-                    create_update_workbook("c",n, json_data,a)
+                    create_update_workbook("c",n, json_data,a_id)
                         
     phantom.debug(f"---ENDE----")
         
