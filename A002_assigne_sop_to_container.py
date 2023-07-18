@@ -402,7 +402,13 @@ def check_if_alert_has_a_mapping_to_an_sop(action=None, success=None, container=
     # Write your custom code here...
     success, message, execs = phantom.get_list(list_name=input_parameter_0, values=playbook_i010_identify_the_use_caes_1_output_use_case_id_values[0], column_index=3, trace=False)
     
-    phantom.debug('execs: {}'.format( execs))
+    
+    if execs['matches']:
+        match = 1
+    else:
+        match = 0
+    
+    phantom.debug('match: {}'.format( match))
 
     ################################################################################
     ## Custom Code End
