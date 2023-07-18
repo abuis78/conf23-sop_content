@@ -156,7 +156,7 @@
                     "targetPort": "18_in"
                 }
             ],
-            "hash": "66c14caf369049c068cd0d591311ce138f2d9995",
+            "hash": "dc13a6aaf87238edb525ecef43d924680b8b9c1e",
             "nodes": {
                 "0": {
                     "data": {
@@ -717,7 +717,7 @@
                     "errors": {},
                     "id": "19",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    message = phantom.get_list(list_name=input_parameter_0, values=playbook_i010_identify_the_use_caes_1_output_use_case_id_values[0], column_index=3, trace=False)\n    \n    phantom.debug(message)\n\n",
+                    "userCode": "\n    # Write your custom code here...\n    message, execs = phantom.get_list(list_name=input_parameter_0, values=playbook_i010_identify_the_use_caes_1_output_use_case_id_values[0], column_index=3, trace=False)\n    \n    phantom.debug(execs)\n\n",
                     "warnings": {},
                     "x": 260,
                     "y": 140
@@ -774,6 +774,9 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 600,
@@ -827,9 +830,6 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 340,
@@ -1091,7 +1091,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-18T04:25:26.151308+00:00",
+    "create_time": "2023-07-18T09:50:21.083645+00:00",
     "draft_mode": false,
     "labels": [
         "conf_alert"
