@@ -39,6 +39,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     success, message = phantom.set_phase(container=id_value,phase=phase)
     success, message, phase_id, phase_name = phantom.get_phase()
     phantom.debug(f"Phase ID {phase_id}")
+    phantom.debug(f"Phase Name {phase_name}")
     set_automation_phase__phase_id = phase_id
     
     url_filter = "?_filter_container_id=" + str(id_value) + "&_filter_phase=" + str(phase_id)
