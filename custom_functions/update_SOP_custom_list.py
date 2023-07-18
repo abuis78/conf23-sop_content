@@ -19,21 +19,22 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
     def check_and_format_json(data):
         if isinstance(data, str):  # If data is a string, we try to load it as JSON
             try:
-                data = data.replace("'", '"') 
+                data = data.replace("'", '"')  # Replace single quotes with double quotes
                 data = json.loads(data)  # Try to parse string as JSON
                 phantom.debug("The string is a valid JSON.")
             except json.JSONDecodeError:
                 phantom.debug("The string is not a valid JSON.")
-                # You might want to format your string into a valid JSON here
-                # This is just an example, replace it with your actual formatting code
-                data = json.dumps({"key": "value"})
-                phantom.debug("The string has been formatted into a valid JSON:", data)
-        else:  # If data is not a string, we dump it into a JSON string
+                # If string is not valid JSON, you might want to handle it here
+                # Replace pass with your code
+                pass
+        elif isinstance(data, dict):  # If data is a dictionary, we dump it into a JSON string
             try:
                 data = json.dumps(data)
-                phantom.debug("The data has been formatted into a valid JSON string:", data)
+                phantom.debug("The dictionary has been formatted into a valid JSON string:", data)
             except (TypeError, ValueError):
-                phantom.debug("The data could not be formatted into a valid JSON string.")
+                phantom.debug("The dictionary could not be formatted into a valid JSON string.")
+        else:
+            phantom.debug("The data is neither a dictionary nor a JSON string.")
         return data
 
     def create_update_workbook(task,name,json,a):
