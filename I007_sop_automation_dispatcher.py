@@ -38,7 +38,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     phase = playbook_input_automation_phase_values[0]
     success, message = phantom.set_phase(container=id_value,phase=phase)
     success, message, phase_id, phase_name = phantom.get_phase()
-    phantom.debug(phase_id)
+    phantom.debug(f"Phase ID {phase_id}")
     set_automation_phase__phase_id = phase_id
     
     url_filter = "?_filter_container_id=" + str(id_value) + "&_filter_phase=" + str(phase_id)
@@ -49,7 +49,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     
     #data = response.json()
     data = response.json()["data"]
-    phantom.debug(data)
+    #phantom.debug(data)
     
 
     for item in data:
