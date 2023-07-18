@@ -58,7 +58,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         return data
 
 
-    def create_update_workbook(task,name,json,a):
+    def create_update_workbook(task,name,json_1,a):
         phantom.debug(f"IDD {a}")
         filter_url = '?_filter_id="' + str(a) + '"'
         url = phantom.build_phantom_rest_url('artifact')
