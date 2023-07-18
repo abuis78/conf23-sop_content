@@ -7,13 +7,6 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_2_to_port_4",
-                    "sourceNode": "2",
-                    "sourcePort": "2_out",
-                    "targetNode": "4",
-                    "targetPort": "4_in"
-                },
-                {
                     "conditions": [
                         {
                             "index": 0
@@ -149,21 +142,21 @@
                     "targetPort": "17_in"
                 },
                 {
-                    "id": "port_17_to_port_2",
+                    "id": "port_17_to_port_19",
                     "sourceNode": "17",
                     "sourcePort": "17_out",
-                    "targetNode": "2",
-                    "targetPort": "2_in"
+                    "targetNode": "19",
+                    "targetPort": "19_in"
                 },
                 {
-                    "id": "port_2_to_port_18",
-                    "sourceNode": "2",
-                    "sourcePort": "2_out",
+                    "id": "port_19_to_port_18",
+                    "sourceNode": "19",
+                    "sourcePort": "19_out",
                     "targetNode": "18",
                     "targetPort": "18_in"
                 }
             ],
-            "hash": "875a90b63fe0c5a937975d21402ab6d2b136276e",
+            "hash": "9f21ecd5d17ae64ba665cd6bfded65cd9591d903",
             "nodes": {
                 "0": {
                     "data": {
@@ -502,7 +495,11 @@
                     "errors": {},
                     "id": "16",
                     "type": "utility",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 260,
                     "y": 1644.5
                 },
@@ -527,7 +524,7 @@
                     "type": "playbook",
                     "warnings": {},
                     "x": 260,
-                    "y": -8.881784197001252e-14
+                    "y": 0
                 },
                 "18": {
                     "data": {
@@ -677,12 +674,10 @@
                         "values": {
                             "debug": {
                                 "input_1": [
-                                    "playbook_i010_identify_the_use_caes_1:playbook_output:use_case_id"
+                                    "check_if_alert_has_a_mapping_to_an_sop:custom_function:match"
                                 ],
                                 "input_10": null,
-                                "input_2": [
-                                    "search_for_sop_mapping:action_result.summary.found_matches"
-                                ],
+                                "input_2": "",
                                 "input_3": null,
                                 "input_4": null,
                                 "input_5": null,
@@ -697,8 +692,35 @@
                     "id": "18",
                     "type": "utility",
                     "warnings": {},
-                    "x": 600,
+                    "x": 540,
                     "y": 260
+                },
+                "19": {
+                    "data": {
+                        "advanced": {
+                            "customName": "check if alert has a mapping to an SOP",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "check_if_alert_has_a_mapping_to_an_sop",
+                        "id": "19",
+                        "inputParameters": [
+                            "playbook_i010_identify_the_use_caes_1:playbook_output:use_case_id",
+                            "SOP"
+                        ],
+                        "outputVariables": [
+                            "match"
+                        ],
+                        "type": "code"
+                    },
+                    "errors": {},
+                    "id": "19",
+                    "type": "code",
+                    "userCode": "\n    # Write your custom code here...\n    success, message, execs = phantom.get_list(list_name=input_parameter_0, values=playbook_i010_identify_the_use_caes_1_output_use_case_id_values, column_index=0, trace=False)\n    \n    phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, execs))\n\n",
+                    "warnings": {},
+                    "x": 260,
+                    "y": 140
                 },
                 "2": {
                     "data": {
@@ -749,9 +771,16 @@
                     "errors": {},
                     "id": "2",
                     "type": "action",
-                    "warnings": {},
-                    "x": 260,
-                    "y": 140
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
+                    "x": 600,
+                    "y": 139.99999999999997
                 },
                 "4": {
                     "data": {
@@ -798,7 +827,11 @@
                     "errors": {},
                     "id": "4",
                     "type": "decision",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 340,
                     "y": 300
                 },
@@ -956,7 +989,11 @@
                     "errors": {},
                     "id": "7",
                     "type": "playbook",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 340,
                     "y": 820
                 },
@@ -986,7 +1023,11 @@
                     "errors": {},
                     "id": "8",
                     "type": "playbook",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 340,
                     "y": 980
                 },
@@ -1050,7 +1091,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-18T04:07:46.020954+00:00",
+    "create_time": "2023-07-18T04:13:17.466446+00:00",
     "draft_mode": false,
     "labels": [
         "conf_alert"

@@ -47,19 +47,7 @@ def search_for_sop_mapping(action=None, success=None, container=None, results=No
     ## Custom Code End
     ################################################################################
 
-    phantom.act("find listitem", parameters=parameters, name="search_for_sop_mapping", assets=["phantom"], callback=search_for_sop_mapping_callback)
-
-    return
-
-
-@phantom.playbook_block()
-def search_for_sop_mapping_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("search_for_sop_mapping_callback() called")
-
-    
-    decision_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
-    debug_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
-
+    phantom.act("find listitem", parameters=parameters, name="search_for_sop_mapping", assets=["phantom"])
 
     return
 
@@ -354,7 +342,7 @@ def playbook_i010_identify_the_use_caes_1(action=None, success=None, container=N
     ################################################################################
 
     # call playbook "conf23-sop_content/I010_Identify_the_use_caes", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("conf23-sop_content/I010_Identify_the_use_caes", container=container, name="playbook_i010_identify_the_use_caes_1", callback=search_for_sop_mapping, inputs=inputs)
+    playbook_run_id = phantom.playbook("conf23-sop_content/I010_Identify_the_use_caes", container=container, name="playbook_i010_identify_the_use_caes_1", callback=check_if_alert_has_a_mapping_to_an_sop, inputs=inputs)
 
     return
 
@@ -363,17 +351,13 @@ def playbook_i010_identify_the_use_caes_1(action=None, success=None, container=N
 def debug_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_1() called")
 
-    playbook_i010_identify_the_use_caes_1_output_use_case_id = phantom.collect2(container=container, datapath=["playbook_i010_identify_the_use_caes_1:playbook_output:use_case_id"])
-    search_for_sop_mapping_result_data = phantom.collect2(container=container, datapath=["search_for_sop_mapping:action_result.summary.found_matches","search_for_sop_mapping:action_result.parameter.context.artifact_id"], action_results=results)
-
-    playbook_i010_identify_the_use_caes_1_output_use_case_id_values = [item[0] for item in playbook_i010_identify_the_use_caes_1_output_use_case_id]
-    search_for_sop_mapping_summary_found_matches = [item[0] for item in search_for_sop_mapping_result_data]
+    check_if_alert_has_a_mapping_to_an_sop__match = json.loads(_ if (_ := phantom.get_run_data(key="check_if_alert_has_a_mapping_to_an_sop:match")) != "" else "null")  # pylint: disable=used-before-assignment
 
     parameters = []
 
     parameters.append({
-        "input_1": playbook_i010_identify_the_use_caes_1_output_use_case_id_values,
-        "input_2": search_for_sop_mapping_summary_found_matches,
+        "input_1": check_if_alert_has_a_mapping_to_an_sop__match,
+        "input_2": None,
         "input_3": None,
         "input_4": None,
         "input_5": None,
@@ -395,6 +379,38 @@ def debug_1(action=None, success=None, container=None, results=None, handle=None
     ################################################################################
 
     phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_1")
+
+    return
+
+
+@phantom.playbook_block()
+def check_if_alert_has_a_mapping_to_an_sop(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("check_if_alert_has_a_mapping_to_an_sop() called")
+
+    playbook_i010_identify_the_use_caes_1_output_use_case_id = phantom.collect2(container=container, datapath=["playbook_i010_identify_the_use_caes_1:playbook_output:use_case_id"])
+
+    playbook_i010_identify_the_use_caes_1_output_use_case_id_values = [item[0] for item in playbook_i010_identify_the_use_caes_1_output_use_case_id]
+
+    input_parameter_0 = "SOP"
+
+    check_if_alert_has_a_mapping_to_an_sop__match = None
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+    success, message, execs = phantom.get_list(list_name=input_parameter_0, values=playbook_i010_identify_the_use_caes_1_output_use_case_id_values, column_index=0, trace=False)
+    
+    phantom.debug('phantom.get_list results: success: {}, message: {}, execs: {}'.format(success, message, execs))
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.save_run_data(key="check_if_alert_has_a_mapping_to_an_sop:match", value=json.dumps(check_if_alert_has_a_mapping_to_an_sop__match))
+
+    debug_1(container=container)
 
     return
 
