@@ -25,7 +25,7 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
     found_match_1 = phantom.decision(
         container=container,
         conditions=[
-            ["search_for_sop_mapping:action_result.summary.found_matches", "==", 0]
+            ["check_if_alert_has_a_mapping_to_an_sop:custom_function:match", "==", 0]
         ],
         delimiter=None)
 

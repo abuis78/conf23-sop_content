@@ -156,7 +156,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "fe27323125fe08e2321d0e50ef4a1f0f663fa757",
+            "hash": "dd0f7c992067dee748fe6b7e1190a1b05ed63d38",
             "nodes": {
                 "0": {
                     "data": {
@@ -562,7 +562,7 @@
                                     {
                                         "conditionIndex": 0,
                                         "op": "==",
-                                        "param": "search_for_sop_mapping:action_result.summary.found_matches",
+                                        "param": "check_if_alert_has_a_mapping_to_an_sop:custom_function:match",
                                         "value": "0"
                                     }
                                 ],
@@ -596,13 +596,9 @@
                     "errors": {},
                     "id": "4",
                     "type": "decision",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
-                    "x": 510,
-                    "y": 476
+                    "warnings": {},
+                    "x": 520,
+                    "y": 480
                 },
                 "5": {
                     "data": {
@@ -759,7 +755,7 @@
                     "id": "7",
                     "type": "playbook",
                     "warnings": {},
-                    "x": 510,
+                    "x": 520,
                     "y": 1000
                 },
                 "8": {
@@ -818,6 +814,7 @@
                             {
                                 "comparisons": [
                                     {
+                                        "conditionIndex": 1,
                                         "op": "==",
                                         "param": "",
                                         "value": ""
@@ -840,7 +837,7 @@
                     "type": "decision",
                     "warnings": {},
                     "x": 680,
-                    "y": 656
+                    "y": 660
                 }
             },
             "notes": ""
@@ -852,7 +849,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-18T10:34:20.526708+00:00",
+    "create_time": "2023-07-18T10:41:50.403281+00:00",
     "draft_mode": false,
     "labels": [
         "conf_alert"
