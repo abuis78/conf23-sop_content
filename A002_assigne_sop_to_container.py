@@ -404,19 +404,17 @@ def check_if_alert_has_a_mapping_to_an_sop(action=None, success=None, container=
     
     
     if execs['matches']:
-        match = 1
+        check_if_alert_has_a_mapping_to_an_sop__match = 1
     else:
-        match = 0
+        check_if_alert_has_a_mapping_to_an_sop__match = 0
     
-    phantom.debug('match: {}'.format( match))
+    phantom.debug('match: {}'.format( check_if_alert_has_a_mapping_to_an_sop__match))
 
     ################################################################################
     ## Custom Code End
     ################################################################################
 
     phantom.save_run_data(key="check_if_alert_has_a_mapping_to_an_sop:match", value=json.dumps(check_if_alert_has_a_mapping_to_an_sop__match))
-
-    debug_1(container=container)
 
     return
 
