@@ -17,9 +17,14 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
     outputs = {}
     
     # Write your custom code here...
+
+
     def check_and_format_json(data):
         if isinstance(data, str):  # If data is a string, we try to load it as JSON
             try:
+                json.loads(data)  # Try to parse string as JSON to check if it is valid
+                phantom.debug("The string is a valid JSON.")
+            
                 # Check if the string contains 'false' or 'true'
                 if re.search(r"'false'|'true'", data, re.IGNORECASE):
                     # Replace 'false' and 'true' with "false" and "true"
@@ -27,20 +32,28 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                     data = re.sub(r"'true'", '"true"', data, flags=re.IGNORECASE)
                 else:
                     data = data.replace("'", '"')  # Replace single quotes with double quotes
-                
-                data = json.loads(data)  # Try to parse string as JSON
-                phantom.debug("The string is a valid JSON.")
+
+                # Check if modified string is still valid JSON
+                try:
+                    json.loads(data)
+                except json.JSONDecodeError:
+                    phantom.debug("The modified string is not a valid JSON.")
+                    return None
+            
             except json.JSONDecodeError:
                 phantom.debug("The string is not a valid JSON.")
-                pass
+                return None
         elif isinstance(data, dict):  # If data is a dictionary, we dump it into a JSON string
             try:
                 data = json.dumps(data,ensure_ascii=False, default=str)
                 phantom.debug("The dictionary has been formatted into a valid JSON string:", data)
             except (TypeError, ValueError):
                 phantom.debug("The dictionary could not be formatted into a valid JSON string.")
+                return None
         else:
             phantom.debug("The data is neither a dictionary nor a JSON string.")
+            return None
+    
         phantom.debug(f"JSON Daten: {data}")
         return data
 
