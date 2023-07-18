@@ -156,7 +156,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "0367398ff243b04cda3da548c98d12eda8587246",
+            "hash": "0a94c117ba08dca07f7a4439179cf8ac28072d1f",
             "nodes": {
                 "0": {
                     "data": {
@@ -172,7 +172,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 450,
-                    "y": 0
+                    "y": -6.394884621840902e-14
                 },
                 "1": {
                     "data": {
@@ -187,8 +187,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 530,
-                    "y": 2000
+                    "x": 540,
+                    "y": 2160
                 },
                 "10": {
                     "data": {
@@ -231,6 +231,77 @@
                                 "label": "add tag",
                                 "name": "add_tags",
                                 "refreshNotableData": true
+                            },
+                            "set_label": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "choices": "notableLabels",
+                                        "description": "",
+                                        "label": "label",
+                                        "name": "label",
+                                        "placeholder": "Select a label",
+                                        "renderType": "dropdown",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "set label",
+                                "name": "set_label",
+                                "refreshNotableData": true
+                            },
+                            "set_sensitivity": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "choices": "notableSensitivity",
+                                        "description": "",
+                                        "label": "sensitivity",
+                                        "name": "sensitivity",
+                                        "placeholder": "Select sensitivity",
+                                        "renderType": "dropdown",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "set sensitivity",
+                                "name": "set_sensitivity",
+                                "refreshNotableData": true
+                            },
+                            "set_severity": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "choices": "notableSeverity",
+                                        "description": "",
+                                        "label": "severity",
+                                        "name": "severity",
+                                        "placeholder": "Select severity",
+                                        "renderType": "dropdown",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "set severity",
+                                "name": "set_severity",
+                                "refreshNotableData": true
                             }
                         },
                         "utilityType": "api",
@@ -241,6 +312,25 @@
                                     "trace"
                                 ],
                                 "tags": "a_progress"
+                            },
+                            "set_label": {
+                                "_internal": [
+                                    "container",
+                                    "trace"
+                                ],
+                                "label": "conf_cases"
+                            },
+                            "set_sensitivity": {
+                                "_internal": [
+                                    "container"
+                                ],
+                                "sensitivity": "amber"
+                            },
+                            "set_severity": {
+                                "_internal": [
+                                    "container"
+                                ],
+                                "severity": "high"
                             }
                         }
                     },
@@ -418,6 +508,77 @@
                                 "label": "add tag",
                                 "name": "add_tags",
                                 "refreshNotableData": true
+                            },
+                            "set_label": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "choices": "notableLabels",
+                                        "description": "",
+                                        "label": "label",
+                                        "name": "label",
+                                        "placeholder": "Select a label",
+                                        "renderType": "dropdown",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "set label",
+                                "name": "set_label",
+                                "refreshNotableData": true
+                            },
+                            "set_sensitivity": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "choices": "notableSensitivity",
+                                        "description": "",
+                                        "label": "sensitivity",
+                                        "name": "sensitivity",
+                                        "placeholder": "Select sensitivity",
+                                        "renderType": "dropdown",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "set sensitivity",
+                                "name": "set_sensitivity",
+                                "refreshNotableData": true
+                            },
+                            "set_severity": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "choices": "notableSeverity",
+                                        "description": "",
+                                        "label": "severity",
+                                        "name": "severity",
+                                        "placeholder": "Select severity",
+                                        "renderType": "dropdown",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "set severity",
+                                "name": "set_severity",
+                                "refreshNotableData": true
                             }
                         },
                         "utilityType": "api",
@@ -428,6 +589,25 @@
                                     "trace"
                                 ],
                                 "tags": "a_done"
+                            },
+                            "set_label": {
+                                "_internal": [
+                                    "container",
+                                    "trace"
+                                ],
+                                "label": "conf_cases"
+                            },
+                            "set_sensitivity": {
+                                "_internal": [
+                                    "container"
+                                ],
+                                "sensitivity": "green"
+                            },
+                            "set_severity": {
+                                "_internal": [
+                                    "container"
+                                ],
+                                "severity": "medium"
                             }
                         }
                     },
@@ -520,7 +700,7 @@
                     "type": "playbook",
                     "warnings": {},
                     "x": 430,
-                    "y": 148
+                    "y": 147.99999999999997
                 },
                 "19": {
                     "data": {
@@ -549,7 +729,7 @@
                     "userCode": "\n    # Write your custom code here...\n    success, message, execs = phantom.get_list(list_name=input_parameter_0, values=playbook_i010_identify_the_use_caes_1_output_use_case_id_values[0], column_index=3, trace=False)\n    \n    \n    if execs['matches']:\n        check_if_alert_has_a_mapping_to_an_sop__match = 1\n    else:\n        check_if_alert_has_a_mapping_to_an_sop__match = 0\n    \n    phantom.debug('match: {}'.format( check_if_alert_has_a_mapping_to_an_sop__match))\n    \n    check_if_alert_has_a_mapping_to_an_sop__sop = execs['matches'][0]['value'][0]\n    check_if_alert_has_a_mapping_to_an_sop__automation_phase = execs['matches'][0]['value'][2]\n\n",
                     "warnings": {},
                     "x": 430,
-                    "y": 312
+                    "y": 311.99999999999994
                 },
                 "4": {
                     "data": {
@@ -647,6 +827,13 @@
                         },
                         "utilityType": "api",
                         "values": {
+                            "add_tags": {
+                                "_internal": [
+                                    "container",
+                                    "trace"
+                                ],
+                                "tags": "a_progress"
+                            },
                             "comment": {
                                 "_internal": [
                                     "container",
@@ -661,7 +848,7 @@
                     "id": "5",
                     "type": "utility",
                     "warnings": {},
-                    "x": 0,
+                    "x": -1.4210854715202004e-14,
                     "y": 1836
                 },
                 "6": {
@@ -849,7 +1036,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-18T10:41:50.403281+00:00",
+    "create_time": "2023-07-18T14:57:13.898760+00:00",
     "draft_mode": false,
     "labels": [
         "conf_alert"

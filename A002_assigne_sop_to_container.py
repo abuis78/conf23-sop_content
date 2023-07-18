@@ -55,6 +55,7 @@ def there_is_no_sop_mapping_to_this_allert(action=None, success=None, container=
     ################################################################################
 
     phantom.comment(container=container, comment="There is no SOP mapping to this Allert")
+    phantom.add_tags(container=container, tags="a_progress")
 
     return
 
@@ -171,6 +172,9 @@ def add_tag_to_container_a_progress(action=None, success=None, container=None, r
     ################################################################################
 
     phantom.add_tags(container=container, tags="a_progress")
+    phantom.set_label(container=container, label="conf_cases")
+    phantom.set_severity(container=container, severity="high")
+    phantom.set_sensitivity(container=container, sensitivity="amber")
 
     container = phantom.get_container(container.get('id', None))
 
@@ -247,6 +251,9 @@ def add_tag_to_container_a_done(action=None, success=None, container=None, resul
     ################################################################################
 
     phantom.add_tags(container=container, tags="a_done")
+    phantom.set_label(container=container, label="conf_cases")
+    phantom.set_sensitivity(container=container, sensitivity="green")
+    phantom.set_severity(container=container, severity="medium")
 
     container = phantom.get_container(container.get('id', None))
 
