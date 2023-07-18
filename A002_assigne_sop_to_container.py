@@ -145,12 +145,10 @@ def playbook_i006_automated_processing_sop_1(action=None, success=None, containe
 def playbook_i007_sop_automation_dispatcher_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("playbook_i007_sop_automation_dispatcher_1() called")
 
-    search_for_sop_mapping_result_data = phantom.collect2(container=container, datapath=["search_for_sop_mapping:action_result.data.0.3"], action_results=results)
-
-    search_for_sop_mapping_result_item_0 = [item[0] for item in search_for_sop_mapping_result_data]
+    check_if_alert_has_a_mapping_to_an_sop__automation_phase = json.loads(_ if (_ := phantom.get_run_data(key="check_if_alert_has_a_mapping_to_an_sop:automation_phase")) != "" else "null")  # pylint: disable=used-before-assignment
 
     inputs = {
-        "automation_phase": search_for_sop_mapping_result_item_0,
+        "automation_phase": check_if_alert_has_a_mapping_to_an_sop__automation_phase,
     }
 
     ################################################################################

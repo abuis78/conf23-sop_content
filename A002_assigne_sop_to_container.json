@@ -156,7 +156,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "70454d6dd53dba30f43fba6a90240273aa43caa6",
+            "hash": "23a55519f9eeac218df952d8481a62d395c134a8",
             "nodes": {
                 "0": {
                     "data": {
@@ -691,11 +691,7 @@
                     "errors": {},
                     "id": "18",
                     "type": "utility",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 540,
                     "y": 260
                 },
@@ -780,6 +776,9 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 600,
@@ -1007,7 +1006,7 @@
                         "inputs": {
                             "automation_phase": {
                                 "datapaths": [
-                                    "search_for_sop_mapping:action_result.data.0.3"
+                                    "check_if_alert_has_a_mapping_to_an_sop:custom_function:automation_phase"
                                 ],
                                 "deduplicate": false
                             }
@@ -1022,11 +1021,7 @@
                     "errors": {},
                     "id": "8",
                     "type": "playbook",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 340,
                     "y": 980
                 },
@@ -1090,7 +1085,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-18T10:06:53.251462+00:00",
+    "create_time": "2023-07-18T10:07:21.668255+00:00",
     "draft_mode": false,
     "labels": [
         "conf_alert"
