@@ -119,12 +119,10 @@ def there_is_a_mapping_between_sop_and_allert(action=None, success=None, contain
 def playbook_i006_automated_processing_sop_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("playbook_i006_automated_processing_sop_1() called")
 
-    search_for_sop_mapping_result_data = phantom.collect2(container=container, datapath=["search_for_sop_mapping:action_result.data.0.0"], action_results=results)
-
-    search_for_sop_mapping_result_item_0 = [item[0] for item in search_for_sop_mapping_result_data]
+    check_if_alert_has_a_mapping_to_an_sop__sop = json.loads(_ if (_ := phantom.get_run_data(key="check_if_alert_has_a_mapping_to_an_sop:sop")) != "" else "null")  # pylint: disable=used-before-assignment
 
     inputs = {
-        "sop": search_for_sop_mapping_result_item_0,
+        "sop": check_if_alert_has_a_mapping_to_an_sop__sop,
     }
 
     ################################################################################
@@ -394,6 +392,7 @@ def check_if_alert_has_a_mapping_to_an_sop(action=None, success=None, container=
     input_parameter_0 = "SOP"
 
     check_if_alert_has_a_mapping_to_an_sop__match = None
+    check_if_alert_has_a_mapping_to_an_sop__sop = None
 
     ################################################################################
     ## Custom Code Start
@@ -409,12 +408,15 @@ def check_if_alert_has_a_mapping_to_an_sop(action=None, success=None, container=
         check_if_alert_has_a_mapping_to_an_sop__match = 0
     
     phantom.debug('match: {}'.format( check_if_alert_has_a_mapping_to_an_sop__match))
+    
+    check_if_alert_has_a_mapping_to_an_sop__sop = execs['matches'][0]['value'][0]
 
     ################################################################################
     ## Custom Code End
     ################################################################################
 
     phantom.save_run_data(key="check_if_alert_has_a_mapping_to_an_sop:match", value=json.dumps(check_if_alert_has_a_mapping_to_an_sop__match))
+    phantom.save_run_data(key="check_if_alert_has_a_mapping_to_an_sop:sop", value=json.dumps(check_if_alert_has_a_mapping_to_an_sop__sop))
 
     decision_1(container=container)
 
