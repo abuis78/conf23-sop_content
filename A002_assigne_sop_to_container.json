@@ -156,7 +156,7 @@
                     "targetPort": "18_in"
                 }
             ],
-            "hash": "5c6df6e8e6ddf72c36334031022645ed897ecaca",
+            "hash": "48a8b91fe868280f3aa3826314885bacdd1d97f4",
             "nodes": {
                 "0": {
                     "data": {
@@ -717,7 +717,7 @@
                     "errors": {},
                     "id": "19",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    r = phantom.get_list(list_name=input_parameter_0, values=playbook_i010_identify_the_use_caes_1_output_use_case_id_values[0], column_index=0, trace=False)\n    \n    phantom.debug(r)\n\n",
+                    "userCode": "\n    # Write your custom code here...\n    message = phantom.get_list(list_name=input_parameter_0, values=playbook_i010_identify_the_use_caes_1_output_use_case_id_values[0], column_index=0, trace=False)\n    \n    phantom.debug(message)\n\n",
                     "warnings": {},
                     "x": 260,
                     "y": 140
@@ -774,9 +774,6 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 600,
@@ -830,6 +827,9 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 340,
@@ -1091,7 +1091,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-18T04:16:51.776608+00:00",
+    "create_time": "2023-07-18T04:18:10.548220+00:00",
     "draft_mode": false,
     "labels": [
         "conf_alert"
