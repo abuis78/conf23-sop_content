@@ -60,6 +60,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
 
     def create_update_workbook(task,name,json_1,a):
         sop_json = eval(json_1)
+        sop_json = json.load(sop_json)
         url = phantom.build_phantom_rest_url('workbook_template')
         r = phantom.requests.post(url, json=sop_json, verify=False)
         phantom.debug(r)
