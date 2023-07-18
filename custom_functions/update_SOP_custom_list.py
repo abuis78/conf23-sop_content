@@ -21,18 +21,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         phantom.debug(f"task: {task}")
         phantom.debug(f"name: {name}")
         phantom.debug(f"json: {json}")
-        
-        json = json.replace("'", '"')
-        #json = eval(json)
-        
-        json_data = json.dumps(json)
 
-        w_url = phantom.build_phantom_rest_url('workflow_template')
-        if task == "c":
-            response_data = phantom.requests.post(w_url, json=json_data, verify=False)
-            phantom.debug(response_data)
-        else:
-            phantom.debug(f"update")
     
                           
     #check if List
@@ -79,7 +68,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                             data = { "update_rows": { row : sublist }}
                             phantom.debug(f"New Data: {data}")
                             r3 = phantom.requests.post(r_url3, json=data, verify=False).json()
-                            #create_update_workbook("u",n, json_data)
+                            create_update_workbook("u",n, json_data)
                         break
                 if not f:
                     # SOP is not jet in the Custom List create a new entry
@@ -90,7 +79,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                     data = { "append_rows": [sublist] }
                     phantom.debug(f"New Data: {data}")
                     r4 = phantom.requests.post(r_url4, json=data, verify=False).json()
-                    #create_update_workbook("c",n, json_data)
+                    create_update_workbook("c",n, json_data)
                         
     phantom.debug(f"---ENDE----")
         
