@@ -295,16 +295,14 @@ def set_next_phase_as_current_phase(action=None, success=None, container=None, r
     phantom.debug("set_next_phase_as_current_phase() called")
 
     id_value = container.get("id", None)
-    search_for_sop_mapping_result_data = phantom.collect2(container=container, datapath=["search_for_sop_mapping:action_result.data.0.3","search_for_sop_mapping:action_result.parameter.context.artifact_id"], action_results=results)
+    check_if_alert_has_a_mapping_to_an_sop__automation_phase = json.loads(_ if (_ := phantom.get_run_data(key="check_if_alert_has_a_mapping_to_an_sop:automation_phase")) != "" else "null")  # pylint: disable=used-before-assignment
 
     parameters = []
 
-    # build parameters list for 'set_next_phase_as_current_phase' call
-    for search_for_sop_mapping_result_item in search_for_sop_mapping_result_data:
-        parameters.append({
-            "container_id": id_value,
-            "current_phase_name": search_for_sop_mapping_result_item[0],
-        })
+    parameters.append({
+        "container_id": id_value,
+        "current_phase_name": check_if_alert_has_a_mapping_to_an_sop__automation_phase,
+    })
 
     ################################################################################
     ## Custom Code Start
