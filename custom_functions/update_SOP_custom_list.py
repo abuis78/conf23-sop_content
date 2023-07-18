@@ -74,7 +74,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         else:
             phantom.debug("Die Liste 'data' ist leer.")
         
-        phantom.debug(sop_json)
+        
 
 
         
