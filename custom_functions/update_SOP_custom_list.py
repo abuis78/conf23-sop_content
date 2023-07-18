@@ -68,9 +68,11 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         phantom.debug(json_1)
         url = phantom.build_phantom_rest_url('workbook_template')
         if task == "c":
+            phantom.debug("create")
             r = phantom.requests.post(url, data=json_1, verify=False)
             phantom.debug(r)
         else:
+            phantom.debug("update")
             url_d = phantom.build_phantom_rest_url('workbook_template','69')
             r_d = phantom.requests.delete(url)
             phantom.debug(r_d)
