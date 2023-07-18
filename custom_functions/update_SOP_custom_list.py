@@ -59,21 +59,10 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
 
 
     def create_update_workbook(task,name,json_1,a):
-        phantom.debug(f"IDD {a}")
-        filter_url = '?_filter_id="' + str(a) + '"'
-        url = phantom.build_phantom_rest_url('artifact')
-        url = url + filter_url
-        phantom.debug(f"URL {url}")
-        r = phantom.requests.get(url, verify=False)
-        data = r.json()
-        if len(data['data']) > 0:
-            #sop_json = data['data'][0]['cef']['sop_json']
-            sop_json = eval(json_1)
-            url = phantom.build_phantom_rest_url('workbook_template')
-            r = phantom.requests.post(url, json=sop_json, verify=False).json()
-            phantom.debug(sop_json)
-        else:
-            phantom.debug("Die Liste 'data' ist leer.")
+        sop_json = eval(json_1)
+        url = phantom.build_phantom_rest_url('workbook_template')
+        r = phantom.requests.post(url, json=sop_json, verify=False).json()
+        phantom.debug(r)
         
         
 
