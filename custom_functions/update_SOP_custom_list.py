@@ -35,7 +35,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
                 pass
         elif isinstance(data, dict):  # If data is a dictionary, we dump it into a JSON string
             try:
-                data = json.dumps(data)
+                data = json.dumps(data,ensure_ascii=False, default=str)
                 phantom.debug("The dictionary has been formatted into a valid JSON string:", data)
             except (TypeError, ValueError):
                 phantom.debug("The dictionary could not be formatted into a valid JSON string.")
