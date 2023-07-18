@@ -21,7 +21,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "75f48652f2cb0adc67d1263ac2bd5bba30f2b579",
+            "hash": "a96cd567bb48ddf49f64a4537dbd70fd3ee8961f",
             "nodes": {
                 "0": {
                     "data": {
@@ -37,7 +37,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.99999999999943
+                    "y": 419.9999999999993
                 },
                 "1": {
                     "data": {
@@ -54,68 +54,6 @@
                     "warnings": {},
                     "x": 1000,
                     "y": 1000
-                },
-                "2": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "functionId": 1,
-                        "functionName": "add_comment_1",
-                        "id": "2",
-                        "selectMore": false,
-                        "tab": "apis",
-                        "type": "utility",
-                        "utilities": {
-                            "comment": {
-                                "description": "",
-                                "fields": [
-                                    {
-                                        "description": "",
-                                        "label": "comment",
-                                        "name": "comment",
-                                        "placeholder": "Enter a comment",
-                                        "renderType": "datapath",
-                                        "required": true
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "container",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "author",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "trace",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "add comment",
-                                "name": "comment"
-                            }
-                        },
-                        "utilityType": "api",
-                        "values": {
-                            "comment": {
-                                "_internal": [
-                                    "container",
-                                    "author",
-                                    "trace"
-                                ],
-                                "comment": "playbook_input:automation_phase"
-                            }
-                        }
-                    },
-                    "errors": {},
-                    "id": "2",
-                    "type": "utility",
-                    "warnings": {},
-                    "x": 580,
-                    "y": 580
                 },
                 "5": {
                     "data": {
@@ -171,7 +109,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-18T10:38:26.962040+00:00",
+    "create_time": "2023-07-18T10:51:06.813255+00:00",
     "draft_mode": false,
     "labels": [
         "*"

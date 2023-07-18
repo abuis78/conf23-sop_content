@@ -18,29 +18,6 @@ def on_start(container):
     return
 
 @phantom.playbook_block()
-def add_comment_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("add_comment_1() called")
-
-    playbook_input_automation_phase = phantom.collect2(container=container, datapath=["playbook_input:automation_phase"])
-
-    playbook_input_automation_phase_values = [item[0] for item in playbook_input_automation_phase]
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.comment(container=container, comment=playbook_input_automation_phase_values)
-
-    return
-
-
-@phantom.playbook_block()
 def set_automation_phase(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("set_automation_phase() called")
 
