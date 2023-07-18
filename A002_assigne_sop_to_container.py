@@ -416,6 +416,8 @@ def check_if_alert_has_a_mapping_to_an_sop(action=None, success=None, container=
 
     phantom.save_run_data(key="check_if_alert_has_a_mapping_to_an_sop:match", value=json.dumps(check_if_alert_has_a_mapping_to_an_sop__match))
 
+    decision_1(container=container)
+
     return
 
 
