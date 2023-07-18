@@ -156,7 +156,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "0367398ff243b04cda3da548c98d12eda8587246",
+            "hash": "fe27323125fe08e2321d0e50ef4a1f0f663fa757",
             "nodes": {
                 "0": {
                     "data": {
@@ -171,8 +171,8 @@
                     "id": "0",
                     "type": "start",
                     "warnings": {},
-                    "x": 280,
-                    "y": -120.00000000000017
+                    "x": 450,
+                    "y": 0
                 },
                 "1": {
                     "data": {
@@ -187,8 +187,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 460,
-                    "y": 2040
+                    "x": 530,
+                    "y": 2000
                 },
                 "10": {
                     "data": {
@@ -248,8 +248,8 @@
                     "id": "10",
                     "type": "utility",
                     "warnings": {},
-                    "x": 660,
-                    "y": 1500
+                    "x": 340,
+                    "y": 1836
                 },
                 "12": {
                     "data": {
@@ -325,8 +325,8 @@
                     "id": "12",
                     "type": "utility",
                     "warnings": {},
-                    "x": 360,
-                    "y": 1140
+                    "x": 510,
+                    "y": 1328
                 },
                 "14": {
                     "data": {
@@ -374,8 +374,8 @@
                     "id": "14",
                     "type": "decision",
                     "warnings": {},
-                    "x": 740,
-                    "y": 1320
+                    "x": 420,
+                    "y": 1540
                 },
                 "15": {
                     "data": {
@@ -435,8 +435,8 @@
                     "id": "15",
                     "type": "utility",
                     "warnings": {},
-                    "x": 260,
-                    "y": 1484.5
+                    "x": 760,
+                    "y": 1700
                 },
                 "16": {
                     "data": {
@@ -496,8 +496,8 @@
                     "id": "16",
                     "type": "utility",
                     "warnings": {},
-                    "x": 260,
-                    "y": 1640
+                    "x": 760,
+                    "y": 1840
                 },
                 "17": {
                     "data": {
@@ -519,181 +519,8 @@
                     "id": "17",
                     "type": "playbook",
                     "warnings": {},
-                    "x": 260,
-                    "y": 0
-                },
-                "18": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "customFunction": {
-                            "draftMode": false,
-                            "name": "debug",
-                            "repoName": "community"
-                        },
-                        "functionId": 1,
-                        "functionName": "debug_1",
-                        "id": "18",
-                        "selectMore": false,
-                        "type": "utility",
-                        "utilities": {
-                            "debug": {
-                                "description": "Print debug messages with the type and value of 0-10 different inputs. This is useful for checking the values of input data or the outputs of other playbook blocks.",
-                                "fields": [
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_1",
-                                        "name": "input_1",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_2",
-                                        "name": "input_2",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_3",
-                                        "name": "input_3",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_4",
-                                        "name": "input_4",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_5",
-                                        "name": "input_5",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_6",
-                                        "name": "input_6",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_7",
-                                        "name": "input_7",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_8",
-                                        "name": "input_8",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_9",
-                                        "name": "input_9",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "*"
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "input_10",
-                                        "name": "input_10",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "debug",
-                                "name": "debug"
-                            }
-                        },
-                        "utilityType": "custom_function",
-                        "values": {
-                            "debug": {
-                                "input_1": [
-                                    "check_if_alert_has_a_mapping_to_an_sop:custom_function:match"
-                                ],
-                                "input_10": null,
-                                "input_2": "",
-                                "input_3": null,
-                                "input_4": null,
-                                "input_5": null,
-                                "input_6": null,
-                                "input_7": null,
-                                "input_8": null,
-                                "input_9": null
-                            }
-                        }
-                    },
-                    "errors": {},
-                    "id": "18",
-                    "type": "utility",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
-                    "x": 540,
-                    "y": 260
+                    "x": 430,
+                    "y": 148
                 },
                 "19": {
                     "data": {
@@ -721,65 +548,8 @@
                     "type": "code",
                     "userCode": "\n    # Write your custom code here...\n    success, message, execs = phantom.get_list(list_name=input_parameter_0, values=playbook_i010_identify_the_use_caes_1_output_use_case_id_values[0], column_index=3, trace=False)\n    \n    \n    if execs['matches']:\n        check_if_alert_has_a_mapping_to_an_sop__match = 1\n    else:\n        check_if_alert_has_a_mapping_to_an_sop__match = 0\n    \n    phantom.debug('match: {}'.format( check_if_alert_has_a_mapping_to_an_sop__match))\n    \n    check_if_alert_has_a_mapping_to_an_sop__sop = execs['matches'][0]['value'][0]\n    check_if_alert_has_a_mapping_to_an_sop__automation_phase = execs['matches'][0]['value'][2]\n\n",
                     "warnings": {},
-                    "x": 260,
-                    "y": 140
-                },
-                "2": {
-                    "data": {
-                        "action": "find listitem",
-                        "actionType": "investigate",
-                        "advanced": {
-                            "customName": "search for SOP mapping",
-                            "customNameId": 0,
-                            "join": [],
-                            "notRequiredJoins": [
-                                "playbook_I010_Identify_the_use_caes_1"
-                            ],
-                            "scope": "all"
-                        },
-                        "connector": "Phantom",
-                        "connectorConfigs": [
-                            "phantom"
-                        ],
-                        "connectorId": "deb82aa9-22cc-4675-9cf1-534b8d006eb7",
-                        "connectorVersion": "v1",
-                        "functionId": 1,
-                        "functionName": "search_for_sop_mapping",
-                        "id": "2",
-                        "parameters": {
-                            "column_index": "2",
-                            "exact_match": false,
-                            "list": "SOP",
-                            "values": "playbook_i010_identify_the_use_caes_1:playbook_output:use_case_id"
-                        },
-                        "requiredParameters": [
-                            {
-                                "data_type": "string",
-                                "field": "list"
-                            },
-                            {
-                                "data_type": "string",
-                                "field": "values"
-                            },
-                            {
-                                "data_type": "boolean",
-                                "default": true,
-                                "field": "exact_match"
-                            }
-                        ],
-                        "tab": "byAction",
-                        "type": "action"
-                    },
-                    "errors": {},
-                    "id": "2",
-                    "type": "action",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
-                    "x": 600,
-                    "y": 139.99999999999997
+                    "x": 430,
+                    "y": 312
                 },
                 "4": {
                     "data": {
@@ -831,8 +601,8 @@
                             "Reconfigure invalid datapath."
                         ]
                     },
-                    "x": 340,
-                    "y": 300
+                    "x": 510,
+                    "y": 476
                 },
                 "5": {
                     "data": {
@@ -895,8 +665,8 @@
                     "id": "5",
                     "type": "utility",
                     "warnings": {},
-                    "x": -1.4210854715202004e-14,
-                    "y": 1312
+                    "x": 0,
+                    "y": 1836
                 },
                 "6": {
                     "data": {
@@ -959,8 +729,8 @@
                     "id": "6",
                     "type": "utility",
                     "warnings": {},
-                    "x": 340,
-                    "y": 656
+                    "x": 510,
+                    "y": 836
                 },
                 "7": {
                     "data": {
@@ -989,8 +759,8 @@
                     "id": "7",
                     "type": "playbook",
                     "warnings": {},
-                    "x": 340,
-                    "y": 820
+                    "x": 510,
+                    "y": 1000
                 },
                 "8": {
                     "data": {
@@ -1019,8 +789,8 @@
                     "id": "8",
                     "type": "playbook",
                     "warnings": {},
-                    "x": 340,
-                    "y": 980
+                    "x": 510,
+                    "y": 1164
                 },
                 "9": {
                     "data": {
@@ -1069,8 +839,8 @@
                     "id": "9",
                     "type": "decision",
                     "warnings": {},
-                    "x": 510,
-                    "y": 476
+                    "x": 680,
+                    "y": 656
                 }
             },
             "notes": ""
@@ -1082,7 +852,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-18T10:25:21.353815+00:00",
+    "create_time": "2023-07-18T10:34:20.526708+00:00",
     "draft_mode": false,
     "labels": [
         "conf_alert"
