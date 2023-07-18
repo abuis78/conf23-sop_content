@@ -63,6 +63,7 @@ def update_SOP_custom_list(artifact_id_list=None, container_id=None, prefix_filt
         filter_url = '?_filter_id="' + str(a) + '"'
         url = phantom.build_phantom_rest_url('artifact')
         url = url + filter_url
+        phantom.debug(f"URL {url}")
         r = phantom.requests.get(url, verify=False)
         data = r.json()
         if len(data['data']) > 0:
