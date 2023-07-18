@@ -156,7 +156,7 @@
                     "targetPort": "18_in"
                 }
             ],
-            "hash": "c764b6166e520fbb41021321bcbb38f3ab68f8e0",
+            "hash": "a96bf355e4abb15d8d0d6040aa57012b4b83d2da",
             "nodes": {
                 "0": {
                     "data": {
@@ -717,7 +717,7 @@
                     "errors": {},
                     "id": "19",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    message = phantom.get_list(list_name=input_parameter_0, values=\"9300\", column_index=0, trace=False)\n    \n    phantom.debug(message)\n\n",
+                    "userCode": "\n    # Write your custom code here...\n    message = phantom.get_list(list_name=\"SOP\")\n    \n    phantom.debug(message)\n\n",
                     "warnings": {},
                     "x": 260,
                     "y": 140
@@ -774,6 +774,9 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 600,
@@ -827,9 +830,6 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 340,
@@ -1091,7 +1091,7 @@
         "schema": "5.0.10",
         "version": "6.0.2.127725"
     },
-    "create_time": "2023-07-18T04:21:52.505795+00:00",
+    "create_time": "2023-07-18T04:24:06.948089+00:00",
     "draft_mode": false,
     "labels": [
         "conf_alert"
