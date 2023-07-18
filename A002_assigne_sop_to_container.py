@@ -393,6 +393,7 @@ def check_if_alert_has_a_mapping_to_an_sop(action=None, success=None, container=
 
     check_if_alert_has_a_mapping_to_an_sop__match = None
     check_if_alert_has_a_mapping_to_an_sop__sop = None
+    check_if_alert_has_a_mapping_to_an_sop__automation_phase = None
 
     ################################################################################
     ## Custom Code Start
@@ -410,6 +411,7 @@ def check_if_alert_has_a_mapping_to_an_sop(action=None, success=None, container=
     phantom.debug('match: {}'.format( check_if_alert_has_a_mapping_to_an_sop__match))
     
     check_if_alert_has_a_mapping_to_an_sop__sop = execs['matches'][0]['value'][0]
+    check_if_alert_has_a_mapping_to_an_sop__automation_phase = execs['matches'][0]['value'][2]
 
     ################################################################################
     ## Custom Code End
@@ -417,6 +419,7 @@ def check_if_alert_has_a_mapping_to_an_sop(action=None, success=None, container=
 
     phantom.save_run_data(key="check_if_alert_has_a_mapping_to_an_sop:match", value=json.dumps(check_if_alert_has_a_mapping_to_an_sop__match))
     phantom.save_run_data(key="check_if_alert_has_a_mapping_to_an_sop:sop", value=json.dumps(check_if_alert_has_a_mapping_to_an_sop__sop))
+    phantom.save_run_data(key="check_if_alert_has_a_mapping_to_an_sop:automation_phase", value=json.dumps(check_if_alert_has_a_mapping_to_an_sop__automation_phase))
 
     decision_1(container=container)
 
