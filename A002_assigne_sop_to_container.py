@@ -400,7 +400,7 @@ def check_if_alert_has_a_mapping_to_an_sop(action=None, success=None, container=
     ################################################################################
 
     # Write your custom code here...
-    message = phantom.get_list(list_name=input_parameter_0, values="9000", column_index=0, trace=False)
+    message = phantom.get_list(list_name=input_parameter_0, values="9300", column_index=0, trace=False)
     
     phantom.debug(message)
 
