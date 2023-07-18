@@ -36,6 +36,7 @@ def set_automation_phase(action=None, success=None, container=None, results=None
     import time
     
     phase = playbook_input_automation_phase_values[0]
+    phantom.debug(f"Phase input {phase}")
     success, message = phantom.set_phase(container=id_value,phase=phase)
     success, message, phase_id, phase_name = phantom.get_phase()
     phantom.debug(f"Phase ID {phase_id}")
